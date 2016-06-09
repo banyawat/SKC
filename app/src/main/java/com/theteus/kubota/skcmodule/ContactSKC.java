@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 import com.theteus.kubota.R;
 
@@ -27,15 +29,6 @@ public class ContactSKC extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ContactSKC.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ContactSKC newInstance(String param1, String param2) {
         ContactSKC fragment = new ContactSKC();
         Bundle args = new Bundle();
@@ -59,20 +52,15 @@ public class ContactSKC extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contact_skc, container, false);
 
-        Log.d("TAG", "TAGOLOG");
+        //Dummy data
         ArrayList<SKCInstance> dataList = new ArrayList<SKCInstance>();
         dataList.add(new SKCInstance("Banyawat Kaewsamer", "0913067637", "bunyawat.38@gmail.com"));
         dataList.add(new SKCInstance("John Cartney", "+419523115", "elitan_842@gmail.com"));
         dataList.add(new SKCInstance("Jack Ma", "+61155149712", "maj_j12@hotmail.com"));
+
         CustomAdapterSKC adapter = new CustomAdapterSKC(getActivity(), dataList);
         ListView skcListview = (ListView) view.findViewById(R.id.skc_listview);
         skcListview.setAdapter(adapter);
-        skcListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
-            }
-        });
-
         return view;
     }
 }

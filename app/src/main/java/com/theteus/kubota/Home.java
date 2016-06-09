@@ -1,5 +1,6 @@
 package com.theteus.kubota;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,11 +11,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.theteus.kubota.skcmodule.ContactSKC;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     FragmentTransaction transaction;
+    private int pageID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Feed mainFragment  = new Feed();
         transaction.add(R.id.main_fragment_container, mainFragment);
         transaction.commit();
+
+        FloatingActionButton fabButton = (FloatingActionButton)findViewById(R.id.add_fab);
+
     }
 
    /* @Override
@@ -55,8 +59,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
+        pageID = item.getItemId();
+        switch (pageID) {
             case (R.id.menu_item_skc) :
                 transactionReplace(new ContactSKC());
                 break;

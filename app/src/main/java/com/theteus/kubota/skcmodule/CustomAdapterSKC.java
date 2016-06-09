@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.theteus.kubota.R;
 
@@ -35,7 +37,7 @@ public class CustomAdapterSKC extends BaseAdapter {
         return 0;
     }
 
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater mInflater =
                 (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -50,6 +52,15 @@ public class CustomAdapterSKC extends BaseAdapter {
 
         TextView emailText = (TextView)view.findViewById(R.id.skc_text_email);
         emailText.setText(list.get(position).getEmail());
+
+        final CheckBox selector = (CheckBox)view.findViewById(R.id.skc_checkbox);
+        final View finalView = view;
+        selector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(finalView.getContext(), "TEST: "+list.get(position).getName()+" Status"+selector.isChecked(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
