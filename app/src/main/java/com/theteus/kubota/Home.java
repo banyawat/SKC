@@ -1,7 +1,10 @@
 package com.theteus.kubota;
 
+import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import com.theteus.kubota.skcmodule.ContactSKC;
+import com.theteus.kubota.skcmodule.SKCpager;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     FragmentTransaction transaction;
@@ -36,6 +40,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if(navigationView!=null){
             navigationView.setNavigationItemSelectedListener(this);
         }
+
+
         transaction = getSupportFragmentManager().beginTransaction();
         Feed mainFragment  = new Feed();
         transaction.add(R.id.main_fragment_container, mainFragment);
@@ -60,7 +66,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         pageID = item.getItemId();
         switch (pageID) {
             case (R.id.menu_item_skc) :
-                transactionReplace(new ContactSKC());
+                transactionReplace(new SKCpager());
                 break;
             case (R.id.menu_item_contact):
                 transactionReplace(new Contact());
@@ -82,7 +88,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 break;
             default: break;
         }
-        return false;
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     public void goHome(View v){

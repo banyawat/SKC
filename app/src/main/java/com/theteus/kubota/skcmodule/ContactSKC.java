@@ -3,7 +3,8 @@ package com.theteus.kubota.skcmodule;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.util.SparseBooleanArray;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +77,17 @@ public class ContactSKC extends Fragment {
             @Override
             public void onClick(View v) {
                 adapter.deleteCheckedArray();
+            }
+        });
+
+        FloatingActionButton addFab = (FloatingActionButton) view.findViewById(R.id.skc_fab_add);
+        addFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                ft.replace(R.id.main_fragment_container, new ContactSKCAddForm()).addToBackStack(null);
+                ft.commit();*/
             }
         });
         return view;
