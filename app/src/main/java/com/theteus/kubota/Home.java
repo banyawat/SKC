@@ -41,8 +41,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         transaction.add(R.id.main_fragment_container, mainFragment);
         transaction.commit();
 
-        FloatingActionButton fabButton = (FloatingActionButton)findViewById(R.id.add_fab);
-
     }
 
    /* @Override

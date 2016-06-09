@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.theteus.kubota.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CustomAdapterSKC extends BaseAdapter {
@@ -54,14 +55,25 @@ public class CustomAdapterSKC extends BaseAdapter {
         emailText.setText(list.get(position).getEmail());
 
         final CheckBox selector = (CheckBox)view.findViewById(R.id.skc_checkbox);
+        selector.setChecked(list.get(position).getSelect());
         final View finalView = view;
         selector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(finalView.getContext(), "TEST: "+list.get(position).getName()+" Status"+selector.isChecked(), Toast.LENGTH_SHORT).show();
+                list.get(position).changeSelect();
             }
         });
-
         return view;
+    }
+
+    public void deleteCheckedArray(){
+        int i=0;
+        while(i<list.size()){
+            if(list.get(i).getSelect())
+                list.remove(i);
+            else
+                ++i;
+        }
+        notifyDataSetChanged();
     }
 }

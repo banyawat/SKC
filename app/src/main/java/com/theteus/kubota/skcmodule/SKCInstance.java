@@ -4,6 +4,7 @@ package com.theteus.kubota.skcmodule;
  * Created by user on 6/9/2016.
  */
 public class SKCInstance {
+    private boolean select;
     private String name;
     private String tel;
     private String email;
@@ -12,6 +13,7 @@ public class SKCInstance {
         this.name = name;
         this.tel = tel;
         this.email = email;
+        select = false;
     }
 
     public String getName(){
@@ -24,5 +26,13 @@ public class SKCInstance {
 
     public String getEmail(){
         return this.email;
+    }
+
+    public void changeSelect(){
+        this.select = !this.select;
+    }
+
+    public boolean getSelect(){
+        return this.select;
     }
 }
