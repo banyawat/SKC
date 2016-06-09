@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+Copyright 2016 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:example="http://schemas.android.com/apk/res/com.charlesharley.example.android.customdrawablestates"
+    android:constantSize="true">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/menu_item_skc"
+            android:title="@string/skc_label"
+            android:icon="@drawable/ic_perm_contact_cal_black_48dp"
+            />
+        <item
+            android:id="@+id/menu_item_contact"
+            android:title="@string/contact_label"
+            android:icon="@drawable/ic_add_shopping_cart_black_48dp"
+            />
+        <item
+            android:id="@+id/menu_item_lead"
+            android:title="@string/lead_label"
+            android:icon="@drawable/ic_accessibility_black_48dp"
+            />
+        <item
+            android:id="@+id/menu_item_activity"
+            android:title="@string/activity_label"
+            android:icon="@drawable/ic_event_black_48dp"
+            />
+        <item
+            android:id="@+id/menu_item_account"
+            android:title="@string/account_label"
+            android:icon="@drawable/ic_supervisor_account_black_48dp"
+            />
+        <item
+            android:id="@+id/menu_item_chasis"
+            android:title="@string/chasis_label"
+            android:icon="@drawable/ic_directions_bus_black_48dp"
+            />
+        <item
+            android:id="@+id/logout_action"
+            android:title="@string/logout"
+            android:icon="@drawable/ic_cancel_black_48dp"
+            />
+
+    </group>
+</menu>
