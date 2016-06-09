@@ -1,4 +1,4 @@
-package com.theteus.kubota;
+package com.theteus.kubota.skcmodule;
 
 /**
  * Created by user on 6/9/2016.
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.theteus.kubota.R;
 
 import java.util.ArrayList;
 

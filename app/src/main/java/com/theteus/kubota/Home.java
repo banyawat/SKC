@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.theteus.kubota.skcmodule.ContactSKC;
+
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     FragmentTransaction transaction;
     @Override

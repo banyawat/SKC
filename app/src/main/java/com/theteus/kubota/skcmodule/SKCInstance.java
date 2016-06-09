@@ -1,4 +1,4 @@
-package com.theteus.kubota;
+package com.theteus.kubota.skcmodule;
 
 /**
  * Created by user on 6/9/2016.
