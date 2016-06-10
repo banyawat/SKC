@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.theteus.kubota.R;
@@ -56,8 +58,19 @@ public class ContactSKCAddForm extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_contact_skc_add, container, false);
+        final View view = inflater.inflate(R.layout.fragment_contact_skc_add, container, false);
 
+        Button add = (Button) view.findViewById(R.id.skc_button_add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText nameEdit = (EditText) view.findViewById(R.id.skc_edit_name);
+                EditText phoneEdit = (EditText) view.findViewById(R.id.skc_edit_phone);
+                EditText emailEdit = (EditText) view.findViewById(R.id.skc_edit_email);
+
+
+            }
+        });
         return view;
     }
 }
