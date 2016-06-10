@@ -30,14 +30,13 @@
             </android.support.design.widget.AppBarLayout>
         </android.support.design.widget.CoordinatorLayout>
 
-        <fragment
-            android:id="@+id/main_fragment_container"
-            android:layout_below="@+id/toolbarLayout"
+        <android.support.v4.view.ViewPager
+            android:layout_below="@id/toolbarLayout"
+            android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:name="com.theteus.kubota.BlankPage"
-            tools:layout="@layout/fragment_feed"></fragment>
+            android:layout_height="wrap_content">
+
+        </android.support.v4.view.ViewPager>
     </RelativeLayout>
 </FrameLayout>
 

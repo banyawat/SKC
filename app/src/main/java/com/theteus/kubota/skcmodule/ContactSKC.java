@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +14,21 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.theteus.kubota.R;
+import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import java.util.ArrayList;
 
 public class ContactSKC extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     ListView skcListview;
     CustomAdapterSKC adapter;
     ArrayList<SKCInstance> dataList;
+
+    ViewPager mViewPager;
 
     public ContactSKC() {
         // Required empty public constructor
@@ -84,12 +85,13 @@ public class ContactSKC extends Fragment {
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-                ft.replace(R.id.main_fragment_container, new ContactSKCAddForm()).addToBackStack(null);
-                ft.commit();*/
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem()+1);
             }
         });
         return view;
+    }
+
+    public void addView(ViewPager mViewPager){
+        this.mViewPager = mViewPager;
     }
 }

@@ -1,10 +1,9 @@
 package com.theteus.kubota;
 
-import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +13,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.theteus.kubota.skcmodule.ContactSKC;
-import com.theteus.kubota.skcmodule.SKCpager;
+import com.theteus.kubota.skcmodule.ContactSKCAddForm;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    FragmentTransaction transaction;
     private int pageID;
+    private ViewPager mPager;
+    private ScreenSlidePagerAdapter mPagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +43,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             navigationView.setNavigationItemSelectedListener(this);
         }
 
-
-        transaction = getSupportFragmentManager().beginTransaction();
-        Feed mainFragment  = new Feed();
-        transaction.add(R.id.main_fragment_container, mainFragment);
-        transaction.commit();
-
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mPagerAdapter);
     }
 
    /* @Override
@@ -66,22 +65,32 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         pageID = item.getItemId();
         switch (pageID) {
             case (R.id.menu_item_skc) :
-                transactionReplace(new SKCpager());
+                mPagerAdapter.clearPage();
+                ContactSKC cSKC = new ContactSKC();
+                cSKC.addView(mPager);
+                mPagerAdapter.addPage(cSKC);
+                mPagerAdapter.addPage(new ContactSKCAddForm());
                 break;
             case (R.id.menu_item_contact):
-                transactionReplace(new Contact());
+                mPagerAdapter.clearPage();
+                mPagerAdapter.addPage(new Contact());
                 break;
             case (R.id.menu_item_lead):
-                transactionReplace(new Lead());
+                mPagerAdapter.clearPage();
+                mPagerAdapter.addPage(new Lead());
                 break;
             case (R.id.menu_item_account):
-                transactionReplace(new Account());
+                mPagerAdapter.clearPage();
+                mPagerAdapter.addPage(new Account());
                 break;
             case (R.id.menu_item_activity):
-                transactionReplace(new Activities());
+                mPagerAdapter.clearPage();
+                mPagerAdapter.addPage(new Activities());
                 break;
             case (R.id.menu_item_chasis):
-                transactionReplace(new Chasis());
+                mPagerAdapter.clearPage();
+                mPagerAdapter.addPage(new Chasis());
+
                 break;
             case (R.id.logout_action) :
                 Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
@@ -89,18 +98,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             default: break;
         }
 
+        mPagerAdapter.notifyDataSetChanged();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return false;
     }
 
     public void goHome(View v){
-        transactionReplace(new Feed());
-    }
-
-    public void transactionReplace(android.support.v4.app.Fragment fragment){
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_fragment_container, fragment);
-        transaction.commit();
+        mPagerAdapter.clearPage();
+        mPagerAdapter.addPage(new Feed());
+        mPagerAdapter.notifyDataSetChanged();
     }
 }
