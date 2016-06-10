@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.theteus.kubota.skcmodule.ContactSKC;
 import com.theteus.kubota.skcmodule.ContactSKCAddForm;
+import com.theteus.kubota.LeadModule.Lead;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private int pageID;

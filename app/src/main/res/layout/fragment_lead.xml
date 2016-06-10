@@ -1,13 +1,81 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.theteus.kubota.Lead">
+    tools:context=".LeadModule.Lead"
+    android:padding="20dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <RelativeLayout
+        android:id="@+id/lead_table_head"
+        android:layout_height="40dp"
+        android:layout_width="fill_parent"
+        android:background="@drawable/whiteframe">
+        <TextView
+            android:id="@+id/lead_table_head_checkbox"
+            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_centerVertical="true"
+            android:text=""/>
+        <RelativeLayout
+            android:id="@+id/lead_table_head_name"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_toEndOf="@id/lead_table_head_checkbox"
+            android:layout_toRightOf="@id/lead_table_head_checkbox"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Name"
+                android:id="@+id/lead_table_head_name_word" />
+            <ImageView
+                android:layout_height="18dp"
+                android:layout_width="18dp"
+                android:src="@drawable/asc_sort"
+                android:layout_toEndOf="@id/lead_table_head_name_word"
+                android:layout_toRightOf="@id/lead_table_head_name_word" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/lead_table_head_phone"
+            android:layout_toEndOf="@id/lead_table_head_name"
+            android:layout_toRightOf="@id/lead_table_head_name"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_centerVertical="true"
+            android:text="Phone"/>
+        <TextView
+            android:id="@+id/lead_table_head_email"
+            android:layout_toEndOf="@id/lead_table_head_phone"
+            android:layout_toRightOf="@id/lead_table_head_phone"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_centerVertical="true"
+            android:text="Email"/>
+        <TextView
+            android:id="@+id/lead_table_head_date"
+            android:layout_toEndOf="@id/lead_table_head_email"
+            android:layout_toRightOf="@id/lead_table_head_email"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_centerVertical="true"
+            android:text="Reg. Date"/>
+        <TextView
+            android:id="@+id/lead_table_head_account"
+            android:layout_toEndOf="@id/lead_table_head_date"
+            android:layout_toRightOf="@id/lead_table_head_date"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_centerVertical="true"
+            android:text="Sales ID"/>
+    </RelativeLayout>
 
-</FrameLayout>
+    <ListView
+        android:id="@+id/lead_listview"
+        android:layout_below="@id/lead_table_head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/whiteframe"
+        android:padding="2dp"/>
+</RelativeLayout>
