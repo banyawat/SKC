@@ -16,7 +16,8 @@
         android:layout_gravity="left|top"
         android:layout_toLeftOf="@+id/skc_fab_remove"
         android:layout_toStartOf="@+id/skc_fab_remove"
-        android:choiceMode="multipleChoice" />
+        android:choiceMode="multipleChoice"
+        android:background="@drawable/whiteframe"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/skc_fab_remove"

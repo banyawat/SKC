@@ -1,6 +1,5 @@
 package com.theteus.kubota;
 
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -9,7 +8,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -19,7 +17,14 @@ import com.theteus.kubota.skcmodule.ContactSKCAddForm;
 import com.theteus.kubota.LeadModule.Lead;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private int pageID;
+    private final static String SKC_ACTIVITY_TITLE = "SKC Title";
+    private final static String CONTACT_ACTIVITY_TITLE = "Contact";
+    private final static String LEAD_ACITIVITY_TITLE = "Lead";
+    private final static String ACTIVITIES_ACITIVITY_TITLE = "Activity";
+    private final static String FEED_ACITIVITY_TITLE = "Siam Kubota Corp. CRM";
+    private final static String ACCOUNT_ACITIVITY_TITLE = "Acitivity";
+    private final static String CHASIS_ACITIVITY_TITLE = "Chassis";
+
     private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
 
@@ -40,7 +45,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        if(navigationView!=null){
+        if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
         }
 
@@ -49,7 +54,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         mPager.setAdapter(mPagerAdapter);
     }
 
-   /* @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
@@ -61,42 +66,50 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         return super.onOptionsItemSelected(item);
     }*/
 
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        pageID = item.getItemId();
+        int pageID = item.getItemId();
         switch (pageID) {
-            case (R.id.menu_item_skc) :
+            case (R.id.menu_item_skc):
                 mPagerAdapter.clearPage();
                 ContactSKC cSKC = new ContactSKC();
                 cSKC.addView(mPager);
                 mPagerAdapter.addPage(cSKC);
                 mPagerAdapter.addPage(new ContactSKCAddForm());
+                getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
                 break;
             case (R.id.menu_item_contact):
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Contact());
+                getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
                 break;
             case (R.id.menu_item_lead):
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Lead());
+                getSupportActionBar().setTitle(LEAD_ACITIVITY_TITLE);
                 break;
             case (R.id.menu_item_account):
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Account());
+                getSupportActionBar().setTitle(ACCOUNT_ACITIVITY_TITLE);
                 break;
             case (R.id.menu_item_activity):
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Activities());
+                getSupportActionBar().setTitle(ACTIVITIES_ACITIVITY_TITLE);
                 break;
             case (R.id.menu_item_chasis):
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Chasis());
+                getSupportActionBar().setTitle(CHASIS_ACITIVITY_TITLE);
 
                 break;
-            case (R.id.logout_action) :
+            case (R.id.logout_action):
                 Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
                 break;
-            default: break;
+            default:
+                break;
         }
 
         mPagerAdapter.notifyDataSetChanged();
@@ -105,9 +118,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         return false;
     }
 
-    public void goHome(View v){
+    public void goHome(View v) {
         mPagerAdapter.clearPage();
         mPagerAdapter.addPage(new Feed());
         mPagerAdapter.notifyDataSetChanged();
+        getSupportActionBar().setTitle(FEED_ACITIVITY_TITLE);
     }
 }
