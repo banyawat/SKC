@@ -65,7 +65,7 @@ public class ContactSKC extends Fragment {
         skcListview = (ListView) view.findViewById(R.id.skc_listview);
         skcListview.setAdapter(adapter);
 
-        FloatingActionButton removeFab = (FloatingActionButton) view.findViewById(R.id.skc_fab_remove);
+        /*FloatingActionButton removeFab = (FloatingActionButton) view.findViewById(R.id.skc_fab_remove);
         removeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +88,7 @@ public class ContactSKC extends Fragment {
                     builder.show();
                 }
             }
-        });
+        });*/
 
         FloatingActionButton addFab = (FloatingActionButton) view.findViewById(R.id.skc_fab_add);
         addFab.setOnClickListener(new View.OnClickListener() {
