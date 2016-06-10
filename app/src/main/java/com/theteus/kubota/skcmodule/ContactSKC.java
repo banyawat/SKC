@@ -1,20 +1,18 @@
 package com.theteus.kubota.skcmodule;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.theteus.kubota.R;
-import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import java.util.ArrayList;
 
@@ -55,7 +53,7 @@ public class ContactSKC extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_contact_skc, container, false);
+        final View view = inflater.inflate(R.layout.fragment_contact_skc, container, false);
 
         //Dummy data
         dataList = new ArrayList<SKCInstance>();
@@ -67,17 +65,28 @@ public class ContactSKC extends Fragment {
         skcListview = (ListView) view.findViewById(R.id.skc_listview);
         skcListview.setAdapter(adapter);
 
-        skcListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "TSET", Toast.LENGTH_SHORT).show();
-            }
-        });
         FloatingActionButton removeFab = (FloatingActionButton) view.findViewById(R.id.skc_fab_remove);
         removeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.deleteCheckedArray();
+                if(adapter.getCheckedCount()!=0) {
+                    AlertDialog.Builder builder =
+                            new AlertDialog.Builder(view.getContext());
+                    builder.setMessage("ลบข้อมูล?");
+                    builder.setPositiveButton("ยกเลิก", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            adapter.deleteCheckedArray();
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+                }
             }
         });
 

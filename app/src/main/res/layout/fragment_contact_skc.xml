@@ -11,7 +11,7 @@
         android:layout_width="900dp"
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"
-        android:padding="45dp"
+        android:layout_margin="45dp"
         android:id="@+id/skc_listview"
         android:layout_gravity="left|top"
         android:layout_toLeftOf="@+id/skc_fab_remove"

@@ -66,6 +66,18 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         return super.onOptionsItemSelected(item);
     }*/
 
+    @Override
+    public void onBackPressed() {
+        if(getSupportActionBar().getTitle()!=FEED_ACITIVITY_TITLE){
+            if(mPager.getCurrentItem()==0)
+                goHome(null);
+            else
+                mPager.setCurrentItem(mPager.getCurrentItem()-1);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

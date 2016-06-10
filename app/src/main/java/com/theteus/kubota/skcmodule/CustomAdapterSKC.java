@@ -76,4 +76,13 @@ public class CustomAdapterSKC extends BaseAdapter {
         }
         notifyDataSetChanged();
     }
+
+    public int getCheckedCount(){
+        int count=0;
+        for(SKCInstance s : list){
+            if(s.getSelect())
+                count++;
+        }
+        return count;
+    }
 }
