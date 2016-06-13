@@ -13,29 +13,26 @@
         android:layout_width="900dp"
         android:layout_marginTop="45dp"
         android:layout_marginLeft="45dp"
-        android:background="@drawable/whiteframe"
+        android:background="@drawable/whitefram_header"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="79dp"
-        android:weightSum="1"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/lead_table_head_checkbox"
-            android:layout_height="wrap_content"
-            android:layout_width="35dp"
-            android:text=""/>
         <RelativeLayout
             android:id="@+id/skc_table_head_name"
-            android:layout_width="35dp"
+            android:layout_width="@dimen/skc_list_item_long_space"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:layout_weight="0.4">
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/list_item_padding_sides">
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_centerVertical="true"
+                android:textColor="@color/default_color"
                 android:text="Name"
                 android:id="@+id/skc_table_head_name_word" />
             <ImageView
@@ -48,34 +45,31 @@
         </RelativeLayout>
         <TextView
             android:id="@+id/skc_table_head_phone"
-            android:layout_width="35dp"
+            android:layout_width="@dimen/skc_list_item_short_space"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:text="Phone"
-            android:layout_weight="0.17" />
+            android:layout_weight="1"
+            android:textColor="@color/default_color"
+            android:text="Phone" />
         <TextView
-            android:layout_width="35dp"
+            android:layout_width="@dimen/skc_list_item_long_space"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:text="Email"
-            android:layout_weight="0.5" />
+            android:layout_weight="1"
+            android:textColor="@color/default_color"
+            android:text="Email" />
     </LinearLayout>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="900dp"
         android:layout_height="wrap_content"
-        android:descendantFocusability="blocksDescendants"
         android:id="@+id/skc_listview"
         android:layout_gravity="left|top"
-        android:choiceMode="multipleChoice"
-        android:background="@drawable/whiteframe"
+
         android:layout_below="@+id/skc_table_head"
         android:layout_alignLeft="@+id/skc_table_head"
         android:layout_alignStart="@+id/skc_table_head"
-        android:layout_marginBottom="45dp"
         android:layout_alignRight="@+id/skc_table_head"
-        android:layout_alignEnd="@+id/skc_table_head" />
+        android:layout_alignEnd="@+id/skc_table_head"
+        android:layout_above="@+id/skc_fab_add" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/skc_fab_add"

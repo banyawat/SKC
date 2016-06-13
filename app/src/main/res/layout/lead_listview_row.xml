@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_key">
 
-    <CheckBox
-        android:layout_width="35dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/lead_checkbox"
-        android:checked="false" />
-
     <TextView
         android:layout_width="150dp"
         android:layout_height="wrap_content"

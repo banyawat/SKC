@@ -35,4 +35,10 @@ limitations under the License.
     <dimen name="flex_item_length3">160dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="list_item_padding_sides">16dp</dimen>
+    <dimen name="list_item_height">40dp</dimen>
+
+    <dimen name="skc_list_item_short_space">10dp</dimen>
+    <dimen name="skc_list_item_long_space">30dp</dimen>
 </resources>
