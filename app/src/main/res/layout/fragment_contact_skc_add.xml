@@ -1,51 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="3">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_weight="0.8">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Name"
-            android:ems="10"
-            android:id="@+id/skc_edit_name" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
-            android:id="@+id/skc_edit_phone"
-            android:hint="Phone Number" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/skc_edit_email"
-            android:hint="E-mail" />
-
-        <DatePicker
+        <!-- PERSONAL DETAIL SECTION-->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/skc_date" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/list_item_padding_sides"
+            android:layout_weight="0.3"
+            android:weightSum="1">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:background="@drawable/whiteframe"
+                android:padding="@dimen/list_item_padding_sides"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:layout_width="165dp"
+                    android:layout_height="175dp"
+                    android:id="@+id/skc_add_image"
+                    android:src="@drawable/dog"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="false" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/list_item_padding_sides"
+                android:orientation="vertical"
+                android:background="@drawable/whiteframe"
+                android:id="@+id/linearLayout"
+                android:layout_below="@+id/frameLayout"
+                android:layout_alignLeft="@+id/frameLayout"
+                android:layout_alignStart="@+id/frameLayout"
+                android:layout_weight="0.5">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:hint="Name"
+                    android:ems="25"
+                    android:id="@+id/skc_add_name" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:drawableLeft="@drawable/ic_phone_black_24dp"
+                    android:ems="15"
+                    android:id="@+id/skc_add_phone"
+                    android:hint="Phone Number" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:ems="20"
+                    android:id="@+id/skc_add_email"
+                    android:hint="E-mail" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_cake_black_24dp"
+                    android:drawableRight="@drawable/ic_event_black_24dp"
+                    android:ems="10"
+                    android:id="@+id/skc_add_birthdate"
+                    android:hint="Birth Date" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <!-- ADDRESS SECTION-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:layout_margin="@dimen/list_item_padding_sides"
+            android:weightSum="1"
+            android:background="@drawable/whiteframe"
+            android:padding="@dimen/list_item_padding_sides"
+            android:baselineAligned="false">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/skc_add_address"
+                android:drawableLeft="@drawable/ic_home_black_24dp"
+                android:hint="Address1" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress"
+                    android:hint="District"
+                    android:ems="10"
+                    android:layout_weight="0.70" />
+
+                <Spinner
+                    android:layout_width="226dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/skc_spinner_province"
+                    android:layout_gravity="right"
+                    android:spinnerMode="dialog" />
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
+    <!-- SUBMIT BUTTON -->
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD"
-        android:layout_row="2"
-        android:id="@+id/skc_button_add" />
+        android:textColor="@color/default_color"
+        android:id="@+id/skc_button_add"
+        android:background="@drawable/button_shape"
+        android:layout_weight="0.2"
+        android:layout_margin="@dimen/list_item_padding_sides"
+        android:layout_gravity="right" />
 
-</GridLayout>
+</LinearLayout>

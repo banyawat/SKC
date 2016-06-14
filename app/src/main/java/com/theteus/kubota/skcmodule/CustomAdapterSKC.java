@@ -47,4 +47,8 @@ public class CustomAdapterSKC extends RecyclerView.Adapter<CustomAdapterSKC.MyVi
             textEmail = (TextView) view.findViewById(R.id.skc_list_email);
         }
     }
+
+    public void addData(SKCInstance item){
+        list.add(item);
+    }
 }

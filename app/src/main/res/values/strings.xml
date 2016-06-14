@@ -148,4 +148,13 @@ limitations under the License.
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <string-array name="province_array">
+        <item>Mae Hong Son</item>
+        <item>Chiang Mai</item>
+        <item>Chiang Rai</item>
+        <item>Phrae</item>
+        <item>Nan</item>
+        <item>Lamphun</item>
+    </string-array>
 </resources>

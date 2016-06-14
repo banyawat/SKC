@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -27,6 +28,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
+    int pageID=0, lastPosition=0;
+
+    ContactSKC cSKC;
+    ContactSKCAddForm cSKCAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +54,40 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             navigationView.setNavigationItemSelectedListener(this);
         }
 
+        cSKC = new ContactSKC();
+        cSKCAdd = new ContactSKCAddForm();
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch(pageID){
+                    case R.id.menu_item_skc:
+                        if(lastPosition!=position && position==0 && cSKCAdd.getReturnData()!=null) {
+                            cSKC.addItem(cSKCAdd.getReturnData());
+                            Toast.makeText(getApplicationContext(), "Data added: "+cSKCAdd.getReturnData().getName(),Toast.LENGTH_SHORT).show();
+                        }
+                        if(position==1 && lastPosition==0)
+                            cSKCAdd.clear();
+                        break;
+                    default:
+                        break;
+                }
+                lastPosition = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     /*@Override
@@ -81,14 +117,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        int pageID = item.getItemId();
+        pageID = item.getItemId();
         switch (pageID) {
             case (R.id.menu_item_skc):
+                item.setChecked(true);
                 mPagerAdapter.clearPage();
-                ContactSKC cSKC = new ContactSKC();
-                cSKC.addView(mPager);
+                cSKC.setView(mPager);
+                cSKCAdd.setView(mPager);
                 mPagerAdapter.addPage(cSKC);
-                mPagerAdapter.addPage(new ContactSKCAddForm());
+                mPagerAdapter.addPage(cSKCAdd);
                 getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
                 break;
             case (R.id.menu_item_contact):
@@ -136,4 +173,5 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         mPagerAdapter.notifyDataSetChanged();
         getSupportActionBar().setTitle(FEED_ACITIVITY_TITLE);
     }
+
 }

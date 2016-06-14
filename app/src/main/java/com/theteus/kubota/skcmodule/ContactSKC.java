@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class ContactSKC extends Fragment {
     private String mParam2;
     ArrayList<SKCInstance> dataList;
     private static final int TIME_TO_AUTOMATICALLY_DISMISS_ITEM = 1500;
+
+    CustomAdapterSKC adapter;
 
     ViewPager mViewPager;
     View view;
@@ -110,10 +113,10 @@ public class ContactSKC extends Fragment {
         return view;
     }
 
-    private void init(final RecyclerView recyclerView) {
+    private void init(RecyclerView recyclerView) {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        final CustomAdapterSKC adapter = new CustomAdapterSKC(dataList);
+        adapter = new CustomAdapterSKC(dataList);
         recyclerView.setAdapter(adapter);
         final SwipeToDismissTouchListener<RecyclerViewAdapter> touchListener =
                 new SwipeToDismissTouchListener<>(
@@ -152,7 +155,12 @@ public class ContactSKC extends Fragment {
                 }));
     }
 
-    public void addView(ViewPager mViewPager){
+    public void setView(ViewPager mViewPager){
         this.mViewPager = mViewPager;
+    }
+
+    public void addItem(SKCInstance item){
+        adapter.addData(item);
+        adapter.notifyDataSetChanged();
     }
 }

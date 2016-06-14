@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<Fragment> fragmentList;
+
     public ScreenSlidePagerAdapter(FragmentManager fm) {
         super(fm);
         fragmentList = new ArrayList<Fragment>();
