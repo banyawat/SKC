@@ -50,6 +50,4 @@ android.libraryVariants.all { variant ->
     }
 }
 
-/*if (!android.defaultConfig.versionName.contains("SNAPSHOT")) {
-    apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
-}*/
+

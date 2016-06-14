@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SKC.iml" filepath="$PROJECT_DIR$/SKC.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contextmenu/contextmenu.iml" filepath="$PROJECT_DIR$/contextmenu/contextmenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swipebox/swipebox.iml" filepath="$PROJECT_DIR$/swipebox/swipebox.iml" />
     </modules>
   </component>
 </project>
