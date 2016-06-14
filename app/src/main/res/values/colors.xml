@@ -22,4 +22,6 @@ limitations under the License.
     <color name="default_color">#ffffff</color>
     <color name="yellow">#FFBB33</color>
     <color name="gray_background">#757575</color>
+
+    <color name="mainMenu">#FF7601</color>
 </resources>

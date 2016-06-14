@@ -40,7 +40,7 @@ public class AnimatorUtils {
 
     public static AnimatorSet fadeOutSet(View v, float x){
         AnimatorSet fadeOutSet = new AnimatorSet();
-        fadeOutSet.playTogether(alfaDisappear(v), translationLeft(v,x));
+        fadeOutSet.playTogether(alfaDisappear(v), translationRight(v,x));
         return fadeOutSet;
     }
 

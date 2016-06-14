@@ -1,8 +1,10 @@
 package com.theteus.kubota;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,11 +26,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity implements OnMenuItemClickListener, OnMenuItemLongClickListener {
+    private final static String FEED_ACITIVITY_TITLE = "Siam Kubota Corp. CRM";
     private final static String SKC_ACTIVITY_TITLE = "SKC Title";
     private final static String CONTACT_ACTIVITY_TITLE = "Contact";
     private final static String LEAD_ACITIVITY_TITLE = "Lead";
     private final static String ACTIVITIES_ACITIVITY_TITLE = "Activity";
-    private final static String FEED_ACITIVITY_TITLE = "Siam Kubota Corp. CRM";
     private final static String ACCOUNT_ACITIVITY_TITLE = "Account";
     private final static String CHASIS_ACITIVITY_TITLE = "Chassis";
 
@@ -41,16 +43,21 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
+    private List<MenuObject> menuList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
         initToolbar();
+        menuList = getMenuObjects();
         initMenuFragment();
+        initViewPager();
+        getSupportActionBar();
+    }
 
+    public void initViewPager(){
         cSKC = new ContactSKC();
         cSKCAdd = new ContactSKCAddForm();
 
@@ -108,7 +115,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     private void initMenuFragment() {
         MenuParams menuParams = new MenuParams();
         menuParams.setActionBarSize((int) getResources().getDimension(R.dimen.tool_bar_height));
-        menuParams.setMenuObjects(getMenuObjects());
+        menuParams.setMenuObjects(menuList);
         menuParams.setClosableOutside(true);
         mMenuDialogFragment = ContextMenuDialogFragment.newInstance(menuParams);
         mMenuDialogFragment.setItemClickListener(this);
@@ -120,6 +127,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
 
         MenuObject home = new MenuObject("Home");
         home.setResource(R.drawable.ic_home_black_24dp);
+        home.setBgColor(-1);
 
         MenuObject SKCcon = new MenuObject("SKC Contact");
         SKCcon.setResource(R.drawable.ic_perm_contact_cal_black_24dp);
@@ -172,7 +180,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
 
     @Override
     public void onMenuItemClick(View clickedView, int position) {
-        Toast.makeText(this, "Clicked on position: " + position, Toast.LENGTH_SHORT).show();
         pageID = position;
         switch (pageID) {
             case 0:
@@ -203,13 +210,13 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Account());
                 if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(ACCOUNT_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(ACTIVITIES_ACITIVITY_TITLE);
                 break;
             case 5:
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Activities());
                 if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(ACTIVITIES_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(ACCOUNT_ACITIVITY_TITLE);
                 break;
             case 6:
                 mPagerAdapter.clearPage();
@@ -224,8 +231,12 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
         }
         mPagerAdapter.notifyDataSetChanged();
+        menuList.get(lastPosition).setBgColor(0);
+        //if(lastPosition!=position)
+            menuList.get(position).setBgColor(-1);
+        initMenuFragment();
+        lastPosition=position;
     }
-
     @Override
     public void onMenuItemLongClick(View clickedView, int position) {
 
@@ -250,5 +261,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         mPagerAdapter.clearPage();
         mPagerAdapter.addPage(new Feed());
         mPagerAdapter.notifyDataSetChanged();
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setTitle(FEED_ACITIVITY_TITLE);
     }
 }
