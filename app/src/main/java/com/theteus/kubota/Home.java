@@ -36,7 +36,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
 
     private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
-    int pageID=0, lastPosition=0;
+    int pageID=0, lastPage=0, lastPosition=0;
 
     ContactSKC cSKC;
     ContactSKCAddForm cSKCAdd;
@@ -231,11 +231,10 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
         }
         mPagerAdapter.notifyDataSetChanged();
-        menuList.get(lastPosition).setBgColor(0);
-        //if(lastPosition!=position)
-            menuList.get(position).setBgColor(-1);
+        menuList.get(lastPage).setBgColor(0);
+        menuList.get(position).setBgColor(-1);
         initMenuFragment();
-        lastPosition=position;
+        lastPage=position;
     }
     @Override
     public void onMenuItemLongClick(View clickedView, int position) {
