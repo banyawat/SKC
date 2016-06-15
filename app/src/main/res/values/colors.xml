@@ -16,12 +16,10 @@ limitations under the License.
 <resources>
     <color name="colorPrimary">#03a1b2</color>
     <color name="colorPrimaryDark">#027885</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="lightPink">#FFCEE1</color>
+    <color name="colorAccent">#FF9F4D</color>
     <color name="pressed_color">#4d90fe</color>
     <color name="default_color">#ffffff</color>
     <color name="yellow">#FFBB33</color>
     <color name="gray_background">#757575</color>
-
-    <color name="mainMenu">#FF7601</color>
+    <color name="accentDiff">#995B26</color>
 </resources>
