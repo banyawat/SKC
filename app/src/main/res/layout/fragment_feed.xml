@@ -1,13 +1,62 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context="com.theteus.kubota.Feed">
+    tools:context="com.theteus.kubota.Feed"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Welcome back!"
+        android:id="@+id/textView"
+        android:layout_margin="@dimen/list_item_padding_sides"
+        android:textSize="40dp" />
+
+    <org.eazegraph.lib.charts.ValueLineChart
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cubiclinechart"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:egUseCubic="true"
+        app:egUseOverlapFill="true"
+        app:egCurveSmoothness="0.4"
+        app:egIndicatorLineColor="#FE6DA8"
+        app:egLegendHeight="40dp"
+        app:egShowStandardValue="true"
+        android:layout_margin="@dimen/list_item_padding_sides"
+        android:layout_weight="0.8" />
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/large_text" />
+        android:layout_weight="0.5">
 
-</FrameLayout>
+        <org.eazegraph.lib.charts.PieChart
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/piechart"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="8dp"
+            app:egLegendTextSize="18sp"
+            app:egUsePieRotation="true"
+            app:egValueTextSize="36sp"
+            android:layout_weight="0.7"
+            android:layout_margin="@dimen/list_item_padding_sides" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/scrollView"
+            android:layout_weight="0.2"
+            android:layout_margin="@dimen/list_item_padding_sides">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/large_text"/>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

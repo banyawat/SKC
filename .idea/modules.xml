@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/EazeGraphLibrary/EazeGraphLibrary.iml" filepath="$PROJECT_DIR$/EazeGraphLibrary/EazeGraphLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/SKC.iml" filepath="$PROJECT_DIR$/SKC.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circleimageview/circleimageview.iml" filepath="$PROJECT_DIR$/circleimageview/circleimageview.iml" />
       <module fileurl="file://$PROJECT_DIR$/contextmenu/contextmenu.iml" filepath="$PROJECT_DIR$/contextmenu/contextmenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/swipebox/swipebox.iml" filepath="$PROJECT_DIR$/swipebox/swipebox.iml" />
     </modules>

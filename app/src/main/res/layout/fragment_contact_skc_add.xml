@@ -30,9 +30,10 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Personal Details"
                 android:padding="@dimen/list_item_padding_sides"
-                android:id="@+id/textView"
+                android:id="@+id/formHeader"
                 android:background="@drawable/header_frame"
-                android:layout_margin="@dimen/list_item_padding_sides" />
+                android:layout_margin="@dimen/list_item_padding_sides"
+                android:textColor="@android:color/white" />
 
             <LinearLayout
                 android:layout_width="fill_parent"

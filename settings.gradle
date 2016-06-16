@@ -1,1 +1,1 @@
-include ':app', ':swipebox', ':contextmenu'
+include ':app', ':swipebox', ':contextmenu', ':EazeGraphLibrary', ':circleimageview'

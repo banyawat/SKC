@@ -36,6 +36,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile project(':swipebox')
     compile project(':contextmenu')
+    compile project(':EazeGraphLibrary')
+    compile project(':circleimageview')
 }
 
 

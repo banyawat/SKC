@@ -1,8 +1,5 @@
 package com.theteus.kubota.skcmodule;
 
-/**
- * Created by user on 6/9/2016.
- */
 public class SKCInstance {
     private String name;
     private String tel;

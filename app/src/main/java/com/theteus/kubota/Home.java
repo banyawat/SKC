@@ -120,29 +120,29 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         List<MenuObject> menuObjects = new ArrayList<>();
 
         MenuObject home = new MenuObject("Home");
-        home.setResource(R.drawable.ic_home_black_24dp);
+        home.setResource(R.drawable.ic_home_white_24dp);
         home.setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
 
         MenuObject SKCcon = new MenuObject("SKC Contact");
-        SKCcon.setResource(R.drawable.ic_perm_contact_cal_black_24dp);
+        SKCcon.setResource(R.drawable.ic_perm_contact_cal_white_24dp);
 
         MenuObject contact = new MenuObject("Contact");
-        contact.setResource(R.drawable.ic_add_shopping_cart_black_24dp);
+        contact.setResource(R.drawable.ic_add_shopping_cart_white_24dp);
 
         MenuObject lead = new MenuObject("Leads");
-        lead.setResource(R.drawable.ic_accessibility_black_24dp);
+        lead.setResource(R.drawable.ic_accessibility_white_24dp);
 
         MenuObject activity = new MenuObject("Activity");
-        activity.setResource(R.drawable.ic_event_black_24dp);
+        activity.setResource(R.drawable.ic_event_white_24dp);
 
         MenuObject account = new MenuObject("Account");
-        account.setResource(R.drawable.ic_supervisor_account_black_24dp);
+        account.setResource(R.drawable.ic_supervisor_account_white_24dp);
 
         MenuObject chasis = new MenuObject("Chassis");
-        chasis.setResource(R.drawable.ic_directions_bus_black_24dp);
+        chasis.setResource(R.drawable.ic_directions_bus_white_24dp);
 
         MenuObject logout = new MenuObject("Log out");
-        logout.setResource(R.drawable.ic_cancel_black_24dp);
+        logout.setResource(R.drawable.ic_cancel_white_24dp);
 
         menuObjects.add(home);
         menuObjects.add(SKCcon);
@@ -219,6 +219,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 7:
                 Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
+                finish();
                 break;
             default:
                 break;
