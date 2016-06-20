@@ -1,17 +1,12 @@
 package com.theteus.kubota;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabHost;
 
-public class Contact extends Fragment {
+public class ContactForm1 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -21,15 +16,22 @@ public class Contact extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private FragmentTabHost mTabHost;
 
-
-    public Contact() {
+    public ContactForm1() {
         // Required empty public constructor
     }
 
-    public static Contact newInstance(String param1, String param2) {
-        Contact fragment = new Contact();
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment ContactForm1.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static ContactForm1 newInstance(String param1, String param2) {
+        ContactForm1 fragment = new ContactForm1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -49,19 +51,7 @@ public class Contact extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.lead_test, container, false);
-        mTabHost = (FragmentTabHost)view.findViewById(android.R.id.tabhost);
-        mTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
-        mTabHost.addTab(mTabHost.newTabSpec("Tab1").setIndicator("Frag Tab1"),
-                ContactForm1.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("Tab2").setIndicator("Frag Tab2"),
-                ContactForm2.class, null);
-        return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mTabHost = null;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_contact_form1, container, false);
     }
 }
