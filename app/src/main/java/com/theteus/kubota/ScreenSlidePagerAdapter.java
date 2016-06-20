@@ -15,7 +15,6 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     public ScreenSlidePagerAdapter(FragmentManager fm) {
         super(fm);
         fragmentList = new ArrayList<Fragment>();
-        fragmentList.add(new Feed());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.theteus.kubota;
+package com.theteus.kubota.LeadModule;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,20 +6,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Contact extends Fragment {
+import com.theteus.kubota.R;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link LeadForm02.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link LeadForm02#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class LeadForm02 extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public Contact() {
+    public LeadForm02() {
         // Required empty public constructor
     }
 
-    public static Contact newInstance(String param1, String param2) {
-        Contact fragment = new Contact();
+    public static LeadForm02 newInstance(String param1, String param2) {
+        LeadForm02 fragment = new LeadForm02();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -39,7 +49,7 @@ public class Contact extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_contact, container, false);
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_lead_form02, container, false);
     }
 }

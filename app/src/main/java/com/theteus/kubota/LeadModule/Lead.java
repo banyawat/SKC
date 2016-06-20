@@ -2,33 +2,24 @@ package com.theteus.kubota.LeadModule;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.ActionMode;
+import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.TabHost;
 
 import com.theteus.kubota.R;
+import com.theteus.kubota.ScreenSlidePagerAdapter;
 
-import java.util.ArrayList;
-
-public class Lead extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // Mock-Up Dataset
-    // TODO: Remove when actual retrieval function is coded
-    private static final String[] leadID = new String[] {"L0001", "L0002", "L0003", "L0004"};
-    private static final String[] leadName = new String[] {"Jack Ripper", "Hirohito", "Muhammad Issac", "Authur Pendragon"};
-    private static final String[] leadPhone = new String[] {"000-000-xxxx", "000-000-xxxx", "000-000-xxxx", "000-000-xxxx"};
-    private static final String[] leadEmail = new String[] {"this@email.com", "that@email.com", "those@email.com", "these@email.com"};
-    private static final String[] leadRegisterDate = new String[] {"2016-02-01", "2016-02-04", "2016-02-28", "2016-03-15"};
-    private static final String[] accountID = new String[] {"A0003", "A0001", "A0002", "A0001"};
+    private FragmentTabHost mTabHost;
+
+    private ViewPager mPager;
+    private ScreenSlidePagerAdapter mPagerAdapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -38,15 +29,6 @@ public class Lead extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Lead.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Lead newInstance(String param1, String param2) {
         Lead fragment = new Lead();
         Bundle args = new Bundle();
@@ -72,24 +54,47 @@ public class Lead extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lead, container, false);
 
-        //ArrayAdapter<String> leadAdapter = new ArrayAdapter<>(getActivity(), R.layout.fragment_lead, R.id.lead_listview, leadID);
-        //ListView leadListView = (ListView) view.findViewById(R.id.lead_listview);
-        //leadListView.setAdapter(leadAdapter);
-
-        ArrayList<LeadInstance> leadList = new ArrayList<LeadInstance>();
-        for(int i = 0; i < leadID.length; i++) leadList.add(new LeadInstance(leadID[i], leadName[i], leadPhone[i], leadEmail[i], leadRegisterDate[i], accountID[i]));
-        final LeadAdapter adapter = new LeadAdapter(getActivity(), leadList);
-        ListView leadListView = (ListView) view.findViewById(R.id.lead_listview);
-        //leadListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        leadListView.setAdapter(adapter);
-        /*leadListView.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,long arg3) {
-                view.setSelected(true);
-                //... //Anything
-            }
-        });*/
+        mTabHost = (FragmentTabHost)view.findViewById(android.R.id.tabhost);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
+        mTabHost.addTab(mTabHost.newTabSpec("Tab1").setIndicator("ทั่วไป"),
+                LeadForm01.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("Tab2").setIndicator("ที่อยู่"),
+                LeadForm02.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("Tab3").setIndicator("สินค้าที่สนใจ"),
+                LeadForm03.class, null);
+        mTabHost.setOnTabChangedListener(this);
+        initViewPager(view);
 
         return view;
+    }
+
+    public void initViewPager(View view){
+        mPager = (ViewPager) view.findViewById(R.id.lead_form_pager);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
+        mPagerAdapter.addPage(new LeadForm01());
+        mPagerAdapter.addPage(new LeadForm02());
+        mPagerAdapter.addPage(new LeadForm03());
+        mPager.setAdapter(mPagerAdapter);
+        mPager.setOnPageChangeListener(this);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        this.mTabHost.setCurrentTab(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onTabChanged(String tabId) {
+        this.mPager.setCurrentItem(this.mTabHost.getCurrentTab());
     }
 }

@@ -61,6 +61,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPagerAdapter.addPage(new Feed());
         mPager.setAdapter(mPagerAdapter);
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
