@@ -15,7 +15,7 @@
     <LinearLayout
         android:id="@+id/card01"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_marginLeft="55dp"
         android:layout_marginRight="55dp"
         android:layout_marginTop="25dp"

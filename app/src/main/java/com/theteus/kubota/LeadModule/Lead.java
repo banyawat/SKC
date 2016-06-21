@@ -54,6 +54,13 @@ public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewP
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lead, container, false);
 
+        initTabHost(view);
+        initViewPager(view);
+
+        return view;
+    }
+
+    private void initTabHost(View view){
         mTabHost = (FragmentTabHost)view.findViewById(android.R.id.tabhost);
         mTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
         mTabHost.addTab(mTabHost.newTabSpec("Tab1").setIndicator("ทั่วไป"),
@@ -63,12 +70,9 @@ public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewP
         mTabHost.addTab(mTabHost.newTabSpec("Tab3").setIndicator("สินค้าที่สนใจ"),
                 LeadForm03.class, null);
         mTabHost.setOnTabChangedListener(this);
-        initViewPager(view);
-
-        return view;
     }
 
-    public void initViewPager(View view){
+    private void initViewPager(View view){
         mPager = (ViewPager) view.findViewById(R.id.lead_form_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
         mPagerAdapter.addPage(new LeadForm01());
