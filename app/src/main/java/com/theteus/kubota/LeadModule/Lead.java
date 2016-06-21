@@ -1,6 +1,7 @@
 package com.theteus.kubota.LeadModule;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
@@ -13,49 +14,29 @@ import com.theteus.kubota.R;
 import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     private FragmentTabHost mTabHost;
 
     private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    FloatingActionButton nextButton;
+
+    LeadForm01 lead1;
+    LeadForm02 lead2;
+    LeadForm03 lead3;
 
     public Lead() {
         // Required empty public constructor
     }
 
-    public static Lead newInstance(String param1, String param2) {
-        Lead fragment = new Lead();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lead, container, false);
 
         initTabHost(view);
         initViewPager(view);
+        initFLoatingButton(view);
 
         return view;
     }
@@ -73,13 +54,28 @@ public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewP
     }
 
     private void initViewPager(View view){
+        lead1 = new LeadForm01();
+        lead2 = new LeadForm02();
+        lead3 = new LeadForm03();
+
         mPager = (ViewPager) view.findViewById(R.id.lead_form_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
-        mPagerAdapter.addPage(new LeadForm01());
-        mPagerAdapter.addPage(new LeadForm02());
-        mPagerAdapter.addPage(new LeadForm03());
+        mPagerAdapter.addPage(lead1);
+        mPagerAdapter.addPage(lead2);
+        mPagerAdapter.addPage(lead3);
+        mPager.setOffscreenPageLimit(2);
         mPager.setAdapter(mPagerAdapter);
         mPager.setOnPageChangeListener(this);
+    }
+
+    private void initFLoatingButton(View view){
+        nextButton = (FloatingActionButton) view.findViewById(R.id.lead_nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPager.setCurrentItem(mPager.getCurrentItem()+1);
+            }
+        });
     }
 
     @Override

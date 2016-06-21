@@ -16,7 +16,9 @@
             android:id="@+id/lead_form1_prefix"
             android:hint="คำนำหน้า"
             android:cursorVisible="true"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.2"
+            android:enabled="true"
+            android:editable="true" />
 
         <EditText
             android:layout_width="fill_parent"
