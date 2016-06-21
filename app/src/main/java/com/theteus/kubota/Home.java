@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.skcmodule.ContactSKC;
 import com.theteus.kubota.skcmodule.ContactSKCAddForm;
 import com.theteus.kubota.LeadModule.Lead;
@@ -196,6 +197,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 3:
                 mPagerAdapter.clearPage();
+                mPagerAdapter.addPage(new LeadDetailMain());
                 mPagerAdapter.addPage(new Lead());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(LEAD_ACITIVITY_TITLE);

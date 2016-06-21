@@ -1,0 +1,345 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".LeadModule.LeadDetailGeneral">
+
+    <!--NAME-->
+    <View
+        android:id="@+id/lead_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_name_icon"
+        android:layout_toEndOf="@id/lead_detail_name_icon"
+        android:layout_alignTop="@id/lead_detail_name_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="คำนำหน้าชื่อ" />
+    <TextView
+        android:id="@+id/lead_detail_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_name_icon"
+        android:layout_toRightOf="@id/lead_detail_name_icon"
+        android:layout_alignBottom="@id/lead_detail_name_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="นาย" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_name_icon"
+        android:layout_toEndOf="@id/lead_detail_name_icon"
+        android:layout_alignTop="@id/lead_detail_name_icon"
+        android:layout_marginLeft="304dp"
+        android:layout_marginStart="304dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ชื่อ" />
+    <TextView
+        android:id="@+id/lead_detail_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_name_icon"
+        android:layout_toRightOf="@id/lead_detail_name_icon"
+        android:layout_alignBottom="@id/lead_detail_name_icon"
+        android:layout_marginLeft="304dp"
+        android:layout_marginStart="304dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="Jacky" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_name_icon"
+        android:layout_toEndOf="@id/lead_detail_name_icon"
+        android:layout_alignTop="@id/lead_detail_name_icon"
+        android:layout_marginLeft="584dp"
+        android:layout_marginStart="584dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="นามสกุล" />
+    <TextView
+        android:id="@+id/lead_detail_last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_name_icon"
+        android:layout_toRightOf="@id/lead_detail_name_icon"
+        android:layout_alignBottom="@id/lead_detail_name_icon"
+        android:layout_marginLeft="584dp"
+        android:layout_marginStart="584dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="Chan" />
+
+    <!--GENDER-->
+    <View
+        android:id="@+id/lead_detail_gender_icon"
+        android:layout_below="@id/lead_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_gender_icon"
+        android:layout_toEndOf="@id/lead_detail_gender_icon"
+        android:layout_alignTop="@id/lead_detail_gender_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เพศ" />
+    <TextView
+        android:id="@+id/lead_detail_record_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_gender_icon"
+        android:layout_toRightOf="@id/lead_detail_gender_icon"
+        android:layout_alignBottom="@id/lead_detail_gender_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="ชาย" />
+
+    <!--ID Card-->
+    <View
+        android:id="@+id/lead_detail_id_card_icon"
+        android:layout_below="@id/lead_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginStart="280dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_id_card_icon"
+        android:layout_toEndOf="@id/lead_detail_id_card_icon"
+        android:layout_alignTop="@id/lead_detail_id_card_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เลขบัตรประจำตัวประชาชน" />
+    <TextView
+        android:id="@+id/lead_detail_id_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_id_card_icon"
+        android:layout_toRightOf="@id/lead_detail_id_card_icon"
+        android:layout_alignBottom="@id/lead_detail_id_card_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="1-2345-67890-12-3" />
+
+    <!--Customer Type-->
+    <View
+        android:id="@+id/lead_detail_cus_type_icon"
+        android:layout_below="@id/lead_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="560dp"
+        android:layout_marginStart="560dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_cus_type_icon"
+        android:layout_toEndOf="@id/lead_detail_cus_type_icon"
+        android:layout_alignTop="@id/lead_detail_cus_type_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ประเภทลูกค้า" />
+    <TextView
+        android:id="@+id/lead_detail_cus_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_cus_type_icon"
+        android:layout_toRightOf="@id/lead_detail_cus_type_icon"
+        android:layout_alignBottom="@id/lead_detail_cus_type_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="บุคคลทั่วไป" />
+
+    <!--BIRTHDAY-->
+    <View
+        android:id="@+id/lead_detail_birthday_icon"
+        android:layout_below="@id/lead_detail_gender_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_birthday_icon"
+        android:layout_toEndOf="@id/lead_detail_birthday_icon"
+        android:layout_alignTop="@id/lead_detail_birthday_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="วัน / เดือน / ปีเกิด" />
+    <TextView
+        android:id="@+id/lead_detail_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_birthday_icon"
+        android:layout_toRightOf="@id/lead_detail_birthday_icon"
+        android:layout_alignBottom="@id/lead_detail_birthday_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="31 มกราคม 2504 (อายุ 35 ปี)" />
+
+    <!--PHONE-->
+    <View
+        android:id="@+id/lead_detail_phone_icon"
+        android:layout_below="@id/lead_detail_birthday_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_phone_icon"
+        android:layout_toEndOf="@id/lead_detail_phone_icon"
+        android:layout_alignTop="@id/lead_detail_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์บ้าน" />
+    <TextView
+        android:id="@+id/lead_detail_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_phone_icon"
+        android:layout_toRightOf="@id/lead_detail_phone_icon"
+        android:layout_alignBottom="@id/lead_detail_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="02-345-6789" />
+
+    <!--MOBILE 1-->
+    <View
+        android:id="@+id/lead_detail_mobile_icon_1"
+        android:layout_below="@id/lead_detail_birthday_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginStart="280dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_mobile_icon_1"
+        android:layout_toEndOf="@id/lead_detail_mobile_icon_1"
+        android:layout_alignTop="@id/lead_detail_mobile_icon_1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์มือถือ 1" />
+    <TextView
+        android:id="@+id/lead_detail_mobile_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_mobile_icon_1"
+        android:layout_toRightOf="@id/lead_detail_mobile_icon_1"
+        android:layout_alignBottom="@id/lead_detail_mobile_icon_1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="082-345-6789" />
+
+    <!--MOBILE 2-->
+    <View
+        android:id="@+id/lead_detail_mobile_icon_2"
+        android:layout_below="@id/lead_detail_birthday_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="560dp"
+        android:layout_marginStart="560dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_mobile_icon_2"
+        android:layout_toEndOf="@id/lead_detail_mobile_icon_2"
+        android:layout_alignTop="@id/lead_detail_mobile_icon_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์มือถือ 2" />
+    <TextView
+        android:id="@+id/lead_detail_mobile_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_mobile_icon_2"
+        android:layout_toRightOf="@id/lead_detail_mobile_icon_2"
+        android:layout_alignBottom="@id/lead_detail_mobile_icon_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="082-345-6789" />
+
+</RelativeLayout>
