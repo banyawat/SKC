@@ -12,9 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.theteus.kubota.LeadModule.LeadDetailMain;
-import com.theteus.kubota.skcmodule.ContactSKC;
-import com.theteus.kubota.skcmodule.ContactSKCAddForm;
 import com.theteus.kubota.LeadModule.Lead;
+import com.theteus.kubota.SKCModule.SKC;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
@@ -37,9 +36,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     private ScreenSlidePagerAdapter mPagerAdapter;
     int pageID=0, lastPage=0, lastPosition=0;
 
-    ContactSKC cSKC;
-    ContactSKCAddForm cSKCAdd;
-
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
     private List<MenuObject> menuList;
@@ -57,9 +53,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     }
 
     public void initViewPager(){
-        cSKC = new ContactSKC();
-        cSKCAdd = new ContactSKCAddForm();
-
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPagerAdapter.addPage(new Feed());
@@ -70,19 +63,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
             }
             @Override
             public void onPageSelected(int position) {
-                switch(pageID){
-                    case 1:
-                        if(lastPosition!=position && position==0 && cSKCAdd.getReturnData()!=null) {
-                            cSKC.addItem(cSKCAdd.getReturnData());
-                            Toast.makeText(getApplicationContext(), "Data added: "+cSKCAdd.getReturnData().getName(),Toast.LENGTH_SHORT).show();
-                        }
-                        if(position==1 && lastPosition==0)
-                            cSKCAdd.clear();
-                        break;
-                    default:
-                        break;
-                }
-                lastPosition = position;
             }
 
             @Override
@@ -182,10 +162,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 1:
                 mPagerAdapter.clearPage();
-                cSKC.setView(mPager);
-                cSKCAdd.setView(mPager);
-                mPagerAdapter.addPage(cSKC);
-                mPagerAdapter.addPage(cSKCAdd);
+                mPagerAdapter.addPage(new SKC());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
                 break;

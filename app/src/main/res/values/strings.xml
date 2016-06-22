@@ -157,7 +157,7 @@ limitations under the License.
         <item>Nan</item>
         <item>Lamphun</item>
     </string-array>
-    
+
     <string-array name="interest_product">
         <item>รถแทรกเตอร์</item>
         <item>รถเกี่ยวนวดข้าว</item>
@@ -173,7 +173,7 @@ limitations under the License.
         <item>รอผลอนุมัติสินเชื่อ</item>
         <item>วางเงินมัดจำแล้ว</item>
     </string-array>
-    
+
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

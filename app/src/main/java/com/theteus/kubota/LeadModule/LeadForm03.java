@@ -1,7 +1,6 @@
 package com.theteus.kubota.LeadModule;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,15 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hudomju.swipe.OnItemClickListener;
 import com.hudomju.swipe.SwipeToDismissTouchListener;
 import com.hudomju.swipe.SwipeableItemClickListener;
 import com.hudomju.swipe.adapter.RecyclerViewAdapter;
 import com.theteus.kubota.R;
-import com.theteus.kubota.skcmodule.CustomAdapterSKC;
-import com.theteus.kubota.skcmodule.SKCInstance;
 
 import java.util.ArrayList;
 
