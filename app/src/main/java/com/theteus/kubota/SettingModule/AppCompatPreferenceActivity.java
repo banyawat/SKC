@@ -1,4 +1,4 @@
-package com.theteus.kubota;
+package com.theteus.kubota.SettingModule;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

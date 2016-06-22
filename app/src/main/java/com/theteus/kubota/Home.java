@@ -11,9 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.theteus.kubota.AccountModule.Account;
+import com.theteus.kubota.ActivitiesModule.Activities;
+import com.theteus.kubota.ContactModule.Contact;
 import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.LeadModule.Lead;
 import com.theteus.kubota.SKCModule.SKC;
+import com.theteus.kubota.SettingModule.SettingsActivity;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
