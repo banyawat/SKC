@@ -66,15 +66,21 @@ public class LeadForm03 extends Fragment {
             public void onClick(View v) {
                 String interestStr = interestProductSpinner.getSelectedItem().toString();
                 String seriesStr = interestSeriesEdit.getText().toString();
-                adapter.addData(new leadInstance(interestStr, seriesStr));
-                adapter.notifyDataSetChanged();
-                limitInterestText.setText(adapter.getItemCount()+"/5");
-                if(adapter.getItemCount()==5){
-                    interestProductSpinner.setEnabled(false);
-                    interestSeriesEdit.setEnabled(false);
-                    addButton.setBackgroundColor(Color.GRAY);
-                    addButton.setEnabled(false);
+                Log.i("TAG", "String: "+seriesStr.length());
+                if(seriesStr.length()>2) {
+                    adapter.addData(new leadInstance(interestStr, seriesStr));
+                    adapter.notifyDataSetChanged();
+                    interestSeriesEdit.setText("");
+                    limitInterestText.setText(adapter.getItemCount() + "/5");
+                    if (adapter.getItemCount() == 5) {
+                        interestProductSpinner.setEnabled(false);
+                        interestSeriesEdit.setEnabled(false);
+                        addButton.setBackgroundResource(R.drawable.button_shape_inactive);
+                        addButton.setEnabled(false);
+                    }
                 }
+                else
+                    interestSeriesEdit.setError("กรุณาใส่ข้อมูล");
             }
         });
     }
@@ -118,6 +124,7 @@ public class LeadForm03 extends Fragment {
                                 limitInterestText.setText(adapter.getItemCount()+"/5");
                                 interestProductSpinner.setEnabled(true);
                                 addButton.setEnabled(true);
+                                addButton.setBackgroundResource(R.drawable.button_shape_active);
                                 interestSeriesEdit.setEnabled(true);
                             }
                         });

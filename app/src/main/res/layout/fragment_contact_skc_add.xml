@@ -86,8 +86,8 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_cake_black_24dp"
-                    android:drawableRight="@drawable/ic_event_black_24dp"
+                    android:drawableLeft="@drawable/ic_cake"
+                    android:drawableRight="@drawable/ic_event"
                     android:ems="10"
                     android:id="@+id/skc_add_birthdate"
                     android:hint="Birth Date"
@@ -102,7 +102,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:drawableLeft="@drawable/ic_credit_card_black_24dp"
+                        android:drawableLeft="@drawable/ic_credit_card"
                         android:hint="ID Number*"
                         android:ems="25"
                         android:id="@+id/skc_add_id"
@@ -217,7 +217,7 @@
             android:text="Cancel"
             android:textColor="@color/default_color"
             android:id="@+id/skc_button_cancel"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/button_shape_active"
             android:layout_weight="0.2"
             android:layout_margin="@dimen/list_item_padding_sides" />
 
@@ -227,7 +227,7 @@
             android:text="ADD"
             android:textColor="@color/default_color"
             android:id="@+id/skc_button_add"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/button_shape_active"
             android:layout_weight="0.2"
             android:layout_margin="@dimen/list_item_padding_sides" />
     </LinearLayout>

@@ -1,14 +1,17 @@
 package com.theteus.kubota.LeadModule;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 
 import com.theteus.kubota.R;
 import com.theteus.kubota.ScreenSlidePagerAdapter;
@@ -51,6 +54,10 @@ public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewP
         mTabHost.addTab(mTabHost.newTabSpec("Tab3").setIndicator("สินค้าที่สนใจ"),
                 LeadForm03.class, null);
         mTabHost.setOnTabChangedListener(this);
+        TabWidget widget = mTabHost.getTabWidget();
+        for(int i=0;i<widget.getChildCount();i++){
+            widget.getChildAt(i).setBackgroundResource(R.drawable.tab_indicator_ab_erodoi);
+        }
     }
 
     private void initViewPager(View view){
@@ -86,6 +93,10 @@ public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewP
     @Override
     public void onPageSelected(int position) {
         this.mTabHost.setCurrentTab(position);
+        if(position==mTabHost.getChildCount()+1)
+            nextButton.setImageResource(R.drawable.ic_check);
+        else
+            nextButton.setImageResource(R.drawable.ic_arrow_forward);
     }
 
     @Override
@@ -96,5 +107,9 @@ public class Lead extends Fragment implements TabHost.OnTabChangeListener, ViewP
     @Override
     public void onTabChanged(String tabId) {
         this.mPager.setCurrentItem(this.mTabHost.getCurrentTab());
+        /*for(int i=0;i<tabhost.getTabWidget().getChildCount();i++) {
+            tabhost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#FF0000")); //unselected
+        }
+        tabhost.getTabWidget().getChildAt(tabhost.getCurrentTab()).setBackgroundColor(Color.parseColor("#0000FF"));*/
     }
 }

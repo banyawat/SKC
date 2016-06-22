@@ -96,7 +96,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if(mToolbar!=null) {
             setSupportActionBar(mToolbar);
-            mToolbar.setNavigationIcon(R.drawable.ic_reorder_white_24dp);
+            mToolbar.setNavigationIcon(R.drawable.ic_reorder);
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -122,29 +122,29 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         List<MenuObject> menuObjects = new ArrayList<>();
 
         MenuObject home = new MenuObject("Home");
-        home.setResource(R.drawable.ic_home_white_24dp);
+        home.setResource(R.drawable.ic_home);
         home.setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
 
         MenuObject SKCcon = new MenuObject("SKC Contact");
-        SKCcon.setResource(R.drawable.ic_perm_contact_cal_white_24dp);
+        SKCcon.setResource(R.drawable.ic_perm_contact_calendar);
 
         MenuObject contact = new MenuObject("Contact");
-        contact.setResource(R.drawable.ic_add_shopping_cart_white_24dp);
+        contact.setResource(R.drawable.ic_add_shopping_cart);
 
         MenuObject lead = new MenuObject("Leads");
-        lead.setResource(R.drawable.ic_accessibility_white_24dp);
+        lead.setResource(R.drawable.ic_accessibility);
 
         MenuObject activity = new MenuObject("Activity");
-        activity.setResource(R.drawable.ic_event_white_24dp);
+        activity.setResource(R.drawable.ic_event_note);
 
         MenuObject account = new MenuObject("Account");
-        account.setResource(R.drawable.ic_supervisor_account_white_24dp);
+        account.setResource(R.drawable.ic_supervisor_account);
 
         MenuObject chasis = new MenuObject("Chassis");
-        chasis.setResource(R.drawable.ic_directions_bus_white_24dp);
+        chasis.setResource(R.drawable.ic_action_bus);
 
         MenuObject logout = new MenuObject("Log out");
-        logout.setResource(R.drawable.ic_cancel_white_24dp);
+        logout.setResource(R.drawable.ic_highlight_off);
 
         menuObjects.add(home);
         menuObjects.add(SKCcon);

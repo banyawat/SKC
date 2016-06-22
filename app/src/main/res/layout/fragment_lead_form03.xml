@@ -17,12 +17,29 @@
         android:baselineAligned="false"
         android:gravity="center_vertical">
 
-        <Spinner
-            android:layout_width="fill_parent"
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="37dp"
+            android:src="@drawable/ic_local_grocery_store"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lead_form3_interestproduct"
-            android:spinnerMode="dropdown"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.5" >
+            <TextView
+                android:id="@+id/lead_form3_spinner1label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="สินค้าที่สนใจ"/>
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lead_form3_interestproduct"
+                android:spinnerMode="dropdown"
+                android:layout_below="@id/lead_form3_spinner1label"
+                />
+        </RelativeLayout>
 
         <EditText
             android:layout_width="fill_parent"
@@ -37,8 +54,9 @@
             android:text="ADD"
             android:textColor="@color/default_color"
             android:id="@+id/lead_form3_add"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/button_shape_active"
             android:layout_margin="@dimen/list_item_padding_sides" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -60,7 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:id="@+id/lead_form3_interestlist"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/whiteframe"/>
     </LinearLayout>
 
     <LinearLayout
@@ -71,12 +90,33 @@
         android:weightSum="2"
         android:gravity="center_vertical">
 
-        <Spinner
-            android:layout_width="fill_parent"
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="37dp"
+            android:src="@drawable/ic_local_activity" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lead_form3_customerstatus"
-            android:layout_weight="1"
-            android:spinnerMode="dropdown" />
+            android:layout_weight="1" >
+            <TextView
+                android:id="@+id/lead_form3_spinner2label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="สถานะการติดตามลูกค้า"/>
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lead_form3_spinner2label"
+                android:spinnerMode="dropdown"
+                android:id="@+id/lead_form3_customerstatus"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="37dp"
+            android:src="@drawable/ic_terrain" />
 
         <EditText
             android:layout_width="fill_parent"

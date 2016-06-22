@@ -62,7 +62,7 @@ public class ContactSKC extends Fragment {
         view = inflater.inflate(R.layout.fragment_contact_skc, container, false);
         //Dummy data
         dataList = new ArrayList<SKCInstance>();
-        dataList.add(new SKCInstance("Banyawat Kaewsamer", "0913067637", "bunyawat.38@gmail.com"));
+        dataList.add(new SKCInstance("BanBan", "123456789", "bun@bun.com"));
         dataList.add(new SKCInstance("John Cartney", "+419523115", "elitan_842@gmail.com"));
         dataList.add(new SKCInstance("Jack Ma", "+61155149712", "maj_j12@hotmail.com"));
 
