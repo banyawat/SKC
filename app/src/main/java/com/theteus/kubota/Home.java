@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.theteus.kubota.AccountModule.Account;
 import com.theteus.kubota.ActivitiesModule.Activities;
+import com.theteus.kubota.ChassisModule.Chassis;
 import com.theteus.kubota.ContactModule.Contact;
 import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.LeadModule.Lead;
@@ -197,7 +198,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 6:
                 mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new Chasis());
+                mPagerAdapter.addPage(new Chassis());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(CHASIS_ACITIVITY_TITLE);
                 break;

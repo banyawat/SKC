@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/addr_document"
+        android:title="ที่อยู่ตามบัตรรับประกัน/ส่งเอกสาร" />
+    <item
+        android:id="@+id/addr_welcome"
+        android:title="ที่อยู่จาก Welcome Call"/>
+    <item
+        android:id="@+id/addr_skl"
+        android:title="ที่อยู่ SKL"/>
+</menu>

@@ -166,6 +166,12 @@ limitations under the License.
         <item>ยังไม่สนใจ</item>
     </string-array>
 
+    <string-array name="skc_menu">
+        <item>รถแทรกเตอร์</item>
+        <item>รถเกี่ยวนวดข้าว</item>
+        <item>รถดำนา</item>
+    </string-array>
+
     <string-array name="customer_status">
         <item>สอบถามลูกค้า</item>
         <item>สนใจซื้อสินค้า</item>

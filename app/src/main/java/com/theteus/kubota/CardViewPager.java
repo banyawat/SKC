@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
@@ -48,6 +49,11 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
         initFLoatingButton(mainView.findViewById(nextButtonViewId));
     }
 
+    public void init(int pagerViewId){
+        initTabHost(mainFragment, mainView);
+        initViewPager(mainView.findViewById(pagerViewId));
+    }
+
     private void initTabHost(Fragment mainFragment, View view){
         mTabHost = (FragmentTabHost)view.findViewById(android.R.id.tabhost);
         mTabHost.setup(mainFragment.getActivity(), mainFragment.getChildFragmentManager(), android.R.id.tabcontent);
@@ -75,13 +81,19 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
     }
 
     private void initFLoatingButton(View floatingButtonView){
-        nextButton = (FloatingActionButton) floatingButtonView;
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPager.setCurrentItem(mPager.getCurrentItem()+1);
-            }
-        });
+        if(floatingButtonView!=null) {
+            nextButton = (FloatingActionButton) floatingButtonView;
+            nextButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+                }
+            });
+        }
+    }
+
+    public void setOrientation(){
+        mTabHost.getTabWidget().setOrientation(LinearLayout.VERTICAL);
     }
 
 
