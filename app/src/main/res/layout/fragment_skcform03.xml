@@ -1,130 +1,177 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SKCModule.SKCForm03"
-    android:rowCount="4"
-    android:columnCount="5">
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="227dp"
-        android:layout_height="204dp"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_columnSpan="1"
-        android:layout_rowSpan="1">
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button2" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="787dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:layout_columnSpan="1">
+        android:layout_weight="2.5"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical">
-
-            <Spinner
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner"
-                android:layout_weight="1" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="3"
-            android:layout_gravity="center_vertical">
-
-            <Spinner
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner2"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="2"
-            android:layout_gravity="center_vertical">
-
-            <Spinner
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner3"
-                android:layout_weight="1"
-                android:layout_gravity="left" />
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button3"
-                android:layout_weight="1" />
+                android:text="แบบสอบถาม"
+                android:id="@+id/skc_form3_menu1" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="แบบสอบถาม Welcome Call"
+                android:id="@+id/skc_form3_menu2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical">
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/skc_form3_job"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/skc_form3_interestproduct"
+                    android:layout_weight="1"
+                    android:hint="สินค้าที่สนใจ" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="3"
+                android:layout_gravity="center_vertical">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/skc_form3_goods"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:layout_gravity="center_vertical">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/skc_form3_agriarea"
+                    android:layout_weight="1"
+                    android:hint="พืชที่เพาะปลูก(ไร่)" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="เพิ่ม"
+                    android:id="@+id/skc_form3_addbutton"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lead_form3_interestlist"
-        android:layout_weight="1"
-        android:background="@drawable/whiteframe"
-        android:layout_column="0"
-        android:layout_row="1"
-        android:layout_columnSpan="2"
-        android:layout_rowSpan="1"
-        android:layout_margin="@dimen/list_item_padding_sides" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_rowSpan="2"
-        android:layout_column="0"
-        android:layout_columnSpan="2">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/skc_form3_limit"
+            android:layout_gravity="right"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/skc_form3_listview"
+            android:layout_weight="1"
+            android:background="@drawable/whiteframe"
+            android:layout_below="@+id/skc_form3_limit"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/skc_form3_listview"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/skc_form3_limit"
+            android:layout_alignEnd="@+id/skc_form3_limit"
+            android:id="@+id/linearLayout2">
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/skc_form3_agritype"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/skc_form3_ricemethod"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/skc_form3_harvestmethod"
+                android:layout_weight="1" />
+        </LinearLayout>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText5"
+            android:id="@+id/skc_form3_income"
             android:ems="10"
-            android:layout_alignParentTop="true"
+            android:hint="รายได้ต่อปี"
+            android:layout_below="@+id/linearLayout2"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:hint="ลักษณะการทำเกษตร" />
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-</GridLayout>
+</RelativeLayout>

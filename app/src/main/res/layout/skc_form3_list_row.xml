@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/lyt_container"
+    android:id="@+id/skc_container"
     >
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:height="@dimen/list_item_height"
-            android:id="@+id/skc_list_name" />
+            android:id="@+id/skc_list_job" />
 
         <TextView
             android:layout_width="@dimen/skc_list_item_short_space"
@@ -28,15 +28,24 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:height="@dimen/list_item_height"
-            android:id="@+id/skc_list_tel" />
+            android:id="@+id/skc_list_goods" />
 
         <TextView
-            android:layout_width="@dimen/skc_list_item_long_space"
+            android:layout_width="@dimen/skc_list_item_short_space"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:height="@dimen/list_item_height"
-            android:id="@+id/skc_list_email" />
+            android:id="@+id/skc_list_agriarea" />
+
+        <TextView
+            android:layout_width="@dimen/skc_list_item_short_space"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:height="@dimen/list_item_height"
+            android:id="@+id/skc_list_interest" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -52,7 +61,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/txt_delete"
+            android:id="@+id/lead_txt_delete"
             android:gravity="center_vertical"
             android:text="Delete"
             android:clickable="false"
@@ -64,12 +73,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:id="@+id/txt_undo"
+            android:id="@+id/lead_txt_undo"
             android:text="UNDO"
             android:clickable="false"
             android:layout_weight="1"
             android:textColor="@color/yellow"/>
 
     </LinearLayout>
-
 </FrameLayout>

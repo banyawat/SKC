@@ -166,18 +166,53 @@ limitations under the License.
         <item>ยังไม่สนใจ</item>
     </string-array>
 
-    <string-array name="skc_menu">
-        <item>รถแทรกเตอร์</item>
-        <item>รถเกี่ยวนวดข้าว</item>
-        <item>รถดำนา</item>
-    </string-array>
-
     <string-array name="customer_status">
         <item>สอบถามลูกค้า</item>
         <item>สนใจซื้อสินค้า</item>
         <item>สนใจซื้อสินค้าอย่างมาก</item>
         <item>รอผลอนุมัติสินเชื่อ</item>
         <item>วางเงินมัดจำแล้ว</item>
+    </string-array>
+
+    <string-array name="job_choice">
+        <item>เกษตรกร</item>
+        <item>ข้าราชการ-อื่นๆ</item>
+        <item>ครู/อาจารย์</item>
+        <item>ทนายความ</item>
+        <item>ทหาร/ตำรวจ</item>
+        <item>ธุรกิจส่วนตัว-ก่อสร้าง/รับเหมา</item>
+        <item>ธุรกิจส่วนตัว-ขนส่ง</item>
+    </string-array>
+
+    <string-array name="agri_choice">
+        <item>เกษตรกร</item>
+        <item>ข้าราชการ-อื่นๆ</item>
+        <item>ครู/อาจารย์</item>
+        <item>ทนายความ</item>
+        <item>ทหาร/ตำรวจ</item>
+        <item>ธุรกิจส่วนตัว-ก่อสร้าง/รับเหมา</item>
+        <item>ธุรกิจส่วนตัว-ขนส่ง</item>
+    </string-array>
+
+    <string-array name="agritype_choice">
+        <item>ทำเกษตรในที่ดินเช่า</item>
+        <item>ทำการเกษตรในที่ดินญาติ</item>
+        <item>ทำเกษตรในที่ดินตัวเอง+ทำเกษตรในที่ดินญาติ</item>
+        <item>ทำการเกษตรในที่ดินญาติ+ที่ดินเช่า</item>
+    </string-array>
+
+    <string-array name="harvest_choice">
+        <item>เกี่ยวมือ</item>
+        <item>เกี่ยวมือ+จ้างรถเกี่ยวคูโบต้า</item>
+        <item>เกี่ยวมือ+จ้างรถเกี่ยวใหญ่</item>
+        <item>จ้างรถเกี่ยวคูโบต้า</item>
+    </string-array>
+
+    <string-array name="rice_choice">
+        <item>หว่าน+ดำมือ+จ้างรถดำนา</item>
+        <item>หว่าน๙ดำมือ+นาโยน+จ้างรถเกี่ยว</item>
+        <item>นาโยน+จ้างรถดำนา</item>
+        <item>ดำมือ+จ้างรถดำนา</item>
     </string-array>
 
     <string name="title_activity_settings">Settings</string>
