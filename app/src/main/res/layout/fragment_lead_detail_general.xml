@@ -111,7 +111,7 @@
         android:alpha="0.54"
         android:text="เพศ" />
     <TextView
-        android:id="@+id/lead_detail_record_date"
+        android:id="@+id/lead_detail_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/lead_detail_gender_icon"

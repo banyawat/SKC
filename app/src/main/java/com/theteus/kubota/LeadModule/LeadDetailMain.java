@@ -1,24 +1,31 @@
 package com.theteus.kubota.LeadModule;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v4.view.ViewPager;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabHost;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.theteus.kubota.R;
-import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 /**
  * Created by whorangester on 6/21/16.
  */
-public class LeadDetailMain extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-    private FragmentTabHost mTabHost;
-    private ViewPager mPager;
-    private ScreenSlidePagerAdapter mPagerAdapter;
+public class LeadDetailMain extends Fragment {
+    private String leadId;
+    private LeadInstance mLead;
+    public static final String ARG_PARAM1 = "leadId";
 
     public LeadDetailMain() {}
 
@@ -29,46 +36,111 @@ public class LeadDetailMain extends Fragment implements TabHost.OnTabChangeListe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_lead_detail_main, container, false);
+        final TextView title = (TextView) view.findViewById(R.id.lead_detail_title);
+        final TextView owner = (TextView) view.findViewById(R.id.lead_detail_subtitle);
+        final ViewSwitcher switcher = (ViewSwitcher) view.findViewById(R.id.lead_detail_switcher);
+        final TextView status = (TextView) view.findViewById(R.id.lead_detail_status);
+        final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.lead_detail_search_field);
+        final InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        mTabHost = (FragmentTabHost) view.findViewById(R.id.lead_detail_tabhost);
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.lead_detail_tab_content);
-        mTabHost.addTab(mTabHost.newTabSpec("DealerTab").setIndicator("Dealer Section"), LeadDetailDealer.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("GeneralTab").setIndicator("ข้อมูลทั่วไป"), LeadDetailGeneral.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("AddressTab").setIndicator("ที่อยู่"), LeadDetailAddress.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("WishlistTab").setIndicator("สินค้าที่สนใจ"), LeadDetailWishlist.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("ActivitiesTab").setIndicator("กิจกรรม"), LeadDetailActivities.class, null);
-        mTabHost.setOnTabChangedListener(this);
+        final View seachButton = view.findViewById(R.id.search_button);
+        final View qualifyButton = view.findViewById(R.id.qualify_button);
+        final View disqualifyButton = view.findViewById(R.id.disqualify_button);
+        final View deleteButton = view.findViewById(R.id.delete_button);
+        final View separator = view.findViewById(R.id.lead_detail_button_separator);
 
-        for (int i = 0; i < mTabHost.getTabWidget().getTabCount(); i++)
-            mTabHost.getTabWidget().getChildAt(i).getLayoutParams().height = (int) (48 * this.getResources().getDisplayMetrics().density);
+        status.setVisibility(View.GONE);
+        seachButton.setVisibility(View.GONE);
+        qualifyButton.setVisibility(View.GONE);
+        disqualifyButton.setVisibility(View.GONE);
+        deleteButton.setVisibility(View.GONE);
+        separator.setVisibility(View.GONE);
 
-        mPager = (ViewPager) view.findViewById(R.id.lead_detail_pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
-        mPagerAdapter.addPage(new LeadDetailDealer());
-        mPagerAdapter.addPage(new LeadDetailGeneral());
-        mPagerAdapter.addPage(new LeadDetailAddress());
-        mPagerAdapter.addPage(new LeadDetailWishlist());
-        mPagerAdapter.addPage(new LeadDetailActivities());
-        mPager.setAdapter(mPagerAdapter);
-        mPager.addOnPageChangeListener(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, DummyLeadInstance.KEYS);
+        (view.findViewById(R.id.search_button)).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switcher.showNext();
+
+                if(!switcher.getNextView().isFocusable()) {
+                    searchField.requestFocus();
+                    keyboard.showSoftInput(searchField, 0);
+                } else {
+                    searchField.clearFocus();
+                    keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+                return false;
+            }
+        });
+
+        searchField.setAdapter(adapter);
+        searchField.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                status.setVisibility(View.VISIBLE);
+                seachButton.setVisibility(View.VISIBLE);
+                qualifyButton.setVisibility(View.VISIBLE);
+                disqualifyButton.setVisibility(View.VISIBLE);
+                deleteButton.setVisibility(View.VISIBLE);
+                separator.setVisibility(View.VISIBLE);
+
+                leadId = DummyLeadInstance.ID_MAP.get(parent.getItemAtPosition(position));
+                mLead = DummyLeadInstance.LEAD_MAP.get(leadId);
+
+                LeadDetailContent fragment = new LeadDetailContent();
+                Bundle args = new Bundle();
+                args.putString(LeadDetailMain.ARG_PARAM1, leadId);
+                fragment.setArguments(args);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.lead_detail_content, fragment)
+                        .commit();
+
+                setUpCardTitle(title, owner, searchField, status);
+
+                searchField.clearFocus();
+                switcher.showNext();
+                keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
+            }
+        });
+
+        switcher.showNext();
+        searchField.requestFocus();
+        keyboard.showSoftInput(searchField, 0);
+
+        LeadDetailContent fragment = new LeadDetailContent();
+        fragment.setArguments(new Bundle());
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.lead_detail_content, fragment)
+                .commit();
 
         return view;
     }
+    public void setUpCardTitle(TextView titleView, TextView ownerView, AutoCompleteTextView searchField, TextView statusView) {
+        String leadFullName = mLead.firstName + " " + mLead.lastName;
+        String leadOwner = "Owner : " + mLead.owner;
+        String leadKey = mLead.id + " : " + mLead.firstName + " " + mLead.lastName;
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+        titleView.setText(leadFullName);
+        ownerView.setText(leadOwner);
+        searchField.setText(leadKey);
+        statusView.setText(mLead.status);
 
-    @Override
-    public void onPageSelected(int position) {
-        this.mTabHost.setCurrentTab(position);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {}
-
-    @Override
-    public void onTabChanged(String tabId) {
-        this.mPager.setCurrentItem(this.mTabHost.getCurrentTab());
+        if(mLead.status.equals("New Lead")) {
+            statusView.setBackgroundResource(R.color.statusBlue);
+            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusBlueFont));
+        } else if(mLead.status.equals("Qualified")) {
+            statusView.setBackgroundResource(R.color.statusGreen);
+            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusGreenFont));
+        }
+        else if(mLead.status.equals("Disqualified")) {
+            statusView.setBackgroundResource(R.color.statusRed);
+            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+        }
+        else {
+            statusView.setBackgroundResource(R.color.statusUnknown);
+            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusUnknownFont));
+        }
     }
 }

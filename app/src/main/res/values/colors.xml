@@ -22,4 +22,13 @@ limitations under the License.
     <color name="yellow">#FFBB33</color>
     <color name="gray_background">#757575</color>
     <color name="accentDiff">#995B26</color>
+
+    <color name="statusGreen">#E8F5E9</color>
+    <color name="statusGreenFont">#43A047</color>
+    <color name="statusRed">#FFEBEE</color>
+    <color name="statusRedFont">#E53935</color>
+    <color name="statusBlue">#E1F5FE</color>
+    <color name="statusBlueFont">#1E88E5</color>
+    <color name="statusUnknown">#F5F5F5</color>
+    <color name="statusUnknownFont">#757575</color>
 </resources>
