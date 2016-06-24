@@ -36,8 +36,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="ร้านคูโบต้าแถวบ้านลุง" />
+        android:alpha="0.87" />
 
     <!--RECORD DATE-->
     <View
@@ -71,8 +70,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="17 กรกฎาคม 2504" />
+        android:alpha="0.87" />
 
     <!--EVENT DATE-->
     <View
@@ -106,8 +104,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="17 กรกฎาคม 2504" />
+        android:alpha="0.87" />
 
     <!--Code-->
     <View
@@ -141,8 +138,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="ลูกค้า Walk-In" />
+        android:alpha="0.87" />
 
     <!--EVENT NAME-->
     <View
@@ -177,8 +173,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="คูโบต้าฉลองวันเกิดลุง" />
+        android:alpha="0.87" />
 
     <!--Sales Name-->
     <View
@@ -214,8 +209,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="นายขายดี ขายเก่ง" />
+        android:alpha="0.87" />
 
     <!--EVENT LOCATION-->
     <View
@@ -251,8 +245,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="ร้านคูโบต้า" />
+        android:alpha="0.87" />
 
     <!--Contact-->
     <View
@@ -288,7 +281,6 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="Jacky Chan" />
+        android:alpha="0.87" />
 
 </RelativeLayout>

@@ -1,12 +1,161 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LeadModule.LeadDetailWishlist">
+    android:padding="36dp"
+    tools:context=".LeadModule.LeadDetailDealer">
+
+    <!--Item Selector-->
+    <View
+        android:id="@+id/lead_detail_item_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_item_icon"
+        android:layout_toEndOf="@id/lead_detail_item_icon"
+        android:layout_alignTop="@id/lead_detail_item_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="สินค้าที่สนใจ" />
+    <Spinner
+        android:id="@+id/lead_detail_shop_name"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:layout_toEndOf="@id/lead_detail_item_icon"
+        android:layout_toRightOf="@id/lead_detail_item_icon"
+        android:layout_alignBottom="@id/lead_detail_item_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Wishlist Section" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_item_icon"
+        android:layout_toEndOf="@id/lead_detail_item_icon"
+        android:layout_alignTop="@id/lead_detail_item_icon"
+        android:layout_marginLeft="304dp"
+        android:layout_marginStart="304dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="รุ่นที่สนใจ" />
+    <EditText
+        android:id="@+id/lead_detail_model_field"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_item_icon"
+        android:layout_toRightOf="@id/lead_detail_item_icon"
+        android:layout_alignBottom="@id/lead_detail_item_icon"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginStart="300dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:text="เพิ่ม" />
 
-</FrameLayout>
+    <!--RecyclerView of Wishlist-->
+    <TextView
+        android:id="@+id/lead_detail_listlimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 / 5"
+        android:layout_below="@id/lead_detail_item_icon"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lead_detail_wishlist"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@id/lead_detail_listlimit" />
+
+    <!--Following Status-->
+    <View
+        android:id="@+id/lead_detail_follow_icon"
+        android:layout_below="@id/lead_detail_wishlist"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_follow_icon"
+        android:layout_toEndOf="@id/lead_detail_follow_icon"
+        android:layout_alignTop="@id/lead_detail_follow_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="สถานะการติดตาม" />
+    <TextView
+        android:id="@+id/lead_detail_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_follow_icon"
+        android:layout_toRightOf="@id/lead_detail_follow_icon"
+        android:layout_alignBottom="@id/lead_detail_follow_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="สถานะการติดตาม" />
+
+    <!--Area-->
+    <View
+        android:id="@+id/lead_detail_area_icon"
+        android:layout_below="@id/lead_detail_wishlist"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:background="@drawable/icon_replacement"
+        android:alpha="0.38" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lead_detail_area_icon"
+        android:layout_toEndOf="@id/lead_detail_area_icon"
+        android:layout_alignTop="@id/lead_detail_area_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="พื้นที่เพาะปลูก" />
+    <TextView
+        android:id="@+id/lead_detail_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/lead_detail_area_icon"
+        android:layout_toRightOf="@id/lead_detail_area_icon"
+        android:layout_alignBottom="@id/lead_detail_area_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="112 ไร่" />
+
+</RelativeLayout>

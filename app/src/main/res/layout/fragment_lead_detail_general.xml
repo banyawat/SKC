@@ -36,8 +36,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="นาย" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,8 +60,7 @@
         android:layout_marginStart="304dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="Jacky" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,8 +84,7 @@
         android:layout_marginStart="584dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="Chan" />
+        android:alpha="0.87" />
 
     <!--GENDER-->
     <View
@@ -121,8 +118,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="ชาย" />
+        android:alpha="0.87" />
 
     <!--ID Card-->
     <View
@@ -158,8 +154,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="1-2345-67890-12-3" />
+        android:alpha="0.87" />
 
     <!--Customer Type-->
     <View
@@ -195,8 +190,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="บุคคลทั่วไป" />
+        android:alpha="0.87" />
 
     <!--BIRTHDAY-->
     <View
@@ -230,8 +224,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="31 มกราคม 2504 (อายุ 35 ปี)" />
+        android:alpha="0.87" />
 
     <!--PHONE-->
     <View
@@ -265,8 +258,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="02-345-6789" />
+        android:alpha="0.87" />
 
     <!--MOBILE 1-->
     <View
@@ -302,8 +294,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="082-345-6789" />
+        android:alpha="0.87" />
 
     <!--MOBILE 2-->
     <View
@@ -339,7 +330,6 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="082-345-6789" />
+        android:alpha="0.87" />
 
 </RelativeLayout>

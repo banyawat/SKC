@@ -51,7 +51,6 @@
                             android:layout_marginTop="16dp"
                             android:textSize="24sp"
                             android:textColor="#000000"
-                            android:text="Jacky Chan"
                             android:alpha="0.87" />
 
                         <TextView
@@ -65,7 +64,6 @@
                             android:layout_marginTop="26dp"
                             android:textSize="14sp"
                             android:textColor="#000000"
-                            android:text="Owner : SomeAdmin"
                             android:alpha="0.54" />
 
                     </RelativeLayout>
@@ -97,7 +95,6 @@
                     android:layout_marginEnd="16dp"
                     android:textAlignment="center"
                     android:background="#4CAF50"
-                    android:text="New Lead"
                     android:textColor="#ffffff"
                     android:textSize="16sp" />
 

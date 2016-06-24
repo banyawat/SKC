@@ -36,8 +36,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="123/456" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,8 +60,7 @@
         android:layout_marginStart="140dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="คอนโดมีเนียมใจกลางเมืองสูงมาก" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,8 +84,7 @@
         android:layout_marginStart="400dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="56" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,8 +108,7 @@
         android:layout_marginStart="480dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="5601" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,8 +132,7 @@
         android:layout_marginStart="560dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="1" />
+        android:alpha="0.87" />
     <!--House Location-->
     <View
         android:id="@+id/lead_detail_house_location_icon"
@@ -170,8 +165,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="สมมติจิตนาซอย 36" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -195,8 +189,7 @@
         android:layout_marginStart="304dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="สมมติจินตนา" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -220,8 +213,7 @@
         android:layout_marginStart="584dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="บางขุนเทียน" />
+        android:alpha="0.87" />
     <!--Additional House Location-->
     <View
         android:id="@+id/lead_detail_house_location_icon_inv"
@@ -255,8 +247,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="บางขุนเทียน" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -280,8 +271,7 @@
         android:layout_marginStart="304dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="กรุงเทพมหานคร" />
+        android:alpha="0.87" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -305,7 +295,6 @@
         android:layout_marginStart="584dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="12345" />
+        android:alpha="0.87" />
 
 </RelativeLayout>

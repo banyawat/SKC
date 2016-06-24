@@ -42,6 +42,11 @@ public class LeadInstance {
     public String district;
     public String province;
     public String postalCode;
+    // Wishlist Section
+    public String followingStatus;
+    public String area;
+    public String itemType1, itemType2, itemType3, itemType4, itemType5;
+    public String itemModel1, itemModel2, itemModel3, itemModel4, itemModel5;
 
     public LeadInstance() {}
 }

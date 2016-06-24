@@ -53,6 +53,19 @@ public class DummyLeadInstance {
         String district[] = new String[] {"บางรัก", "บางแค", "บางซื่อ", "บางกะปิ", "บางนา"};
         String province[] = new String[] {"กรุงเทพมหานคร", "ปทุมธานี", "นครสวรรค์", "ชุมพร", "หนองคาย"};
         String postalCode[] = new String[] {"12345", "91271", "71931", "68192", "17812"};
+        //Wishlist Section
+        String followingStatus[] = new String[] {"สอบถามลูกค้า", "สนใขซื้อสินค้า", "สนใจซื้อสินค้าอย่างมาก", "รอผลการอนุมัติสินเชื่อ", "วางเงินมัดจำแล้ว"};
+        String area[] = new String[] {"12 ไร่", "15 ไร่", "20 ไร่", "30 ไร่", "100 ไร่"};
+        String itemType1[] = new String[] {"รถแทรกเตอร์", "รถดำนา", "รถแทรกเตอร์", "รถแทรกเตอร์", "รถขุด"};
+        String itemModel1[] = new String[] {"MX-12", "AP-13", "MX-12", "MX-04", "BH-01"};
+        String itemType2[] = new String[] {"รถเกี่ยวนวดข้าว", "รถแทรกเตอร์", "- - -", "รถแทรกเตอร์", "รถแทรกเตอร์"};
+        String itemModel2[] = new String[] {"PP-11", "MX-12", "- - -", "MX-12", "MX-12"};
+        String itemType3[] = new String[] {"รถดำนา", "- - -", "- - -", "รถเกี่ยวนวดข้าว", "รถแทรกเตอร์"};
+        String itemModel3[] = new String[] {"AP-13", "- - -", "- - -", "PP-11", "MX-04"};
+        String itemType4[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
+        String itemModel4[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
+        String itemType5[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
+        String itemModel5[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
 
         for(int i = 0; i < COUNT; i++) {
             LeadInstance lead = new LeadInstance();
@@ -88,6 +101,18 @@ public class DummyLeadInstance {
             lead.district = district[i];
             lead.province = province[i];
             lead.postalCode = postalCode[i];
+            lead.followingStatus = followingStatus[i];
+            lead.area = area[i];
+            lead.itemType1 = itemType1[i];
+            lead.itemModel1 = itemModel1[i];
+            lead.itemType2 = itemType2[i];
+            lead.itemModel2 = itemModel2[i];
+            lead.itemType3 = itemType3[i];
+            lead.itemModel3 = itemModel3[i];
+            lead.itemType4 = itemType4[i];
+            lead.itemModel4 = itemModel4[i];
+            lead.itemType5 = itemType5[i];
+            lead.itemModel5 = itemModel5[i];
 
             LEADS.add(lead);
             LEAD_MAP.put(lead.id, lead);
