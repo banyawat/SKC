@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +23,8 @@ import com.theteus.kubota.R;
 import java.util.ArrayList;
 
 public class SKCForm03 extends Fragment {
-    Spinner jobSpinner, goodsSpinner, agriTypeSpinner, harvestMethodSpinner, riceMethodSpinner;
-    EditText goodsAreaEdit, interestProductEdit, incomeEdit;
+    Spinner jobSpinner, goodsSpinner, agriTypeSpinner, interestSpinner,harvestMethodSpinner, riceMethodSpinner;
+    EditText goodsAreaEdit, incomeEdit;
     TextView limitText;
     Button menu1Button, menu2Button, addButton;
     ArrayList<PageInformation> pageList;
@@ -46,14 +45,14 @@ public class SKCForm03 extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_skcform03, container, false);
 
-        pageList = new ArrayList<PageInformation>();
+        pageList = new ArrayList<>();
         pageList.add(new PageInformation());
         pageList.add(new PageInformation());
         findViewsByID(view);
         initSpinner(view);
         initInterestList(view);
-        initAddButton(view);
-        initMenu(view);
+        initAddButton();
+        initMenu();
 
         return view;
     }
@@ -62,7 +61,7 @@ public class SKCForm03 extends Fragment {
         jobSpinner = (Spinner) view.findViewById(R.id.skc_form3_job);
         goodsSpinner = (Spinner) view.findViewById(R.id.skc_form3_goods);
         goodsAreaEdit = (EditText) view.findViewById(R.id.skc_form3_agriarea);
-        interestProductEdit = (EditText) view.findViewById(R.id.skc_form3_interestproduct);
+        interestSpinner = (Spinner) view.findViewById(R.id.skc_form3_interestproduct);
         agriTypeSpinner = (Spinner)view.findViewById(R.id.skc_form3_agritype);
         harvestMethodSpinner = (Spinner)view.findViewById(R.id.skc_form3_harvestmethod);
         riceMethodSpinner = (Spinner)view.findViewById(R.id.skc_form3_ricemethod);
@@ -73,7 +72,7 @@ public class SKCForm03 extends Fragment {
         limitText = (TextView) view.findViewById(R.id.skc_form3_limit);
     }
 
-    private void initMenu(View view){
+    private void initMenu(){
         menu1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,6 +133,11 @@ public class SKCForm03 extends Fragment {
                 R.array.rice_choice, android.R.layout.simple_spinner_item);
         riceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         riceMethodSpinner.setAdapter(riceAdapter);
+
+        ArrayAdapter<CharSequence> interestAdapter = ArrayAdapter.createFromResource(view.getContext(),
+                R.array.interest_product, android.R.layout.simple_spinner_item);
+        interestAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        interestSpinner.setAdapter(interestAdapter);
     }
 
     private void initInterestList(View view){
@@ -163,7 +167,7 @@ public class SKCForm03 extends Fragment {
                                 jobSpinner.setEnabled(true);
                                 goodsSpinner.setEnabled(true);
                                 goodsAreaEdit.setEnabled(true);
-                                interestProductEdit.setEnabled(true);
+                                interestSpinner.setEnabled(true);
                                 addButton.setBackgroundResource(R.drawable.button_shape_inactive);
                                 addButton.setEnabled(true);
                             }
@@ -185,27 +189,25 @@ public class SKCForm03 extends Fragment {
         limitText.setText(adapter.getItemCount()+"/5");
     }
 
-    private void initAddButton(final View view){
+    private void initAddButton(){
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String jobStr = jobSpinner.getSelectedItem().toString();
                 String goodsStr = goodsSpinner.getSelectedItem().toString();
                 String agriArea = goodsAreaEdit.getText().toString();
-                String interestStr = interestProductEdit.getText().toString();
+                String interestStr = interestSpinner.getSelectedItem().toString();
                 if(agriArea.length()>0&&interestStr.length()>0) {
                     adapter.addData(new surveyInstance(jobStr, goodsStr, agriArea, interestStr));
                     adapter.notifyDataSetChanged();
                     goodsAreaEdit.setText("");
-                    interestProductEdit.setText("");
                     goodsAreaEdit.setError(null);
-                    interestProductEdit.setError(null);
                     limitText.setText(adapter.getItemCount() + "/5");
                     if (adapter.getItemCount() == 5) {
                         jobSpinner.setEnabled(false);
                         goodsSpinner.setEnabled(false);
                         goodsAreaEdit.setEnabled(false);
-                        interestProductEdit.setEnabled(false);
+                        interestSpinner.setEnabled(false);
                         addButton.setBackgroundResource(R.drawable.button_shape_inactive);
                         addButton.setEnabled(false);
                     }
@@ -213,10 +215,6 @@ public class SKCForm03 extends Fragment {
                 else {
                     if(agriArea.length()==0)
                         goodsAreaEdit.setError("กรุณาใส่ข้อมูล");
-                    else
-                        goodsAreaEdit.setError(null);
-                    if(interestStr.length()==0)
-                        interestProductEdit.setError("กรุณาใส่ข้อมูล");
                     else
                         goodsAreaEdit.setError(null);
                 }
@@ -231,29 +229,28 @@ public class SKCForm03 extends Fragment {
         harvestMethodSpinner.setSelection(0);
         riceMethodSpinner.setSelection(0);
         goodsAreaEdit.setText("");
-        interestProductEdit.setText("");
+        interestSpinner.setSelection(0);
         incomeEdit.setText("");
         goodsAreaEdit.setError(null);
-        interestProductEdit.setError(null);
         incomeEdit.setError(null);
     }
 
     private void saveStatus(){
         pageList.get(pageID).setPage(jobSpinner, goodsSpinner, agriTypeSpinner, harvestMethodSpinner,
-                 riceMethodSpinner,  goodsAreaEdit,  interestProductEdit,  incomeEdit, adapter);
+                 riceMethodSpinner,  goodsAreaEdit,  interestSpinner,  incomeEdit, adapter);
         clearInfo();
     }
 
     private void restoreStatus(){
         pageList.get(pageID).getPage(jobSpinner, goodsSpinner, agriTypeSpinner, harvestMethodSpinner,
-                riceMethodSpinner,  goodsAreaEdit,  interestProductEdit,  incomeEdit, adapter);
+                riceMethodSpinner,  goodsAreaEdit,  interestSpinner,  incomeEdit, adapter);
     }
 
     private class listAdapter extends RecyclerView.Adapter<listAdapter.MyViewHolder> {
         ArrayList<surveyInstance> list;
 
         public listAdapter() {
-            list = new ArrayList<surveyInstance>();
+            list = new ArrayList<>();
         }
 
         @Override
@@ -326,14 +323,14 @@ public class SKCForm03 extends Fragment {
     private class PageInformation {
         ArrayList<surveyInstance> savedList;
         int jobChoice, goodsChoice, agriTypeChoice,
-                harvestChoice, riceChoice;
-        String agriAreaStr, interestProductStr, incomeStr;
+                harvestChoice, riceChoice, interestProductChoice;
+        String agriAreaStr, incomeStr;
         PageInformation(){
-            savedList = new ArrayList<surveyInstance>();
+            savedList = new ArrayList<>();
         }
 
         public void setPage(Spinner jobSpinner,Spinner goodsSpinner,Spinner agriTypeSpinner,Spinner harvestMethodSpinner,
-                               Spinner riceMethodSpinner, EditText goodsAreaEdit, EditText interestProductEdit, EditText incomeEdit,
+                               Spinner riceMethodSpinner, EditText goodsAreaEdit, Spinner interestSpinner, EditText incomeEdit,
                             listAdapter adapter){
             jobChoice = jobSpinner.getSelectedItemPosition();
             goodsChoice = goodsSpinner.getSelectedItemPosition();
@@ -341,20 +338,20 @@ public class SKCForm03 extends Fragment {
             harvestChoice = harvestMethodSpinner.getSelectedItemPosition();
             riceChoice = riceMethodSpinner.getSelectedItemPosition();
             agriAreaStr = goodsAreaEdit.getText().toString();
-            interestProductStr = interestProductEdit.getText().toString();
+            interestProductChoice = interestSpinner.getSelectedItemPosition();
             incomeStr = incomeEdit.getText().toString();
             savedList = adapter.list;
         }
 
         public void getPage(Spinner jobSpinner,Spinner goodsSpinner,Spinner agriTypeSpinner,Spinner harvestMethodSpinner,
-                            Spinner riceMethodSpinner, EditText goodsAreaEdit, EditText interestProductEdit, EditText incomeEdit, listAdapter adapter){
+                            Spinner riceMethodSpinner, EditText goodsAreaEdit, Spinner interestSpinner, EditText incomeEdit, listAdapter adapter){
             jobSpinner.setSelection(jobChoice);
             goodsSpinner.setSelection(goodsChoice);
             agriTypeSpinner.setSelection(agriTypeChoice);
             harvestMethodSpinner.setSelection(harvestChoice);
             riceMethodSpinner.setSelection(riceChoice);
             goodsAreaEdit.setText(agriAreaStr);
-            interestProductEdit.setText(interestProductStr);
+            interestSpinner.setSelection(interestProductChoice);
             incomeEdit.setText(incomeStr);
             adapter.list = savedList;
             adapter.notifyDataSetChanged();

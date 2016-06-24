@@ -29,17 +29,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity implements OnMenuItemClickListener, OnMenuItemLongClickListener {
-    private final static String FEED_ACITIVITY_TITLE = "Siam Kubota Corp. CRM";
-    private final static String SKC_ACTIVITY_TITLE = "SKC Title";
+    private final static String FEED_ACTIVITY_TITLE = "Siam Kubota Corp. CRM";
+    private final static String SKC_ACTIVITY_TITLE = "SKC Contact";
     private final static String CONTACT_ACTIVITY_TITLE = "Contact";
-    private final static String LEAD_ACITIVITY_TITLE = "Lead";
-    private final static String ACTIVITIES_ACITIVITY_TITLE = "Activity";
-    private final static String ACCOUNT_ACITIVITY_TITLE = "Account";
-    private final static String CHASIS_ACITIVITY_TITLE = "Chassis";
+    private final static String LEAD_ACTIVITY_TITLE = "Lead";
+    private final static String ACTIVITIES_ACTIVITY_TITLE = "Activity";
+    private final static String ACCOUNT_ACTIVITY_TITLE = "Account";
+    private final static String CHASSIS_ACTIVITY_TITLE = "Chassis";
 
     private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
-    int pageID=0, lastPage=0, lastPosition=0;
+    int pageID=0, lastPage=0;
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
@@ -160,6 +160,8 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
 
     @Override
     public void onMenuItemClick(View clickedView, int position) {
+        if(position == lastPage)
+            return;
         pageID = position;
         switch (pageID) {
             case 0:
@@ -182,25 +184,25 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 mPagerAdapter.addPage(new LeadDetailMain());
                 mPagerAdapter.addPage(new Lead());
                 if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(LEAD_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(LEAD_ACTIVITY_TITLE);
                 break;
             case 4:
                 mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new Account());
+                mPagerAdapter.addPage(new Activities());
                 if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(ACTIVITIES_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);
                 break;
             case 5:
                 mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new Activities());
+                mPagerAdapter.addPage(new Account());
                 if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(ACCOUNT_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(ACCOUNT_ACTIVITY_TITLE);
                 break;
             case 6:
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new Chassis());
                 if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(CHASIS_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(CHASSIS_ACTIVITY_TITLE);
                 break;
             case 7:
                 Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
@@ -222,7 +224,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     @Override
     public void onBackPressed() {
         if (getSupportActionBar() != null) {
-            if(getSupportActionBar().getTitle()!=FEED_ACITIVITY_TITLE){
+            if(getSupportActionBar().getTitle()!=FEED_ACTIVITY_TITLE){
                 if(mPager.getCurrentItem()==0)
                     goHome();
                 else
@@ -242,7 +244,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         menuList.get(0).setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
         initMenuFragment();
         if(getSupportActionBar()!=null)
-            getSupportActionBar().setTitle(FEED_ACITIVITY_TITLE);
+            getSupportActionBar().setTitle(FEED_ACTIVITY_TITLE);
         lastPage=0;
     }
 }

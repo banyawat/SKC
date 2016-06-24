@@ -175,6 +175,26 @@ limitations under the License.
     </string-array>
 
     <string-array name="job_choice">
+        <item>(ยกเลิก) - เกษตรกร</item>
+        <item>(ยกเลิก) - ขายของชำ</item>
+        <item>(ยกเลิก) - ครู/อาจารย์(รร.เอกชน)</item>
+        <item>(ยกเลิก) - ค้าขาย</item>
+        <item>(ยกเลิก) - ชาวไร่</item>
+        <item>(ยกเลิก) - ชาวสวน</item>
+        <item>(ยกเลิก) - ธุรกิจ SML</item>
+        <item>(ยกเลิก) - ธุรกิจส่วนตัว/อาชีพอิสระ</item>
+        <item>(ยกเลิก) - นายหน้า</item>
+        <item>(ยกเลิก) - พนักงานบริษัท/รัฐวิสาหกิจ</item>
+        <item>(ยกเลิก) - พนักงานรัฐวิสาหกิจ</item>
+        <item>(ยกเลิกb)b - ร้บจ้าง</item>
+        <item>(ยกเลิก) - รับราชการ</item>
+        <item>(ยกเลิก) - ลูกจ้างชั่วคราว</item>
+        <item>(ยกเลิก) - ลูกจ้างประจำ</item>
+        <item>(ยกเลิก) - วัสดุก่อสร้าง</item>
+        <item>(ยกเลิก) - อื่น ๆ ( ธุรกิจส่วนตัว/อาชีพอิสระ )</item>
+        <item>(ยกเลิก) - อื่น ๆ ( พนักงานบริษัท/รัฐวิสาหกิจ </item>)
+        <item>(ยกเลิก) - อื่น ๆ ( ร้บจ้าง )</item>
+        <item>(ยกเลิก) - อื่น ๆ ( รับราชการ )</item>
         <item>เกษตรกร</item>
         <item>ข้าราชการ-อื่นๆ</item>
         <item>ครู/อาจารย์</item>
@@ -182,37 +202,280 @@ limitations under the License.
         <item>ทหาร/ตำรวจ</item>
         <item>ธุรกิจส่วนตัว-ก่อสร้าง/รับเหมา</item>
         <item>ธุรกิจส่วนตัว-ขนส่ง</item>
+        <item>ธุรกิจส่วนตัว-ซื้อขายผลผลิตการเกษตร</item>
+        <item>ธุรกิจส่วนตัว-บริการ</item>
+        <item>ธุรกิจส่วนตัว-อาหาร,เครื่องดื่ม,ผักและผลไม้</item>
+        <item>ธุรกิจส่วนตัว-อื่นๆ</item>
+        <item>ประมง</item>
+        <item>ปศุสัตว์</item>
+        <item>พนักงานบริษัทเอกชน/รัฐวิสาหกิจ</item>
+        <item>แพทย์/พยาบาล</item>
+        <item>ลูกจ้าง/รับจ้าง - ก่อสร้าง</item>
+        <item>ลูกจ้าง/รับจ้าง-ขับรถ</item>
+        <item>ลูกจ้าง/รับจ้าง-ทางการเกษตร</item>
+        <item>ลูกจ้าง/รับจ้าง-อื่นๆ</item>
+        <item>ธุรกิจส่วนตัว - ซื้อขายผลผลิตการเกษตร</item>
+        <item>เจ้าหน้าที่ ธกส. / สกต.</item>
+        <item>อื่นๆ</item>
     </string-array>
 
     <string-array name="agri_choice">
-        <item>เกษตรกร</item>
-        <item>ข้าราชการ-อื่นๆ</item>
-        <item>ครู/อาจารย์</item>
-        <item>ทนายความ</item>
-        <item>ทหาร/ตำรวจ</item>
-        <item>ธุรกิจส่วนตัว-ก่อสร้าง/รับเหมา</item>
-        <item>ธุรกิจส่วนตัว-ขนส่ง</item>
+        <item>(ยกเลิก) -  ข้าว</item>
+        <item>(ยกเลิก) -  ชาวทำเล</item>
+        <item>(ยกเลิก) -  ถั่วเขียว</item>
+        <item>(ยกเลิก) -  ถั่วเหลือง</item>
+        <item>(ยกเลิก) -  ทำการประมง</item>
+        <item>(ยกเลิก) -  ฟาร์ม</item>
+        <item>(ยกเลิก) -  ฟาร์มไก่</item>
+        <item>(ยกเลิก) -  ฟาร์มโคนม</item>
+        <item>(ยกเลิก) -  ฟาร์มโคเนื้อ</item>
+        <item>(ยกเลิก) -  ฟาร์มเป็ด</item>
+        <item>(ยกเลิก) -  ฟาร์มสุกร</item>
+        <item>(ยกเลิก) -  เลี้ยงกบ</item>
+        <item>(ยกเลิก) -  เลี้ยงกุ้ง</item>
+        <item>(ยกเลิก) -  เลี้ยงควาย</item>
+        <item>(ยกเลิก) -  เลี้ยงปลา</item>
+        <item>(ยกเลิก) -  เลี้ยงวัว</item>
+        <item>(ยกเลิก) -  เลี้ยงสัตว์</item>
+        <item>กระเทียม</item>
+        <item>กล้วย</item>
+        <item>กะหล่ำต่างๆ</item>
+        <item>กาแฟ</item>
+        <item>แก้วมังกร</item>
+        <item>ขนุน</item>
+        <item>ข้าวนาปรัง</item>
+        <item>ข้าวนาปี</item>
+        <item>ข้าวโพด</item>
+        <item>ข้าวฟ่าง</item>
+        <item>คะน้า</item>
+        <item>แคนตาลูป</item>
+        <item>เงาะ</item>
+        <item>ชมพู่</item>
+        <item>ดอกไม้ต่างๆ</item>
+        <item>ตะไคร้</item>
+        <item>แตงต่างๆ</item>
+        <item>ถั่วต่างๆ</item>
+        <item>ทุเรียน</item>
+        <item>น้อยหน่า</item>
+        <item>ใบหม่อน</item>
+        <item>ปอ</item>
+        <item>ปาล์มน้ำมัน</item>
+        <item>ผลไม้ต่างๆ</item>
+        <item>ผักกาดต่างๆ</item>
+        <item>ผักต่างๆ</item>
+        <item>ผักบุ้ง</item>
+        <item>ฝรั่ง</item>
+        <item>พริก</item>
+        <item>พุทรา</item>
+        <item>ฟัก</item>
+        <item>มะขาม</item>
+        <item>มะเขือต่างๆ</item>
+        <item>มะนาว</item>
+        <item>มะพร้าว</item>
+        <item>มะม่วง</item>
+        <item>มะม่วงหิมพานต์</item>
+        <item>มะละกอ</item>
+        <item>มังคุด</item>
+        <item>มันต่างๆ</item>
+        <item>มันสำปะหลัง</item>
+        <item>ไม้ตะกู</item>
+        <item>ไม้ไผ่</item>
+        <item>ไม้สัก</item>
+        <item>ไม้หอม(ไม้กฤษณา)</item>
+        <item>ยางพารา</item>
+        <item>ยาสูบ</item>
+        <item>ยูคาลิปตัส</item>
+        <item>ลำไย</item>
+        <item>ลิ้นจี่</item>
+        <item>สตอเบอรี่</item>
+        <item>ส้มต่างๆ</item>
+        <item>สับปะรด</item>
+        <item>หญ้า</item>
+        <item>หอมต่างๆ</item>
+        <item>เห็ดต่างๆ</item>
+        <item>องุ่น</item>
+        <item>อโวคาโด</item>
+        <item>อ้อย</item>
+        <item>อื่นๆ</item>
     </string-array>
 
     <string-array name="agritype_choice">
-        <item>ทำเกษตรในที่ดินเช่า</item>
+        <item>ทำการเกษตรในที่ดินเช่า</item>
         <item>ทำการเกษตรในที่ดินญาติ</item>
         <item>ทำเกษตรในที่ดินตัวเอง+ทำเกษตรในที่ดินญาติ</item>
-        <item>ทำการเกษตรในที่ดินญาติ+ที่ดินเช่า</item>
+        <item>ทำการเกษตรในที่ดินญาติ + ที่ดินเช่า</item>
+        <item>ทำการเกษตรในที่ดินตนเอง</item>
+        <item>ทำการเกษตรในที่ดินตนเอง + ที่ดินเช่า</item>
+        <item>ทำเกษตรในที่ดินตัวเอง+ทำการเกษตรใรที่ดินเช่า+ทำเกษตรในที่ดินญาติ</item>
     </string-array>
 
     <string-array name="harvest_choice">
         <item>เกี่ยวมือ</item>
         <item>เกี่ยวมือ+จ้างรถเกี่ยวคูโบต้า</item>
         <item>เกี่ยวมือ+จ้างรถเกี่ยวใหญ่</item>
+        <item>เกี่ยวมือ+จ้างรถเกี่ยวใหญ่+จ้างรถเกี่ยวคูโบต้า</item>
         <item>จ้างรถเกี่ยวคูโบต้า</item>
+        <item>จ้างรถเกี่ยวใหญ่</item>
+        <item>จ้างรถเกี่ยวใหญ่+จ้างรถเกี่ยวคูโบต้า</item>
+        <item>รถเกี่ยวคูโบต้า(ส่วนตัว/ญาติ)</item>
+        <item>รถเกี่ยวใหญ่(ส่วนตัว/ญาติ)</item>
     </string-array>
 
     <string-array name="rice_choice">
         <item>หว่าน+ดำมือ+จ้างรถดำนา</item>
-        <item>หว่าน๙ดำมือ+นาโยน+จ้างรถเกี่ยว</item>
-        <item>นาโยน+จ้างรถดำนา</item>
+        <item>หว่าน+ดำมือ+นาโยน+จ้างรถดำนา</item>
+        <item>นาโยน+จ้างรถดำนำ</item>
         <item>ดำมือ+จ้างรถดำนา</item>
+        <item>หว่าน+จ้างรถดำนา</item>
+        <item>หว่าน+ดำมือ</item>
+        <item>หว่าน+นาโยน</item>
+        <item>ดำมือ+นาโยน</item>
+        <item>หว่าน+ดำมือ+นาโยน</item>
+        <item>หว่าน</item>
+        <item>ดำมือ</item>
+        <item>นาโยน</item>
+        <item>รถดำนาส่วนตัว(ญาติ)</item>
+        <item>จ้างรถดำนา</item>
+        <item>อื่นๆ</item>
+    </string-array>
+
+    <string-array name="activities_type">
+        <item>Activity Type</item>
+        <item>Customer Visit</item>
+        <item>Delivery</item>
+        <item>FollowUp Call</item>
+        <item>Trial Use</item>
+    </string-array>
+
+    <string-array name="activities_status">
+        <item>สถานะการตัดสินใจซื้อ</item>
+        <item>ปิดการขาย</item>
+        <item>สนใจสินค้า</item>
+        <item>รอผลอนุมัติสินเชื่อ</item>
+        <item>ไม่ซื้อสินค้า</item>
+    </string-array>
+
+    <string-array name="activities_reason">
+        <item>สาเหตุที่ซื้อ</item>
+        <item>โปรโมชั่น</item>
+        <item>เพื่อน/ญาติแนะนำ</item>
+        <item>ราคาถูก</item>
+        <item>สินค้าได้มาตรฐาน</item>
+        <item>มีอะไหล่พร้อม</item>
+        <item>ร้านอยู่ใกล้บ้าน</item>
+    </string-array>
+
+    <string-array name="activities_time">
+        <item>ระยะเวลาที่ใช้ตัดสินใจ</item>
+        <item>ภายใน 1 เดือน</item>
+        <item>ภายใน 3 เดือน</item>
+        <item>ภายใน 6 เดือน</item>
+        <item>ภายใน 1 ปี</item>
+        <item>มากกว่า 1 ปี</item>
+    </string-array>
+
+    <string-array name="activities_reason_no">
+        <item>สาเหตุที่ไม่ซื้อ</item>
+        <item>โปรโมชั่นหรือของแถมไม่ถูกใจ</item>
+        <item>ไปซื้อสินค้ายี่ห้ออื่น</item>
+        <item>ไปซื้อสินค้าร้านอื่น</item>
+        <item>ไม่ผ่านประเมินสินเชื่อ SKL</item>
+        <item>ไม่ผ่านประเมินสินเชื่อ(ที่อื่นๆ)</item>
+        <item>ราคาสินค้าแพงเกินไป</item>
+        <item>สินค้าไม่เหมาะกับพื้นที่ใช้งาน</item>
+        <item>สเปคสินค้ายังไม่ได้ตามที่ต้องการ</item>
+        <item>สมาชิกในองค์กรหรือครอบครัวไม่สนับสนุน</item>
+        <item>หมดช่วงฤดูกาลใช้งาน</item>
+        <item>มีเงินไม่พอซื้อสินค้า</item>
+        <item>อื่นๆ</item>
+    </string-array>
+    
+    <string-array name="account_company_industry">
+        <item>Accounting</item>
+        <item>Agriculture and Non-petrol Natural Resource Extraction</item>
+        <item>Broadcasting Printing and Publishing</item>
+        <item>Brokers</item>
+        <item>Building Supply Retail</item>
+        <item>Business Services</item>
+        <item>Consulting</item>
+        <item>Consumer Services</item>
+        <item>Design, Direction and Creative Management</item>
+        <item>Distributors, Dispatchers and Processors</item>
+        <item>Doctor\'s Offices and Clinics</item>
+        <item>Durable Manufacturing</item>
+        <item>Eating and Drinking Places</item>
+        <item>Entertainment Retail</item>
+        <item>Equipment Rental and Leasing</item>
+        <item>Financial</item>
+        <item>Food and Tobacco Processing</item>
+        <item>Inbound Capital Intensive Processing</item>
+        <item>Inbound Repair and Services</item>
+        <item>Insurance</item>
+        <item>Legal Services</item>
+        <item>Non-Durable Merchandise Retail</item>
+        <item>Outbound Consumer Service</item>
+        <item>Petrochemical Extraction and Distribution</item>
+        <item>Service Retail</item>
+        <item>SIG Affiliations</item>
+        <item>Social Services</item>
+        <item>Special Outbound Trade Contractors</item>
+        <item>Specialty Realty</item>
+        <item>Transportation</item>
+        <item>Utility Creation and Distribution</item>
+        <item>Vehicle Retail</item>
+        <item>Wholesale</item>
+    </string-array>
+    
+    <string-array name="account_company_ownership">
+        <item>Public</item>
+        <item>Private</item>
+        <item>Subsidiary</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="account_billing_payment">
+        <item>Net 30</item>
+        <item>2% 10, Net 30</item>
+        <item>Net 45</item>
+        <item>Net 60</item>
+    </string-array>
+    
+    <string-array name="account_shipping_method">
+        <item>Airborne</item>
+        <item>DHL</item>
+        <item>FedEx</item>
+        <item>UPS</item>
+        <item>Postal Mail</item>
+        <item>Full Load</item>
+        <item>Will Call</item>
+    </string-array>
+
+    <string-array name="chassis_type">
+        <item>รถแทรกเตอร์</item>
+        <item>รถเกี่ยวนวดข้าว</item>
+        <item>รถดำนา</item>
+        <item>รถขุด</item>
+        <item>รถไถเดินตาม</item>
+        <item>เครื่องยนต์</item>
+        <item>รถไถนั่งขับ (KRT)</item>
+    </string-array>
+
+    <string-array name="chassis_status">
+        <item>ใช้งาน</item>
+        <item>รถยึด</item>
+        <item>รถ MAX</item>
+        <item>ยกเลิก</item>
+    </string-array>
+    
+    <string-array name="chassis_sale_condition">
+        <item>ขายสด</item>
+        <item>โครงการประชารัฐ/โครงการของรัฐฯ</item>
+        <item>เช่าซื้อ AD</item>
+        <item>เช่าซื้อ SKL</item>
+        <item>ซื้อผ่าน Dealer</item>
+        <item>สกต</item>
+        <item>สหกรณ์</item>
+        <item>สินเชื่อศรีสวัสดิ์</item>
     </string-array>
 
     <string name="title_activity_settings">Settings</string>

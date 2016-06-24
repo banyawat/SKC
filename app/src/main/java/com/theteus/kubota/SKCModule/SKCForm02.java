@@ -1,7 +1,5 @@
 package com.theteus.kubota.SKCModule;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -12,11 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TabHost;
-import android.widget.Toast;
-
-import com.theteus.kubota.CardViewPager;
 import com.theteus.kubota.R;
-import com.theteus.kubota.RepeatAddressForm;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +32,7 @@ public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_skcform02, container, false);
-        addressList = new ArrayList<addressInstance>();
+        addressList = new ArrayList<>();
         addressList.add(new addressInstance());
         addressList.add(new addressInstance());
         addressList.add(new addressInstance());
@@ -194,7 +188,7 @@ public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, 
         private HashMap<String, String> addressMap;
 
         public addressInstance(){
-            addressMap = new HashMap<String, String>();
+            addressMap = new HashMap<>();
         }
         public void setAddress(EditText addressNoEdit,EditText addressNameEdit,EditText floorEdit,EditText roomEdit,
                                EditText groupEdit,EditText alleyEdit,EditText streetEdit,EditText subDistrictEdit,

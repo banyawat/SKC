@@ -2,26 +2,17 @@ package com.theteus.kubota;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
-
-import com.theteus.kubota.SKCModule.SKCForm01;
-import com.theteus.kubota.SKCModule.SKCForm02;
-import com.theteus.kubota.SKCModule.SKCForm03;
-
 import java.util.ArrayList;
 
 public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
     private FragmentTabHost mTabHost;
-
     private ViewPager mPager;
-    private ScreenSlidePagerAdapter mPagerAdapter;
 
     FloatingActionButton nextButton;
 
@@ -32,8 +23,8 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
     View mainView;
 
     public CardViewPager(Fragment mainFragment, View mainView){
-        viewList = new ArrayList<Fragment>();
-        tabNameList = new ArrayList<String>();
+        viewList = new ArrayList<>();
+        tabNameList = new ArrayList<>();
         this.mainView = mainView;
         this.mainFragment = mainFragment;
     }
@@ -47,6 +38,11 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
         initTabHost(mainFragment, mainView);
         initViewPager(mainView.findViewById(pagerViewId));
         initFLoatingButton(mainView.findViewById(nextButtonViewId));
+        Log.i("TAG", "Current: "+mTabHost.getCurrentTab()+", Size: "+mTabHost.getTabWidget().getTabCount());
+        if(mTabHost.getCurrentTab()+1==mTabHost.getTabWidget().getTabCount())
+            nextButton.setImageResource(R.drawable.ic_check);
+        else
+            nextButton.setImageResource(R.drawable.ic_arrow_forward);
     }
 
     public void init(int pagerViewId){
@@ -70,7 +66,7 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
     }
 
     private void initViewPager(View pagerView){
-
+        ScreenSlidePagerAdapter mPagerAdapter;
         mPager = (ViewPager) pagerView;
         mPagerAdapter = new ScreenSlidePagerAdapter(mainFragment.getFragmentManager());
         for(Fragment frag: viewList)
@@ -78,6 +74,7 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
         mPager.setOffscreenPageLimit(viewList.size()-1);
         mPager.setAdapter(mPagerAdapter);
         mPager.setOnPageChangeListener(this);
+
     }
 
     private void initFLoatingButton(View floatingButtonView){
@@ -87,14 +84,20 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
                 @Override
                 public void onClick(View v) {
                     mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+                    if(mPager.getCurrentItem()+1==mPager.getChildCount())
+                        nextButton.setImageResource(R.drawable.ic_check);
+                    else
+                        nextButton.setImageResource(R.drawable.ic_arrow_forward);
                 }
             });
+
         }
     }
 
-    public void setOrientation(){
-        mTabHost.getTabWidget().setOrientation(LinearLayout.VERTICAL);
+    public void initFloatingButtonMethod(View.OnClickListener v){
+        nextButton.setOnClickListener(v);
     }
+
 
 
     @Override

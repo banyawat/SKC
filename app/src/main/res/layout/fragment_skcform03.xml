@@ -52,17 +52,17 @@
                 android:layout_gravity="center_vertical">
 
                 <Spinner
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/skc_form3_job"
                     android:layout_weight="1" />
 
-                <EditText
-                    android:layout_width="fill_parent"
+                <Spinner
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/skc_form3_interestproduct"
-                    android:layout_weight="1"
-                    android:hint="สินค้าที่สนใจ" />
+                    android:layout_weight="1" />
+
             </LinearLayout>
 
             <LinearLayout

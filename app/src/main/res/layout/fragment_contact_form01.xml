@@ -1,0 +1,197 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".SKCModule.SKCForm01"
+    android:orientation="vertical">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contact_form1_prefix"
+            android:hint="คำนำหน้า"
+            android:cursorVisible="true"
+            android:layout_weight="0.2"
+            android:drawableLeft="@drawable/ic_person_outline" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/contact_form1_name"
+            android:hint="ชื่อ"
+            android:layout_weight="0.4" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/contact_form1_surname"
+            android:layout_weight="0.4"
+            android:hint="นามสกุล" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:id="@+id/contact_form1_gender"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ชาย"
+                android:id="@+id/contact_form1_gender1"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="หญิง"
+                android:id="@+id/contact_form1_gender2" />
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/contact_form1_idnum"
+            android:hint="เลขที่บัตรประชาชน"
+            android:drawableLeft="@drawable/ic_credit_card"
+            android:layout_weight="0.7" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contact_form1_persontype"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="บุคคลทั่วไป"
+                android:id="@+id/contact_form1_persontype1" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="นิติบุคคล"
+                android:id="@+id/contact_form1_persontype2"
+                android:checked="false" />
+        </RadioGroup>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/contact_form1_birthdate"
+            android:layout_column="0"
+            android:drawableLeft="@drawable/ic_cake"
+            android:drawableRight="@drawable/ic_event"
+            android:hint="วัน/เดือน/ปีเกิด" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="อายุ"
+            android:id="@+id/contact_form1_age" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/contact_form1_phone"
+            android:layout_column="0"
+            android:hint="เบอร์โทรศัพท์บ้าน"
+            android:drawableLeft="@drawable/ic_contact_phone"/>
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/contact_form1_email"
+            android:layout_column="0"
+            android:hint="อีเมลล์"
+            android:drawableLeft="@drawable/ic_contact_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/contact_form1_fax"
+            android:layout_column="0"
+            android:hint="แฟกซ์"
+            android:drawableLeft="@drawable/ic_contact_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/contact_form1_sklphone"
+            android:hint="เบอร์โทร SKL"
+            android:drawableLeft="@drawable/ic_contact_phone" />
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/contact_form1_mobphone1"
+            android:hint="เบอร์มือถือ 1"
+            android:drawableLeft="@drawable/ic_contact_phone" />
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/contact_form1_mobphone2"
+            android:hint="เบอร์มือถือ2"
+            android:drawableLeft="@drawable/ic_contact_phone" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/contact_form1_productnumber"
+            android:hint="จำนวนรถที่เป็นเจ้าของ"
+            android:drawableLeft="@drawable/ic_contact_phone" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="มีการอัพเดทจาก Welcome"
+            android:id="@+id/contact_form1_welcomebox" />
+
+    </TableRow>
+</TableLayout>
+

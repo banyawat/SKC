@@ -106,7 +106,8 @@
             android:layout_column="0"
             android:drawableLeft="@drawable/ic_cake"
             android:drawableRight="@drawable/ic_event"
-            android:hint="วัน/เดือน/ปีเกิด" />
+            android:hint="วัน/เดือน/ปีเกิด"
+            android:focusable="false" />
 
         <TextView
             android:layout_width="wrap_content"

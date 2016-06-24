@@ -1,0 +1,197 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitiesModule.ActivitiesForm01"
+    android:orientation="vertical"
+    android:paddingBottom="25dp"
+    android:paddingTop="25dp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.5"
+        android:gravity="center_horizontal"
+        android:weightSum="5"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:src="@drawable/ic_event"
+            android:layout_gravity="center_vertical" />
+
+        <Spinner
+            android:layout_width="400dp"
+            android:layout_height="match_parent"
+            android:id="@+id/activities_form_type"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/list_item_padding_sides"
+            android:baselineAligned="false">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/activities_form_subject"
+                android:drawableLeft="@drawable/ic_work_black"
+                android:hint="Subject"
+                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/activities_form_startdate"
+                android:layout_gravity="center_horizontal"
+                android:hint="Start Date"
+                android:drawableLeft="@drawable/ic_event_note_black"
+                android:focusable="false"
+                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:src="@drawable/ic_local_grocery_store"
+                    android:layout_gravity="center_vertical" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_decisionstatus"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/list_item_padding_sides" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:src="@drawable/ic_thumb_up"
+                    android:id="@+id/imageView3"
+                    android:layout_gravity="center_vertical" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_decisionreason"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/list_item_padding_sides">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/activities_form_regard"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/ic_person_pin_black"
+                android:hint="Regarding"
+                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/activities_form_duedate"
+                android:layout_gravity="center_horizontal"
+                android:focusable="false"
+                android:hint="Due Date"
+                android:drawableLeft="@drawable/ic_event_note_black"
+                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:src="@drawable/ic_av_timer"
+                    android:id="@+id/imageView4"
+                    android:layout_gravity="center_vertical" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_decisiontime"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/list_item_padding_sides" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:src="@drawable/ic_thumb_down"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/imageView5" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_decisionreason_no"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/activities_form_description"
+        android:layout_weight="2.5"
+        android:hint="Description"
+        android:drawableLeft="@drawable/ic_description"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
+
+</LinearLayout>
