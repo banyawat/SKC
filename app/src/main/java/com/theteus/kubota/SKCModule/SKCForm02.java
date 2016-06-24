@@ -15,7 +15,7 @@ import com.theteus.kubota.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
+public class SKCForm02 extends Fragment {
     Button addrMenu1, addrMenu2, addrMenu3;
     EditText addrNoEdit, addrNameEdit, floorEdit, roomEdit,
             groupEdit, alleyEdit, streetEdit, subDistrictEdit,
@@ -67,13 +67,16 @@ public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, 
                     case 0:
                         return;
                     case 1:
+                        addrMenu2.setBackgroundResource(R.drawable.vertical_tab_inactive);
                         saveStatusEditText();
                         break;
                     case 2:
+                        addrMenu3.setBackgroundResource(R.drawable.vertical_tab_inactive);
                         saveStatusEditText();
                         break;
                     default: break;
                 }
+                addrMenu1.setBackgroundResource(R.drawable.vertical_tab_active);
                 pageID=0;
                 restoreEditText();
             }
@@ -82,18 +85,20 @@ public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, 
         addrMenu2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("TAGGY", "Teststesetset page"+pageID);
                 switch (pageID){
                     case 0:
+                        addrMenu1.setBackgroundResource(R.drawable.vertical_tab_inactive);
                         saveStatusEditText();
                         break;
                     case 1:
                         return;
                     case 2:
+                        addrMenu3.setBackgroundResource(R.drawable.vertical_tab_inactive);
                         saveStatusEditText();
                         break;
                     default: break;
                 }
+                addrMenu2.setBackgroundResource(R.drawable.vertical_tab_active);
                 pageID=1;
                 restoreEditText();
             }
@@ -104,10 +109,12 @@ public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, 
             public void onClick(View v) {
                 switch (pageID){
                     case 0:
+                        addrMenu1.setBackgroundResource(R.drawable.vertical_tab_inactive);
                         saveStatusEditText();
                         restoreEditText();
                         break;
                     case 1:
+                        addrMenu2.setBackgroundResource(R.drawable.vertical_tab_inactive);
                         saveStatusEditText();
                         restoreEditText();
                         break;
@@ -115,6 +122,7 @@ public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, 
                         return;
                     default: break;
                 }
+                addrMenu3.setBackgroundResource(R.drawable.vertical_tab_active);
                 pageID=2;
                 restoreEditText();
             }
@@ -163,25 +171,6 @@ public class SKCForm02 extends Fragment implements TabHost.OnTabChangeListener, 
         districtEdit.setError(null);
         provinceEdit.setError(null);
         postalEdit.setError(null);
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
-    @Override
-    public void onTabChanged(String tabId) {
-
     }
 
     private class addressInstance{

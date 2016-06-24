@@ -28,13 +28,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="แบบสอบถาม"
-                android:id="@+id/skc_form3_menu1" />
+                android:id="@+id/skc_form3_menu1"
+                android:background="@drawable/vertical_tab_active" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="แบบสอบถาม Welcome Call"
-                android:id="@+id/skc_form3_menu2" />
+                android:id="@+id/skc_form3_menu2"
+                android:background="@drawable/vertical_tab_inactive" />
 
         </LinearLayout>
 
@@ -99,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:text="เพิ่ม"
                     android:id="@+id/skc_form3_addbutton"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/button_shape_active" />
 
             </LinearLayout>
         </LinearLayout>

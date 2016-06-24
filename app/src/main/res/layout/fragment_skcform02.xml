@@ -12,6 +12,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/vertical_tab_active"
             android:text="ที่อยู่ตามบัตรรับประกัน/ส่งเอกสาร"
             android:id="@+id/skc_form2_menu01" />
 
@@ -19,13 +20,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="ที่อยู่จาก Welcome Call"
-            android:id="@+id/skc_form2_menu02" />
+            android:id="@+id/skc_form2_menu02"
+            android:background="@drawable/vertical_tab_inactive" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="ที่อยู่ SKL"
-            android:id="@+id/skc_form2_menu03" />
+            android:id="@+id/skc_form2_menu03"
+            android:background="@drawable/vertical_tab_inactive" />
     </LinearLayout>
 
     <RelativeLayout
