@@ -5,6 +5,11 @@ package com.theteus.kubota.ActivitiesModule;
  */
 public class ActivityInstance {
     // Master Tables
+    public static final String[] MASTER_STATUS = new String[] {
+            "Open",
+            "Close",
+            "Complete"
+    };
     public static final String[] MASTER_ACTIVITIES_TYPE = new String[] {
             "FollowUp Call",
             "Customer Visit",
@@ -30,7 +35,7 @@ public class ActivityInstance {
             "มีอะไหล่พร้อม",
             "ร้านอยู่ใกล้บ้าน"
     };
-    public static final String[] MASTER_SEASON_TO_NOT_BUY = new String[] {
+    public static final String[] MASTER_REASON_TO_NOT_BUY = new String[] {
             "โปรโมชั่นหรือของแถมไม่ถูกใจ",
             "ไปซื้อสินค้ายี่ห้ออื่น",
             "ไปซื้อสินค้าร้านอื่น",
@@ -46,7 +51,7 @@ public class ActivityInstance {
     };
     // Primary Key and Supplements
     public String id;
-    public boolean flag_complete;
+    public int status;
     public String lastUser;
     // Attributes
     public int type;

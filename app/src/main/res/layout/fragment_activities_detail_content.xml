@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="12dp">
+
+    <View
+        android:id="@+id/activities_detail_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        android:layout_marginTop="0dp"
+        android:alpha="0.12" />
+
+    <!--SUBJECT-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="24dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp">
+        <View
+            android:id="@+id/activities_detail_subject_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_subject_icon"
+            android:layout_toEndOf="@id/activities_detail_subject_icon"
+            android:layout_alignTop="@id/activities_detail_subject_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="Subject" />
+        <TextView
+            android:id="@+id/activities_detail_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_subject_icon"
+            android:layout_toRightOf="@id/activities_detail_subject_icon"
+            android:layout_alignBottom="@id/activities_detail_subject_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--START DATE-->
+        <View
+            android:id="@+id/activities_detail_start_date_icon"
+            android:layout_below="@id/activities_detail_subject_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_start_date_icon"
+            android:layout_toEndOf="@id/activities_detail_start_date_icon"
+            android:layout_alignTop="@id/activities_detail_start_date_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="Start Date" />
+        <TextView
+            android:id="@+id/activities_detail_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_start_date_icon"
+            android:layout_toRightOf="@id/activities_detail_start_date_icon"
+            android:layout_alignBottom="@id/activities_detail_start_date_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--DECISION-->
+        <View
+            android:id="@+id/activities_detail_decision_icon"
+            android:layout_below="@id/activities_detail_start_date_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_decision_icon"
+            android:layout_toEndOf="@id/activities_detail_decision_icon"
+            android:layout_alignTop="@id/activities_detail_decision_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="สถานะการตัดสินใจซื้อ" />
+        <TextView
+            android:id="@+id/activities_detail_decision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_decision_icon"
+            android:layout_toRightOf="@id/activities_detail_decision_icon"
+            android:layout_alignBottom="@id/activities_detail_decision_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--DURATION-->
+        <View
+            android:id="@+id/activities_detail_duration_icon"
+            android:layout_below="@id/activities_detail_decision_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_duration_icon"
+            android:layout_toEndOf="@id/activities_detail_duration_icon"
+            android:layout_alignTop="@id/activities_detail_duration_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="ระยะเวลาที่ใช้ตัดสินใจ" />
+        <TextView
+            android:id="@+id/activities_detail_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_duration_icon"
+            android:layout_toRightOf="@id/activities_detail_duration_icon"
+            android:layout_alignBottom="@id/activities_detail_duration_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--REGARDING-->
+        <View
+            android:id="@+id/activities_detail_regard_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_regard_icon"
+            android:layout_toEndOf="@id/activities_detail_regard_icon"
+            android:layout_alignTop="@id/activities_detail_regard_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="Regarding" />
+        <TextView
+            android:id="@+id/activities_detail_regard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_regard_icon"
+            android:layout_toRightOf="@id/activities_detail_regard_icon"
+            android:layout_alignBottom="@id/activities_detail_regard_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--Due Date-->
+        <View
+            android:id="@+id/activities_detail_due_date_icon"
+            android:layout_below="@id/activities_detail_regard_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginStart="280dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_due_date_icon"
+            android:layout_toEndOf="@id/activities_detail_due_date_icon"
+            android:layout_alignTop="@id/activities_detail_due_date_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="Due Date" />
+        <TextView
+            android:id="@+id/activities_detail_due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_due_date_icon"
+            android:layout_toRightOf="@id/activities_detail_due_date_icon"
+            android:layout_alignBottom="@id/activities_detail_due_date_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--Reason To Buy-->
+        <View
+            android:id="@+id/activities_detail_buy_icon"
+            android:layout_below="@id/activities_detail_due_date_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginStart="280dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_buy_icon"
+            android:layout_toEndOf="@id/activities_detail_buy_icon"
+            android:layout_alignTop="@id/activities_detail_buy_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="สาเหตุที่ซื้อ" />
+        <TextView
+            android:id="@+id/activities_detail_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_buy_icon"
+            android:layout_toRightOf="@id/activities_detail_buy_icon"
+            android:layout_alignBottom="@id/activities_detail_buy_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--Reason To Not Buy-->
+        <View
+            android:id="@+id/activities_detail_not_buy_icon"
+            android:layout_below="@id/activities_detail_buy_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginStart="280dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_not_buy_icon"
+            android:layout_toEndOf="@id/activities_detail_not_buy_icon"
+            android:layout_alignTop="@id/activities_detail_not_buy_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="สาเหตุที่ไม่ซื้อ" />
+        <TextView
+            android:id="@+id/activities_detail_not_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_not_buy_icon"
+            android:layout_toRightOf="@id/activities_detail_not_buy_icon"
+            android:layout_alignBottom="@id/activities_detail_not_buy_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <!--Description-->
+        <View
+            android:id="@+id/activities_detail_description_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="560dp"
+            android:layout_marginStart="560dp"
+            android:background="@drawable/icon_replacement"
+            android:alpha="0.38" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activities_detail_description_icon"
+            android:layout_toEndOf="@id/activities_detail_description_icon"
+            android:layout_alignTop="@id/activities_detail_description_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="Description" />
+        <TextView
+            android:id="@+id/activities_detail_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/activities_detail_description_icon"
+            android:layout_toRightOf="@id/activities_detail_description_icon"
+            android:layout_alignBottom="@id/activities_detail_description_icon"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+    </RelativeLayout>
+
+</RelativeLayout>

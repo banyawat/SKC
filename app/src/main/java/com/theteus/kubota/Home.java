@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.theteus.kubota.AccountModule.Account;
 import com.theteus.kubota.ActivitiesModule.Activities;
+import com.theteus.kubota.ActivitiesModule.ActivitiesDetailMain;
 import com.theteus.kubota.ChassisModule.Chassis;
 import com.theteus.kubota.ContactModule.Contact;
 import com.theteus.kubota.LeadModule.LeadDetailMain;
@@ -188,6 +189,16 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 4:
                 mPagerAdapter.clearPage();
+
+                // Start Passing Argument
+                // TODO : REMOVE WHEN IMPLEMENTING IS COMPLETED
+                ActivitiesDetailMain fragment = new ActivitiesDetailMain();
+                Bundle args = new Bundle();
+                args.putString(ActivitiesDetailMain.ARG_PARAM1, "A0001");
+                fragment.setArguments(args);
+                mPagerAdapter.addPage(fragment);
+                // End Passing Argument
+
                 mPagerAdapter.addPage(new Activities());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);
@@ -246,5 +257,42 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         if(getSupportActionBar()!=null)
             getSupportActionBar().setTitle(FEED_ACTIVITY_TITLE);
         lastPage=0;
+    }
+
+    //For Fragment to use
+    public ScreenSlidePagerAdapter getmPagerAdapter() {
+        return mPagerAdapter;
+    }
+    public void changeMenu(int position) {
+        pageID = position;
+        menuList.get(lastPage).setBgColor(0);
+        menuList.get(position).setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
+        initMenuFragment();
+        lastPage=position;
+
+        if(getSupportActionBar() != null) {
+            switch(position) {
+                case 1:
+                    getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
+                    break;
+                case 2:
+                    getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
+                    break;
+                case 3:
+                    getSupportActionBar().setTitle(LEAD_ACITIVITY_TITLE);
+                    break;
+                case 4:
+                    getSupportActionBar().setTitle(ACTIVITIES_ACITIVITY_TITLE);
+                    break;
+                case 5:
+                    getSupportActionBar().setTitle(ACCOUNT_ACITIVITY_TITLE);
+                    break;
+                case 6:
+                    getSupportActionBar().setTitle(CHASIS_ACITIVITY_TITLE);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

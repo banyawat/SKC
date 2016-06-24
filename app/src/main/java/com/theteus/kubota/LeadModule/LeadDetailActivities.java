@@ -13,9 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.theteus.kubota.ActivitiesModule.Activities;
+import com.theteus.kubota.ActivitiesModule.ActivitiesDetailMain;
 import com.theteus.kubota.ActivitiesModule.ActivityInstance;
 import com.theteus.kubota.ActivitiesModule.DummyActivityInstance;
+import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
+import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +95,25 @@ public class LeadDetailActivities extends Fragment {
             holder.mSubject.setText(mActivities.get(position).subject);
             holder.mDueDate.setText(mActivities.get(position).dueDate);
             holder.mLastUser.setText(mActivities.get(position).lastUser);
+
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Home home = (Home) getActivity();
+                    ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
+
+                    mPagerAdapter.clearPage();
+                    ActivitiesDetailMain fragment = new ActivitiesDetailMain();
+                    Bundle args = new Bundle();
+                    args.putString(ActivitiesDetailMain.ARG_PARAM1, mActivities.get(position).id);
+                    fragment.setArguments(args);
+                    mPagerAdapter.addPage(fragment);
+                    mPagerAdapter.addPage(new Activities());
+                    mPagerAdapter.notifyDataSetChanged();
+
+                    home.changeMenu(4);
+                }
+            });
         }
 
         @Override

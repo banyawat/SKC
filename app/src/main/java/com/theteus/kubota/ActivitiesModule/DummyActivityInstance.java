@@ -20,6 +20,7 @@ public class DummyActivityInstance {
     static {
         // Primary Key
         String id[] = new String[] {"A0001", "A0002", "A0003", "A0004", "A0005", "A0006", "A0007", "A0008", "A0009", "A0010"};
+        int status[] = new int[] {0, 1, 2, 0, 1, 2, 0, 1, 2, 0};
         String lastUser[] = new String[] {"someAdmin", "anyAdmin", "allAdmin", "noAdmin", "thisAdmin", "thatAdmin", "thoseAdmin", "theseAdmin", "justAdmin", "admin"};
         // Attributes
         int type[] = new int[] {2, 0, 1, 0, 0, 2, 0, 2, 1, 0};
@@ -31,11 +32,12 @@ public class DummyActivityInstance {
         int decisionDuration[] = new int[] {4, -1, 3, -1, 2, -1, 1, -1, 0, -1};
         int reasonToBuy[] = new int[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
         int reasonToNotBuy[] = new int[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-        String description[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -", "- - -", "- - -", "- - -", "- - -", "- - -"};
+        String description[] = new String[] {null, null, null, null, null, null, null, null, null, null};
 
         for(int i = 0; i < COUNT; i++) {
             ActivityInstance activity = new ActivityInstance();
             activity.id = id[i];
+            activity.status = status[i];
             activity.lastUser = lastUser[i];
             activity.type = type[i];
             activity.subject = subject[i];
