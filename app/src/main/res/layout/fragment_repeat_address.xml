@@ -1,109 +1,168 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RepeatAddressForm"
-    android:padding="25dp">
+    android:padding="25dp"
+    android:orientation="vertical">
 
 
-    <TableRow
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5">
 
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/repeat_addrnum"
-            android:hint="บ้านเลขที่"
-            android:layout_weight="0.2"
-            android:drawableLeft="@drawable/ic_domain"/>
+            android:layout_weight="1">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:id="@+id/repeat_addrnum"
+                android:hint="บ้านเลขที่"
+                android:drawableLeft="@drawable/ic_domain"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_addrvillage"
-            android:hint="ชื่อหมู่บ้าน/อาคาร"
-            android:layout_weight="0.5" />
+            android:layout_weight="2.5">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_addrvillage"
+                android:hint="ชื่อหมู่บ้าน/อาคาร"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_floor"
-            android:hint="ชั้น"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.5">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_floor"
+                android:ems="2"
+                android:hint="ชั้น"
+                android:layout_weight="0.2" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_room"
-            android:hint="ห้อง"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.5">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_room"
+                android:ems="2"
+                android:hint="ห้อง"
+                android:layout_weight="0.2" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_group"
-            android:hint="หมู่"
-            android:layout_weight="0.2" />
-    </TableRow>
+            android:layout_weight="0.5">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_group"
+                android:ems="2"
+                android:hint="หมู่"
+                android:layout_weight="0.2" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
-    <TableRow
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="8">
 
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_alley"
-            android:hint="ซอย" />
+            android:layout_weight="2">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_alley"
+                android:hint="ซอย" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_street"
-            android:hint="ถนน"
-            android:layout_span="4" />
-    </TableRow>
+            android:layout_weight="2">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_street"
+                android:hint="ถนน"
+                android:ems="3" />
+        </android.support.design.widget.TextInputLayout>>
+    </LinearLayout>
 
-    <TableRow
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-        <EditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_subdistrict"
-            android:hint="ตำบล"
-            android:layout_weight="0.2" />
+            android:layout_weight="1">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_subdistrict"
+                android:hint="ตำบล" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_width="fill_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_district"
-            android:hint="อำเภอ"
-            android:layout_weight="0.2" />
-    </TableRow>
+            android:layout_weight="1">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_district"
+                android:hint="อำเภอ" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
-    <TableRow
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5">
 
-        <EditText android:id="@+id/repeat_province"
-            android:layout_column="0"
-            android:hint="จังหวัด"
-            android:layout_weight="0.2"
-            android:drawableLeft="@drawable/ic_location_city"/>
-
-        <EditText
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_postalcode"
-            android:layout_column="1"
-            android:hint="รหัสไปรษณีย์"
-            android:layout_weight="0.1" />
-    </TableRow>
-</TableLayout>
+            android:layout_weight="2">
+            <EditText android:id="@+id/repeat_province"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="จังหวัด"
+                android:drawableLeft="@drawable/ic_location_city"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/repeat_postalcode"
+                android:hint="รหัสไปรษณีย์" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+</LinearLayout>

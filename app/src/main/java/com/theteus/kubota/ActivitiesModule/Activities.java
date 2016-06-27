@@ -32,7 +32,7 @@ public class Activities extends Fragment {
             public void onClick(View v) {
                 HashMap<String, String> act01Result = act01.getAndValidateEntry();
                 if(act01Result==null){
-                    Log.i("FUCK", "FUCK");
+                    Log.i("FUCK", "Can't forward");
                 }
             }
         });

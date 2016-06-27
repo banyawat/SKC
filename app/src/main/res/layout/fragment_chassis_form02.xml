@@ -1,73 +1,195 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.theteus.kubota.ChassisModule.ChassisForm02"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/linearLayout4"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:weightSum="3"
+            android:layout_marginRight="@dimen/list_item_padding_sides">
 
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form2_contrac_no"
-                android:hint="เลขที่สัญญา" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form2_purchase_date"
-                android:hint="วันที่ซื้อ" />
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_confirmation_number" />
 
-            <EditText
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form2_contrac_no"
+                    android:ems="10"
+                    android:hint="เลขที่สัญญา" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form2_customer"
-                android:hint="ลูกค้า" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form2_purchase_date"
+                    android:focusable="false"
+                    android:ems="10"
+                    android:hint="วันที่ซื้อ" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_person" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/chassis_form2_customer"
+                    android:hint="ลูกค้า" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_alignTop="@+id/linearLayout5"
+            android:layout_toRightOf="@+id/linearLayout5"
+            android:layout_toEndOf="@+id/linearLayout5"
+            android:weightSum="3"
+            android:layout_marginLeft="@dimen/list_item_padding_sides">
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form2_salecondition" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="300dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
-            <EditText
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_local_grocery_store" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form2_salecondition" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form2_user"
-                android:hint="ชื่อผู้ใช้รถ" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
 
-            <EditText
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_person_pin_black" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form2_user"
+                    android:hint="ชื่อผู้ใช้รถ" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form2_user_tel"
-                android:hint="เบอร์โทรศัพท์ผู้ใช้รถ" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_call" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form2_user_tel"
+                    android:hint="เบอร์โทรศัพท์ผู้ใช้รถ"
+                    android:inputType="numberDecimal" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/chassis_form2_dealer"
-        android:hint="ร้านค้า" />
+        android:layout_below="@+id/linearLayout4"
+        android:layout_alignLeft="@+id/linearLayout4"
+        android:layout_alignStart="@+id/linearLayout4"
+        android:layout_alignRight="@+id/linearLayout4"
+        android:layout_alignEnd="@+id/linearLayout4">
 
-</LinearLayout>
+        <ImageView
+            android:layout_width="@dimen/icon_resol"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_store"
+            android:layout_gravity="bottom" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/chassis_form2_dealer"
+            android:hint="ร้านค้า"
+            android:layout_weight="1"
+            android:layout_below="@+id/linearLayout4"
+            android:layout_alignLeft="@+id/linearLayout4"
+            android:layout_alignStart="@+id/linearLayout4"
+            android:layout_alignRight="@+id/linearLayout4"
+            android:layout_alignEnd="@+id/linearLayout4"
+            android:layout_marginTop="@dimen/list_item_padding_sides" />
+    </LinearLayout>
+
+</RelativeLayout>

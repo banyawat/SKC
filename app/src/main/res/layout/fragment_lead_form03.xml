@@ -18,7 +18,7 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="34dp"
+            android:layout_width="@dimen/icon_resol"
             android:layout_height="37dp"
             android:src="@drawable/ic_local_grocery_store"
             />
@@ -40,6 +40,11 @@
                 android:layout_below="@id/lead_form3_spinner1label"
                 />
         </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_car" />
 
         <EditText
             android:layout_width="fill_parent"
@@ -91,7 +96,7 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="34dp"
+            android:layout_width="@dimen/icon_resol"
             android:layout_height="37dp"
             android:src="@drawable/ic_local_activity" />
 
@@ -114,7 +119,7 @@
         </RelativeLayout>
 
         <ImageView
-            android:layout_width="34dp"
+            android:layout_width="@dimen/icon_resol"
             android:layout_height="37dp"
             android:src="@drawable/ic_terrain" />
 

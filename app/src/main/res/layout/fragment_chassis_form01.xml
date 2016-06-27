@@ -3,78 +3,161 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.theteus.kubota.ChassisModule.ChassisForm01"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="6"
+    android:padding="@dimen/list_item_padding_sides">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="2">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:padding="10dp">
 
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form1_carno"
-                android:layout_gravity="center_horizontal"
-                android:hint="หมายเลขรถ" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form1_cartype"
-                android:layout_gravity="center_horizontal" />
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_confirmation_number" />
 
-            <Spinner
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form1_carno"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="หมายเลขรถ" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form1_carstatus"
-                android:layout_gravity="center_horizontal" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_car" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form1_cartype"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event_available" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form1_carstatus"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:padding="10dp">
 
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form1_engineno"
-                android:layout_gravity="center_horizontal"
-                android:hint="หมายเลขเครื่อง" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form1_product_model"
-                android:layout_gravity="center_horizontal"
-                android:hint="รุ่น" />
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_confirmation_number" />
 
-            <EditText
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form1_engineno"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="หมายเลขเครื่อง" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/chassis_form1_status_change_date"
-                android:layout_gravity="center_horizontal"
-                android:hint="วันที่เปลี่ยนสถานะ" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_local_shipping" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form1_product_model"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="รุ่น" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chassis_form1_status_change_date"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="วันที่เปลี่ยนสถานะ"
+                    android:focusable="false" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:inputType="textMultiLine"
-        android:ems="10"
+        android:ems="40"
         android:id="@+id/chassis_form1_remarkadms"
-        android:layout_weight="3"
+        android:layout_weight="1"
         android:layout_gravity="center_horizontal"
         android:hint="หมายเหตุจาก ADMS" />
 </LinearLayout>

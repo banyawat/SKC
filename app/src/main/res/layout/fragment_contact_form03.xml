@@ -21,17 +21,46 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical">
 
-            <Spinner
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/contact_form3_job"
-                android:layout_weight="1" />
-
-            <Spinner
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/contact_form3_goods"
-                android:layout_weight="1" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_work_black" />
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_form3_job"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_terrain"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/contact_form3_goods"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -39,21 +68,54 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="3"
             android:layout_weight="1"
             android:layout_gravity="center">
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/contact_form3_interestproduct" />
-
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/contact_form3_agriarea"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_car" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_form3_interestproduct" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:hint="พืชที่เพาะปลูก(ไร่)" />
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_terrain"
+                    android:id="@+id/imageView7"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/contact_form3_agriarea"
+                        android:hint="พืชที่เพาะปลูก(ไร่)" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -64,15 +126,15 @@
             android:id="@+id/contact_form3_addbutton"
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="@drawable/button_shape_active" />
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/linearLayout3"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/linearLayout3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -104,7 +166,14 @@
             android:layout_centerVertical="true"
             android:layout_alignRight="@+id/contact_form3_limit"
             android:layout_alignEnd="@+id/contact_form3_limit"
-            android:id="@+id/linearLayout2">
+            android:id="@+id/linearLayout2"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/icon_resol"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_filter_vintage"
+                android:id="@+id/imageView8" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -112,11 +181,23 @@
                 android:id="@+id/contact_form3_agritype"
                 android:layout_weight="1" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_local_florist"
+                android:id="@+id/imageView9" />
+
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/contact_form3_ricemethod"
                 android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_terrain"
+                android:id="@+id/imageView10" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -125,14 +206,30 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="@dimen/icon_resol"
             android:layout_height="wrap_content"
-            android:id="@+id/contact_form3_income"
-            android:ems="10"
-            android:hint="รายได้ต่อปี"
+            android:src="@drawable/ic_monetization_on"
+            android:id="@+id/imageView11"
             android:layout_below="@+id/linearLayout2"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_toRightOf="@+id/imageView11"
+            android:layout_toEndOf="@+id/imageView11">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contact_form3_income"
+                android:ems="10"
+                android:hint="รายได้ต่อปี"
+                 />
+        </android.support.design.widget.TextInputLayout>
+
     </RelativeLayout>
 </RelativeLayout>

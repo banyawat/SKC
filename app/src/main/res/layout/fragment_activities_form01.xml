@@ -19,7 +19,7 @@
         android:layout_gravity="center">
 
         <ImageView
-            android:layout_width="31dp"
+            android:layout_width="@dimen/icon_resol"
             android:layout_height="31dp"
             android:src="@drawable/ic_event"
             android:layout_gravity="center_vertical" />
@@ -70,10 +70,11 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="31dp"
+                    android:layout_width="@dimen/icon_resol"
                     android:layout_height="31dp"
                     android:src="@drawable/ic_local_grocery_store"
                     android:layout_gravity="center_vertical" />
@@ -91,10 +92,11 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="31dp"
+                    android:layout_width="@dimen/icon_resol"
                     android:layout_height="31dp"
                     android:src="@drawable/ic_thumb_up"
                     android:id="@+id/imageView3"
@@ -140,10 +142,11 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="31dp"
+                    android:layout_width="@dimen/icon_resol"
                     android:layout_height="31dp"
                     android:src="@drawable/ic_av_timer"
                     android:id="@+id/imageView4"
@@ -162,10 +165,11 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="31dp"
+                    android:layout_width="@dimen/icon_resol"
                     android:layout_height="31dp"
                     android:src="@drawable/ic_thumb_down"
                     android:layout_gravity="center_vertical"

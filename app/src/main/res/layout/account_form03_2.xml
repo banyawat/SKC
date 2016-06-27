@@ -61,10 +61,22 @@
             android:layout_height="wrap_content"
             android:text="Shipping" />
 
-        <Spinner
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/account_form3_2_shippingmethod" />
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/icon_resol"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_local_shipping" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/account_form3_2_shippingmethod" />
+        </LinearLayout>
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -97,11 +109,24 @@
             android:layout_height="wrap_content"
             android:text="Description" />
 
-        <EditText
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/account_form3_2_description" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icon_resol"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_description" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/account_form3_2_description" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

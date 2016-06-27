@@ -11,21 +11,22 @@
         android:layout_height="match_parent">
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2">
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/skc_form1_prefix"
                 android:hint="คำนำหน้า"
                 android:cursorVisible="true"
-                android:layout_weight="0.2"
                 android:drawableLeft="@drawable/ic_person_outline" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4">
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -33,12 +34,13 @@
                 android:ems="10"
                 android:id="@+id/skc_form1_name"
                 android:hint="ชื่อ"
-                android:layout_weight="0.4" />
+                 />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4">
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -156,7 +158,7 @@
                 android:id="@+id/skc_form1_phone"
                 android:layout_column="0"
                 android:hint="เบอร์โทรศัพท์บ้าน"
-                android:drawableLeft="@drawable/ic_contact_phone"
+                android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
         </android.support.design.widget.TextInputLayout>
@@ -165,14 +167,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <EditText
-                android:inputType="numberDecimal"
                 android:ems="10"
                 android:id="@+id/skc_form1_email"
                 android:layout_column="0"
                 android:hint="อีเมลล์"
-                android:drawableLeft="@drawable/ic_contact_phone"
+                android:drawableLeft="@drawable/ic_email_18dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -184,7 +186,7 @@
                 android:id="@+id/skc_form1_fax"
                 android:layout_column="0"
                 android:hint="แฟกซ์"
-                android:drawableLeft="@drawable/ic_contact_phone"
+                android:drawableLeft="@drawable/ic_print_18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </android.support.design.widget.TextInputLayout>
@@ -203,7 +205,7 @@
                 android:ems="10"
                 android:id="@+id/skc_form1_sklphone"
                 android:hint="เบอร์โทร SKL"
-                android:drawableLeft="@drawable/ic_contact_phone"
+                android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
         </android.support.design.widget.TextInputLayout>
@@ -218,7 +220,7 @@
                 android:ems="10"
                 android:id="@+id/skc_form1_mobphone1"
                 android:hint="เบอร์มือถือ 1"
-                android:drawableLeft="@drawable/ic_contact_phone" />
+                android:drawableLeft="@drawable/ic_call_18dp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -229,7 +231,7 @@
                 android:ems="10"
                 android:id="@+id/skc_form1_mobphone2"
                 android:hint="เบอร์มือถือ2"
-                android:drawableLeft="@drawable/ic_contact_phone"
+                android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
         </android.support.design.widget.TextInputLayout>
@@ -239,12 +241,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <EditText
+
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/skc_form1_productnumber"
             android:hint="จำนวนรถที่เป็นเจ้าของ"
-            android:drawableLeft="@drawable/ic_contact_phone" />
+            android:drawableLeft="@drawable/ic_action_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
 
     </TableRow>
 </TableLayout>

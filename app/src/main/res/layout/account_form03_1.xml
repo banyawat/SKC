@@ -20,24 +20,63 @@
                 android:layout_height="wrap_content"
                 android:text="Company Profile" />
 
-            <Spinner
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_industry"
-                android:layout_gravity="center_horizontal" />
+                android:gravity="center_vertical">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_sic"
-                android:layout_gravity="center_horizontal"
-                android:hint="SIC Code" />
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_work_black" />
 
-            <Spinner
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_industry"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_ownership"
-                android:layout_gravity="center_horizontal" />
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_barcode_1" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_sic"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="SIC Code" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:src="@drawable/ic_person" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_ownership"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -51,17 +90,41 @@
                 android:layout_height="wrap_content"
                 android:text="Marketing" />
 
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_originate_lead"
-                android:hint="Originating Lead" />
+                android:layout_height="wrap_content">
 
-            <EditText
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_person" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_originate_lead"
+                    android:hint="Originating Lead" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_last_date"
-                android:hint="Last Campaign Date" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_last_date"
+                    android:hint="Last Campaign Date"
+                    android:focusable="false" />
+            </LinearLayout>
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -110,22 +173,47 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <EditText
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_currency"
-                android:layout_gravity="center_horizontal"
-                android:hint="Currency" />
+                android:layout_height="wrap_content">
 
-            <EditText
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_work_black" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_currency"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="Currency" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_creditlimit"
-                android:layout_gravity="center_horizontal"
-                android:hint="Credit Limit" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_work_black"
+                    android:hapticFeedbackEnabled="false" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_creditlimit"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="Credit Limit" />
+
+            </LinearLayout>
 
             <RadioGroup
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
@@ -155,16 +243,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="@dimen/icon_resol"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_work_black" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/account_form3_1_paymentterm"
                 android:layout_gravity="center_horizontal" />
+
         </LinearLayout>
 
     </LinearLayout>

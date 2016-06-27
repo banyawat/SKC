@@ -279,16 +279,16 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                     getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
                     break;
                 case 3:
-                    getSupportActionBar().setTitle(LEAD_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(LEAD_ACTIVITY_TITLE);
                     break;
                 case 4:
-                    getSupportActionBar().setTitle(ACTIVITIES_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);
                     break;
                 case 5:
-                    getSupportActionBar().setTitle(ACCOUNT_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(ACCOUNT_ACTIVITY_TITLE);
                     break;
                 case 6:
-                    getSupportActionBar().setTitle(CHASIS_ACITIVITY_TITLE);
+                    getSupportActionBar().setTitle(CHASSIS_ACTIVITY_TITLE);
                     break;
                 default:
                     break;

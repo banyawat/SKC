@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class ContactForm03 extends Fragment {
     Spinner jobSpinner, goodsSpinner, interestProductSpinner, agriTypeSpinner, harvestMethodSpinner, riceMethodSpinner;
-    EditText goodsAreaEdit, interestProductEdit, incomeEdit;
+    EditText goodsAreaEdit, incomeEdit;
     TextView limitText;
     Button addButton;
 
@@ -62,7 +62,7 @@ public class ContactForm03 extends Fragment {
                     goodsAreaEdit.setText("");
                     goodsAreaEdit.setError(null);
                     limitText.setText(adapter.getItemCount() + "/5");
-                    if (adapter.getItemCount() == 5) {
+                    if (adapter.getItemCount() >= 5) {
                         jobSpinner.setEnabled(false);
                         goodsSpinner.setEnabled(false);
                         goodsAreaEdit.setEnabled(false);
@@ -146,13 +146,15 @@ public class ContactForm03 extends Fragment {
                             @Override
                             public void onDismiss(RecyclerViewAdapter view, final int position) {
                                 adapter.remove(position);
-                                limitText.setText(adapter.getItemCount()+"/5");
-                                jobSpinner.setEnabled(true);
-                                goodsSpinner.setEnabled(true);
-                                goodsAreaEdit.setEnabled(true);
-                                interestProductEdit.setEnabled(true);
-                                addButton.setBackgroundResource(R.drawable.button_shape_inactive);
-                                addButton.setEnabled(true);
+                                if(adapter.getItemCount()<5) {
+                                    limitText.setText(adapter.getItemCount() + "/5");
+                                    jobSpinner.setEnabled(true);
+                                    goodsSpinner.setEnabled(true);
+                                    goodsAreaEdit.setEnabled(true);
+                                    interestProductSpinner.setEnabled(true);
+                                    addButton.setBackgroundResource(R.drawable.button_shape_active);
+                                    addButton.setEnabled(true);
+                                }
                             }
                         });
         touchListener.setDismissDelay(1500);
@@ -174,8 +176,7 @@ public class ContactForm03 extends Fragment {
     private class listAdapter extends RecyclerView.Adapter<listAdapter.MyViewHolder> {
         ArrayList<surveyInstance> list;
 
-        public listAdapter() {
-            list = new ArrayList<>();
+        public listAdapter() { list = new ArrayList<>();
         }
 
         @Override

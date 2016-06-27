@@ -11,22 +11,23 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:padding="@dimen/list_item_padding_sides">
+        android:layout_weight="3">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Part 1"
             android:id="@+id/account_form3_menu1"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/vertical_tab_active" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Part 2"
             android:id="@+id/account_form3_menu2"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/vertical_tab_inactive" />
     </LinearLayout>
 
     <LinearLayout
