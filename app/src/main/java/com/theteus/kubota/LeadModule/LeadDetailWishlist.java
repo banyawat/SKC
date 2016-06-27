@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.theteus.kubota.R;
+import com.theteus.kubota.Reference;
 
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +44,8 @@ public class LeadDetailWishlist extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lead_detail_wishlist, container, false);
 
         if(mLead != null) {
-            ((TextView) view.findViewById(R.id.lead_detail_follow)).setText(mLead.followingStatus);
-            ((TextView) view.findViewById(R.id.lead_detail_area)).setText(mLead.area);
+            ((TextView) view.findViewById(R.id.lead_detail_follow)).setText(Reference.MASTER_FOLLOWSTATUS.get(mLead.followStatus));
+            ((TextView) view.findViewById(R.id.lead_detail_area)).setText(mLead.area + " ไร่");
             ((TextView) view.findViewById(R.id.lead_detail_listlimit)).setText(itemCounter() + " / 5");
 
             itemAdapter = new ItemAdapter(mLead);
@@ -63,33 +65,33 @@ public class LeadDetailWishlist extends Fragment {
 
     public int itemCounter() {
         int count = 0;
-        if(!mLead.itemType1.equals("- - -")) count++;
-        if(!mLead.itemType2.equals("- - -")) count++;
-        if(!mLead.itemType3.equals("- - -")) count++;
-        if(!mLead.itemType4.equals("- - -")) count++;
-        if(!mLead.itemType5.equals("- - -")) count++;
+        if(Reference.MASTER_INTERESTPRODUCT.containsKey(mLead.product1)) count++;
+        if(Reference.MASTER_INTERESTPRODUCT.containsKey(mLead.product2)) count++;
+        if(Reference.MASTER_INTERESTPRODUCT.containsKey(mLead.product3)) count++;
+        if(Reference.MASTER_INTERESTPRODUCT.containsKey(mLead.product4)) count++;
+        if(Reference.MASTER_INTERESTPRODUCT.containsKey(mLead.product5)) count++;
         return count;
     }
 
     public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         private final LeadInstance mLead;
-        private final List<String> itemType;
-        private final List<String> itemModel;
+        private final List<Integer> product;
+        private final List<String> model;
 
         public ItemAdapter(LeadInstance lead) {
             this.mLead = lead;
-            itemType = new ArrayList<>();
-            itemModel = new ArrayList<>();
-            itemType.add(mLead.itemType1);
-            itemType.add(mLead.itemType2);
-            itemType.add(mLead.itemType3);
-            itemType.add(mLead.itemType4);
-            itemType.add(mLead.itemType5);
-            itemModel.add(mLead.itemModel1);
-            itemModel.add(mLead.itemModel2);
-            itemModel.add(mLead.itemModel3);
-            itemModel.add(mLead.itemModel4);
-            itemModel.add(mLead.itemModel5);
+            product = new ArrayList<>();
+            model = new ArrayList<>();
+            product.add(mLead.product1);
+            product.add(mLead.product2);
+            product.add(mLead.product3);
+            product.add(mLead.product4);
+            product.add(mLead.product5);
+            model.add(mLead.model1);
+            model.add(mLead.model2);
+            model.add(mLead.model3);
+            model.add(mLead.model4);
+            model.add(mLead.model5);
         }
 
         @Override
@@ -101,8 +103,14 @@ public class LeadDetailWishlist extends Fragment {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-            holder.mItemType.setText(itemType.get(position));
-            holder.mItemModel.setText(itemModel.get(position));
+            if(Reference.MASTER_INTERESTPRODUCT.containsKey(product.get(position))) {
+                holder.mProduct.setText(Reference.MASTER_INTERESTPRODUCT.get(product.get(position)));
+                holder.mModel.setText(model.get(position));
+            }
+            else {
+                holder.mProduct.setText("- - -");
+                holder.mModel.setText("- - -");
+            }
         }
 
         @Override
@@ -112,14 +120,14 @@ public class LeadDetailWishlist extends Fragment {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final TextView mItemType;
-            public final TextView mItemModel;
+            public final TextView mProduct;
+            public final TextView mModel;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mItemType = (TextView) view.findViewById(R.id.item_type);
-                mItemModel = (TextView) view.findViewById(R.id.item_model);
+                mProduct = (TextView) view.findViewById(R.id.item_type);
+                mModel = (TextView) view.findViewById(R.id.item_model);
             }
         }
     }

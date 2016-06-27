@@ -98,7 +98,7 @@
                     android:textColor="#ffffff"
                     android:textSize="16sp" />
 
-                <View
+                <ImageView
                     android:id="@+id/delete_button"
                     android:layout_toLeftOf="@id/activities_detail_status"
                     android:layout_toStartOf="@+id/activities_detail_status"
@@ -107,11 +107,11 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginEnd="18dp"
-                    android:background="@drawable/icon_replacement"
-                    android:alpha="0.12" />
+                    android:src="@drawable/ic_48dp_black_delete"
+                    android:alpha="0.38" />
 
-                <View
-                    android:id="@+id/disqualify_button"
+                <ImageView
+                    android:id="@+id/close_button"
                     android:layout_toLeftOf="@id/delete_button"
                     android:layout_toStartOf="@+id/delete_button"
                     android:layout_width="36dp"
@@ -119,25 +119,25 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="12dp"
                     android:layout_marginEnd="12dp"
-                    android:background="@drawable/icon_replacement"
-                    android:alpha="0.12" />
+                    android:src="@drawable/ic_48dp_black_clear"
+                    android:alpha="0.38" />
 
-                <View
-                    android:id="@+id/qualify_button"
-                    android:layout_toLeftOf="@id/disqualify_button"
-                    android:layout_toStartOf="@+id/disqualify_button"
+                <ImageView
+                    android:id="@+id/complete_button"
+                    android:layout_toLeftOf="@id/close_button"
+                    android:layout_toStartOf="@+id/close_button"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="12dp"
                     android:layout_marginEnd="12dp"
-                    android:background="@drawable/icon_replacement"
-                    android:alpha="0.12" />
+                    android:src="@drawable/ic_48dp_black_done"
+                    android:alpha="0.38" />
 
                 <View
                     android:id="@+id/activities_detail_button_separator"
-                    android:layout_toLeftOf="@id/qualify_button"
-                    android:layout_toStartOf="@+id/qualify_button"
+                    android:layout_toLeftOf="@id/complete_button"
+                    android:layout_toStartOf="@+id/complete_button"
                     android:layout_width="1dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
@@ -146,17 +146,17 @@
                     android:background="#000000"
                     android:alpha="0.12" />
 
-                <View
+                <ImageView
                     android:id="@+id/search_button"
-                    android:layout_toLeftOf="@id/qualify_button"
-                    android:layout_toStartOf="@+id/qualify_button"
+                    android:layout_toLeftOf="@id/complete_button"
+                    android:layout_toStartOf="@+id/complete_button"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="18dp"
                     android:layout_marginEnd="18dp"
-                    android:background="@drawable/icon_replacement"
-                    android:alpha="0.12" />
+                    android:src="@drawable/ic_48dp_black_search"
+                    android:alpha="0.38" />
 
                 <FrameLayout
                     android:id="@+id/activities_detail_content"

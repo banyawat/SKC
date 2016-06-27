@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.theteus.kubota.ContactModule.DummyContactInstance;
 import com.theteus.kubota.R;
 
 /**
@@ -37,7 +38,8 @@ public class LeadDetailDealer extends Fragment {
             ((TextView) view.findViewById(R.id.lead_detail_event_name)).setText(mLead.eventName);
             ((TextView) view.findViewById(R.id.lead_detail_sales_name)).setText(mLead.salesName);
             ((TextView) view.findViewById(R.id.lead_detail_event_location)).setText(mLead.eventLocation);
-            ((TextView) view.findViewById(R.id.lead_detail_contract)).setText(mLead.contact);
+            String contactName = DummyContactInstance.CONTACT_MAP.get(mLead.contact).firstName + " " + DummyContactInstance.CONTACT_MAP.get(mLead.contact).lastName;
+            ((TextView) view.findViewById(R.id.lead_detail_contract)).setText(contactName);
         }
 
         return view;

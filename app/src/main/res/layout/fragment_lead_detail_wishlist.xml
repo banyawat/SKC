@@ -6,13 +6,13 @@
     tools:context=".LeadModule.LeadDetailDealer">
 
     <!--Item Selector-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_item_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:background="@drawable/ic_48dp_black_shopping_cart"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,14 +87,14 @@
         android:layout_below="@id/lead_detail_listlimit" />
 
     <!--Following Status-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_follow_icon"
         android:layout_below="@id/lead_detail_wishlist"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:background="@drawable/ic_48dp_black_local_activity"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
         android:text="สถานะการติดตาม" />
 
     <!--Area-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_area_icon"
         android:layout_below="@id/lead_detail_wishlist"
         android:layout_width="48dp"
@@ -130,8 +130,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginLeft="400dp"
         android:layout_marginStart="400dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:background="@drawable/ic_48dp_black_terrain"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package com.theteus.kubota.LeadModule;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -12,10 +13,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
+import com.theteus.kubota.Reference;
 
 /**
  * Created by whorangester on 6/21/16.
@@ -23,6 +27,7 @@ import com.theteus.kubota.R;
 public class LeadDetailMain extends Fragment {
     private LeadInstance mLead;
     public static final String ARG_PARAM1 = "leadId";
+    public static final String ARG_PARAM2 = "currentTab";
 
     public LeadDetailMain() {}
 
@@ -45,11 +50,13 @@ public class LeadDetailMain extends Fragment {
         final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.lead_detail_search_field);
         final InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        final View searchButton = view.findViewById(R.id.search_button);
-        final View qualifyButton = view.findViewById(R.id.qualify_button);
-        final View disqualifyButton = view.findViewById(R.id.disqualify_button);
-        final View deleteButton = view.findViewById(R.id.delete_button);
+        final ImageView searchButton = (ImageView) view.findViewById(R.id.search_button);
+        final ImageView qualifyButton = (ImageView) view.findViewById(R.id.qualify_button);
+        final ImageView disqualifyButton = (ImageView) view.findViewById(R.id.disqualify_button);
+        final ImageView deleteButton = (ImageView) view.findViewById(R.id.delete_button);
         final View separator = view.findViewById(R.id.lead_detail_button_separator);
+
+        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.lead_detail_fab);
 
         if(mLead == null) {
             status.setVisibility(View.GONE);
@@ -67,7 +74,7 @@ public class LeadDetailMain extends Fragment {
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, DummyLeadInstance.KEYS);
-        (view.findViewById(R.id.search_button)).setOnTouchListener(new View.OnTouchListener() {
+        searchButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switcher.showNext();
@@ -75,9 +82,11 @@ public class LeadDetailMain extends Fragment {
                 if(!switcher.getNextView().isFocusable()) {
                     searchField.requestFocus();
                     keyboard.showSoftInput(searchField, 0);
+                    searchButton.setImageResource(R.drawable.ic_48dp_black_highlight_off);
                 } else {
                     searchField.clearFocus();
                     keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    searchButton.setImageResource(R.drawable.ic_48dp_black_search);
                 }
                 return false;
             }
@@ -105,6 +114,15 @@ public class LeadDetailMain extends Fragment {
                 searchField.clearFocus();
                 switcher.showNext();
                 keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
+                searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Home home = (Home) getActivity();
+                home.getmPager().setCurrentItem(1);
             }
         });
 
@@ -120,28 +138,33 @@ public class LeadDetailMain extends Fragment {
         titleView.setText(leadFullName);
         ownerView.setText(leadOwner);
         searchField.setText(leadKey);
-        statusView.setText(mLead.status);
+        statusView.setText(Reference.MASTER_LEADSTATUS.get(mLead.status));
 
-        if(mLead.status.equals("New Lead")) {
-            statusView.setBackgroundResource(R.color.statusBlue);
-            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusBlueFont));
-        } else if(mLead.status.equals("Qualified")) {
-            statusView.setBackgroundResource(R.color.statusGreen);
-            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusGreenFont));
-        }
-        else if(mLead.status.equals("Disqualified")) {
-            statusView.setBackgroundResource(R.color.statusRed);
-            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
-        }
-        else {
-            statusView.setBackgroundResource(R.color.statusUnknown);
-            statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusUnknownFont));
+        switch(mLead.status) {
+            case 117980000:
+                statusView.setBackgroundResource(R.color.statusBlue);
+                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusBlueFont));
+                break;
+            case 117980001:
+                statusView.setBackgroundResource(R.color.statusGreen);
+                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusGreenFont));
+                break;
+            case 117980002:
+                statusView.setBackgroundResource(R.color.statusRed);
+                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                break;
+            default:
+                statusView.setBackgroundResource(R.color.statusUnknown);
+                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusUnknownFont));
         }
     }
     public void setUpContentFragment() {
         LeadDetailContent fragment = new LeadDetailContent();
         Bundle args = new Bundle();
-        if(mLead != null) args.putString(LeadDetailMain.ARG_PARAM1, mLead.id);
+        if(mLead != null)
+            args.putString(LeadDetailMain.ARG_PARAM1, mLead.id);
+        if(getArguments() != null && getArguments().containsKey(ARG_PARAM2))
+            args.putInt(ARG_PARAM2, getArguments().getInt(ARG_PARAM2));
         fragment.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.lead_detail_content, fragment)
