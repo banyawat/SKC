@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".ContactModule.ContactDetailLead">
+
+    <Button
+        android:id="@+id/contact_detail_lead_add_button"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:text="เพิ่มกิจกรรม" />
+
+    <!--RecyclerView of Wishlist-->
+    <TextView
+        android:id="@+id/contact_detail_lead_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COUNT"
+        android:layout_below="@id/contact_detail_lead_add_button"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contact_detail_lead_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/contact_detail_lead_count" />
+
+</RelativeLayout>

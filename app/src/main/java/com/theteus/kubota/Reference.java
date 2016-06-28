@@ -21,6 +21,10 @@ public class Reference {
     public static final Map<Integer, String> MASTER_DECISIONPERIOD;
     public static final Map<Integer, String> MASTER_PURCHASEREASON;
     public static final Map<Integer, String> MASTER_NOPURCHASEREASON;
+    // CHASSIS
+    public static final Map<Integer, String> MASTER_PRODUCTTYPE;
+    public static final Map<Integer, String> MASTER_PRODUCTSTATUS;
+    public static final Map<Integer, String> MASTER_SALECONDITION;
 
     // Subject To Change
     public static final Map<Integer, String> MASTER_LEADSTATUS;
@@ -29,48 +33,48 @@ public class Reference {
 
     static {
         MASTER_OCCUPATION = new HashMap<>();
-        MASTER_OCCUPATION.put(177980000, "(ยกเลิก) - เกษตรกร");
-        MASTER_OCCUPATION.put(177980001, "(ยกเลิก) - ขายของชำ");
-        MASTER_OCCUPATION.put(177980002, "(ยกเลิก) - ครู/อาจารย์(รร.เอกชน)");
-        MASTER_OCCUPATION.put(177980003, "(ยกเลิก) - ค้าขาย");
-        MASTER_OCCUPATION.put(177980004, "(ยกเลิก) - ชาวไร่");
-        MASTER_OCCUPATION.put(177980005, "(ยกเลิก) - ชาวสวน");
-        MASTER_OCCUPATION.put(177980006, "(ยกเลิก) - ธุรกิจ SML");
-        MASTER_OCCUPATION.put(177980007, "(ยกเลิก) - ธุรกิจส่วนตัว/อาชีพอิสระ");
-        MASTER_OCCUPATION.put(177980008, "(ยกเลิก) - นายหน้า");
-        MASTER_OCCUPATION.put(177980009, "(ยกเลิก) - พนักงานบริษัท/รัฐวิสาหกิจ");
-        MASTER_OCCUPATION.put(177980010, "(ยกเลิก) - พนักงานรัฐวิสาหกิจ");
-        MASTER_OCCUPATION.put(177980011, "(ยกเลิก) - ร้บจ้าง");
-        MASTER_OCCUPATION.put(177980012, "(ยกเลิก) - รับราชการ");
-        MASTER_OCCUPATION.put(177980013, "(ยกเลิก) - ลูกจ้างชั่วคราว");
-        MASTER_OCCUPATION.put(177980014, "(ยกเลิก) - ลูกจ้างประจำ");
-        MASTER_OCCUPATION.put(177980015, "(ยกเลิก) - วัสดุก่อสร้าง");
-        MASTER_OCCUPATION.put(177980016, "(ยกเลิก) - อื่น ๆ ( ธุรกิจส่วนตัว/อาชีพอิสระ )");
-        MASTER_OCCUPATION.put(177980017, "(ยกเลิก) - อื่น ๆ ( พนักงานบริษัท/รัฐวิสาหกิจ ");
-        MASTER_OCCUPATION.put(177980018, "(ยกเลิก) - อื่น ๆ ( ร้บจ้าง )");
-        MASTER_OCCUPATION.put(177980019, "(ยกเลิก) - อื่น ๆ ( รับราชการ )");
-        MASTER_OCCUPATION.put(177980020, "เกษตรกร");
-        MASTER_OCCUPATION.put(177980021, "ข้าราชการ-อื่นๆ");
-        MASTER_OCCUPATION.put(177980022, "ครู/อาจารย์");
-        MASTER_OCCUPATION.put(177980023, "ทนายความ");
-        MASTER_OCCUPATION.put(177980024, "ทหาร/ตำรวจ");
-        MASTER_OCCUPATION.put(177980025, "ธุรกิจส่วนตัว-ก่อสร้าง/รับเหมา");
-        MASTER_OCCUPATION.put(177980026, "ธุรกิจส่วนตัว-ขนส่ง");
-        MASTER_OCCUPATION.put(177980027, "ธุรกิจส่วนตัว-ซื้อขายผลผลิตการเกษตร");
-        MASTER_OCCUPATION.put(177980028, "ธุรกิจส่วนตัว-บริการ");
-        MASTER_OCCUPATION.put(177980029, "ธุรกิจส่วนตัว-อาหาร,เครื่องดื่ม,ผักและผลไม้");
-        MASTER_OCCUPATION.put(177980030, "ธุรกิจส่วนตัว-อื่นๆ");
-        MASTER_OCCUPATION.put(177980031, "ประมง");
-        MASTER_OCCUPATION.put(177980032, "ปศุสัตว์");
-        MASTER_OCCUPATION.put(177980033, "พนักงานบริษัทเอกชน/รัฐวิสาหกิจ");
-        MASTER_OCCUPATION.put(177980034, "แพทย์/พยาบาล");
-        MASTER_OCCUPATION.put(177980035, "ลูกจ้าง/รับจ้าง - ก่อสร้าง");
-        MASTER_OCCUPATION.put(177980036, "ลูกจ้าง/รับจ้าง-ขับรถ");
-        MASTER_OCCUPATION.put(177980037, "ลูกจ้าง/รับจ้าง-ทางการเกษตร");
-        MASTER_OCCUPATION.put(177980038, "ลูกจ้าง/รับจ้าง-อื่นๆ");
-        MASTER_OCCUPATION.put(177980039, "ธุรกิจส่วนตัว - ซื้อขายผลผลิตการเกษตร");
-        MASTER_OCCUPATION.put(177980040, "เจ้าหน้าที่ ธกส. / สกต.");
-        MASTER_OCCUPATION.put(177980041, "อื่นๆ");
+        MASTER_OCCUPATION.put(117980000, "(ยกเลิก) - เกษตรกร");
+        MASTER_OCCUPATION.put(117980001, "(ยกเลิก) - ขายของชำ");
+        MASTER_OCCUPATION.put(117980002, "(ยกเลิก) - ครู/อาจารย์(รร.เอกชน)");
+        MASTER_OCCUPATION.put(117980003, "(ยกเลิก) - ค้าขาย");
+        MASTER_OCCUPATION.put(117980004, "(ยกเลิก) - ชาวไร่");
+        MASTER_OCCUPATION.put(117980005, "(ยกเลิก) - ชาวสวน");
+        MASTER_OCCUPATION.put(117980006, "(ยกเลิก) - ธุรกิจ SML");
+        MASTER_OCCUPATION.put(117980007, "(ยกเลิก) - ธุรกิจส่วนตัว/อาชีพอิสระ");
+        MASTER_OCCUPATION.put(117980008, "(ยกเลิก) - นายหน้า");
+        MASTER_OCCUPATION.put(117980009, "(ยกเลิก) - พนักงานบริษัท/รัฐวิสาหกิจ");
+        MASTER_OCCUPATION.put(117980010, "(ยกเลิก) - พนักงานรัฐวิสาหกิจ");
+        MASTER_OCCUPATION.put(117980011, "(ยกเลิก) - ร้บจ้าง");
+        MASTER_OCCUPATION.put(117980012, "(ยกเลิก) - รับราชการ");
+        MASTER_OCCUPATION.put(117980013, "(ยกเลิก) - ลูกจ้างชั่วคราว");
+        MASTER_OCCUPATION.put(117980014, "(ยกเลิก) - ลูกจ้างประจำ");
+        MASTER_OCCUPATION.put(117980015, "(ยกเลิก) - วัสดุก่อสร้าง");
+        MASTER_OCCUPATION.put(117980016, "(ยกเลิก) - อื่น ๆ ( ธุรกิจส่วนตัว/อาชีพอิสระ )");
+        MASTER_OCCUPATION.put(117980017, "(ยกเลิก) - อื่น ๆ ( พนักงานบริษัท/รัฐวิสาหกิจ ");
+        MASTER_OCCUPATION.put(117980018, "(ยกเลิก) - อื่น ๆ ( ร้บจ้าง )");
+        MASTER_OCCUPATION.put(117980019, "(ยกเลิก) - อื่น ๆ ( รับราชการ )");
+        MASTER_OCCUPATION.put(117980020, "เกษตรกร");
+        MASTER_OCCUPATION.put(117980021, "ข้าราชการ-อื่นๆ");
+        MASTER_OCCUPATION.put(117980022, "ครู/อาจารย์");
+        MASTER_OCCUPATION.put(117980023, "ทนายความ");
+        MASTER_OCCUPATION.put(117980024, "ทหาร/ตำรวจ");
+        MASTER_OCCUPATION.put(117980025, "ธุรกิจส่วนตัว-ก่อสร้าง/รับเหมา");
+        MASTER_OCCUPATION.put(117980026, "ธุรกิจส่วนตัว-ขนส่ง");
+        MASTER_OCCUPATION.put(117980027, "ธุรกิจส่วนตัว-ซื้อขายผลผลิตการเกษตร");
+        MASTER_OCCUPATION.put(117980028, "ธุรกิจส่วนตัว-บริการ");
+        MASTER_OCCUPATION.put(117980029, "ธุรกิจส่วนตัว-อาหาร,เครื่องดื่ม,ผักและผลไม้");
+        MASTER_OCCUPATION.put(117980030, "ธุรกิจส่วนตัว-อื่นๆ");
+        MASTER_OCCUPATION.put(117980031, "ประมง");
+        MASTER_OCCUPATION.put(117980032, "ปศุสัตว์");
+        MASTER_OCCUPATION.put(117980033, "พนักงานบริษัทเอกชน/รัฐวิสาหกิจ");
+        MASTER_OCCUPATION.put(117980034, "แพทย์/พยาบาล");
+        MASTER_OCCUPATION.put(117980035, "ลูกจ้าง/รับจ้าง - ก่อสร้าง");
+        MASTER_OCCUPATION.put(117980036, "ลูกจ้าง/รับจ้าง-ขับรถ");
+        MASTER_OCCUPATION.put(117980037, "ลูกจ้าง/รับจ้าง-ทางการเกษตร");
+        MASTER_OCCUPATION.put(117980038, "ลูกจ้าง/รับจ้าง-อื่นๆ");
+        MASTER_OCCUPATION.put(117980039, "ธุรกิจส่วนตัว - ซื้อขายผลผลิตการเกษตร");
+        MASTER_OCCUPATION.put(117980040, "เจ้าหน้าที่ ธกส. / สกต.");
+        MASTER_OCCUPATION.put(117980041, "อื่นๆ");
 
         MASTER_PLANT = new HashMap<>();
         MASTER_PLANT.put(117980000, "(ยกเลิก) -  ข้าว");
@@ -236,6 +240,31 @@ public class Reference {
         MASTER_NOPURCHASEREASON.put(117980009, "หมดช่วงฤดูกาลใช้งาน");
         MASTER_NOPURCHASEREASON.put(117980010, "มีเงินไม่พอซื้อสินค้า");
         MASTER_NOPURCHASEREASON.put(117980011, "อื่นๆ");
+
+        MASTER_PRODUCTTYPE = new HashMap<>();
+        MASTER_PRODUCTTYPE.put(177980000, "รถแทรกเตอร์");
+        MASTER_PRODUCTTYPE.put(177980001, "รถเกี่ยวนวดข้าว");
+        MASTER_PRODUCTTYPE.put(177980002, "รถดำนา");
+        MASTER_PRODUCTTYPE.put(177980003, "รถขุด");
+        MASTER_PRODUCTTYPE.put(177980004, "รถไถเดินตาม");
+        MASTER_PRODUCTTYPE.put(177980006, "เครื่องยนต์");
+        MASTER_PRODUCTTYPE.put(177980007, "รถไถนั่งขับ (KRT)");
+
+        MASTER_PRODUCTSTATUS = new HashMap<>();
+        MASTER_PRODUCTSTATUS.put(177980000, "ใช้งาน");
+        MASTER_PRODUCTSTATUS.put(177980001, "รถยึด");
+        MASTER_PRODUCTSTATUS.put(177980002, "รถ MAX");
+        MASTER_PRODUCTSTATUS.put(177980003, "ยกเลิก");
+
+        MASTER_SALECONDITION = new HashMap<>();
+        MASTER_SALECONDITION.put(177980000, "ขายสด");
+        MASTER_SALECONDITION.put(177980001, "โครงการประชารัฐ/โครงการของรัฐฯ");
+        MASTER_SALECONDITION.put(177980002, "เช่าซื้อ AD");
+        MASTER_SALECONDITION.put(177980003, "เช่าซื้อ SKL");
+        MASTER_SALECONDITION.put(177980004, "ซื้อผ่าน Dealer");
+        MASTER_SALECONDITION.put(177980005, "สกต");
+        MASTER_SALECONDITION.put(177980006, "สหกรณ์");
+        MASTER_SALECONDITION.put(177980007, "สินเชื่อศรีสวัสดิ์");
 
         /* SUBJECT TO CHANGE */
         MASTER_LEADSTATUS = new HashMap<>();

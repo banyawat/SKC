@@ -69,7 +69,7 @@
         android:layout_alignParentRight="true"
         android:text="เพิ่ม" />
 
-    <!--RecyclerView of Wishlist-->
+    <!--RecyclerView of wishlist-->
     <TextView
         android:id="@+id/lead_detail_listlimit"
         android:layout_width="wrap_content"
@@ -118,8 +118,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="สถานะการติดตาม" />
+        android:alpha="0.87" />
 
     <!--Area-->
     <ImageView
@@ -155,7 +154,6 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:alpha="0.87"
-        android:text="112 ไร่" />
+        android:alpha="0.87" />
 
 </RelativeLayout>

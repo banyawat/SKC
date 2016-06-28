@@ -120,4 +120,13 @@ public class DummyLeadInstance {
             ID_MAP.put(lead.id + " : " + lead.firstName + " " + lead.lastName, lead.id);
         }
     }
+
+    public static List<LeadInstance> searchByContactId(String contactId) {
+        List<LeadInstance> result = new ArrayList<>();
+
+        for (LeadInstance l : LEADS)
+            if(l.contact.equals(contactId)) result.add(l);
+
+        return result;
+    }
 }

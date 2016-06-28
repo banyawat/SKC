@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="match_parent" >
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 android:layout_height="match_parent">
 
                 <ViewSwitcher
-                    android:id="@+id/activities_detail_switcher"
+                    android:id="@+id/contact_detail_switcher"
                     android:layout_height="56dp"
                     android:layout_width="match_parent"
                     android:layout_toLeftOf="@id/search_button"
@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/activities_detail_title"
+                            android:id="@+id/contact_detail_title"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_marginStart="24dp"
@@ -53,9 +53,9 @@
                             android:alpha="0.87" />
 
                         <TextView
-                            android:id="@+id/activities_detail_subtitle"
-                            android:layout_toEndOf="@id/activities_detail_title"
-                            android:layout_toRightOf="@id/activities_detail_title"
+                            android:id="@+id/contact_detail_subtitle"
+                            android:layout_toEndOf="@id/contact_detail_title"
+                            android:layout_toRightOf="@id/contact_detail_title"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_marginStart="12dp"
@@ -68,7 +68,7 @@
                     </RelativeLayout>
 
                     <AutoCompleteTextView
-                        android:id="@+id/activities_detail_search_field"
+                        android:id="@+id/contact_detail_search_field"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="24dp"
@@ -78,12 +78,12 @@
                         android:textSize="24sp"
                         android:selectAllOnFocus="true"
                         android:inputType="textPersonName"
-                        android:hint="Search Activity ..." />
+                        android:hint="Search Contact ..." />
 
                 </ViewSwitcher>
 
                 <TextView
-                    android:id="@+id/activities_detail_status"
+                    android:id="@+id/contact_detail_status"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_width="120dp"
@@ -99,8 +99,8 @@
 
                 <ImageView
                     android:id="@+id/delete_button"
-                    android:layout_toLeftOf="@id/activities_detail_status"
-                    android:layout_toStartOf="@+id/activities_detail_status"
+                    android:layout_toLeftOf="@id/contact_detail_status"
+                    android:layout_toStartOf="@+id/contact_detail_status"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
@@ -110,7 +110,7 @@
                     android:alpha="0.38" />
 
                 <ImageView
-                    android:id="@+id/close_button"
+                    android:id="@+id/deactivate_button"
                     android:layout_toLeftOf="@id/delete_button"
                     android:layout_toStartOf="@+id/delete_button"
                     android:layout_width="36dp"
@@ -122,9 +122,9 @@
                     android:alpha="0.38" />
 
                 <ImageView
-                    android:id="@+id/complete_button"
-                    android:layout_toLeftOf="@id/close_button"
-                    android:layout_toStartOf="@+id/close_button"
+                    android:id="@+id/approve_button"
+                    android:layout_toLeftOf="@id/deactivate_button"
+                    android:layout_toStartOf="@+id/deactivate_button"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
@@ -134,9 +134,9 @@
                     android:alpha="0.38" />
 
                 <View
-                    android:id="@+id/activities_detail_button_separator"
-                    android:layout_toLeftOf="@id/complete_button"
-                    android:layout_toStartOf="@+id/complete_button"
+                    android:id="@+id/contact_detail_button_separator"
+                    android:layout_toLeftOf="@id/approve_button"
+                    android:layout_toStartOf="@+id/approve_button"
                     android:layout_width="1dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
@@ -147,8 +147,8 @@
 
                 <ImageView
                     android:id="@+id/search_button"
-                    android:layout_toLeftOf="@id/complete_button"
-                    android:layout_toStartOf="@+id/complete_button"
+                    android:layout_toLeftOf="@id/approve_button"
+                    android:layout_toStartOf="@+id/approve_button"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
@@ -158,13 +158,13 @@
                     android:alpha="0.38" />
 
                 <FrameLayout
-                    android:id="@+id/activities_detail_content"
-                    android:layout_below="@id/activities_detail_switcher"
+                    android:id="@+id/contact_detail_content"
+                    android:layout_below="@id/contact_detail_switcher"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <View
-                    android:id="@+id/activities_detail_footer"
+                    android:id="@+id/contact_detail_footer"
                     android:layout_height="72dp"
                     android:layout_width="match_parent"
                     android:layout_alignParentBottom="true"
@@ -178,7 +178,7 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/activities_detail_fab"
+        android:id="@+id/contact_detail_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src ="@drawable/ic_add_white_24dp"

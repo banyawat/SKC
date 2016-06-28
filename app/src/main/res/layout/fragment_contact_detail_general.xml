@@ -1,0 +1,476 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".ContactModule.ContactDetailGeneral">
+
+    <!--NAME-->
+    <ImageView
+        android:id="@+id/contact_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/ic_48dp_black_person_outline"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_name_icon"
+        android:layout_toEndOf="@id/contact_detail_name_icon"
+        android:layout_alignTop="@id/contact_detail_name_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="คำนำหน้าชื่อ" />
+    <TextView
+        android:id="@+id/contact_detail_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_name_icon"
+        android:layout_toRightOf="@id/contact_detail_name_icon"
+        android:layout_alignBottom="@id/contact_detail_name_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_name_icon"
+        android:layout_toEndOf="@id/contact_detail_name_icon"
+        android:layout_alignTop="@id/contact_detail_name_icon"
+        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ชื่อ" />
+    <TextView
+        android:id="@+id/contact_detail_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_name_icon"
+        android:layout_toRightOf="@id/contact_detail_name_icon"
+        android:layout_alignBottom="@id/contact_detail_name_icon"
+        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_name_icon"
+        android:layout_toEndOf="@id/contact_detail_name_icon"
+        android:layout_alignTop="@id/contact_detail_name_icon"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="นามสกุล" />
+    <TextView
+        android:id="@+id/contact_detail_last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_name_icon"
+        android:layout_toRightOf="@id/contact_detail_name_icon"
+        android:layout_alignBottom="@id/contact_detail_name_icon"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--GENDER-->
+    <ImageView
+        android:id="@+id/contact_detail_gender_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="660dp"
+        android:background="@drawable/ic_48dp_black_wc"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_gender_icon"
+        android:layout_toEndOf="@id/contact_detail_gender_icon"
+        android:layout_alignTop="@id/contact_detail_gender_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เพศ" />
+    <TextView
+        android:id="@+id/contact_detail_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_gender_icon"
+        android:layout_toRightOf="@id/contact_detail_gender_icon"
+        android:layout_alignBottom="@id/contact_detail_gender_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--BIRTHDAY-->
+    <ImageView
+        android:id="@+id/contact_detail_birthday_icon"
+        android:layout_below="@id/contact_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/ic_48dp_black_cake"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_birthday_icon"
+        android:layout_toEndOf="@id/contact_detail_birthday_icon"
+        android:layout_alignTop="@id/contact_detail_birthday_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="วัน / เดือน / ปีเกิด" />
+    <TextView
+        android:id="@+id/contact_detail_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_birthday_icon"
+        android:layout_toRightOf="@id/contact_detail_birthday_icon"
+        android:layout_alignBottom="@id/contact_detail_birthday_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--ID Card-->
+    <ImageView
+        android:id="@+id/contact_detail_id_card_icon"
+        android:layout_below="@id/contact_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginStart="300dp"
+        android:src="@drawable/ic_48dp_black_credit_card"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_id_card_icon"
+        android:layout_toEndOf="@id/contact_detail_id_card_icon"
+        android:layout_alignTop="@id/contact_detail_id_card_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เลขบัตรประจำตัวประชาชน" />
+    <TextView
+        android:id="@+id/contact_detail_id_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_id_card_icon"
+        android:layout_toRightOf="@id/contact_detail_id_card_icon"
+        android:layout_alignBottom="@id/contact_detail_id_card_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--Customer Type-->
+    <ImageView
+        android:id="@+id/contact_detail_cus_type_icon"
+        android:layout_below="@id/contact_detail_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="660dp"
+        android:layout_marginStart="660dp"
+        android:src="@drawable/ic_48dp_black_label"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_cus_type_icon"
+        android:layout_toEndOf="@id/contact_detail_cus_type_icon"
+        android:layout_alignTop="@id/contact_detail_cus_type_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ประเภทลูกค้า" />
+    <TextView
+        android:id="@+id/contact_detail_cus_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_cus_type_icon"
+        android:layout_toRightOf="@id/contact_detail_cus_type_icon"
+        android:layout_alignBottom="@id/contact_detail_cus_type_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--PHONE-->
+    <ImageView
+        android:id="@+id/contact_detail_phone_icon"
+        android:layout_below="@id/contact_detail_birthday_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_phone"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_phone_icon"
+        android:layout_toEndOf="@id/contact_detail_phone_icon"
+        android:layout_alignTop="@id/contact_detail_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์บ้าน" />
+    <TextView
+        android:id="@+id/contact_detail_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_phone_icon"
+        android:layout_toRightOf="@id/contact_detail_phone_icon"
+        android:layout_alignBottom="@id/contact_detail_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--EMAIL-->
+    <ImageView
+        android:id="@+id/contact_detail_email_icon"
+        android:layout_below="@id/contact_detail_birthday_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginStart="300dp"
+        android:src="@drawable/ic_48dp_black_email"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_email_icon"
+        android:layout_toEndOf="@id/contact_detail_email_icon"
+        android:layout_alignTop="@id/contact_detail_email_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="อีเมลล์" />
+    <TextView
+        android:id="@+id/contact_detail_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_email_icon"
+        android:layout_toRightOf="@id/contact_detail_email_icon"
+        android:layout_alignBottom="@id/contact_detail_email_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--Fax-->
+    <ImageView
+        android:id="@+id/contact_detail_fax_icon"
+        android:layout_below="@id/contact_detail_birthday_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="660dp"
+        android:layout_marginStart="660dp"
+        android:src="@drawable/ic_48dp_black_local_printshop"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_fax_icon"
+        android:layout_toEndOf="@id/contact_detail_fax_icon"
+        android:layout_alignTop="@id/contact_detail_fax_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="แฟกซ์" />
+    <TextView
+        android:id="@+id/contact_detail_fax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_fax_icon"
+        android:layout_toRightOf="@id/contact_detail_fax_icon"
+        android:layout_alignBottom="@id/contact_detail_fax_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--SKC PHONE-->
+    <ImageView
+        android:id="@+id/contact_detail_skc_phone_icon"
+        android:layout_below="@id/contact_detail_phone_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_phone"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_skc_phone_icon"
+        android:layout_toEndOf="@id/contact_detail_skc_phone_icon"
+        android:layout_alignTop="@id/contact_detail_skc_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์ SKC" />
+    <TextView
+        android:id="@+id/contact_detail_skc_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_skc_phone_icon"
+        android:layout_toRightOf="@id/contact_detail_skc_phone_icon"
+        android:layout_alignBottom="@id/contact_detail_skc_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--MOBILE 1-->
+    <ImageView
+        android:id="@+id/contact_detail_mobile_icon_1"
+        android:layout_below="@id/contact_detail_phone_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginStart="220dp"
+        android:src="@drawable/ic_48dp_black_phone"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_mobile_icon_1"
+        android:layout_toEndOf="@id/contact_detail_mobile_icon_1"
+        android:layout_alignTop="@id/contact_detail_mobile_icon_1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์มือถือ 1" />
+    <TextView
+        android:id="@+id/contact_detail_mobile_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_mobile_icon_1"
+        android:layout_toRightOf="@id/contact_detail_mobile_icon_1"
+        android:layout_alignBottom="@id/contact_detail_mobile_icon_1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--MOBILE 2-->
+    <ImageView
+        android:id="@+id/contact_detail_mobile_icon_2"
+        android:layout_below="@id/contact_detail_phone_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="440dp"
+        android:layout_marginStart="440dp"
+        android:src="@drawable/ic_48dp_black_phone"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_mobile_icon_2"
+        android:layout_toEndOf="@id/contact_detail_mobile_icon_2"
+        android:layout_alignTop="@id/contact_detail_mobile_icon_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์มือถือ 2" />
+    <TextView
+        android:id="@+id/contact_detail_mobile_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_mobile_icon_2"
+        android:layout_toRightOf="@id/contact_detail_mobile_icon_2"
+        android:layout_alignBottom="@id/contact_detail_mobile_icon_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--CAR-->
+    <ImageView
+        android:id="@+id/contact_detail_car_icon"
+        android:layout_below="@id/contact_detail_phone_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="660dp"
+        android:layout_marginStart="660dp"
+        android:src="@drawable/ic_48dp_black_time_to_leave"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_car_icon"
+        android:layout_toEndOf="@id/contact_detail_car_icon"
+        android:layout_alignTop="@id/contact_detail_car_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="จำนวนรถยนต์" />
+    <TextView
+        android:id="@+id/contact_detail_car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_car_icon"
+        android:layout_toRightOf="@id/contact_detail_car_icon"
+        android:layout_alignBottom="@id/contact_detail_car_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+</RelativeLayout>

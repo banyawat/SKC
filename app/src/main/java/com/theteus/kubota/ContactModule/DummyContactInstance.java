@@ -50,14 +50,14 @@ public class DummyContactInstance {
         String province[] = new String[] {"กรุงเทพมหานคร", "ปทุมธานี", "นครสวรรค์", "ชุมพร", "หนองคาย"};
         String postalCode[] = new String[] {"12345", "91271", "71931", "68192", "17812"};
         // Questionnaire Section
-        int occupation1[] = new int[] {177980020, 177980021, 177980022, 177980023, 177980024};
-        int occupation2[] = new int[] {177980030, 177980031, 0, 177980033, 177980034};
-        int occupation3[] = new int[] {177980040, 0, 0, 177980043, 177980044};
+        int occupation1[] = new int[] {117980020, 117980021, 117980022, 117980023, 117980024};
+        int occupation2[] = new int[] {117980030, 117980031, 0, 117980033, 117980034};
+        int occupation3[] = new int[] {117980040, 0, 0, 117980043, 117980044};
         int occupation4[] = new int[] {0, 0, 0, 0, 0};
         int occupation5[] = new int[] {0, 0, 0, 0, 0};
-        int plant1[] = new int[] {177980020, 177980021, 177980022, 177980023, 177980024};
-        int plant2[] = new int[] {177980030, 177980031, 0, 177980033, 177980034};
-        int plant3[] = new int[] {177980040, 0, 0, 177980043, 177980044};
+        int plant1[] = new int[] {117980020, 117980021, 117980022, 117980023, 117980024};
+        int plant2[] = new int[] {117980030, 117980031, 0, 117980033, 117980034};
+        int plant3[] = new int[] {117980040, 0, 0, 117980043, 117980044};
         int plant4[] = new int[] {0, 0, 0, 0, 0};
         int plant5[] = new int[] {0, 0, 0, 0, 0};
         double area1[] = new double[] {2, 3, 4, 5, 6};

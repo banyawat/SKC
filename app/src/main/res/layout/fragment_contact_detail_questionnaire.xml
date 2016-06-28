@@ -1,0 +1,252 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".ContactModule.ContactDetailQuestionnaire">
+
+    <!--Item Selector-->
+    <ImageView
+        android:id="@+id/contact_detail_item_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/ic_48dp_black_shopping_cart"
+        android:alpha="0.54"
+        android:visibility="invisible"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/contact_detail_item_icon"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="อาชีพ" />
+    <Spinner
+        android:id="@+id/contact_detail_occupation"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/contact_detail_item_icon"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/contact_detail_item_icon"
+        android:layout_marginLeft="180dp"
+        android:layout_marginStart="180dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="พื้นที่เพาะปลูก" />
+    <Spinner
+        android:id="@+id/contact_detail_plant"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/contact_detail_item_icon"
+        android:layout_marginLeft="180dp"
+        android:layout_marginStart="180dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/contact_detail_item_icon"
+        android:layout_marginLeft="360dp"
+        android:layout_marginStart="360dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="พื้นที่เพาะปลูก (ไร่)" />
+    <EditText
+        android:id="@+id/contact_detail_area"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/contact_detail_item_icon"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginLeft="356dp"
+        android:layout_marginStart="356dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/contact_detail_item_icon"
+        android:layout_marginLeft="500dp"
+        android:layout_marginStart="500dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="สินค้าที่สนใจ" />
+    <Spinner
+        android:id="@+id/contact_detail_product"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/contact_detail_item_icon"
+        android:layout_marginLeft="500dp"
+        android:layout_marginStart="500dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:text="เพิ่ม" />
+
+    <!--RecyclerView of questionnaire-->
+    <TextView
+        android:id="@+id/contact_detail_listlimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 / 5"
+        android:layout_below="@id/contact_detail_item_icon"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contact_detail_questionnaire"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@id/contact_detail_listlimit" />
+
+    <!--Land Owner-->
+    <ImageView
+        android:id="@+id/contact_detail_land_owner_icon"
+        android:layout_below="@id/contact_detail_questionnaire"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/ic_48dp_black_terrain"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_land_owner_icon"
+        android:layout_toEndOf="@id/contact_detail_land_owner_icon"
+        android:layout_alignTop="@id/contact_detail_land_owner_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ลักษณะการทำการเกษตร" />
+    <TextView
+        android:id="@+id/contact_detail_land_owner"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_land_owner_icon"
+        android:layout_toRightOf="@id/contact_detail_land_owner_icon"
+        android:layout_alignBottom="@id/contact_detail_land_owner_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:ellipsize="end"
+        android:inputType="textShortMessage"
+        android:alpha="0.87"
+        android:text="สถานะการติดตาม" />
+
+    <!--Harvest-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_land_owner_icon"
+        android:layout_toEndOf="@id/contact_detail_land_owner_icon"
+        android:layout_alignTop="@id/contact_detail_land_owner_icon"
+        android:layout_marginLeft="224dp"
+        android:layout_marginStart="224dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="วิธีเก็บเกี่ยว" />
+    <TextView
+        android:id="@+id/contact_detail_harvest"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_land_owner_icon"
+        android:layout_toRightOf="@id/contact_detail_land_owner_icon"
+        android:layout_alignBottom="@id/contact_detail_land_owner_icon"
+        android:layout_marginLeft="224dp"
+        android:layout_marginStart="224dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:ellipsize="end"
+        android:inputType="textShortMessage"
+        android:alpha="0.87"
+        android:text="112 ไร่" />
+
+    <!--Farming-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_land_owner_icon"
+        android:layout_toEndOf="@id/contact_detail_land_owner_icon"
+        android:layout_alignTop="@id/contact_detail_land_owner_icon"
+        android:layout_marginLeft="424dp"
+        android:layout_marginStart="424dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="วิธีการทำนา" />
+    <TextView
+        android:id="@+id/contact_detail_farming"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_land_owner_icon"
+        android:layout_toRightOf="@id/contact_detail_land_owner_icon"
+        android:layout_alignBottom="@id/contact_detail_land_owner_icon"
+        android:layout_marginLeft="424dp"
+        android:layout_marginStart="424dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:ellipsize="end"
+        android:inputType="textShortMessage"
+        android:alpha="0.87"
+        android:text="112 ไร่" />
+
+    <!--Yearly Income-->
+    <ImageView
+        android:id="@+id/contact_detail_income_icon"
+        android:layout_below="@id/contact_detail_questionnaire"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="680dp"
+        android:layout_marginStart="660dp"
+        android:background="@drawable/ic_48dp_dark_monetization_on"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/contact_detail_income_icon"
+        android:layout_toEndOf="@id/contact_detail_income_icon"
+        android:layout_alignTop="@id/contact_detail_income_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="รายได้ต่อปี" />
+    <TextView
+        android:id="@+id/contact_detail_income"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_detail_income_icon"
+        android:layout_toRightOf="@id/contact_detail_income_icon"
+        android:layout_alignBottom="@id/contact_detail_income_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:text="112 ไร่" />
+
+</RelativeLayout>

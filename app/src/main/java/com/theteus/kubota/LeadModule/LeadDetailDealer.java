@@ -7,8 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.theteus.kubota.ContactModule.Contact;
+import com.theteus.kubota.ContactModule.ContactDetailMain;
 import com.theteus.kubota.ContactModule.DummyContactInstance;
+import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
+import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 /**
  * Created by whorangester on 6/21/16.
@@ -38,8 +42,31 @@ public class LeadDetailDealer extends Fragment {
             ((TextView) view.findViewById(R.id.lead_detail_event_name)).setText(mLead.eventName);
             ((TextView) view.findViewById(R.id.lead_detail_sales_name)).setText(mLead.salesName);
             ((TextView) view.findViewById(R.id.lead_detail_event_location)).setText(mLead.eventLocation);
-            String contactName = DummyContactInstance.CONTACT_MAP.get(mLead.contact).firstName + " " + DummyContactInstance.CONTACT_MAP.get(mLead.contact).lastName;
-            ((TextView) view.findViewById(R.id.lead_detail_contract)).setText(contactName);
+            if(DummyContactInstance.CONTACT_MAP.containsKey(mLead.contact)) {
+                String contactName = DummyContactInstance.CONTACT_MAP.get(mLead.contact).firstName + " " + DummyContactInstance.CONTACT_MAP.get(mLead.contact).lastName;
+                ((TextView) view.findViewById(R.id.lead_detail_contract)).setText(contactName);
+                ((TextView) view.findViewById(R.id.lead_detail_contract)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Home home = (Home) getActivity();
+                        ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
+
+                        mPagerAdapter.clearPage();
+                        ContactDetailMain fragment = new ContactDetailMain();
+                        Bundle args = new Bundle();
+                        args.putString(ContactDetailMain.ARG_PARAM1, mLead.contact);
+                        args.putInt(ContactDetailMain.ARG_PARAM2, 4);
+                        fragment.setArguments(args);
+                        mPagerAdapter.addPage(fragment);
+                        mPagerAdapter.addPage(new Contact());
+                        mPagerAdapter.notifyDataSetChanged();
+
+                        home.changeMenu(2);
+                    }
+                });
+            } else {
+                ((TextView) view.findViewById(R.id.lead_detail_contract)).setText("- - -");
+            }
         }
 
         return view;

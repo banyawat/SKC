@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/occupation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginBottom="4dp"
+            android:padding="2dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:text="OCCUPATION"/>
+
+        <TextView
+            android:id="@+id/plant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="256dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginBottom="6dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:text="PLANT"/>
+
+        <TextView
+            android:id="@+id/area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="416dp"
+            android:layout_marginStart="416dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:text="AREA"
+            android:layout_alignTop="@+id/plant" />
+
+        <TextView
+            android:id="@+id/product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="560dp"
+            android:layout_marginStart="560dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:text="PRODUCT"
+            android:layout_alignTop="@+id/plant" />
+
+    </RelativeLayout>
+
+</FrameLayout>
