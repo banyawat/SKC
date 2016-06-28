@@ -6,23 +6,20 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:id="@+id/linearLayout4"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:weightSum="3"
             android:layout_marginRight="@dimen/list_item_padding_sides">
 
@@ -36,14 +33,19 @@
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_confirmation_number" />
+                    android:src="@drawable/ic_confirmation_number"
+                    android:contentDescription="@string/icon_description" />
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/chassis_form2_contrac_no"
-                    android:ems="10"
-                    android:hint="เลขที่สัญญา" />
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chassis_form2_contrac_no"
+                        android:ems="10"
+                        android:hint="@string/contract_no" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -56,15 +58,21 @@
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_event" />
+                    android:src="@drawable/ic_event"
+                    android:contentDescription="@string/icon_description" />
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/chassis_form2_purchase_date"
-                    android:focusable="false"
-                    android:ems="10"
-                    android:hint="วันที่ซื้อ" />
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chassis_form2_purchase_date"
+                        android:focusable="false"
+                        android:ems="10"
+                        android:hint="@string/purchase_date"
+                        android:inputType="date" />
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
 
@@ -78,14 +86,19 @@
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_person" />
+                    android:src="@drawable/ic_person"
+                    android:contentDescription="@string/icon_description" />
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:id="@+id/chassis_form2_customer"
-                    android:hint="ลูกค้า" />
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/chassis_form2_customer"
+                        android:hint="@string/customer" />
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
 
@@ -95,9 +108,6 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignTop="@+id/linearLayout5"
-            android:layout_toRightOf="@+id/linearLayout5"
-            android:layout_toEndOf="@+id/linearLayout5"
             android:weightSum="3"
             android:layout_marginLeft="@dimen/list_item_padding_sides">
 
@@ -111,7 +121,8 @@
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_local_grocery_store" />
+                    android:src="@drawable/ic_local_grocery_store"
+                    android:contentDescription="@string/icon_description" />
 
                 <Spinner
                     android:layout_width="wrap_content"
@@ -129,13 +140,18 @@
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_person_pin_black" />
+                    android:src="@drawable/ic_person_pin_black"
+                    android:contentDescription="@string/icon_description" />
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/chassis_form2_user"
-                    android:hint="ชื่อผู้ใช้รถ" />
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chassis_form2_user"
+                        android:hint="@string/vehicle_owner_name" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -148,17 +164,21 @@
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_call" />
+                    android:src="@drawable/ic_call"
+                    android:contentDescription="@string/icon_description" />
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/chassis_form2_user_tel"
-                    android:hint="เบอร์โทรศัพท์ผู้ใช้รถ"
-                    android:inputType="numberDecimal" />
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chassis_form2_user_tel"
+                        android:hint="@string/vehicle_owner_phone"
+                        android:inputType="numberDecimal" />
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 
@@ -176,20 +196,20 @@
             android:layout_width="@dimen/icon_resol"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_store"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            android:contentDescription="@string/icon_description" />
 
-        <EditText
-            android:layout_width="match_parent"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/chassis_form2_dealer"
-            android:hint="ร้านค้า"
-            android:layout_weight="1"
-            android:layout_below="@+id/linearLayout4"
-            android:layout_alignLeft="@+id/linearLayout4"
-            android:layout_alignStart="@+id/linearLayout4"
-            android:layout_alignRight="@+id/linearLayout4"
-            android:layout_alignEnd="@+id/linearLayout4"
-            android:layout_marginTop="@dimen/list_item_padding_sides" />
-    </LinearLayout>
+            android:layout_weight="1">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/chassis_form2_dealer"
+                android:hint="@string/store"
 
+                android:layout_marginTop="@dimen/list_item_padding_sides" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 </RelativeLayout>

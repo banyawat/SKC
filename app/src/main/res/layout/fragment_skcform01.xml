@@ -18,7 +18,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/skc_form1_prefix"
-                android:hint="คำนำหน้า"
+                android:hint="@string/form_prefix"
                 android:cursorVisible="true"
                 android:drawableLeft="@drawable/ic_person_outline" />
         </android.support.design.widget.TextInputLayout>
@@ -33,7 +33,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/skc_form1_name"
-                android:hint="ชื่อ"
+                android:hint="@string/form_name"
                  />
         </android.support.design.widget.TextInputLayout>
 
@@ -48,7 +48,7 @@
                 android:ems="10"
                 android:id="@+id/skc_form1_surname"
                 android:layout_weight="0.4"
-                android:hint="นามสกุล" />
+                android:hint="@string/form_surname" />
         </android.support.design.widget.TextInputLayout>
     </TableRow>
 
@@ -67,14 +67,14 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ชาย"
+                android:text="@string/form_gender_male"
                 android:id="@+id/skc_form1_gender1"
                 android:checked="false" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="หญิง"
+                android:text="@string/form_gender_female"
                 android:id="@+id/skc_form1_gender2" />
         </RadioGroup>
 
@@ -88,7 +88,7 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/skc_form1_idnum"
-                android:hint="เลขที่บัตรประชาชน"
+                android:hint="@string/form_id_num"
                 android:drawableLeft="@drawable/ic_credit_card" />
         </android.support.design.widget.TextInputLayout>
 
@@ -102,13 +102,13 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="บุคคลทั่วไป"
+                android:text="@string/form_person_type_general"
                 android:id="@+id/skc_form1_persontype1" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="นิติบุคคล"
+                android:text="@string/form_person_type_corporation"
                 android:id="@+id/skc_form1_persontype2"
                 android:checked="false" />
         </RadioGroup>
@@ -130,7 +130,7 @@
                 android:layout_column="0"
                 android:drawableLeft="@drawable/ic_cake"
                 android:drawableRight="@drawable/ic_event_18dp"
-                android:hint="วัน/เดือน/ปีเกิด"
+                android:hint="@string/form_birth_date"
                 android:focusable="false"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" />
@@ -139,8 +139,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="อายุ"
-            android:textSize="20dp"
+            android:text="@string/form_age"
+            android:textSize="@dimen/age_text_size"
             android:id="@+id/skc_form1_age"
             android:layout_gravity="center_vertical" />
     </TableRow>
@@ -153,11 +153,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <EditText
-                android:inputType="numberDecimal"
+                android:inputType="phone"
                 android:ems="10"
                 android:id="@+id/skc_form1_phone"
                 android:layout_column="0"
-                android:hint="เบอร์โทรศัพท์บ้าน"
+                android:hint="@string/form_phone"
                 android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
@@ -170,7 +170,7 @@
                 android:ems="10"
                 android:id="@+id/skc_form1_email"
                 android:layout_column="0"
-                android:hint="อีเมลล์"
+                android:hint="@string/form_email"
                 android:drawableLeft="@drawable/ic_email_18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                 android:ems="10"
                 android:id="@+id/skc_form1_fax"
                 android:layout_column="0"
-                android:hint="แฟกซ์"
+                android:hint="@string/form_fax"
                 android:drawableLeft="@drawable/ic_print_18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -201,10 +201,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <EditText
-                android:inputType="numberDecimal"
+                android:inputType="phone"
                 android:ems="10"
                 android:id="@+id/skc_form1_sklphone"
-                android:hint="เบอร์โทร SKL"
+                android:hint="@string/form_skl_phone"
                 android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
@@ -219,7 +219,7 @@
                 android:inputType="numberDecimal"
                 android:ems="10"
                 android:id="@+id/skc_form1_mobphone1"
-                android:hint="เบอร์มือถือ 1"
+                android:hint="@string/form_mobile_phone1"
                 android:drawableLeft="@drawable/ic_call_18dp" />
         </android.support.design.widget.TextInputLayout>
 
@@ -230,7 +230,7 @@
                 android:inputType="numberDecimal"
                 android:ems="10"
                 android:id="@+id/skc_form1_mobphone2"
-                android:hint="เบอร์มือถือ2"
+                android:hint="@string/form_mobile_phone2"
                 android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
@@ -249,7 +249,7 @@
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/skc_form1_productnumber"
-            android:hint="จำนวนรถที่เป็นเจ้าของ"
+            android:hint="@string/form_owned_vehicle_number"
             android:drawableLeft="@drawable/ic_action_car"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

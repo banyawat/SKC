@@ -2,21 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SKCModule.SKCForm03"
-    android:orientation="vertical">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".SKCModule.SKCForm03">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2.5"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:orientation="vertical"
@@ -27,14 +24,14 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="แบบสอบถาม"
+                android:text="@string/form_skc_survey_general"
                 android:id="@+id/skc_form3_menu1"
                 android:background="@drawable/vertical_tab_active" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="แบบสอบถาม Welcome Call"
+                android:text="@string/form_skc_survey_welcome_call"
                 android:id="@+id/skc_form3_menu2"
                 android:background="@drawable/vertical_tab_inactive" />
 
@@ -51,8 +48,8 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -64,13 +61,13 @@
                     <ImageView
                         android:layout_width="@dimen/icon_resol"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_work_black" />
+                        android:src="@drawable/ic_work_black"
+                        android:contentDescription="@string/icon_description"/>
 
                     <Spinner
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/skc_form3_job"
-                        android:layout_weight="4" />
+                        android:id="@+id/skc_form3_job" />
 
                 </LinearLayout>
 
@@ -84,13 +81,14 @@
                     <ImageView
                         android:layout_width="@dimen/icon_resol"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_action_car" />
+                        android:src="@drawable/ic_action_car"
+                        android:contentDescription="@string/icon_description"/>
 
                     <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/skc_form3_interestproduct"
-                        android:layout_weight="1" />
+                        android:contentDescription="@string/icon_description"/>
 
                 </LinearLayout>
 
@@ -102,19 +100,20 @@
                 android:layout_height="match_parent"
                 android:weightSum="2"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
                 android:gravity="center_vertical">
 
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_terrain" />
+                    android:src="@drawable/ic_terrain"
+                    android:contentDescription="@string/icon_description"/>
 
                 <Spinner
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/skc_form3_goods"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    />
 
             </LinearLayout>
 
@@ -122,10 +121,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="3"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:gravity="center_vertical">
+                android:layout_gravity="center_vertical">
 
                 <ImageView
                     android:layout_width="@dimen/icon_resol"
@@ -134,7 +130,8 @@
                     android:id="@+id/imageView2"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:contentDescription="@string/icon_description" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="wrap_content"
@@ -147,21 +144,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/skc_form3_agriarea"
-                        android:hint="พืชที่เพาะปลูก(ไร่)"
+                        android:hint="@string/form_survey_agri_area"
                         android:ems="15" />
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="เพิ่ม"
+                    android:text="@string/add_button"
                     android:id="@+id/skc_form3_addbutton"
-                    android:layout_weight="1"
+                    android:textColor="@color/default_color"
                     android:background="@drawable/button_shape_active"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
-
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -170,7 +166,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">
@@ -189,7 +184,6 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:id="@+id/skc_form3_listview"
-            android:layout_weight="1"
             android:background="@drawable/whiteframe"
             android:layout_below="@+id/skc_form3_limit"
             android:layout_alignParentLeft="true"
@@ -209,7 +203,8 @@
             <ImageView
                 android:layout_width="@dimen/icon_resol"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_filter_vintage" />
+                android:src="@drawable/ic_filter_vintage"
+                android:contentDescription="@string/icon_description"/>
 
             <Spinner
                 android:layout_width="0dp"
@@ -220,7 +215,8 @@
             <ImageView
                 android:layout_width="@dimen/icon_resol"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_local_florist" />
+                android:src="@drawable/ic_local_florist"
+                android:contentDescription="@string/icon_description"/>
 
             <Spinner
                 android:layout_width="0dp"
@@ -231,7 +227,8 @@
             <ImageView
                 android:layout_width="@dimen/icon_resol"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_terrain" />
+                android:src="@drawable/ic_terrain"
+                android:contentDescription="@string/icon_description" />
 
             <Spinner
                 android:layout_width="0dp"
@@ -252,7 +249,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/skc_form3_income"
                 android:ems="10"
-                android:hint="รายได้ต่อปี"
+                android:hint="@string/form_survey_income"
                 android:inputType="numberDecimal" />
         </android.support.design.widget.TextInputLayout>
 
@@ -264,7 +261,8 @@
             android:layout_below="@+id/linearLayout2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/icon_description" />
     </RelativeLayout>
 
 </RelativeLayout>

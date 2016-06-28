@@ -15,45 +15,101 @@ limitations under the License.
 -->
 <resources>
     <string name="app_name">Kubota Contact Centre</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-    <string name="one" translatable="false">1</string>
-    <string name="two" translatable="false">2</string>
-    <string name="three" translatable="false">3</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-
-    <string name="row" translatable="false">Row</string>
-    <string name="row_reverse" translatable="false">Row Reverse</string>
-    <string name="column" translatable="false">Column</string>
-    <string name="column_reverse" translatable="false">Column Reverse</string>
-    <string name="nowrap" translatable="false">Nowrap</string>
-    <string name="wrap" translatable="false">Wrap</string>
-    <string name="wrap_reverse" translatable="false">Wrap Reverse</string>
-    <string name="flex_start" translatable="false">Flex Start</string>
-    <string name="flex_end" translatable="false">Flex End</string>
-    <string name="center" translatable="false">Center</string>
-    <string name="space_between" translatable="false">Space Between</string>
-    <string name="space_around" translatable="false">Space Around</string>
-    <string name="baseline" translatable="false">Baseline</string>
-    <string name="stretch" translatable="false">Stretch</string>
-    <string name="auto" translatable="false">Auto</string>
-
-
     <string name="action_settings">Settings</string>
 
-    <string name="skc_label">SKC Contact</string>
-    <string name="contact_label">Contact</string>
-    <string name="lead_label">Lead</string>
-    <string name="activity_label">Activities</string>
-    <string name="account_label">Account</string>
-    <string name="chasis_label">Chasis</string>
-    <string name="title_activity_contact_skc">ContactSKC</string>
-    <string name="logout">Log out</string>
+    <string name="form_prefix">คำนำหน้า</string>
+    <string name="form_name">ชื่อ</string>
+    <string name="form_surname">นามสกุล</string>
+    <string name="form_gender_male">ชาย</string>
+    <string name="form_gender_female">หญิง</string>
+    <string name="form_id_num">เลขที่บัตรประชาชน</string>
+    <string name="form_person_type_general">บุคคลทั่วไป</string>
+    <string name="form_person_type_corporation">นิติบุคคล</string>
+    <string name="form_birth_date">วัน-เดือน-ปีเกิด</string>
+    <string name="form_age">อายุ</string>
+    <string name="form_phone">เบอร์โทรศัพท์บ้าน</string>
+    <string name="form_email">อีเมลล์</string>
+    <string name="form_fax">แฟกซ์</string>
+    <string name="form_skl_phone">เบอร์โทร SKL</string>
+    <string name="form_mobile_phone1">เบอร์มือถือ1</string>
+    <string name="form_mobile_phone2">เบอร์มือถือ2</string>
+    <string name="form_owned_vehicle_number">จำนวนรถที่เป็นเจ้าของ</string>
 
-    <string name="skc_contact">SKC Contact!!!</string>
+    <string name="form_skc_address_insurance">ที่อยู่ตามบัตรรับประกัน/ส่งเอกสาร</string>
+    <string name="form_skc_address_skl">ที่อยู่จาก SKL</string>
+    <string name="form_skc_address_welcome">ที่อยู่จาก Welcome Call</string>
+    <string name="form_skc_survey_general">แบบสอบถาม</string>
+    <string name="form_skc_survey_welcome_call">แบบสอบถาม Welcome Call</string>
+    <string name="form_survey_agri_area">พืชที่เพาะปลูก(ไร่)</string>
+    <string name="form_survey_income">รายได่ต่อปี</string>
+    <string name="form_contact_skl_update">มีการอัพเดจาก SKL</string>
+
+    <string name="icon_description">icon</string>
+
+    <string name="add_button">เพิ่ม</string>
+
+    <string name="interest_model">รุ่นที่สนใจ</string>
+    <string name="interest_product">สินค้าที่สนใจ</string>
+    <string name="agri_area">พื้นที่เพาะปลูก</string>
+    <string name="customer_status">สถานะการติดตามลูกค้า</string>
+
+    <string name="activity_subject">Subject</string>
+    <string name="activity_start_date">Start Date</string>
+    <string name="activity_regarding">Regarding</string>
+    <string name="activity_due_date">Due Date</string>
+    <string name="description">Description</string>
+
+    <string name="account_name">Account Name</string>
+    <string name="account_parent">Parent Account</string>
+    <string name="account_ticker">Ticker Symbol</string>
+    <string name="account_phone">Phone Number</string>
+    <string name="account_fax">Fax</string>
+    <string name="account_website">Wensite</string>
+    <string name="account_part1">Part 1</string>
+    <string name="account_part2">Part 2</string>
+
+    <string name="company_profile">Company Profile</string>
+    <string name="sic_code">SIC Code</string>
+    <string name="marketing">Marketing</string>
+    <string name="originating_lead">Originating Lead</string>
+    <string name="last_campaign_date">Last Campaign Date</string>
+    <string name="marketing_material">Marketing Materials</string>
+    <string name="send">Send</string>
+    <string name="do_not_send">Do not send</string>
+    <string name="billing">Billing</string>
+    <string name="currency">Currency</string>
+    <string name="credit_limit">Credit Limit</string>
+    <string name="credit_hold">Credit Hold</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="contact_pref">Contact Preferences</string>
+    <string name="email">Email</string>
+    <string name="bulk_email">Bulk Email</string>
+    <string name="phone">Phone</string>
+    <string name="mail">Mail</string>
+
+
+    <string name="chassis_no">หมายเลขรถ</string>
+    <string name="engine_no">หมายเลขเครื่อง</string>
+    <string name="model">รุ่น</string>
+    <string name="status_change_date">วันที่เปลี่ยนสถานะ</string>
+    <string name="adms_remark">หมายเหตุจาก ADMS</string>
+
+    <string name="contract_no">เลขที่สัญญา</string>
+    <string name="purchase_date">วันที่ซื้อ</string>
+    <string name="customer">ลูกค้า</string>
+    <string name="vehicle_owner_name">ชื่อผู้ใช้รถ</string>
+    <string name="vehicle_owner_phone">เบอร์โทรศัพท์ผู้ใช้รถ</string>
+    <string name="store">ร้านค้า</string>
+    <string name="shipping">Shipping</string>
+    <string name="freight">Freight Terms</string>
+    <string name="fob">FOB</string>
+    <string name="no_charge">No Charge</string>
+
+    <string name="vip_card">วีไอพีการ์ด</string>
+    <string name="vipstartdate">วันที่ออกบัตร</string>
+    <string name="expireddate">วันที่หมดอายุ</string>
 
     <string name="large_text">
         "This is FEED Acitivity!!!!"
@@ -146,19 +202,8 @@ limitations under the License.
         "when a user tries to pick up one of cards.\n\n"
     </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string-array name="province_array">
-        <item>Mae Hong Son</item>
-        <item>Chiang Mai</item>
-        <item>Chiang Rai</item>
-        <item>Phrae</item>
-        <item>Nan</item>
-        <item>Lamphun</item>
-    </string-array>
-
     <string-array name="interest_product">
+        <item>สินค้าที่สนใจ</item>
         <item>รถแทรกเตอร์</item>
         <item>รถเกี่ยวนวดข้าว</item>
         <item>รถดำนา</item>
@@ -167,6 +212,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="customer_status">
+        <item>สถานะการติดตามลูกค้า</item>
         <item>สอบถามลูกค้า</item>
         <item>สนใจซื้อสินค้า</item>
         <item>สนใจซื้อสินค้าอย่างมาก</item>
@@ -175,6 +221,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="job_choice">
+        <item>อาชีพ</item>
         <item>(ยกเลิก) - เกษตรกร</item>
         <item>(ยกเลิก) - ขายของชำ</item>
         <item>(ยกเลิก) - ครู/อาจารย์(รร.เอกชน)</item>
@@ -220,6 +267,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="agri_choice">
+        <item>พืชที่เพาะปลูก</item>
         <item>(ยกเลิก) -  ข้าว</item>
         <item>(ยกเลิก) -  ชาวทำเล</item>
         <item>(ยกเลิก) -  ถั่วเขียว</item>
@@ -300,6 +348,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="agritype_choice">
+        <item>ลักษณะการทำเกษตร</item>
         <item>ทำการเกษตรในที่ดินเช่า</item>
         <item>ทำการเกษตรในที่ดินญาติ</item>
         <item>ทำเกษตรในที่ดินตัวเอง+ทำเกษตรในที่ดินญาติ</item>
@@ -310,6 +359,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="harvest_choice">
+        <item>วิธีการทำนา</item>
         <item>เกี่ยวมือ</item>
         <item>เกี่ยวมือ+จ้างรถเกี่ยวคูโบต้า</item>
         <item>เกี่ยวมือ+จ้างรถเกี่ยวใหญ่</item>
@@ -322,6 +372,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="rice_choice">
+        <item>วิธีการเก็บเกี่ยว</item>
         <item>หว่าน+ดำมือ+จ้างรถดำนา</item>
         <item>หว่าน+ดำมือ+นาโยน+จ้างรถดำนา</item>
         <item>นาโยน+จ้างรถดำนำ</item>
@@ -391,6 +442,7 @@ limitations under the License.
     </string-array>
     
     <string-array name="account_company_industry">
+        <item>Industry</item>
         <item>Accounting</item>
         <item>Agriculture and Non-petrol Natural Resource Extraction</item>
         <item>Broadcasting Printing and Publishing</item>
@@ -427,6 +479,7 @@ limitations under the License.
     </string-array>
     
     <string-array name="account_company_ownership">
+        <item>Ownership</item>
         <item>Public</item>
         <item>Private</item>
         <item>Subsidiary</item>
@@ -434,6 +487,7 @@ limitations under the License.
     </string-array>
     
     <string-array name="account_billing_payment">
+        <item>Payment Terms</item>
         <item>Net 30</item>
         <item>2% 10, Net 30</item>
         <item>Net 45</item>
@@ -441,6 +495,7 @@ limitations under the License.
     </string-array>
     
     <string-array name="account_shipping_method">
+        <item>Shipping Method</item>
         <item>Airborne</item>
         <item>DHL</item>
         <item>FedEx</item>
@@ -451,6 +506,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="chassis_type">
+        <item>ประเภทรถ</item>
         <item>รถแทรกเตอร์</item>
         <item>รถเกี่ยวนวดข้าว</item>
         <item>รถดำนา</item>
@@ -461,6 +517,7 @@ limitations under the License.
     </string-array>
 
     <string-array name="chassis_status">
+        <item>สถานะของรถ</item>
         <item>ใช้งาน</item>
         <item>รถยึด</item>
         <item>รถ MAX</item>
@@ -468,6 +525,7 @@ limitations under the License.
     </string-array>
     
     <string-array name="chassis_sale_condition">
+        <item>ช่องทางการขาย</item>
         <item>ขายสด</item>
         <item>โครงการประชารัฐ/โครงการของรัฐฯ</item>
         <item>เช่าซื้อ AD</item>

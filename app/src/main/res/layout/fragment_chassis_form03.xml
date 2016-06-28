@@ -5,48 +5,64 @@
     tools:context="com.theteus.kubota.ChassisModule.ChassisForm03"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:id="@+id/chassis_form3_vipcard"
-        android:ems="10"
-        android:layout_gravity="left|top"
-        android:hint="วีไอพีการ์ด"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:id="@+id/chassis_form3_edit1"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="100dp"
-        android:inputType="numberDecimal" />
+        android:layout_gravity="left|top">
+        <EditText
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/chassis_form3_vipcard"
+            android:ems="10"
+            android:hint="@string/vip_card"
+             />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/chassis_form3_vipstartdate"
-        android:hint="วันที่ออกบัตร"
-        android:layout_alignLeft="@+id/chassis_form3_vipcard"
-        android:layout_below="@+id/chassis_form3_vipcard"
-        android:focusable="false" />
+        android:id="@+id/chassis_form3_edit2"
+        android:layout_alignLeft="@+id/chassis_form3_edit1"
+        android:layout_below="@+id/chassis_form3_edit1">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/chassis_form3_vipstartdate"
+            android:hint="@string/vipstartdate"
 
-    <EditText
-        android:layout_width="wrap_content"
+            android:focusable="false" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/chassis_form3_vipenddate"
-        android:hint="วันที่หมดอายุ"
-        android:layout_below="@+id/chassis_form3_vipstartdate"
-        android:layout_alignLeft="@+id/chassis_form3_vipstartdate"
-        android:layout_alignStart="@+id/chassis_form3_vipstartdate"
-        android:focusable="false" />
+        android:id="@+id/chassis_form3_edit3"
+        android:layout_below="@+id/chassis_form3_edit2"
+        android:layout_alignLeft="@+id/chassis_form3_edit2"
+        android:layout_alignStart="@+id/chassis_form3_edit2">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/chassis_form3_vipenddate"
+            android:hint="@string/expireddate"
+            android:focusable="false" />
+    </android.support.design.widget.TextInputLayout>
 
     <ImageView
         android:layout_width="@dimen/icon_resol"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_credit_card"
-        android:layout_marginTop="12dp"
-        android:layout_alignTop="@+id/chassis_form3_vipcard"
+        android:contentDescription="@string/icon_description"
+        android:layout_marginBottom="10dp"
+        android:layout_alignBottom="@+id/chassis_form3_edit1"
         android:layout_alignLeft="@+id/imageView12"
         android:layout_alignStart="@+id/imageView12" />
 
@@ -55,17 +71,21 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_event"
         android:id="@+id/imageView12"
-        android:layout_below="@+id/chassis_form3_vipcard"
-        android:layout_toLeftOf="@+id/chassis_form3_vipstartdate"
-        android:layout_toStartOf="@+id/chassis_form3_vipstartdate" />
+        android:contentDescription="@string/icon_description"
+        android:layout_marginBottom="6dp"
+        android:layout_alignBottom="@+id/chassis_form3_edit2"
+        android:layout_toLeftOf="@+id/chassis_form3_edit2"
+        android:layout_toStartOf="@+id/chassis_form3_edit2" />
 
     <ImageView
         android:layout_width="@dimen/icon_resol"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_event"
         android:id="@+id/imageView13"
-        android:layout_below="@+id/chassis_form3_vipstartdate"
-        android:layout_toLeftOf="@+id/chassis_form3_vipenddate"
-        android:layout_toStartOf="@+id/chassis_form3_vipenddate" />
+        android:contentDescription="@string/icon_description"
+        android:layout_alignBottom="@+id/chassis_form3_edit3"
+        android:layout_alignLeft="@+id/imageView12"
+        android:layout_alignStart="@+id/imageView12"
+        android:layout_marginBottom="6dp" />
 
 </RelativeLayout>

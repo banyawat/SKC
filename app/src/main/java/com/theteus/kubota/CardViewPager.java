@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabWidget;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
@@ -68,7 +70,7 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
     private void initViewPager(View pagerView){
         ScreenSlidePagerAdapter mPagerAdapter;
         mPager = (ViewPager) pagerView;
-        mPagerAdapter = new ScreenSlidePagerAdapter(mainFragment.getFragmentManager());
+        mPagerAdapter = new ScreenSlidePagerAdapter(mainFragment.getChildFragmentManager());
         for(Fragment frag: viewList)
             mPagerAdapter.addPage(frag);
         mPager.setOffscreenPageLimit(viewList.size()-1);
@@ -90,7 +92,8 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
                         nextButton.setImageResource(R.drawable.ic_arrow_forward);
                 }
             });
-
+            if(mPager.getRootView()==null)
+                Toast.makeText(mainView.getContext(), "test", Toast.LENGTH_SHORT).show();
         }
     }
 

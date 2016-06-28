@@ -2,7 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,20 +14,20 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/vertical_tab_active"
-            android:text="ที่อยู่ตามบัตรรับประกัน/ส่งเอกสาร"
+            android:text="@string/form_skc_address_insurance"
             android:id="@+id/skc_form2_menu01" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ที่อยู่จาก Welcome Call"
+            android:text="@string/form_skc_address_welcome"
             android:id="@+id/skc_form2_menu02"
             android:background="@drawable/vertical_tab_inactive" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ที่อยู่ SKL"
+            android:text="@string/form_skc_address_skl"
             android:id="@+id/skc_form2_menu03"
             android:background="@drawable/vertical_tab_inactive" />
     </LinearLayout>

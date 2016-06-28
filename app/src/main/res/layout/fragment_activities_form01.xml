@@ -7,8 +7,6 @@
     android:paddingBottom="25dp"
     android:paddingTop="25dp">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -22,7 +20,8 @@
             android:layout_width="@dimen/icon_resol"
             android:layout_height="31dp"
             android:src="@drawable/ic_event"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/icon_description"/>
 
         <Spinner
             android:layout_width="400dp"
@@ -38,7 +37,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp">
+        android:layout_marginRight="50dp"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:orientation="vertical"
@@ -48,23 +48,31 @@
             android:layout_margin="@dimen/list_item_padding_sides"
             android:baselineAligned="false">
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/activities_form_subject"
-                android:drawableLeft="@drawable/ic_work_black"
-                android:hint="Subject"
-                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_subject"
+                    android:drawableLeft="@drawable/ic_work_black"
+                    android:hint="@string/activity_subject"
+                    android:layout_marginBottom="@dimen/list_item_padding_sides" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/activities_form_startdate"
-                android:layout_gravity="center_horizontal"
-                android:hint="Start Date"
-                android:drawableLeft="@drawable/ic_event_note_black"
-                android:focusable="false"
-                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_startdate"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/activity_start_date"
+                    android:drawableLeft="@drawable/ic_event_note_black"
+                    android:focusable="false"
+                    android:layout_marginBottom="@dimen/list_item_padding_sides" />
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -77,7 +85,8 @@
                     android:layout_width="@dimen/icon_resol"
                     android:layout_height="31dp"
                     android:src="@drawable/ic_local_grocery_store"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/icon_description" />
 
                 <Spinner
                     android:layout_width="match_parent"
@@ -100,7 +109,8 @@
                     android:layout_height="31dp"
                     android:src="@drawable/ic_thumb_up"
                     android:id="@+id/imageView3"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/icon_description" />
 
                 <Spinner
                     android:layout_width="match_parent"
@@ -119,24 +129,32 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/list_item_padding_sides">
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/activities_form_regard"
-                android:layout_gravity="center_horizontal"
-                android:drawableLeft="@drawable/ic_person_pin_black"
-                android:hint="Regarding"
-                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_regard"
+                    android:layout_gravity="center_horizontal"
+                    android:drawableLeft="@drawable/ic_person_pin_black"
+                    android:hint="@string/activity_regarding"
+                    android:layout_marginBottom="@dimen/list_item_padding_sides" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/activities_form_duedate"
-                android:layout_gravity="center_horizontal"
-                android:focusable="false"
-                android:hint="Due Date"
-                android:drawableLeft="@drawable/ic_event_note_black"
-                android:layout_marginBottom="@dimen/list_item_padding_sides" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activities_form_duedate"
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="false"
+                    android:hint="@string/activity_due_date"
+                    android:drawableLeft="@drawable/ic_event_note_black"
+                    android:layout_marginBottom="@dimen/list_item_padding_sides" />
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -150,7 +168,8 @@
                     android:layout_height="31dp"
                     android:src="@drawable/ic_av_timer"
                     android:id="@+id/imageView4"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/icon_description" />
 
                 <Spinner
                     android:layout_width="match_parent"
@@ -173,7 +192,8 @@
                     android:layout_height="31dp"
                     android:src="@drawable/ic_thumb_down"
                     android:layout_gravity="center_vertical"
-                    android:id="@+id/imageView5" />
+                    android:id="@+id/imageView5"
+                    android:contentDescription="@string/icon_description" />
 
                 <Spinner
                     android:layout_width="match_parent"
@@ -186,16 +206,21 @@
         </LinearLayout>
     </LinearLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/activities_form_description"
-        android:layout_weight="2.5"
-        android:hint="Description"
-        android:drawableLeft="@drawable/ic_description"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp" />
+        android:layout_weight="2.5">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/activities_form_description"
+
+            android:hint="@string/description"
+            android:drawableLeft="@drawable/ic_description"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp" />
+    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.theteus.kubota.AccountModule.AccountForm03"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:baselineAligned="false">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,7 +17,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Part 1"
+            android:text="@string/account_part1"
             android:id="@+id/account_form3_menu1"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/vertical_tab_active" />
@@ -24,7 +25,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Part 2"
+            android:text="@string/account_part2"
             android:id="@+id/account_form3_menu2"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/vertical_tab_inactive" />
@@ -37,5 +38,5 @@
         android:layout_weight="1"
         android:id="@+id/account_form3_layoutloader"
         android:layout_margin="@dimen/list_item_padding_sides"
-        android:padding="@dimen/list_item_padding_sides"></LinearLayout>
+        android:padding="@dimen/list_item_padding_sides"/>
 </LinearLayout>

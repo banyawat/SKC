@@ -124,6 +124,7 @@
             android:layout_height="wrap_content"
             android:text="เพิ่ม"
             android:id="@+id/contact_form3_addbutton"
+            android:textColor="@color/default_color"
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal"
             android:layout_gravity="center"
@@ -225,6 +226,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:id="@+id/contact_form3_income"
                 android:ems="10"
                 android:hint="รายได้ต่อปี"
