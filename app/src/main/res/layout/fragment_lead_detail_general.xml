@@ -6,13 +6,13 @@
     tools:context=".LeadModule.LeadDetailGeneral">
 
     <!--NAME-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_name_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_person_outline"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,14 +87,14 @@
         android:alpha="0.87" />
 
     <!--GENDER-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_gender_icon"
         android:layout_below="@id/lead_detail_name_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:background="@drawable/ic_48dp_black_wc"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         android:alpha="0.87" />
 
     <!--ID Card-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_id_card_icon"
         android:layout_below="@id/lead_detail_name_icon"
         android:layout_width="48dp"
@@ -129,8 +129,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="280dp"
         android:layout_marginStart="280dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_credit_card"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
         android:alpha="0.87" />
 
     <!--Customer Type-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_cus_type_icon"
         android:layout_below="@id/lead_detail_name_icon"
         android:layout_width="48dp"
@@ -165,8 +165,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="560dp"
         android:layout_marginStart="560dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_label"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -193,14 +193,14 @@
         android:alpha="0.87" />
 
     <!--BIRTHDAY-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_birthday_icon"
         android:layout_below="@id/lead_detail_gender_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_cake"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -227,14 +227,14 @@
         android:alpha="0.87" />
 
     <!--PHONE-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_phone_icon"
         android:layout_below="@id/lead_detail_birthday_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_contact_phone"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -261,7 +261,7 @@
         android:alpha="0.87" />
 
     <!--MOBILE 1-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_mobile_icon_1"
         android:layout_below="@id/lead_detail_birthday_icon"
         android:layout_width="48dp"
@@ -269,8 +269,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="280dp"
         android:layout_marginStart="280dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_contact_phone"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -297,7 +297,7 @@
         android:alpha="0.87" />
 
     <!--MOBILE 2-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_mobile_icon_2"
         android:layout_below="@id/lead_detail_birthday_icon"
         android:layout_width="48dp"
@@ -305,8 +305,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="560dp"
         android:layout_marginStart="560dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_contact_phone"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

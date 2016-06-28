@@ -91,6 +91,9 @@ public class LeadDetailContent extends Fragment implements TabHost.OnTabChangeLi
 
         mPager.setAdapter(mPagerAdapter);
         mPager.addOnPageChangeListener(this);
+
+        if(getArguments().containsKey(LeadDetailMain.ARG_PARAM2))
+            setCurrentTab(getArguments().getInt(LeadDetailMain.ARG_PARAM2));
     }
 
     @Override
@@ -107,5 +110,9 @@ public class LeadDetailContent extends Fragment implements TabHost.OnTabChangeLi
     @Override
     public void onTabChanged(String tabId) {
         this.mPager.setCurrentItem(this.mTabHost.getCurrentTab());
+    }
+
+    public void setCurrentTab(int tabNumber) {
+        mPager.setCurrentItem(tabNumber);
     }
 }

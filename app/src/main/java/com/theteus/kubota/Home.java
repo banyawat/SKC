@@ -263,6 +263,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     public ScreenSlidePagerAdapter getmPagerAdapter() {
         return mPagerAdapter;
     }
+    public ViewPager getmPager() { return mPager; }
     public void changeMenu(int position) {
         pageID = position;
         menuList.get(lastPage).setBgColor(0);

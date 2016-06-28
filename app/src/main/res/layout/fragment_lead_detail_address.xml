@@ -6,13 +6,13 @@
     tools:context=".LeadModule.LeadDetailAddress">
 
     <!--House Info-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_house_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_domain"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,14 +134,14 @@
         android:textColor="@android:color/black"
         android:alpha="0.87" />
     <!--House Location-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_house_location_icon"
         android:layout_below="@id/lead_detail_house_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_location_on"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

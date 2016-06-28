@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.theteus.kubota.ActivitiesModule.Activities;
@@ -19,6 +20,7 @@ import com.theteus.kubota.ActivitiesModule.ActivityInstance;
 import com.theteus.kubota.ActivitiesModule.DummyActivityInstance;
 import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
+import com.theteus.kubota.Reference;
 import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import java.util.ArrayList;
@@ -71,6 +73,26 @@ public class LeadDetailActivities extends Fragment {
             recyclerView.setAdapter(leadActivitiesAdapter);
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(mLayoutManager);
+
+            ((Button) view.findViewById(R.id.lead_detail_activity_add_button)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Home home = (Home) getActivity();
+                    ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
+
+                    mPagerAdapter.clearPage();
+                    //ActivitiesDetailMain fragment = new ActivitiesDetailMain();
+                    //fragment.setArguments(new Bundle());
+                    //mPagerAdapter.addPage(fragment);
+
+                    Activities fragment = new Activities();
+                    mPagerAdapter.addPage(new Activities());
+                    mPagerAdapter.notifyDataSetChanged();
+
+                    home.changeMenu(4);
+                    home.getmPager().setCurrentItem(1);
+                }
+            });
         }
 
         return view;
@@ -92,9 +114,28 @@ public class LeadDetailActivities extends Fragment {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.mStatus.setText(Reference.MASTER_ACTIVITYSTATUS.get(mActivities.get(position).status));
+            switch(mActivities.get(position).status) {
+                case 117980000:
+                    holder.mStatus.setBackgroundResource(R.color.statusGreen);
+                    holder.mStatus.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusGreenFont));
+                    break;
+                case 117980001:
+                    holder.mStatus.setBackgroundResource(R.color.statusRed);
+                    holder.mStatus.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    break;
+                case 117980002:
+                    holder.mStatus.setBackgroundResource(R.color.statusBlue);
+                    holder.mStatus.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusBlueFont));
+                    break;
+                default:
+                    holder.mStatus.setBackgroundResource(R.color.statusUnknown);
+                    holder.mStatus.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusUnknownFont));
+                    break;
+            }
             holder.mSubject.setText(mActivities.get(position).subject);
-            holder.mDueDate.setText(mActivities.get(position).dueDate);
-            holder.mLastUser.setText(mActivities.get(position).lastUser);
+            holder.mDueDate.setText("Due : " + mActivities.get(position).dueDate);
+            holder.mLastUser.setText("Last Modified By : " + mActivities.get(position).lastUser);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -123,6 +164,7 @@ public class LeadDetailActivities extends Fragment {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
+            public final TextView mStatus;
             public final TextView mSubject;
             public final TextView mDueDate;
             public final TextView mLastUser;
@@ -130,6 +172,7 @@ public class LeadDetailActivities extends Fragment {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
+                mStatus = (TextView) view.findViewById(R.id.activity_status) ;
                 mSubject = (TextView) view.findViewById(R.id.activity_subject);
                 mDueDate = (TextView) view.findViewById(R.id.activity_due_date);
                 mLastUser = (TextView) view.findViewById(R.id.activity_last_user);

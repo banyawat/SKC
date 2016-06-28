@@ -20,18 +20,18 @@ public class DummyActivityInstance {
     static {
         // Primary Key
         String id[] = new String[] {"A0001", "A0002", "A0003", "A0004", "A0005", "A0006", "A0007", "A0008", "A0009", "A0010"};
-        int status[] = new int[] {0, 1, 2, 0, 1, 2, 0, 1, 2, 0};
+        int status[] = new int[] {117980000, 117980001, 117980002, 117980000, 117980001, 117980002, 117980000, 117980001, 117980002, 117980000};
         String lastUser[] = new String[] {"someAdmin", "anyAdmin", "allAdmin", "noAdmin", "thisAdmin", "thatAdmin", "thoseAdmin", "theseAdmin", "justAdmin", "admin"};
         // Attributes
-        int type[] = new int[] {2, 0, 1, 0, 0, 2, 0, 2, 1, 0};
+        int type[] = new int[] {117980002, 117980000, 117980001, 117980000, 117980000, 117980002, 117980000, 117980002, 117980001, 117980000};
         String subject[] = new String[] {"Trial Use", "FollowUp Call 1", "Customer Visit", "FollowUp Call 2", "FollowUp Call 1", "Trial Use", "FollowUp Call 1", "Trial Use", "Customer Visit", "FollowUp Call 1"};
         String leadId[] = new String[] {"L0001", "L0001", "L0002", "L0001", "L0003", "L0002", "L0004", "L0003", "L0004", "L0002"};
         String startDate[] = new String[] {"1 มกราคม 2558", "2 มกราคม 2558", "3 มกราคม 2558", "4 มกราคม 2558", "5 มกราคม 2558", "6 มกราคม 2558", "7 มกราคม 2558", "8 มกราคม 2558", "9 มกราคม 2558", "10 มกราคม 2558"};
         String dueDate[] = new String[] {"15 มกราคม 2558", "16 มกราคม 2558", "17 มกราคม 2558", "18 มกราคม 2558", "19 มกราคม 2558", "20 มกราคม 2558", "21 มกราคม 2558", "22 มกราคม 2558", "23 มกราคม 2558", "24 มกราคม 2558"};
-        int decisionStatus[] = new int[] {0, -1, 2, -1, -1, 1, -1, 3, 0, -1};
-        int decisionDuration[] = new int[] {4, -1, 3, -1, 2, -1, 1, -1, 0, -1};
-        int reasonToBuy[] = new int[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-        int reasonToNotBuy[] = new int[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        int purchaseStatus[] = new int[] {177980000, 0, 177980002, 0, 0, 177980001, 0, 177980003, 177980000, 0};
+        int decisionPeriod[] = new int[] {177980004, 0, 177980003, 0, 177980002, 0, 177980001, 0, 177980000, 0};
+        int purchaseReason[] = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int noPurchaseReason[] = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         String description[] = new String[] {null, null, null, null, null, null, null, null, null, null};
 
         for(int i = 0; i < COUNT; i++) {
@@ -44,10 +44,10 @@ public class DummyActivityInstance {
             activity.leadId = leadId[i];
             activity.startDate = startDate[i];
             activity.dueDate = dueDate[i];
-            activity.decisionStatus = decisionStatus[i];
-            activity.decisionDuration = decisionDuration[i];
-            activity.reasonToBuy = reasonToBuy[i];
-            activity.reasonToNotBuy = reasonToNotBuy[i];
+            activity.purchaseStatus = purchaseStatus[i];
+            activity.decisionPeriod = decisionPeriod[i];
+            activity.purchaseReason = purchaseReason[i];
+            activity.noPurchaseReason = noPurchaseReason[i];
             activity.description = description[i];
 
             ACTIVITIES.add(activity);

@@ -19,7 +19,7 @@ public class DummyLeadInstance {
     static {
         // Primary Key and Supplement
         String id[] = new String[] {"L0001", "L0002", "L0003", "L0004", "L0005"};
-        String status[] = new String[] {"New Lead", "Disqualified", "Qualified", "Unknown", "New Lead"};
+        int status[] = new int[] {117980000, 117980002, 117980001, 117980002, 117980000};
         String owner[] = new String[] {"SomeAdmin", "AnyAdmin", "AllAdmin", "NoAdmin", "JustAdmin"};
         // Dealer Section
         String shopName[] = new String[] {"บจก.มิตรแท้เซาท์เทิร์นจักรกล", "หจก.บุญสยามสตีลกระบี่", "หจก. คูโบต้า ก.แสงยนต์ กาญจนบุรี", "บจก. ก.แสงยนต์ คอร์เปอเรชั่น", "หจก. คูโบต้า ก.แสงยนต์ กาญจนบุรี สาขาพนมทวน"};
@@ -29,7 +29,7 @@ public class DummyLeadInstance {
         String salesName[] = new String[] {"มานี ขายดี", "มานา ขายเก่ง", "ปรีดี ขายรวย", "สมบัติ ขยันขาย", "มารวย คนดี"};
         String eventLocation[] = new String[] {"บจก.มิตรแท้เซาท์เทิร์นจักรกล", "หจก.บุญสยามสตีลกระบี่", "หจก. คูโบต้า ก.แสงยนต์ กาญจนบุรี", "บจก. ก.แสงยนต์ คอร์เปอเรชั่น", "หจก. คูโบต้า ก.แสงยนต์ กาญจนบุรี สาขาพนมทวน"};
         String code[] = new String[] {"ลูกค้า Walk-In", "ลูกค้า Walk-In", "ลูกค้า Walk-In", "ลูกค้า Walk-In", "ลูกค้า Walk-In"};
-        String contact[] = new String[] {"Adam Smith", "วิรุฬห์ หิรัณยวิรุฬห์", "Yekaterina Alexeyevna", "Hjalmar Söderberg", "Enrico Dandolo"};
+        String contact[] = new String[] {"D001-C0001", "D002-C0001", "D003-C0001", "D004-C0001", "D005-C0001"};
         //General Section
         String titleName[] = new String[] {"นาย", "นาย", "นาง", "นาย", "นาย"};
         String firstName[] = new String[] {"Adam", "วิรุฬห์", "Yekaterina", "Hjalmar", "Enrico"};
@@ -54,18 +54,18 @@ public class DummyLeadInstance {
         String province[] = new String[] {"กรุงเทพมหานคร", "ปทุมธานี", "นครสวรรค์", "ชุมพร", "หนองคาย"};
         String postalCode[] = new String[] {"12345", "91271", "71931", "68192", "17812"};
         //Wishlist Section
-        String followingStatus[] = new String[] {"สอบถามลูกค้า", "สนใขซื้อสินค้า", "สนใจซื้อสินค้าอย่างมาก", "รอผลการอนุมัติสินเชื่อ", "วางเงินมัดจำแล้ว"};
-        String area[] = new String[] {"12 ไร่", "15 ไร่", "20 ไร่", "30 ไร่", "100 ไร่"};
-        String itemType1[] = new String[] {"รถแทรกเตอร์", "รถดำนา", "รถแทรกเตอร์", "รถแทรกเตอร์", "รถขุด"};
-        String itemModel1[] = new String[] {"MX-12", "AP-13", "MX-12", "MX-04", "BH-01"};
-        String itemType2[] = new String[] {"รถเกี่ยวนวดข้าว", "รถแทรกเตอร์", "- - -", "รถแทรกเตอร์", "รถแทรกเตอร์"};
-        String itemModel2[] = new String[] {"PP-11", "MX-12", "- - -", "MX-12", "MX-12"};
-        String itemType3[] = new String[] {"รถดำนา", "- - -", "- - -", "รถเกี่ยวนวดข้าว", "รถแทรกเตอร์"};
-        String itemModel3[] = new String[] {"AP-13", "- - -", "- - -", "PP-11", "MX-04"};
-        String itemType4[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
-        String itemModel4[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
-        String itemType5[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
-        String itemModel5[] = new String[] {"- - -", "- - -", "- - -", "- - -", "- - -"};
+        int followStatus[] = new int[] {117980000, 117980002, 117980000, 117980003, 117980004};
+        double area[] = new double[] {12, 15, 20, 30 , 100};
+        int product1[] = new int[] {117980000, 117980002, 117980000, 117980000, 117980003};
+        int product2[] = new int[] {117980001, 117980000, 0, 117980000, 117980000};
+        int product3[] = new int[] {117980002, 0, 0, 117980001, 117980000};
+        int product4[] = new int[] {0, 0, 0, 0, 0};
+        int product5[] = new int[] {0, 0, 0, 0, 0};
+        String model1[] = new String[] {"MX-12", "AP-13", "MX-12", "MX-04", "BH-01"};
+        String model2[] = new String[] {"PP-11", "MX-12", null, "MX-12", "MX-12"};
+        String model3[] = new String[] {"AP-13", null, null, "PP-11", "MX-04"};
+        String model4[] = new String[] {null, null, null, null, null};
+        String model5[] = new String[] {null, null, null, null, null};
 
         for(int i = 0; i < COUNT; i++) {
             LeadInstance lead = new LeadInstance();
@@ -101,18 +101,18 @@ public class DummyLeadInstance {
             lead.district = district[i];
             lead.province = province[i];
             lead.postalCode = postalCode[i];
-            lead.followingStatus = followingStatus[i];
+            lead.followStatus = followStatus[i];
             lead.area = area[i];
-            lead.itemType1 = itemType1[i];
-            lead.itemModel1 = itemModel1[i];
-            lead.itemType2 = itemType2[i];
-            lead.itemModel2 = itemModel2[i];
-            lead.itemType3 = itemType3[i];
-            lead.itemModel3 = itemModel3[i];
-            lead.itemType4 = itemType4[i];
-            lead.itemModel4 = itemModel4[i];
-            lead.itemType5 = itemType5[i];
-            lead.itemModel5 = itemModel5[i];
+            lead.product1 = product1[i];
+            lead.product2 = product2[i];
+            lead.product3 = product3[i];
+            lead.product4 = product4[i];
+            lead.product5 = product5[i];
+            lead.model1 = model1[i];
+            lead.model2 = model2[i];
+            lead.model3 = model3[i];
+            lead.model4 = model4[i];
+            lead.model5 = model5[i];
 
             LEADS.add(lead);
             LEAD_MAP.put(lead.id, lead);

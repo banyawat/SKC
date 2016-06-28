@@ -13,6 +13,7 @@ import com.theteus.kubota.LeadModule.Lead;
 import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.LeadModule.LeadInstance;
 import com.theteus.kubota.R;
+import com.theteus.kubota.Reference;
 import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 /**
@@ -61,6 +62,7 @@ public class ActivitiesDetailContent extends Fragment {
                 LeadDetailMain fragment = new LeadDetailMain();
                 Bundle args = new Bundle();
                 args.putString(LeadDetailMain.ARG_PARAM1, mLead.id);
+                args.putInt(LeadDetailMain.ARG_PARAM2, 4);
                 fragment.setArguments(args);
                 mPagerAdapter.addPage(fragment);
                 mPagerAdapter.addPage(new Lead());
@@ -74,23 +76,23 @@ public class ActivitiesDetailContent extends Fragment {
 
         dueDate.setText(mActivity.dueDate);
 
-        if(mActivity.decisionStatus >= 0 && mActivity.decisionStatus < ActivityInstance.MASTER_DECISION_STATUS.length)
-            decision.setText(ActivityInstance.MASTER_DECISION_STATUS[mActivity.decisionStatus]);
+        if(Reference.MASTER_PURCHASEREASON.containsKey(mActivity.purchaseReason))
+            decision.setText(Reference.MASTER_PURCHASEREASON.get(mActivity.purchaseReason));
         else
             decision.setText("- - -");
 
-        if(mActivity.decisionDuration >= 0 && mActivity.decisionDuration < ActivityInstance.MASTER_DECISION_DURATION.length)
-            duration.setText(ActivityInstance.MASTER_DECISION_DURATION[mActivity.decisionDuration]);
+        if(Reference.MASTER_DECISIONPERIOD.containsKey(mActivity.decisionPeriod))
+            duration.setText(Reference.MASTER_DECISIONPERIOD.get(mActivity.decisionPeriod));
         else
             duration.setText("- - -");
 
-        if(mActivity.reasonToBuy >= 0 && mActivity.reasonToBuy < ActivityInstance.MASTER_REASON_TO_BUY.length)
-            reasonBuy.setText(ActivityInstance.MASTER_REASON_TO_BUY[mActivity.reasonToBuy]);
+        if(Reference.MASTER_PURCHASEREASON.containsKey(mActivity.purchaseReason))
+            reasonBuy.setText(Reference.MASTER_PURCHASEREASON.get(mActivity.purchaseReason));
         else
             reasonBuy.setText("- - -");
 
-        if(mActivity.reasonToNotBuy >= 0 && mActivity.reasonToNotBuy < ActivityInstance.MASTER_REASON_TO_NOT_BUY.length)
-            reasonNotBuy.setText(ActivityInstance.MASTER_REASON_TO_NOT_BUY[mActivity.reasonToNotBuy]);
+        if(Reference.MASTER_NOPURCHASEREASON.containsKey(mActivity.noPurchaseReason))
+            reasonNotBuy.setText(Reference.MASTER_NOPURCHASEREASON.get(mActivity.noPurchaseReason));
         else
             reasonNotBuy.setText("- - -");
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.theteus.kubota.LeadModule.DummyLeadInstance;
 import com.theteus.kubota.LeadModule.LeadInstance;
 import com.theteus.kubota.R;
+import com.theteus.kubota.Reference;
 
 /**
  * Created by whorangester on 6/24/16.
@@ -36,37 +37,39 @@ public class ActivitiesDetailMain extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_activities_detail_main, container, false);
 
-        final TextView title = (TextView) view.findViewById(R.id.activities_detail_title);
-        final TextView subtitle = (TextView) view.findViewById(R.id.activities_detail_subtitle);
-        final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.activities_detail_search_field);
-        final TextView status = (TextView) view.findViewById(R.id.activities_detail_status);
+        if(mActivity != null) {
+            final TextView title = (TextView) view.findViewById(R.id.activities_detail_title);
+            final TextView subtitle = (TextView) view.findViewById(R.id.activities_detail_subtitle);
+            final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.activities_detail_search_field);
+            final TextView status = (TextView) view.findViewById(R.id.activities_detail_status);
 
-        setUpCardTitle(title, subtitle, searchField, status);
-        setUpContentFragment();
+            setUpCardTitle(title, subtitle, searchField, status);
+            setUpContentFragment();
+        }
 
         return view;
     }
 
     public void setUpCardTitle(TextView titleView, TextView subtitleView, AutoCompleteTextView searchField, TextView statusView) {
         String activitySubject = mActivity.subject;
-        String leadName = "Lead : " + mLead.firstName + " " + mLead.lastName;
+        String leadName = "Type : " + Reference.MASTER_ACTIVITYTYPE.get(mActivity.type);
         String activityKey = mActivity.subject + " : " + mLead.firstName + " " + mLead.lastName;
 
         titleView.setText(activitySubject);
         subtitleView.setText(leadName);
         searchField.setText(activityKey);
-        statusView.setText(ActivityInstance.MASTER_STATUS[mActivity.status]);
+        statusView.setText(Reference.MASTER_ACTIVITYSTATUS.get(mActivity.status));
 
         switch(mActivity.status) {
-            case 0:
+            case 117980000:
                 statusView.setBackgroundResource(R.color.statusGreen);
                 statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusGreenFont));
                 break;
-            case 1:
+            case 117980001:
                 statusView.setBackgroundResource(R.color.statusRed);
                 statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
                 break;
-            case 2:
+            case 117980002:
                 statusView.setBackgroundResource(R.color.statusBlue);
                 statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusBlueFont));
                 break;

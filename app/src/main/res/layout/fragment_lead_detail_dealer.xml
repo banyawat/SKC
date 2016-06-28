@@ -6,13 +6,13 @@
     tools:context=".LeadModule.LeadDetailDealer">
 
     <!--SHOP NAME-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_shop_name_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_store_mall_directory"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,14 +39,14 @@
         android:alpha="0.87" />
 
     <!--RECORD DATE-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_record_date_icon"
         android:layout_below="@id/lead_detail_shop_name_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_today"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,14 +73,14 @@
         android:alpha="0.87" />
 
     <!--EVENT DATE-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_event_date_icon"
         android:layout_below="@id/lead_detail_record_date_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_today"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,14 +107,14 @@
         android:alpha="0.87" />
 
     <!--Code-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_code_icon"
         android:layout_below="@id/lead_detail_event_date_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_label"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,15 +141,15 @@
         android:alpha="0.87" />
 
     <!--EVENT NAME-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_event_name_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="400dp"
         android:layout_marginStart="400dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_event_note"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
         android:alpha="0.87" />
 
     <!--Sales Name-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_sales_name_icon"
         android:layout_below="@id/lead_detail_event_name_icon"
         android:layout_width="48dp"
@@ -184,8 +184,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="400dp"
         android:layout_marginStart="400dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_person"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -212,7 +212,7 @@
         android:alpha="0.87" />
 
     <!--EVENT LOCATION-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_event_location_icon"
         android:layout_below="@id/lead_detail_sales_name_icon"
         android:layout_width="48dp"
@@ -220,8 +220,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="400dp"
         android:layout_marginStart="400dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_location_on"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -248,7 +248,7 @@
         android:alpha="0.87" />
 
     <!--Contact-->
-    <View
+    <ImageView
         android:id="@+id/lead_detail_contact_icon"
         android:layout_below="@id/lead_detail_event_location_icon"
         android:layout_width="48dp"
@@ -256,8 +256,8 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="400dp"
         android:layout_marginStart="400dp"
-        android:background="@drawable/icon_replacement"
-        android:alpha="0.38" />
+        android:src="@drawable/ic_48dp_black_person_outline"
+        android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -281,6 +281,7 @@
         android:layout_marginStart="24dp"
         android:textSize="16sp"
         android:textColor="@android:color/black"
+        android:textStyle="italic"
         android:alpha="0.87" />
 
 </RelativeLayout>

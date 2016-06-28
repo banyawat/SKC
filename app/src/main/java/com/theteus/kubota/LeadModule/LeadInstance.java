@@ -8,7 +8,7 @@ import java.util.Date;
 public class LeadInstance {
     // Primary Key And Supplements
     public String id;
-    public String status;
+    public int status;
     public String owner;
     // Dealer Section
     public String shopName;
@@ -43,10 +43,10 @@ public class LeadInstance {
     public String province;
     public String postalCode;
     // Wishlist Section
-    public String followingStatus;
-    public String area;
-    public String itemType1, itemType2, itemType3, itemType4, itemType5;
-    public String itemModel1, itemModel2, itemModel3, itemModel4, itemModel5;
+    public int followStatus;
+    public double area;
+    public int product1, product2, product3, product4, product5;
+    public String model1, model2, model3, model4, model5;
 
     public LeadInstance() {}
 }
