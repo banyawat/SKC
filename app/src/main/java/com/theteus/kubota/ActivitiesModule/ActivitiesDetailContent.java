@@ -37,69 +37,75 @@ public class ActivitiesDetailContent extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_activities_detail_content, container, false);
+        View view;
 
-        final TextView subject = (TextView) view.findViewById(R.id.activities_detail_subject);
-        final TextView regard = (TextView) view.findViewById(R.id.activities_detail_regard);
-        final TextView startDate = (TextView) view.findViewById(R.id.activities_detail_start_date);
-        final TextView dueDate = (TextView) view.findViewById(R.id.activities_detail_due_date);
-        final TextView decision = (TextView) view.findViewById(R.id.activities_detail_decision);
-        final TextView duration = (TextView) view.findViewById(R.id.activities_detail_duration);
-        final TextView reasonBuy = (TextView) view.findViewById(R.id.activities_detail_buy);
-        final TextView reasonNotBuy = (TextView) view.findViewById(R.id.activities_detail_not_buy);
-        final TextView description = (TextView) view.findViewById(R.id.activities_detail_description);
+        if(mActivity != null) {
+            view = inflater.inflate(R.layout.fragment_activities_detail_content, container, false);
 
-        subject.setText(mActivity.subject);
+            final TextView subject = (TextView) view.findViewById(R.id.activities_detail_subject);
+            final TextView regard = (TextView) view.findViewById(R.id.activities_detail_regard);
+            final TextView startDate = (TextView) view.findViewById(R.id.activities_detail_start_date);
+            final TextView dueDate = (TextView) view.findViewById(R.id.activities_detail_due_date);
+            final TextView decision = (TextView) view.findViewById(R.id.activities_detail_decision);
+            final TextView duration = (TextView) view.findViewById(R.id.activities_detail_duration);
+            final TextView reasonBuy = (TextView) view.findViewById(R.id.activities_detail_buy);
+            final TextView reasonNotBuy = (TextView) view.findViewById(R.id.activities_detail_not_buy);
+            final TextView description = (TextView) view.findViewById(R.id.activities_detail_description);
 
-        regard.setText(mLead.firstName + " " + mLead.lastName);
-        regard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Home home = (Home) getActivity();
-                ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
+            subject.setText(mActivity.subject);
 
-                mPagerAdapter.clearPage();
-                LeadDetailMain fragment = new LeadDetailMain();
-                Bundle args = new Bundle();
-                args.putString(LeadDetailMain.ARG_PARAM1, mLead.id);
-                args.putInt(LeadDetailMain.ARG_PARAM2, 4);
-                fragment.setArguments(args);
-                mPagerAdapter.addPage(fragment);
-                mPagerAdapter.addPage(new Lead());
-                mPagerAdapter.notifyDataSetChanged();
+            regard.setText(mLead.firstName + " " + mLead.lastName);
+            regard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Home home = (Home) getActivity();
+                    ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
 
-                home.changeMenu(3);
-            }
-        });
+                    mPagerAdapter.clearPage();
+                    LeadDetailMain fragment = new LeadDetailMain();
+                    Bundle args = new Bundle();
+                    args.putString(LeadDetailMain.ARG_PARAM1, mLead.id);
+                    args.putInt(LeadDetailMain.ARG_PARAM2, 4);
+                    fragment.setArguments(args);
+                    mPagerAdapter.addPage(fragment);
+                    mPagerAdapter.addPage(new Lead());
+                    mPagerAdapter.notifyDataSetChanged();
 
-        startDate.setText(mActivity.startDate);
+                    home.changeMenu(3);
+                }
+            });
 
-        dueDate.setText(mActivity.dueDate);
+            startDate.setText(mActivity.startDate);
 
-        if(Reference.MASTER_PURCHASEREASON.containsKey(mActivity.purchaseReason))
-            decision.setText(Reference.MASTER_PURCHASEREASON.get(mActivity.purchaseReason));
-        else
-            decision.setText("- - -");
+            dueDate.setText(mActivity.dueDate);
 
-        if(Reference.MASTER_DECISIONPERIOD.containsKey(mActivity.decisionPeriod))
-            duration.setText(Reference.MASTER_DECISIONPERIOD.get(mActivity.decisionPeriod));
-        else
-            duration.setText("- - -");
+            if (Reference.MASTER_PURCHASEREASON.containsKey(mActivity.purchaseReason))
+                decision.setText(Reference.MASTER_PURCHASEREASON.get(mActivity.purchaseReason));
+            else
+                decision.setText("- - -");
 
-        if(Reference.MASTER_PURCHASEREASON.containsKey(mActivity.purchaseReason))
-            reasonBuy.setText(Reference.MASTER_PURCHASEREASON.get(mActivity.purchaseReason));
-        else
-            reasonBuy.setText("- - -");
+            if (Reference.MASTER_DECISIONPERIOD.containsKey(mActivity.decisionPeriod))
+                duration.setText(Reference.MASTER_DECISIONPERIOD.get(mActivity.decisionPeriod));
+            else
+                duration.setText("- - -");
 
-        if(Reference.MASTER_NOPURCHASEREASON.containsKey(mActivity.noPurchaseReason))
-            reasonNotBuy.setText(Reference.MASTER_NOPURCHASEREASON.get(mActivity.noPurchaseReason));
-        else
-            reasonNotBuy.setText("- - -");
+            if (Reference.MASTER_PURCHASEREASON.containsKey(mActivity.purchaseReason))
+                reasonBuy.setText(Reference.MASTER_PURCHASEREASON.get(mActivity.purchaseReason));
+            else
+                reasonBuy.setText("- - -");
 
-        if(mActivity.description != null && !mActivity.description.equals(""))
-            description.setText(mActivity.description);
-        else
-            description.setText("- - -");
+            if (Reference.MASTER_NOPURCHASEREASON.containsKey(mActivity.noPurchaseReason))
+                reasonNotBuy.setText(Reference.MASTER_NOPURCHASEREASON.get(mActivity.noPurchaseReason));
+            else
+                reasonNotBuy.setText("- - -");
+
+            if (mActivity.description != null && !mActivity.description.equals(""))
+                description.setText(mActivity.description);
+            else
+                description.setText("- - -");
+        } else {
+            view = inflater.inflate(R.layout.fragment_detail_blank, container, false);
+        }
 
         return view;
     }

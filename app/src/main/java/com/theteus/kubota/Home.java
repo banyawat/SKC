@@ -177,16 +177,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 2:
                 mPagerAdapter.clearPage();
-
-                // Start Passing Argument
-                // TODO : REMOVE WHEN IMPLEMENTING IS COMPLETED
-                ContactDetailMain fragment2 = new ContactDetailMain();
-                Bundle args2 = new Bundle();
-                args2.putString(ContactDetailMain.ARG_PARAM1, "D001-C0001");
-                fragment2.setArguments(args2);
-                mPagerAdapter.addPage(fragment2);
-                // End Passing Argument
-
+                mPagerAdapter.addPage(new ContactDetailMain());
                 mPagerAdapter.addPage(new Contact());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
@@ -200,16 +191,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 4:
                 mPagerAdapter.clearPage();
-
-                // Start Passing Argument
-                // TODO : REMOVE WHEN IMPLEMENTING IS COMPLETED
-                ActivitiesDetailMain fragment4 = new ActivitiesDetailMain();
-                Bundle args4 = new Bundle();
-                args4.putString(ActivitiesDetailMain.ARG_PARAM1, "A0001");
-                fragment4.setArguments(args4);
-                mPagerAdapter.addPage(fragment4);
-                // End Passing Argument
-
+                mPagerAdapter.addPage(new ActivitiesDetailMain());
                 mPagerAdapter.addPage(new Activities());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);

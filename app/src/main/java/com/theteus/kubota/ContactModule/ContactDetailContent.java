@@ -35,12 +35,12 @@ public class ContactDetailContent extends Fragment implements TabHost.OnTabChang
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView;
-        //if (mContact != null) {
+        if (mContact != null) {
             rootView = inflater.inflate(R.layout.fragment_contact_detail_content, container, false);
             setUpTabView(rootView, mContact.id);
-        //} else {
-        //    rootView = inflater.inflate(R.layout.fragment_contact_detail_blank, container, false);
-        //}
+        } else {
+            rootView = inflater.inflate(R.layout.fragment_detail_blank, container, false);
+        }
         return rootView;
     }
 

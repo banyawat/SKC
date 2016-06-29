@@ -1,6 +1,5 @@
 package com.theteus.kubota.LeadModule;
 
-import android.animation.LayoutTransition;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
@@ -45,7 +44,7 @@ public class LeadDetailContent extends Fragment implements TabHost.OnTabChangeLi
             rootView = inflater.inflate(R.layout.fragment_lead_detail_content, container, false);
             setUpTabView(rootView, mLead.id);
         } else {
-            rootView = inflater.inflate(R.layout.fragment_lead_detail_blank, container, false);
+            rootView = inflater.inflate(R.layout.fragment_detail_blank, container, false);
         }
         return rootView;
     }

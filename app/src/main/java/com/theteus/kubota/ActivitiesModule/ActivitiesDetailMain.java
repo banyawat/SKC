@@ -1,14 +1,23 @@
 package com.theteus.kubota.ActivitiesModule;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
+import com.theteus.kubota.Home;
 import com.theteus.kubota.LeadModule.DummyLeadInstance;
 import com.theteus.kubota.LeadModule.LeadInstance;
 import com.theteus.kubota.R;
@@ -37,15 +46,91 @@ public class ActivitiesDetailMain extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_activities_detail_main, container, false);
 
-        if(mActivity != null) {
-            final TextView title = (TextView) view.findViewById(R.id.activities_detail_title);
-            final TextView subtitle = (TextView) view.findViewById(R.id.activities_detail_subtitle);
-            final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.activities_detail_search_field);
-            final TextView status = (TextView) view.findViewById(R.id.activities_detail_status);
+        final TextView title = (TextView) view.findViewById(R.id.activities_detail_title);
+        final TextView subtitle = (TextView) view.findViewById(R.id.activities_detail_subtitle);
+        final ViewSwitcher switcher = (ViewSwitcher) view.findViewById(R.id.activities_detail_switcher);
+        final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.activities_detail_search_field);
+        final TextView status = (TextView) view.findViewById(R.id.activities_detail_status);
+        final InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-            setUpCardTitle(title, subtitle, searchField, status);
-            setUpContentFragment();
+        final ImageView searchButton = (ImageView) view.findViewById(R.id.search_button);
+        final ImageView completeButton = (ImageView) view.findViewById(R.id.complete_button);
+        final ImageView closeButton = (ImageView) view.findViewById(R.id.close_button);
+        final ImageView deleteButton = (ImageView) view.findViewById(R.id.delete_button);
+        final View separator = view.findViewById(R.id.activities_detail_button_separator);
+
+        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.activities_detail_fab);
+
+        if(mActivity == null) {
+            status.setVisibility(View.GONE);
+            searchButton.setVisibility(View.GONE);
+            completeButton.setVisibility(View.GONE);
+            closeButton.setVisibility(View.GONE);
+            deleteButton.setVisibility(View.GONE);
+            separator.setVisibility(View.GONE);
+
+            switcher.showNext();
+            searchField.requestFocus();
+            keyboard.showSoftInput(searchField, 0);
         }
+        else {
+            setUpCardTitle(title, subtitle, searchField, status);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, DummyActivityInstance.KEYS);
+        searchButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switcher.showNext();
+
+                if(!switcher.getNextView().isFocusable()) {
+                    searchField.requestFocus();
+                    keyboard.showSoftInput(searchField, 0);
+                    searchButton.setImageResource(R.drawable.ic_48dp_black_highlight_off);
+                } else {
+                    searchField.clearFocus();
+                    keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+                }
+                return false;
+            }
+        });
+
+        searchField.setAdapter(adapter);
+        searchField.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(mActivity == null) {
+                    status.setVisibility(View.VISIBLE);
+                    searchButton.setVisibility(View.VISIBLE);
+                    completeButton.setVisibility(View.VISIBLE);
+                    closeButton.setVisibility(View.VISIBLE);
+                    deleteButton.setVisibility(View.VISIBLE);
+                    separator.setVisibility(View.VISIBLE);
+                }
+
+                String activityId = (String) parent.getItemAtPosition(position);
+                mActivity = DummyActivityInstance.ACTIVITY_MAP.get(DummyActivityInstance.ID_MAP.get(activityId));
+                mLead = DummyLeadInstance.LEAD_MAP.get(mActivity.leadId);
+
+                setUpCardTitle(title, subtitle, searchField, status);
+                setUpContentFragment();
+
+                searchField.clearFocus();
+                switcher.showNext();
+                keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
+                searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Home) getActivity()).getmPager().setCurrentItem(1);
+            }
+        });
+
+        setUpContentFragment();
 
         return view;
     }

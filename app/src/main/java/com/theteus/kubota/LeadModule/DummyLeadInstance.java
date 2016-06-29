@@ -129,4 +129,12 @@ public class DummyLeadInstance {
 
         return result;
     }
+    public static int countStatus(int status) {
+        int result = 0;
+
+        for (LeadInstance l : LEADS)
+            if(l.status == status) result++;
+
+        return result;
+    }
 }

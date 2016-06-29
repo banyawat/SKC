@@ -52,6 +52,8 @@ public class DummyActivityInstance {
 
             ACTIVITIES.add(activity);
             ACTIVITY_MAP.put(activity.id, activity);
+            KEYS.add(DummyLeadInstance.LEAD_MAP.get(activity.leadId).firstName + " " + DummyLeadInstance.LEAD_MAP.get(activity.leadId).lastName + " : " + activity.subject);
+            ID_MAP.put(DummyLeadInstance.LEAD_MAP.get(activity.leadId).firstName + " " + DummyLeadInstance.LEAD_MAP.get(activity.leadId).lastName + " : " + activity.subject, activity.id);
         }
     }
 

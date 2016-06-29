@@ -18,7 +18,7 @@ public class DummyChassisInstance {
     static {
         String chassisNumber[] = new String[] {"CH000001", "CH000002", "CH000003", "CH000004", "CH000005", "CH000006", "CH000007", "CH000008", "CH000009", "CH000010"};
         String engineNumber[] = new String[] {"EN123KL", "EN921OK", "EN412OA", "EN123DO", "EN991RR", "EN456IO", "EN000TH", "EN091PE", "EN400RP", "EN141OO"};
-        int productType[] = new int[] {177980000, 177980001, 177980002, 177980003, 177980004, 177980005, 177980006, 177980007, 177980000, 177980005, 177980003};
+        int productType[] = new int[] {177980000, 177980001, 177980002, 177980003, 177980004, 177980006, 177980006, 177980007, 177980000, 177980006, 177980003};
         String productModel[] = new String[] {"AT001", "AT002", "AT001", "AT002", "AT001", "AT002", "AT001", "AT002", "AT001", "AT002"};
         int productStatus[] = new int[] {177980000, 177980000, 177980001, 177980001, 177980002, 177980002, 177980003, 177980003, 177980000, 177980002};
         String statusChangeDate[] = new String[] {"1 มกราคม 2558", "2 มกราคม 2558", "3 มกราคม 2558", "4 มกราคม 2558", "5 มกราคม 2558", "6 มกราคม 2558", "7 มกราคม 2558", "8 มกราคม 2558", "9 มกราคม 2558", "10 มกราคม 2558"};
@@ -61,5 +61,13 @@ public class DummyChassisInstance {
             CHASSIS.add(chassis);
             CHASSIS_MAP.put(chassis.chassisNumber, chassis);
         }
+    }
+    public static List<ChassisInstance> searchByContactId(String contactId) {
+        List<ChassisInstance> result = new ArrayList<>();
+
+        for (ChassisInstance c : CHASSIS)
+            if(c.contact.equals(contactId)) result.add(c);
+
+        return result;
     }
 }

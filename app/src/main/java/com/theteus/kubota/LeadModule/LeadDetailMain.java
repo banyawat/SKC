@@ -121,8 +121,7 @@ public class LeadDetailMain extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Home home = (Home) getActivity();
-                home.getmPager().setCurrentItem(1);
+                ((Home) getActivity()).getmPager().setCurrentItem(1);
             }
         });
 

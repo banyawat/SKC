@@ -233,7 +233,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
-        android:src="@drawable/ic_48dp_black_contact_phone"
+        android:src="@drawable/ic_48dp_black_phone"
         android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
@@ -269,7 +269,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="280dp"
         android:layout_marginStart="280dp"
-        android:src="@drawable/ic_48dp_black_contact_phone"
+        android:src="@drawable/ic_48dp_black_phone"
         android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"
@@ -305,7 +305,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginLeft="560dp"
         android:layout_marginStart="560dp"
-        android:src="@drawable/ic_48dp_black_contact_phone"
+        android:src="@drawable/ic_48dp_black_phone"
         android:alpha="0.54" />
     <TextView
         android:layout_width="wrap_content"

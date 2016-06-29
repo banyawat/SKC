@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/chassis_status"
+            android:layout_width="120dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginBottom="4dp"
+            android:padding="2dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:text="STATUS"/>
+
+        <TextView
+            android:id="@+id/chassis_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginBottom="6dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:text="Number"/>
+
+        <TextView
+            android:id="@+id/chassis_engine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_toRightOf="@id/chassis_number"
+            android:layout_marginBottom="6dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:alpha="0.54"
+            android:textSize="16sp"
+            android:text="Engine"/>
+
+        <TextView
+            android:id="@+id/chassis_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="540dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginBottom="6dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:text="Number"/>
+
+        <TextView
+            android:id="@+id/chassis_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_toRightOf="@id/chassis_type"
+            android:layout_marginBottom="6dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:alpha="0.54"
+            android:textSize="16sp"
+            android:text="Engine"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

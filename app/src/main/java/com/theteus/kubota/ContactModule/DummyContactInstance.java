@@ -12,9 +12,9 @@ import java.util.Map;
  */
 public class DummyContactInstance {
     public static final List<ContactInstance> CONTACTS = new ArrayList<>();
-    //public static final List<String> KEYS = new ArrayList<>();
+    public static final List<String> KEYS = new ArrayList<>();
     public static final Map<String, ContactInstance> CONTACT_MAP = new HashMap<>();
-    //public static final Map<String, String> ID_MAP = new HashMap<>();
+    public static final Map<String, String> ID_MAP = new HashMap<>();
     public static final int COUNT = 5;
 
     static {
@@ -132,6 +132,8 @@ public class DummyContactInstance {
 
             CONTACTS.add(contact);
             CONTACT_MAP.put(contact.id, contact);
+            KEYS.add(contact.id + " : " + contact.firstName + " " + contact.lastName);
+            ID_MAP.put(contact.id + " : " + contact.firstName + " " + contact.lastName, contact.id);
         }
     }
 }

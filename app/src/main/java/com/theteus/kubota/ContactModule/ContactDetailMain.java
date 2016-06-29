@@ -6,14 +6,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
 import com.theteus.kubota.Reference;
 
@@ -68,6 +72,58 @@ public class ContactDetailMain extends Fragment {
         } else {
             setUpCardTitle(title, owner, searchField, status);
         }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, DummyContactInstance.KEYS);
+        searchButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switcher.showNext();
+
+                if(!switcher.getNextView().isFocusable()) {
+                    searchField.requestFocus();
+                    keyboard.showSoftInput(searchField, 0);
+                    searchButton.setImageResource(R.drawable.ic_48dp_black_highlight_off);
+                } else {
+                    searchField.clearFocus();
+                    keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+                }
+                return false;
+            }
+        });
+
+        searchField.setAdapter(adapter);
+        searchField.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(mContact == null) {
+                    status.setVisibility(View.VISIBLE);
+                    searchButton.setVisibility(View.VISIBLE);
+                    qualifyButton.setVisibility(View.VISIBLE);
+                    disqualifyButton.setVisibility(View.VISIBLE);
+                    deleteButton.setVisibility(View.VISIBLE);
+                    separator.setVisibility(View.VISIBLE);
+                }
+
+                String leadId = (String) parent.getItemAtPosition(position);
+                mContact = DummyContactInstance.CONTACT_MAP.get(DummyContactInstance.ID_MAP.get(leadId));
+
+                setUpCardTitle(title, owner, searchField, status);
+                setUpContentFragment();
+
+                searchField.clearFocus();
+                switcher.showNext();
+                keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
+                searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Home) getActivity()).getmPager().setCurrentItem(1);
+            }
+        });
 
         setUpContentFragment();
 
