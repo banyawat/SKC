@@ -1,5 +1,7 @@
 package com.theteus.kubota;
 
+import android.app.Activity;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 
 public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
     private FragmentTabHost mTabHost;
+    ScreenSlidePagerAdapter mPagerAdapter;
     private ViewPager mPager;
 
     FloatingActionButton nextButton;
@@ -68,7 +71,6 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
     }
 
     private void initViewPager(View pagerView){
-        ScreenSlidePagerAdapter mPagerAdapter;
         mPager = (ViewPager) pagerView;
         mPagerAdapter = new ScreenSlidePagerAdapter(mainFragment.getChildFragmentManager());
         for(Fragment frag: viewList)
@@ -127,5 +129,7 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
         this.mPager.setCurrentItem(this.mTabHost.getCurrentTab());
     }
 
-
+    public Fragment getFragment(){
+        return mPagerAdapter.getItem(mPager.getCurrentItem());
+    }
 }

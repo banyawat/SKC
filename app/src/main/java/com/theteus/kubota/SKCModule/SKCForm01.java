@@ -1,15 +1,18 @@
 package com.theteus.kubota.SKCModule;
 
-
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.theteus.kubota.R;
@@ -19,8 +22,25 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class SKCForm01 extends Fragment {
+    EditText prefixEdit;
+    EditText nameEdit;
+    EditText surNameEdit;
+    EditText idNumEdit;
+    EditText phoneEdit;
+    EditText emailEdit;
+    EditText faxEdit;
+    EditText sklPhoneEdit;
+    EditText mobPhone1Edit;
+    EditText mobPhone2Edit;
+    EditText vehicleOwnEdit;
     EditText birthDateEdit;
     TextView ageText;
+    RadioGroup genderGroup;
+    RadioButton maleRadioButton;
+    RadioButton femaleRadioButton;
+    RadioGroup personGroup;
+    RadioButton generalPersonRadioButton;
+    RadioButton corporationRadioButton;
 
     private DatePickerDialog birthDatePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -42,6 +62,25 @@ public class SKCForm01 extends Fragment {
         birthDateEdit = (EditText) view.findViewById(R.id.skc_form1_birthdate);
         birthDateEdit.setInputType(InputType.TYPE_NULL);
         ageText = (TextView) view.findViewById(R.id.skc_form1_age);
+
+        prefixEdit = (EditText) view.findViewById(R.id.skc_form1_prefix);
+        nameEdit = (EditText) view.findViewById(R.id.skc_form1_name);
+        surNameEdit = (EditText) view.findViewById(R.id.skc_form1_surname);
+        idNumEdit = (EditText) view.findViewById(R.id.skc_form1_idnum);
+        phoneEdit = (EditText) view.findViewById(R.id.skc_form1_phone);
+        emailEdit = (EditText) view.findViewById(R.id.skc_form1_email);
+        faxEdit = (EditText) view.findViewById(R.id.skc_form1_fax);
+        sklPhoneEdit = (EditText) view.findViewById(R.id.skc_form1_sklphone);
+        mobPhone1Edit = (EditText) view.findViewById(R.id.skc_form1_mobphone1);
+        mobPhone2Edit = (EditText) view.findViewById(R.id.skc_form1_mobphone2);
+        vehicleOwnEdit = (EditText) view.findViewById(R.id.skc_form1_productnumber);
+
+        genderGroup  = (RadioGroup) view.findViewById(R.id.skc_form1_gender);
+        maleRadioButton = (RadioButton) genderGroup.findViewById(R.id.skc_form1_gender1);
+        femaleRadioButton = (RadioButton) genderGroup.findViewById(R.id.skc_form1_gender2);
+        personGroup = (RadioGroup) view.findViewById(R.id.skc_form1_persontype);
+        generalPersonRadioButton = (RadioButton) personGroup.findViewById(R.id.skc_form1_persontype1);
+        corporationRadioButton = (RadioButton) personGroup.findViewById(R.id.skc_form1_persontype2);
     }
 
     private void initDatePick(View view){
@@ -66,19 +105,56 @@ public class SKCForm01 extends Fragment {
     private String ageCalculator(int year, int month, int day){
         Calendar dob = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
-
         dob.set(year, month, day);
-
         int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-
         if (age<=0){
             birthDateEdit.setError("ใส่วัน/เดือน/ปีเกิด ไม่ถูกต้องนะจ๊ะ");
             return "อายุ";
         }
         else {
             birthDateEdit.setError(null);
-            return "อายุ " + String.valueOf(age) + " ขวบ";
+            return "อายุ " + String.valueOf(age) + " ปี";
         }
     }
 
+    public Bundle getAllData(){
+        Bundle args = new Bundle();
+        args.putString("prefix", prefixEdit.getText().toString());
+      /* String result="Yep";
+        String prefix;
+        String name;
+        String surName;
+        String idNum;
+        String phone;
+        String email;
+        String fax;
+        String sklPhone;
+        String mobPhone1;
+        String mobPhone2;
+        String vehicleOwn;
+        String birthDate;
+
+        int genderIndex;
+        String gender;
+        String person;
+
+        prefix = prefixEdit.getText().toString();
+        name = nameEdit.getText().toString();
+        surName = surNameEdit.getText().toString();
+        idNum = idNumEdit.getText().toString();
+        phone = phoneEdit.getText().toString();
+        email = emailEdit.getText().toString();
+        fax = faxEdit.getText().toString();
+        sklPhone = sklPhoneEdit.getText().toString();
+        mobPhone1 = mobPhone1Edit.getText().toString();
+        mobPhone2 = mobPhone2Edit.getText().toString();
+        vehicleOwn = vehicleOwnEdit.getText().toString();
+        birthDate = birthDateEdit.getText().toString();
+        genderIndex = genderGroup.getCheckedRadioButtonId();
+        RadioButton radioBut = (RadioButton) genderGroup.findViewById(genderIndex);*/
+
+        args.putString("test", "YOYO");
+
+        return args;
+    }
 }

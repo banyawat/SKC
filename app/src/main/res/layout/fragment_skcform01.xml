@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:padding="25dp"
     tools:context=".SKCModule.SKCForm01"
+    android:tag="skc01"
     android:orientation="vertical">
 
     <TableRow
