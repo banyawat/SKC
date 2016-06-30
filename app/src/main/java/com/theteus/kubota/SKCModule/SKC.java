@@ -38,13 +38,24 @@ public class SKC extends Fragment{
         skcView.initFloatingButtonMethod(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SKCForm01 x = (com.theteus.kubota.SKCModule.SKCForm01) skcView.getFragment();
-                if(x!=null) {
-                    Bundle a;
-                    a = x.getAllData();
-                    Log.i("bundle test", a.getString("test"));
-                    Log.i("bundle test", a.getString("prefix"));
+                switch (skcView.getCurrentItem()){
+                    case 0:
+                        SKCForm01 skcform1 = (com.theteus.kubota.SKCModule.SKCForm01) skcView.getFragment();
+                        if(skcform1!=null) {
+                            Bundle a;
+                            a = skcform1.getAllData();
+                            Log.i("bundle test", a.getString("test"));
+                            Log.i("bundle test", a.getString("prefix"));
+
+                        }
+                        break;
+                    case 1:
+                        SKCForm02 skcform2 = (com.theteus.kubota.SKCModule.SKCForm02) skcView.getFragment();
+                        break;
+                    default:
+                        break;
                 }
+                skcView.goToNextPage();
             }
         });
         return view;

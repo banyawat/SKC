@@ -1,101 +1,114 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
-    tools:context=".SKCModule.SKCForm01"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/list_item_padding_sides">
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2">
+            android:id="@+id/contact_form1_prefix_tag">
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/contact_form1_prefix"
+                android:ems="10"
                 android:hint="@string/form_prefix"
                 android:cursorVisible="true"
                 android:drawableLeft="@drawable/ic_person_outline" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.4">
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/contact_form1_name"
-                android:hint="@string/form_name" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.4">
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/contact_form1_surname"
-                android:hint="@string/form_surname" />
-        </android.support.design.widget.TextInputLayout>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical">
-
-        <RadioGroup
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:id="@+id/contact_form1_gender"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
-            <RadioButton
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/form_gender_male"
-                android:id="@+id/contact_form1_gender1"
-                android:checked="false" />
+                android:id="@+id/contact_form1_name_tag">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/contact_form1_name"
+                    android:hint="@string/form_name"
+                    />
+            </android.support.design.widget.TextInputLayout>
 
-            <RadioButton
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/form_gender_female"
-                android:id="@+id/contact_form1_gender2" />
-        </RadioGroup>
+                android:id="@+id/contact_form1_surname_tag">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/contact_form1_surname"
+                    android:layout_weight="0.4"
+                    android:hint="@string/form_surname" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:layout_span="2">
-            <EditText
-                android:layout_width="match_parent"
+            android:gravity="center_vertical">
+
+            <RadioGroup
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/contact_form1_idnum"
-                android:hint="@string/form_id_num"
-                android:drawableLeft="@drawable/ic_credit_card" />
-        </android.support.design.widget.TextInputLayout>
+                android:id="@+id/contact_form1_gender"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/list_item_padding_sides">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/form_gender_male"
+                    android:id="@+id/contact_form1_gender1"
+                    android:checked="false" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/form_gender_female"
+                    android:id="@+id/contact_form1_gender2" />
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contact_form1_idnum_tag">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="15"
+                    android:id="@+id/contact_form1_idnum"
+                    android:hint="@string/form_id_num"
+                    android:drawableLeft="@drawable/ic_credit_card" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/contact_form1_persontype"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -111,153 +124,161 @@
                 android:checked="false" />
         </RadioGroup>
 
-    </TableRow>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TableRow
-        android:layout_width="match_parent"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:inputType="date"
+                    android:ems="10"
+                    android:id="@+id/contact_form1_birthdate"
+                    android:layout_column="0"
+                    android:drawableLeft="@drawable/ic_cake"
+                    android:drawableRight="@drawable/ic_event_18dp"
+                    android:hint="@string/form_birth_date"
+                    android:focusable="false"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_age"
+                android:textSize="@dimen/age_text_size"
+                android:id="@+id/contact_form1_age"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:gravity="center_vertical">
+        android:layout_weight="1">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <EditText
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/contact_form1_birthdate"
-                android:layout_column="0"
-                android:drawableLeft="@drawable/ic_cake"
-                android:drawableRight="@drawable/ic_event_18dp"
-                android:hint="@string/form_birth_date"
-                android:focusable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/form_age"
-            android:id="@+id/contact_form1_age" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0">
-            <EditText
-                android:inputType="phone"
-                android:ems="10"
-                android:id="@+id/contact_form1_phone"
-                android:hint="@string/form_phone"
-                android:drawableLeft="@drawable/ic_call_18dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0">
-            <EditText
-                android:inputType="textEmailAddress"
-                android:ems="10"
+                android:ems="15"
                 android:id="@+id/contact_form1_email"
-
                 android:hint="@string/form_email"
                 android:drawableLeft="@drawable/ic_email_18dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0">
-            <EditText
-                android:inputType="numberDecimal"
-                android:ems="10"
-                android:id="@+id/contact_form1_fax"
-                android:hint="@string/form_fax"
-                android:drawableLeft="@drawable/ic_print_18dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </android.support.design.widget.TextInputLayout>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0">
-            <EditText
-                android:inputType="phone"
-                android:ems="10"
-                android:id="@+id/contact_form1_sklphone"
-                android:hint="@string/form_skl_phone"
-                android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
+                android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:id="@+id/contact_form1_fax"
+                    android:layout_column="0"
+                    android:hint="@string/form_fax"
+                    android:drawableLeft="@drawable/ic_print_18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <EditText
+                    android:inputType="phone"
+                    android:id="@+id/contact_form1_phone"
+                    android:layout_column="0"
+                    android:hint="@string/form_phone"
+                    android:drawableLeft="@drawable/ic_call_18dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <EditText
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/contact_form1_mobphone1"
+                    android:hint="@string/form_mobile_phone1"
+                    android:drawableLeft="@drawable/ic_call_18dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <EditText
+                    android:inputType="phone"
+                    android:id="@+id/contact_form1_sklphone"
+                    android:hint="@string/form_skl_phone"
+                    android:drawableLeft="@drawable/ic_call_18dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <EditText
                 android:inputType="numberDecimal"
-                android:ems="10"
-                android:id="@+id/contact_form1_mobphone1"
-                android:hint="@string/form_mobile_phone1"
-                android:drawableLeft="@drawable/ic_call_18dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <EditText
-                android:inputType="numberDecimal"
-                android:ems="10"
+                android:ems="13"
                 android:id="@+id/contact_form1_mobphone2"
                 android:hint="@string/form_mobile_phone2"
                 android:drawableLeft="@drawable/ic_call_18dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <EditText
-                android:inputType="numberDecimal"
-                android:ems="10"
-                android:id="@+id/contact_form1_productnumber"
-                android:hint="@string/form_owned_vehicle_number"
-                android:drawableLeft="@drawable/ic_action_car"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
+                android:layout_width="match_parent" />
         </android.support.design.widget.TextInputLayout>
 
-        <CheckBox
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/form_contact_skl_update"
-            android:id="@+id/contact_form1_welcomebox" />
+            android:gravity="center_vertical">
 
-    </TableRow>
-</TableLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/contact_form1_productnumber"
+                    android:hint="@string/form_owned_vehicle_number"
+                    android:drawableLeft="@drawable/ic_action_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.design.widget.TextInputLayout>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_contact_skl_update"
+                android:id="@+id/contact_form1_welcomebox" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
 

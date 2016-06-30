@@ -1,11 +1,9 @@
 package com.theteus.kubota.SKCModule;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,40 +118,19 @@ public class SKCForm01 extends Fragment {
     public Bundle getAllData(){
         Bundle args = new Bundle();
         args.putString("prefix", prefixEdit.getText().toString());
-      /* String result="Yep";
-        String prefix;
-        String name;
-        String surName;
-        String idNum;
-        String phone;
-        String email;
-        String fax;
-        String sklPhone;
-        String mobPhone1;
-        String mobPhone2;
-        String vehicleOwn;
-        String birthDate;
+        args.putString("name", nameEdit.getText().toString());
+        args.putString("surName", surNameEdit.getText().toString());
+        args.putString("idNum", idNumEdit.getText().toString());
+        args.putString("phone", phoneEdit.getText().toString());
+        args.putString("email", emailEdit.getText().toString());
+        args.putString("fax", faxEdit.getText().toString());
+        args.putString("sklPhone", sklPhoneEdit.getText().toString());
+        args.putString("mobPhone1", mobPhone1Edit.getText().toString());
+        args.putString("mobPhone2", mobPhone2Edit.getText().toString());
+        args.putString("vehicleOwn", vehicleOwnEdit.getText().toString());
+        args.putString("birthDate", birthDateEdit.getText().toString());
 
-        int genderIndex;
-        String gender;
-        String person;
-
-        prefix = prefixEdit.getText().toString();
-        name = nameEdit.getText().toString();
-        surName = surNameEdit.getText().toString();
-        idNum = idNumEdit.getText().toString();
-        phone = phoneEdit.getText().toString();
-        email = emailEdit.getText().toString();
-        fax = faxEdit.getText().toString();
-        sklPhone = sklPhoneEdit.getText().toString();
-        mobPhone1 = mobPhone1Edit.getText().toString();
-        mobPhone2 = mobPhone2Edit.getText().toString();
-        vehicleOwn = vehicleOwnEdit.getText().toString();
-        birthDate = birthDateEdit.getText().toString();
-        genderIndex = genderGroup.getCheckedRadioButtonId();
-        RadioButton radioBut = (RadioButton) genderGroup.findViewById(genderIndex);*/
-
-        args.putString("test", "YOYO");
+        args.putString("test", "Got response");
 
         return args;
     }

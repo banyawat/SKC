@@ -94,16 +94,20 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
                         nextButton.setImageResource(R.drawable.ic_arrow_forward);
                 }
             });
-            if(mPager.getRootView()==null)
-                Toast.makeText(mainView.getContext(), "test", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void goToNextPage(){
+        mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+        if(mPager.getCurrentItem()+1==mPager.getChildCount())
+            nextButton.setImageResource(R.drawable.ic_check);
+        else
+            nextButton.setImageResource(R.drawable.ic_arrow_forward);
     }
 
     public void initFloatingButtonMethod(View.OnClickListener v){
         nextButton.setOnClickListener(v);
     }
-
-
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -131,5 +135,9 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
 
     public Fragment getFragment(){
         return mPagerAdapter.getItem(mPager.getCurrentItem());
+    }
+
+    public int getCurrentItem(){
+        return mPager.getCurrentItem();
     }
 }

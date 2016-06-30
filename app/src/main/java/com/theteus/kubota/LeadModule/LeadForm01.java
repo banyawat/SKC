@@ -54,7 +54,7 @@ public class LeadForm01 extends Fragment {
         mobile1Edit = (EditText) view.findViewById(R.id.lead_form1_mobphone1);
         mobile2Edit = (EditText) view.findViewById(R.id.lead_form1_mobphone2);
 
-        genderRadioGroup = (RadioGroup) view.findViewById(R.id.leader_form1_gender);
+        genderRadioGroup = (RadioGroup) view.findViewById(R.id.lead_form1_gender);
         personTypeRadioGroup = (RadioGroup) view.findViewById(R.id.lead_form1_persontype);
 
         ageText = (TextView) view.findViewById(R.id.lead_form1_age);
