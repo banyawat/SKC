@@ -13,10 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.theteus.kubota.ChassisModule.Chassis;
+import com.theteus.kubota.ChassisModule.ChassisDetailMain;
 import com.theteus.kubota.ChassisModule.ChassisInstance;
 import com.theteus.kubota.ChassisModule.DummyChassisInstance;
+import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
 import com.theteus.kubota.Reference;
+import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import java.util.List;
 
@@ -109,24 +113,25 @@ public class ContactDetailChassis extends Fragment {
             holder.mType.setText(Reference.MASTER_PRODUCTTYPE.get(mChassis.get(position).productType));
             holder.mModel.setText("(" + mChassis.get(position).productModel + ")");
 
-            /*holder.mView.setOnClickListener(new View.OnClickListener() {
+            holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Home home = (Home) getActivity();
                     ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
 
                     mPagerAdapter.clearPage();
-                    LeadDetailMain fragment = new LeadDetailMain();
+                    ChassisDetailMain fragment = new ChassisDetailMain();
                     Bundle args = new Bundle();
-                    args.putString(LeadDetailMain.ARG_PARAM1, mLead.get(position).id);
+                    args.putString(ChassisDetailMain.ARG_PARAM1, mChassis.get(position).chassisNumber);
+                    args.putInt(ChassisDetailMain.ARG_PARAM2, 1);
                     fragment.setArguments(args);
                     mPagerAdapter.addPage(fragment);
-                    mPagerAdapter.addPage(new Lead());
+                    mPagerAdapter.addPage(new Chassis());
                     mPagerAdapter.notifyDataSetChanged();
 
-                    home.changeMenu(3);
+                    home.changeMenu(6);
                 }
-            });*/
+            });
         }
 
         @Override

@@ -1,0 +1,250 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".ChassisModule.ChassisDetailGeneral">
+
+    <!--CHASSIS NUMBER-->
+    <ImageView
+        android:id="@+id/chassis_detail_chassis_number_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/ic_48dp_black_confirmation_number"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_chassis_number_icon"
+        android:layout_toEndOf="@id/chassis_detail_chassis_number_icon"
+        android:layout_alignTop="@id/chassis_detail_chassis_number_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="หมายเลขรถยนต์" />
+    <TextView
+        android:id="@+id/chassis_detail_chassis_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_chassis_number_icon"
+        android:layout_toRightOf="@id/chassis_detail_chassis_number_icon"
+        android:layout_alignBottom="@id/chassis_detail_chassis_number_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--PRODUCT TYPE-->
+    <ImageView
+        android:id="@+id/chassis_detail_product_type_icon"
+        android:layout_below="@id/chassis_detail_chassis_number_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_time_to_leave"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_product_type_icon"
+        android:layout_toEndOf="@id/chassis_detail_product_type_icon"
+        android:layout_alignTop="@id/chassis_detail_product_type_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ประเภทรถยนต์" />
+    <TextView
+        android:id="@+id/chassis_detail_product_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_product_type_icon"
+        android:layout_toRightOf="@id/chassis_detail_product_type_icon"
+        android:layout_alignBottom="@id/chassis_detail_product_type_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--PRODUCT STATUS-->
+    <ImageView
+        android:id="@+id/chassis_detail_product_status_icon"
+        android:layout_below="@id/chassis_detail_product_type_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_event_available"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_product_status_icon"
+        android:layout_toEndOf="@id/chassis_detail_product_status_icon"
+        android:layout_alignTop="@id/chassis_detail_product_status_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="สถานะของรถ" />
+    <TextView
+        android:id="@+id/chassis_detail_product_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_product_status_icon"
+        android:layout_toRightOf="@id/chassis_detail_product_status_icon"
+        android:layout_alignBottom="@id/chassis_detail_product_status_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--REMARK-->
+    <ImageView
+        android:id="@+id/chassis_detail_remark_icon"
+        android:layout_below="@id/chassis_detail_product_status_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_description"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_remark_icon"
+        android:layout_toEndOf="@id/chassis_detail_remark_icon"
+        android:layout_alignTop="@id/chassis_detail_remark_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="หมายเหตุจาก ADMS" />
+    <TextView
+        android:id="@+id/chassis_detail_remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_remark_icon"
+        android:layout_toRightOf="@id/chassis_detail_remark_icon"
+        android:layout_alignBottom="@id/chassis_detail_remark_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--ENGINE NUMBER-->
+    <ImageView
+        android:id="@+id/chassis_detail_engine_number_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_confirmation_number"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_engine_number_icon"
+        android:layout_toEndOf="@id/chassis_detail_engine_number_icon"
+        android:layout_alignTop="@id/chassis_detail_engine_number_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="หมายเลขเครื่อง" />
+    <TextView
+        android:id="@+id/chassis_detail_engine_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_engine_number_icon"
+        android:layout_toRightOf="@id/chassis_detail_engine_number_icon"
+        android:layout_alignBottom="@id/chassis_detail_engine_number_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--MODEL-->
+    <ImageView
+        android:id="@+id/chassis_detail_model_icon"
+        android:layout_below="@id/chassis_detail_engine_number_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_local_shipping"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_model_icon"
+        android:layout_toEndOf="@id/chassis_detail_model_icon"
+        android:layout_alignTop="@id/chassis_detail_model_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="รุ่น" />
+    <TextView
+        android:id="@+id/chassis_detail_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_model_icon"
+        android:layout_toRightOf="@id/chassis_detail_model_icon"
+        android:layout_alignBottom="@id/chassis_detail_model_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--Status Change Date-->
+    <ImageView
+        android:id="@+id/chassis_detail_status_change_date_icon"
+        android:layout_below="@id/chassis_detail_model_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_event"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_status_change_date_icon"
+        android:layout_toEndOf="@id/chassis_detail_status_change_date_icon"
+        android:layout_alignTop="@id/chassis_detail_status_change_date_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="วันที่เปลี่ยนสถานะ" />
+    <TextView
+        android:id="@+id/chassis_detail_status_change_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_status_change_date_icon"
+        android:layout_toRightOf="@id/chassis_detail_status_change_date_icon"
+        android:layout_alignBottom="@id/chassis_detail_status_change_date_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+</RelativeLayout>

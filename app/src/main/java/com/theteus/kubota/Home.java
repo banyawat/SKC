@@ -1,6 +1,7 @@
 package com.theteus.kubota;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.theteus.kubota.AccountModule.Account;
 import com.theteus.kubota.ActivitiesModule.Activities;
 import com.theteus.kubota.ActivitiesModule.ActivitiesDetailMain;
 import com.theteus.kubota.ChassisModule.Chassis;
+import com.theteus.kubota.ChassisModule.ChassisDetailMain;
 import com.theteus.kubota.ContactModule.Contact;
 import com.theteus.kubota.ContactModule.ContactDetailMain;
 import com.theteus.kubota.LeadModule.LeadDetailMain;
@@ -204,6 +206,8 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 6:
                 mPagerAdapter.clearPage();
+                // TODO : Remove When Finish Testing
+                mPagerAdapter.addPage(new ChassisDetailMain());
                 mPagerAdapter.addPage(new Chassis());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(CHASSIS_ACTIVITY_TITLE);

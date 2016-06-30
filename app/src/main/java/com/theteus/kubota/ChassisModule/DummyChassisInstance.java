@@ -1,5 +1,8 @@
 package com.theteus.kubota.ChassisModule;
 
+import com.theteus.kubota.ContactModule.DummyContactInstance;
+import com.theteus.kubota.Reference;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +13,9 @@ import java.util.Map;
  */
 public class DummyChassisInstance {
     public static final List<ChassisInstance> CHASSIS = new ArrayList<>();
-    //public static final List<String> KEYS = new ArrayList<>();
+    public static final List<String> KEYS = new ArrayList<>();
     public static final Map<String, ChassisInstance> CHASSIS_MAP = new HashMap<>();
-    //public static final Map<String, String> ID_MAP = new HashMap<>();
+    public static final Map<String, String> ID_MAP = new HashMap<>();
     public static final int COUNT = 10;
 
     static {
@@ -60,6 +63,8 @@ public class DummyChassisInstance {
 
             CHASSIS.add(chassis);
             CHASSIS_MAP.put(chassis.chassisNumber, chassis);
+            KEYS.add(chassis.chassisNumber + " : " + Reference.MASTER_PRODUCTTYPE.get(chassis.productType));
+            ID_MAP.put(chassis.chassisNumber + " : " + Reference.MASTER_PRODUCTTYPE.get(chassis.productType), chassis.chassisNumber);
         }
     }
     public static List<ChassisInstance> searchByContactId(String contactId) {

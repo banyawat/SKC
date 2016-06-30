@@ -1,0 +1,251 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".ChassisModule.ChassisDetailContract">
+
+    <!--CONTRACT NUMBER-->
+    <ImageView
+        android:id="@+id/chassis_detail_contract_number_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/ic_48dp_black_confirmation_number"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_contract_number_icon"
+        android:layout_toEndOf="@id/chassis_detail_contract_number_icon"
+        android:layout_alignTop="@id/chassis_detail_contract_number_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เลขที่สัญญา" />
+    <TextView
+        android:id="@+id/chassis_detail_contract_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_contract_number_icon"
+        android:layout_toRightOf="@id/chassis_detail_contract_number_icon"
+        android:layout_alignBottom="@id/chassis_detail_contract_number_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--PURCHASE DATE-->
+    <ImageView
+        android:id="@+id/chassis_detail_purchase_date_icon"
+        android:layout_below="@id/chassis_detail_contract_number_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_event"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_purchase_date_icon"
+        android:layout_toEndOf="@id/chassis_detail_purchase_date_icon"
+        android:layout_alignTop="@id/chassis_detail_purchase_date_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="วันที่ซื้อ" />
+    <TextView
+        android:id="@+id/chassis_detail_purchase_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_purchase_date_icon"
+        android:layout_toRightOf="@id/chassis_detail_purchase_date_icon"
+        android:layout_alignBottom="@id/chassis_detail_purchase_date_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--CONTACT-->
+    <ImageView
+        android:id="@+id/chassis_detail_contact_icon"
+        android:layout_below="@id/chassis_detail_purchase_date_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_person"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_contact_icon"
+        android:layout_toEndOf="@id/chassis_detail_contact_icon"
+        android:layout_alignTop="@id/chassis_detail_contact_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ลูกค้า" />
+    <TextView
+        android:id="@+id/chassis_detail_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_contact_icon"
+        android:layout_toRightOf="@id/chassis_detail_contact_icon"
+        android:layout_alignBottom="@id/chassis_detail_contact_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textStyle="italic"
+        android:alpha="0.87" />
+
+    <!--DEALER-->
+    <ImageView
+        android:id="@+id/chassis_detail_dealer_icon"
+        android:layout_below="@id/chassis_detail_contact_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_store_mall_directory"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_dealer_icon"
+        android:layout_toEndOf="@id/chassis_detail_dealer_icon"
+        android:layout_alignTop="@id/chassis_detail_dealer_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ร้านค้า" />
+    <TextView
+        android:id="@+id/chassis_detail_dealer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_dealer_icon"
+        android:layout_toRightOf="@id/chassis_detail_dealer_icon"
+        android:layout_alignBottom="@id/chassis_detail_dealer_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--PURCHASE CONDITION-->
+    <ImageView
+        android:id="@+id/chassis_detail_sale_condition_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_shopping_cart"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_sale_condition_icon"
+        android:layout_toEndOf="@id/chassis_detail_sale_condition_icon"
+        android:layout_alignTop="@id/chassis_detail_sale_condition_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ช่องทางการขาย" />
+    <TextView
+        android:id="@+id/chassis_detail_sale_condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_sale_condition_icon"
+        android:layout_toRightOf="@id/chassis_detail_sale_condition_icon"
+        android:layout_alignBottom="@id/chassis_detail_sale_condition_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--USER-->
+    <ImageView
+        android:id="@+id/chassis_detail_user_icon"
+        android:layout_below="@id/chassis_detail_sale_condition_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_person_pin_black"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_user_icon"
+        android:layout_toEndOf="@id/chassis_detail_user_icon"
+        android:layout_alignTop="@id/chassis_detail_user_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="ชื่อผู้ใช้รถ" />
+    <TextView
+        android:id="@+id/chassis_detail_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_user_icon"
+        android:layout_toRightOf="@id/chassis_detail_user_icon"
+        android:layout_alignBottom="@id/chassis_detail_user_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--Status Change Date-->
+    <ImageView
+        android:id="@+id/chassis_detail_phone_icon"
+        android:layout_below="@id/chassis_detail_user_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_phone"
+        android:alpha="0.54" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chassis_detail_phone_icon"
+        android:layout_toEndOf="@id/chassis_detail_phone_icon"
+        android:layout_alignTop="@id/chassis_detail_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="เบอร์โทรศัพท์ผู้ใช้รถ" />
+    <TextView
+        android:id="@+id/chassis_detail_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/chassis_detail_phone_icon"
+        android:layout_toRightOf="@id/chassis_detail_phone_icon"
+        android:layout_alignBottom="@id/chassis_detail_phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+</RelativeLayout>
