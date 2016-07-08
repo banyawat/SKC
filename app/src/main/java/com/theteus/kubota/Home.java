@@ -24,6 +24,7 @@ import com.theteus.kubota.ContactModule.ContactDetailMain;
 import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.LeadModule.Lead;
 import com.theteus.kubota.SKCModule.SKC;
+import com.theteus.kubota.SKCModule.SKCDetailMain;
 import com.theteus.kubota.SettingModule.SettingsActivity;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
@@ -175,6 +176,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 1:
                 mPagerAdapter.clearPage();
+                mPagerAdapter.addPage(new SKCDetailMain());
                 mPagerAdapter.addPage(new SKC());
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
