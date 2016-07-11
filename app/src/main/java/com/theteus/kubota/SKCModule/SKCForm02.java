@@ -2,14 +2,12 @@ package com.theteus.kubota.SKCModule;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TabHost;
+
 import com.theteus.kubota.R;
 
 import java.util.ArrayList;
@@ -173,6 +171,14 @@ public class SKCForm02 extends Fragment {
         postalEdit.setError(null);
     }
 
+    public ArrayList<HashMap<String, String>> getAllData(){
+        Bundle args = new Bundle();
+        ArrayList<HashMap<String, String>> bundle = new ArrayList<>();
+        for(addressInstance instance: addressList)
+            bundle.add(instance.getAddressMap());
+        return bundle;
+    }
+
     private class addressInstance{
         private HashMap<String, String> addressMap;
 
@@ -209,6 +215,10 @@ public class SKCForm02 extends Fragment {
             districtEdit.setText(addressMap.get("District"));
             provinceEdit.setText(addressMap.get("Province"));
             postalEdit.setText(addressMap.get("Postal"));
+        }
+
+        public HashMap<String, String> getAddressMap(){
+            return addressMap;
         }
     }
 }

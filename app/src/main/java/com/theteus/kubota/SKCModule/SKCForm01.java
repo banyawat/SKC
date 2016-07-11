@@ -117,20 +117,46 @@ public class SKCForm01 extends Fragment {
 
     public Bundle getAllData(){
         Bundle args = new Bundle();
-        args.putString("prefix", prefixEdit.getText().toString());
-        args.putString("name", nameEdit.getText().toString());
-        args.putString("surName", surNameEdit.getText().toString());
-        args.putString("idNum", idNumEdit.getText().toString());
-        args.putString("phone", phoneEdit.getText().toString());
-        args.putString("email", emailEdit.getText().toString());
-        args.putString("fax", faxEdit.getText().toString());
-        args.putString("sklPhone", sklPhoneEdit.getText().toString());
-        args.putString("mobPhone1", mobPhone1Edit.getText().toString());
-        args.putString("mobPhone2", mobPhone2Edit.getText().toString());
-        args.putString("vehicleOwn", vehicleOwnEdit.getText().toString());
-        args.putString("birthDate", birthDateEdit.getText().toString());
+        String prefix="";
+        String name="";
+        String surName="";
+        String idNum="";
+        String phone="";
+        String email="";
+        String fax="";
+        String sklPhone="";
+        String mobPhone1="";
+        String mobPhone2="";
+        String vehicleOwn="";
+        String birthDate="";
 
-        args.putString("test", "Got response");
+        /*prefix = prefixEdit.getText().toString();
+        name = nameEdit.getText().toString();
+        surName = surNameEdit.getText().toString();
+        idNum = idNumEdit.getText().toString();
+        phone = phoneEdit.getText().toString();
+        email = emailEdit.getText().toString();
+        fax = faxEdit.getText().toString();
+        sklPhone = sklPhoneEdit.getText().toString();
+        mobPhone1 = mobPhone1Edit.getText().toString();
+        mobPhone2 = mobPhone2Edit.getText().toString();
+        vehicleOwn = vehicleOwnEdit.getText().toString();
+        birthDate = birthDateEdit.getText().toString();*/
+
+        args.putString("prefix", prefix);
+        args.putString("name", name);
+        args.putString("surName", surName);
+        args.putString("idNum", idNum);
+        args.putString("phone", phone);
+        args.putString("email", email);
+        args.putString("fax", fax);
+        args.putString("sklPhone", sklPhone);
+        args.putString("mobPhone1", mobPhone1);
+        args.putString("mobPhone2", mobPhone2);
+        args.putString("vehicleOwn", vehicleOwn);
+        args.putString("birthDate", birthDate);
+
+        args.putString("test", "Page 1 Retrieved data field");
 
         return args;
     }

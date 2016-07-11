@@ -16,9 +16,6 @@ import jcifs.ntlmssp.Type2Message;
 import jcifs.ntlmssp.Type3Message;
 import jcifs.util.Base64;
 
-/**
- * Created by whorangester on 7/7/16.
- */
 public class NtlmConnection {
     private static final int SOCKET_TIMEOUT = 60000;
 

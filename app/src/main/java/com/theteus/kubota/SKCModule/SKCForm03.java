@@ -21,6 +21,7 @@ import com.hudomju.swipe.adapter.RecyclerViewAdapter;
 import com.theteus.kubota.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SKCForm03 extends Fragment {
     Spinner jobSpinner, goodsSpinner, agriTypeSpinner, interestSpinner,harvestMethodSpinner, riceMethodSpinner;
@@ -380,4 +381,26 @@ public class SKCForm03 extends Fragment {
         }
     }
 
+    public ArrayList<HashMap<String, String>> getAllData(){
+        ArrayList<HashMap<String, String>> args = new ArrayList<>();
+
+        for(int i=0;i<2;i++) {
+            HashMap<String, String> page = new HashMap<>();
+            int counter = 0;
+            for (surveyInstance instance : pageList.get(0).savedList) {
+                page.put("p"+i+"_job_" + counter, instance.getJobs());
+                page.put("p"+i+"_plant_" + counter, instance.getGoods());
+                page.put("p"+i+"_agriArea_" + counter, instance.getAgriArea());
+                page.put("p"+i+"_interestProduct_" + counter, instance.getInterestProduct());
+                counter++;
+            }
+            page.put("p"+i+"_agriType", String.valueOf(pageList.get(0).agriTypeChoice));
+            page.put("p"+i+"_harvestMethod", String.valueOf(pageList.get(0).harvestChoice));
+            page.put("p"+i+"_riceMethod", String.valueOf(pageList.get(0).riceChoice));
+            page.put("p"+i+"_income", pageList.get(0).incomeStr);
+            args.add(page);
+        }
+
+        return args;
+    }
 }

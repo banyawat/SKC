@@ -1,7 +1,5 @@
 package com.theteus.kubota;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
@@ -10,14 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabWidget;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
+public class CardViewPager implements TabHost.OnTabChangeListener {
     private FragmentTabHost mTabHost;
-    ScreenSlidePagerAdapter mPagerAdapter;
-    private ViewPager mPager;
+    private ScreenSlidePagerAdapter mPagerAdapter;
+    public ViewPager mPager;
 
     FloatingActionButton nextButton;
 
@@ -42,7 +39,7 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
     public void init(int pagerViewId, int nextButtonViewId){
         initTabHost(mainFragment, mainView);
         initViewPager(mainView.findViewById(pagerViewId));
-        initFLoatingButton(mainView.findViewById(nextButtonViewId));
+        initFloatingButton(mainView.findViewById(nextButtonViewId));
         Log.i("TAG", "Current: "+mTabHost.getCurrentTab()+", Size: "+mTabHost.getTabWidget().getTabCount());
         if(mTabHost.getCurrentTab()+1==mTabHost.getTabWidget().getTabCount())
             nextButton.setImageResource(R.drawable.ic_check);
@@ -77,21 +74,16 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
             mPagerAdapter.addPage(frag);
         mPager.setOffscreenPageLimit(viewList.size()-1);
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOnPageChangeListener(this);
 
     }
 
-    private void initFLoatingButton(View floatingButtonView){
+    private void initFloatingButton(View floatingButtonView){
         if(floatingButtonView!=null) {
             nextButton = (FloatingActionButton) floatingButtonView;
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mPager.setCurrentItem(mPager.getCurrentItem() + 1);
-                    if(mPager.getCurrentItem()+1==mPager.getChildCount())
-                        nextButton.setImageResource(R.drawable.ic_check);
-                    else
-                        nextButton.setImageResource(R.drawable.ic_arrow_forward);
+                    goToNextPage();
                 }
             });
         }
@@ -105,17 +97,7 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
             nextButton.setImageResource(R.drawable.ic_arrow_forward);
     }
 
-    public void initFloatingButtonMethod(View.OnClickListener v){
-        nextButton.setOnClickListener(v);
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
+    public void setTabIndicatorNumber(int position){
         this.mTabHost.setCurrentTab(position);
         if(position==mTabHost.getChildCount()+1)
             nextButton.setImageResource(R.drawable.ic_check);
@@ -123,9 +105,8 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
             nextButton.setImageResource(R.drawable.ic_arrow_forward);
     }
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
+    public void initFloatingButtonMethod(View.OnClickListener v){
+        nextButton.setOnClickListener(v);
     }
 
     @Override
@@ -137,7 +118,13 @@ public class CardViewPager implements TabHost.OnTabChangeListener, ViewPager.OnP
         return mPagerAdapter.getItem(mPager.getCurrentItem());
     }
 
-    public int getCurrentItem(){
-        return mPager.getCurrentItem();
+    public Fragment getFragment(int position){
+        return mPagerAdapter.getItem(position);
+    }
+
+    public boolean isLastPage(){
+        if(mPager.getCurrentItem()+1==mPager.getChildCount())
+            return true;
+        return false;
     }
 }
