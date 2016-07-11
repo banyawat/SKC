@@ -6,15 +6,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-/**
- * Created by user on 6/10/2016.
- */
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<Fragment> fragmentList;
 
     public ScreenSlidePagerAdapter(FragmentManager fm) {
         super(fm);
-        fragmentList = new ArrayList<Fragment>();
+        fragmentList = new ArrayList<>();
     }
 
     @Override

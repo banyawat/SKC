@@ -74,6 +74,22 @@ public class CardViewPager implements TabHost.OnTabChangeListener {
             mPagerAdapter.addPage(frag);
         mPager.setOffscreenPageLimit(viewList.size()-1);
         mPager.setAdapter(mPagerAdapter);
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                setTabIndicatorNumber(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
@@ -123,8 +139,6 @@ public class CardViewPager implements TabHost.OnTabChangeListener {
     }
 
     public boolean isLastPage(){
-        if(mPager.getCurrentItem()+1==mPager.getChildCount())
-            return true;
-        return false;
+        return mPager.getCurrentItem() + 1 == mPager.getChildCount();
     }
 }

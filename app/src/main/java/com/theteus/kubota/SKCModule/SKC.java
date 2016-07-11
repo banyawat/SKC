@@ -51,7 +51,7 @@ public class SKC extends Fragment{
             }
         });
 
-        skcView.mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        skcView.mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -59,7 +59,6 @@ public class SKC extends Fragment{
             @Override
             public void onPageSelected(int position) {
                 retrieveData(lastPage);
-                skcView.setTabIndicatorNumber(position);
                 lastPage=position;
             }
 
@@ -83,14 +82,12 @@ public class SKC extends Fragment{
                 if(skcform2 != null){
                     form2Bundle = skcform2.getAllData();
                 }
-                Log.i("bundle test", "Page 2 Retrieve data field");
                 break;
             default:
                 SKCForm03 skcform3 = (com.theteus.kubota.SKCModule.SKCForm03) skcView.getFragment(2);
                 if(skcform3!=null){
                     form3Bundle = skcform3.getAllData();
                 }
-                Log.i("bundle test", "Page 3 Retrieve data field");
                 break;
         }
     }

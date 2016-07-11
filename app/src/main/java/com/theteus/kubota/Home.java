@@ -1,17 +1,15 @@
 package com.theteus.kubota;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.theteus.kubota.AccountModule.Account;
@@ -21,8 +19,8 @@ import com.theteus.kubota.ChassisModule.Chassis;
 import com.theteus.kubota.ChassisModule.ChassisDetailMain;
 import com.theteus.kubota.ContactModule.Contact;
 import com.theteus.kubota.ContactModule.ContactDetailMain;
-import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.LeadModule.Lead;
+import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.SKCModule.SKC;
 import com.theteus.kubota.SKCModule.SKCDetailMain;
 import com.theteus.kubota.SettingModule.SettingsActivity;
@@ -64,12 +62,18 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         getSupportActionBar();
     }
 
+    @Override
+    protected void onResume() {
+        Toast.makeText(getApplicationContext(),"On Resume", Toast.LENGTH_SHORT).show();
+        super.onResume();
+    }
+
     public void initViewPager(){
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPagerAdapter.addPage(new Feed());
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -115,7 +119,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
 
         MenuObject home = new MenuObject("Home");
         home.setResource(R.drawable.ic_home);
-        home.setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
+        home.setBgColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
 
         MenuObject SKCcon = new MenuObject("SKC Contact");
         SKCcon.setResource(R.drawable.ic_perm_contact_calendar);
@@ -210,7 +214,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 break;
             case 6:
                 mPagerAdapter.clearPage();
-                // TODO : Remove When Finish Testing
                 mPagerAdapter.addPage(new ChassisDetailMain());
                 mPagerAdapter.addPage(new Chassis());
                 if(getSupportActionBar()!=null)
@@ -225,7 +228,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         }
         mPagerAdapter.notifyDataSetChanged();
         menuList.get(lastPage).setBgColor(0);
-        menuList.get(position).setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
+        menuList.get(position).setBgColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         initMenuFragment();
         lastPage=position;
     }
@@ -253,7 +256,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         mPagerAdapter.addPage(new Feed());
         mPagerAdapter.notifyDataSetChanged();
         menuList.get(lastPage).setBgColor(0);
-        menuList.get(0).setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
+        menuList.get(0).setBgColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         initMenuFragment();
         if(getSupportActionBar()!=null)
             getSupportActionBar().setTitle(FEED_ACTIVITY_TITLE);
@@ -268,7 +271,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     public void changeMenu(int position) {
         pageID = position;
         menuList.get(lastPage).setBgColor(0);
-        menuList.get(position).setBgColor(getApplicationContext().getResources().getColor(R.color.colorPrimary));
+        menuList.get(position).setBgColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         initMenuFragment();
         lastPage=position;
 

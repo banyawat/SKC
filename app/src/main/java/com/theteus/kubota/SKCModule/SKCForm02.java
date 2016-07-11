@@ -174,8 +174,9 @@ public class SKCForm02 extends Fragment {
     public ArrayList<HashMap<String, String>> getAllData(){
         Bundle args = new Bundle();
         ArrayList<HashMap<String, String>> bundle = new ArrayList<>();
-        for(addressInstance instance: addressList)
-            bundle.add(instance.getAddressMap());
+        if(addressList!=null)
+            for(addressInstance instance: addressList)
+                bundle.add(instance.getAddressMap());
         return bundle;
     }
 
