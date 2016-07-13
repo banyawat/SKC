@@ -249,7 +249,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/account_form3_1_credithold">
 
                 <TextView
                     android:layout_width="wrap_content"

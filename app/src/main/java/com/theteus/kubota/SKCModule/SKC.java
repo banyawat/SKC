@@ -16,9 +16,6 @@ import java.util.HashMap;
 
 public class SKC extends Fragment{
     private CardViewPager skcView;
-    private Fragment SKCForm01;
-    private Fragment SKCForm02;
-    private Fragment SKCForm03;
 
     Bundle form1Bundle;
     ArrayList<HashMap<String, String>> form2Bundle, form3Bundle;
@@ -31,14 +28,10 @@ public class SKC extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_skc, container, false);
 
-        SKCForm01 = new SKCForm01();
-        SKCForm02 = new SKCForm02();
-        SKCForm03 = new SKCForm03();
-
         skcView = new CardViewPager(this, view);
-        skcView.addFragmentView(SKCForm01, "ข้อมูลทั่วไป");
-        skcView.addFragmentView(SKCForm02, "ที่อยู่");
-        skcView.addFragmentView(SKCForm03, "แบบสอบถาม");
+        skcView.addFragmentView(new SKCForm01(), "ข้อมูลทั่วไป");
+        skcView.addFragmentView(new SKCForm02(), "ที่อยู่");
+        skcView.addFragmentView(new SKCForm03(), "แบบสอบถาม");
         skcView.init(R.id.skc_form_pager, R.id.skc_nextButton);
         skcView.initFloatingButtonMethod(new View.OnClickListener() {
             @Override

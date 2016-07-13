@@ -75,7 +75,7 @@ limitations under the License.
     <string name="last_campaign_date">Last Campaign Date</string>
     <string name="marketing_material">Marketing Materials</string>
     <string name="send">Send</string>
-    <string name="do_not_send">Do not send</string>
+    <string name="do_not_send">Do Not Send</string>
     <string name="billing">Billing</string>
     <string name="currency">Currency</string>
     <string name="credit_limit">Credit Limit</string>

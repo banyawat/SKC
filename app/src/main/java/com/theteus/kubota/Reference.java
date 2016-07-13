@@ -7,6 +7,14 @@ import java.util.Map;
  * Created by whorangester on 6/27/16.
  */
 public class Reference {
+    public static final String PROTOCOL = "https";
+    public static final String HOSTNAME = "muses.hms-cloud.com";
+    public static final String DOMAIN = "hms-cloud";
+    public static final String USERNAME = "administrator";
+    public static final String PASSWORD = "pass@word1";
+    public static final String ORGRANIZATION_PATH = "/Training/XRMServices/2011/OrganizationData.svc/";
+    public static final int PORT = 444;
+
     public static final Map<Integer, String> MASTER_OCCUPATION;
     public static final Map<Integer, String> MASTER_PLANT;
     public static final Map<Integer, String> MASTER_INTERESTPRODUCT;

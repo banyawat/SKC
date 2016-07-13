@@ -1,7 +1,9 @@
 package com.theteus.kubota;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -53,6 +55,10 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(Build.VERSION.SDK_INT>9){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         setContentView(R.layout.activity_home);
 
         initToolbar();
@@ -62,15 +68,10 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         getSupportActionBar();
     }
 
-    @Override
-    protected void onResume() {
-        Toast.makeText(getApplicationContext(),"On Resume", Toast.LENGTH_SHORT).show();
-        super.onResume();
-    }
-
     public void initViewPager(){
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPagerAdapter.clearPage();
         mPagerAdapter.addPage(new Feed());
         mPager.setAdapter(mPagerAdapter);
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -182,6 +183,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new SKCDetailMain());
                 mPagerAdapter.addPage(new SKC());
+                mPager.setCurrentItem(0);
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
                 break;
@@ -189,6 +191,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new ContactDetailMain());
                 mPagerAdapter.addPage(new Contact());
+                mPager.setCurrentItem(0);
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
                 break;
@@ -196,6 +199,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new LeadDetailMain());
                 mPagerAdapter.addPage(new Lead());
+                mPager.setCurrentItem(0);
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(LEAD_ACTIVITY_TITLE);
                 break;
@@ -203,6 +207,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 mPagerAdapter.clearPage();
                 mPagerAdapter.addPage(new ActivitiesDetailMain());
                 mPagerAdapter.addPage(new Activities());
+                mPager.setCurrentItem(0);
                 if(getSupportActionBar()!=null)
                     getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);
                 break;
