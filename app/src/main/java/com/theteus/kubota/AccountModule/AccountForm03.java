@@ -87,7 +87,7 @@ public class AccountForm03 extends Fragment {
 
     private void initPage1(View view){
 
-        mAccount_form3_1_industry = (Spinner) view.findViewById(R.id.account_form3_1_industry);
+        mAccount_form3_1_industry = (Spinner) viewPart1.findViewById(R.id.account_form3_1_industry);
         mAccount_form3_1_sic = (EditText) view.findViewById(R.id.account_form3_1_sic);
         mAccount_form3_1_ownership = (Spinner) view.findViewById(R.id.account_form3_1_ownership);
         mAccount_form3_1_originate_lead = (EditText) view.findViewById(R.id.account_form3_1_originate_lead);
@@ -197,94 +197,89 @@ public class AccountForm03 extends Fragment {
 
     public JSONObject getAllData(){
         JSONObject args = new JSONObject();
-        String Account_form3_1_industry;
+        JSONObject metadata = new JSONObject();
+        int Account_form3_1_industry=51;
         String Account_form3_1_sic;
-        String Account_form3_1_ownership;
-        String Account_form3_1_originate_lead;
-        String Account_form3_1_last_date;
-        String Account_form3_1_marketmaterial;
-        String Account_form3_1_currency;
-        String Account_form3_1_credithold;
-        String Account_form3_1_creditlimit;
-        String Account_form3_1_paymentterm;
+        int Account_form3_1_ownership;
+        //String Account_form3_1_originate_lead;
+        //String Account_form3_1_last_date;
+        boolean Account_form3_1_marketmaterial = true;
+        //String Account_form3_1_currency;
+        boolean Account_form3_1_credithold = false;
+        //String Account_form3_1_creditlimit;
+        int Account_form3_1_paymentterm;
 
-        String Account_form3_2_checkemail;
-        String Account_form3_2_checkbulkemail;
-        String Account_form3_2_checkphone;
-        String Account_form3_2_checkfax;
-        String Checkmail;
-        String Account_form3_2_shippingmethod;
-        String Account_form3_2_freight;
+        boolean Account_form3_2_checkemail;
+        boolean Account_form3_2_checkbulkemail;
+        boolean Account_form3_2_checkphone;
+        boolean Account_form3_2_checkfax;
+        boolean Checkmail;
+        int Account_form3_2_shippingmethod;
+        int Account_form3_2_freight;
         String Account_form3_2_description;
 
         RadioButton tempButton = null;
 
-        Account_form3_1_industry = String.valueOf(mAccount_form3_1_industry.getSelectedItemPosition());
+        Account_form3_1_industry = mAccount_form3_1_industry.getSelectedItemPosition();
         Account_form3_1_sic = mAccount_form3_1_sic.getText().toString();
-        Account_form3_1_ownership = String.valueOf(mAccount_form3_1_ownership.getSelectedItemPosition());
-        Account_form3_1_originate_lead = mAccount_form3_1_originate_lead.getText().toString();
-        Account_form3_1_last_date = mAccount_form3_1_last_date.getText().toString();
+        Account_form3_1_ownership = mAccount_form3_1_ownership.getSelectedItemPosition();
+        //Account_form3_1_originate_lead = mAccount_form3_1_originate_lead.getText().toString();
+        //Account_form3_1_last_date = mAccount_form3_1_last_date.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_marketmaterial.getCheckedRadioButtonId());
-        if(tempButton!=null)
-            Account_form3_1_marketmaterial = tempButton.getText().toString();
-        else
-            Account_form3_1_marketmaterial = "";
-        Account_form3_1_currency = mAccount_form3_1_currency.getText().toString();
-        Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
+        if(tempButton!=null) {
+            if(tempButton.getText().toString()=="Send")
+                Account_form3_1_marketmaterial = true;
+            else
+                Account_form3_1_marketmaterial = false;
+        }
+        //Account_form3_1_currency = mAccount_form3_1_currency.getText().toString();
+        //Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_credithold.getCheckedRadioButtonId());
-        if(tempButton!=null)
-            Account_form3_1_credithold = tempButton.getText().toString();
-        else
-            Account_form3_1_credithold = "";
-        Account_form3_1_paymentterm = String.valueOf(mAccount_form3_1_paymentterm.getSelectedItemPosition());
+        if(tempButton!=null) {
+            if (tempButton.getText().toString() == "Yes")
+                Account_form3_1_credithold = false;
+            else
+                Account_form3_1_credithold = true;
+        }
 
-        Account_form3_2_checkemail = getCheckedInMS(mAccount_form3_2_checkemail.isChecked());
-        Account_form3_2_checkbulkemail = getCheckedInMS(mAccount_form3_2_checkbulkemail.isChecked());
-        Account_form3_2_checkphone = getCheckedInMS(mAccount_form3_2_checkphone.isChecked());
-        Account_form3_2_checkfax = getCheckedInMS(mAccount_form3_2_checkfax.isChecked());
-        Checkmail = getCheckedInMS(mCheckmail.isChecked());
-        Account_form3_2_shippingmethod = String.valueOf(mAccount_form3_2_shippingmethod.getSelectedItemPosition());
+        Account_form3_1_paymentterm = mAccount_form3_1_paymentterm.getSelectedItemPosition();
+
+        Account_form3_2_checkemail = mAccount_form3_2_checkemail.isChecked();
+        Account_form3_2_checkbulkemail = mAccount_form3_2_checkbulkemail.isChecked();
+        Account_form3_2_checkphone = mAccount_form3_2_checkphone.isChecked();
+        Account_form3_2_checkfax = mAccount_form3_2_checkfax.isChecked();
+        Checkmail = mCheckmail.isChecked();
+        Account_form3_2_shippingmethod = mAccount_form3_2_shippingmethod.getSelectedItemPosition();
         tempButton = (RadioButton) viewPart2.findViewById(mAccount_form3_2_freight.getCheckedRadioButtonId());
         if(tempButton!=null) {
             if (tempButton.getText() == getResources().getString(R.string.fob))
-                Account_form3_2_freight = String.valueOf(1);
+                Account_form3_2_freight = 1;
             else
-                Account_form3_2_freight = String.valueOf(2);
+                Account_form3_2_freight = 2;
         }
         else
-            Account_form3_2_freight = String.valueOf(0);
+            Account_form3_2_freight = 0;
         Account_form3_2_description = mAccount_form3_2_description.getText().toString();
 
         try {
-            args.put("IndustryCode", Account_form3_1_industry);
+            args.put("IndustryCode", new JSONObject().put("Value", Account_form3_1_industry)); //"{\"Value\":\"50\"}"
             args.put("SIC", Account_form3_1_sic);
-            args.put("OwnershipCode", Account_form3_1_ownership);
-            //args.put("originate_lead", Account_form3_1_originate_lead);
-            //args.put("last_date", Account_form3_1_last_date);
-            args.put("DoNotSendMM", Account_form3_1_marketmaterial);
-            //args.put("TransactionCurrencyId", Account_form3_1_currency);
-            args.put("CreditLimit", Account_form3_1_creditlimit);
-            args.put("CreditOnHold", Account_form3_1_credithold);
-            args.put("PaymentTermsCode", Account_form3_1_paymentterm);
+            args.put("OwnershipCode", new JSONObject().put("Value", Account_form3_1_ownership));
+            args.put("DoNotSendMM", Account_form3_1_marketmaterial); //true = do not send
+            args.put("CreditOnHold", Account_form3_1_credithold); //true = yes
+            args.put("PaymentTermsCode",new JSONObject().put("Value", Account_form3_1_paymentterm));
 
-            args.put("DoNotEMail", Account_form3_2_checkemail);
-            args.put("DoNotBulkEMail", Account_form3_2_checkbulkemail);
+            args.put("DoNotEMail", Account_form3_2_checkemail); //false = allow
+            args.put("DoNotBulkEMail", Account_form3_2_checkbulkemail); //true = do not allow
             args.put("DoNotPhone", Account_form3_2_checkphone);
             args.put("DoNotFax", Account_form3_2_checkfax);
             args.put("DoNotPostalMail", Checkmail);
-            args.put("Address1_ShippingMethodCode", Account_form3_2_shippingmethod);
-            args.put("Address1_FreightTermsCode", Account_form3_2_freight);
+            args.put("Address1_ShippingMethodCode", new JSONObject().put("Value", Account_form3_2_shippingmethod));
+            args.put("Address1_FreightTermsCode", new JSONObject().put("Value", Account_form3_2_freight));
             args.put("Description", Account_form3_2_description);
         } catch (JSONException e){
             e.printStackTrace();
         }
-
         return args;
-    }
-
-    private String getCheckedInMS(boolean checked){
-        if(checked)
-            return "Allow";
-        return "Do Not Allow";
     }
 }

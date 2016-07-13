@@ -12,9 +12,11 @@ import com.theteus.kubota.NtlmConnection;
 import com.theteus.kubota.R;
 import com.theteus.kubota.Reference;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 public class Account extends Fragment {
     private CardViewPager accountView;
@@ -98,24 +100,22 @@ public class Account extends Fragment {
     }
 
     private void postInformation() {
-        /*try {
-            Log.i("F3 Request Test", (String) form3JSON.get("Address1_FreightTermsCode"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
+        JSONObject request = mergeJSON(form1JSON, form2JSON);
+        request = mergeJSON(request, form3JSON);
+
         NtlmConnection conn = new NtlmConnection(Reference.PROTOCOL, Reference.HOSTNAME, Reference.PORT, Reference.DOMAIN,
                 Reference.USERNAME, Reference.PASSWORD, Reference.ORGRANIZATION_PATH);
         try {
             conn.connect();
             conn.authenticate();
-            conn.create("Account", form3JSON);
+            conn.create("Account", request);
             conn.disconnect();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    /*private JSONObject mergeJSON(JSONObject json1, JSONObject json2){
+    private JSONObject mergeJSON(JSONObject json1, JSONObject json2){
         JSONObject merged = new JSONObject();
         JSONObject[] objs = new JSONObject[] { json1, json2 };
         for (JSONObject obj : objs) {
@@ -130,5 +130,5 @@ public class Account extends Fragment {
             }
         }
         return merged;
-    }*/
+    }
 }
