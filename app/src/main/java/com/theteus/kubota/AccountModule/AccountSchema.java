@@ -1,5 +1,10 @@
 package com.theteus.kubota.AccountModule;
 
+import org.json.JSONArray;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by whorangester on 7/12/16.
  */
@@ -41,7 +46,4 @@ public class AccountSchema {
     public static final String PAYMENT_TERMS = "PaymentTermsCode";
     public static final String SHIPPING_METHOD = "Address1_ShippingMethodCode";
     public static final String FREIGHT_TERMS = "Address1_FreightTermsCode";
-
-    // Option Set
-
 }

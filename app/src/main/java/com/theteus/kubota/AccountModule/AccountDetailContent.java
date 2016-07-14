@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +49,8 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.tab_content);
         mTabHost.addTab(mTabHost.newTabSpec("GeneralTab").setIndicator("ข้อมูลทั่วไป"), AccountDetailGeneral.class, args);
         mTabHost.addTab(mTabHost.newTabSpec("AddressTab").setIndicator("ที่อยู่"), AccountDetailAddress.class, args);
-        mTabHost.addTab(mTabHost.newTabSpec("DetailsTab").setIndicator("รายละเอียด"), AccountDetailDetails.class, args);
+        mTabHost.addTab(mTabHost.newTabSpec("DetailsTab1").setIndicator("รายละเอียด (I)"), AccountDetailDetailsPart1.class, args);
+        mTabHost.addTab(mTabHost.newTabSpec("DetailsTab2").setIndicator("รายละเอียด (II)"), AccountDetailDetailsPart2.class, args);
         mTabHost.setOnTabChangedListener(this);
 
         for (int i = 0; i < mTabHost.getTabWidget().getTabCount(); i++)
@@ -67,9 +67,13 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
         addressSection.setArguments(args);
         mPagerAdapter.addPage(addressSection);
 
-        AccountDetailDetails detailSection = new AccountDetailDetails();
-        detailSection.setArguments(args);
-        mPagerAdapter.addPage(detailSection);
+        AccountDetailDetailsPart1 detailSection1 = new AccountDetailDetailsPart1();
+        detailSection1.setArguments(args);
+        mPagerAdapter.addPage(detailSection1);
+
+        AccountDetailDetailsPart2 detailSection2 = new AccountDetailDetailsPart2();
+        detailSection2.setArguments(args);
+        mPagerAdapter.addPage(detailSection2);
 
         mPager.setAdapter(mPagerAdapter);
         mPager.addOnPageChangeListener(this);

@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".AccountModule.AccountDetailDetailsPart1"
+    android:baselineAligned="false">
+
+    <LinearLayout
+        android:id="@+id/section_1"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical">
+
+        <!--Company Profile-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="@string/company_profile" />
+
+        <!--INDUSTRY-->
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/industry_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_work"
+                android:alpha="0.54"
+                android:contentDescription="@string/industry"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/industry_icon"
+                android:layout_toEndOf="@id/industry_icon"
+                android:layout_alignTop="@id/industry_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/industry" />
+            <TextView
+                android:id="@+id/industry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/industry_icon"
+                android:layout_toRightOf="@id/industry_icon"
+                android:layout_alignBottom="@id/industry_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--SIC CODE-->
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/sic_code_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_note"
+                android:alpha="0.54"
+                android:contentDescription="@string/sic_code" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/sic_code_icon"
+                android:layout_toEndOf="@id/sic_code_icon"
+                android:layout_alignTop="@id/sic_code_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/sic_code" />
+            <TextView
+                android:id="@+id/sic_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/sic_code_icon"
+                android:layout_toRightOf="@id/sic_code_icon"
+                android:layout_alignBottom="@id/sic_code_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--OWNERSHIP-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <!--OWNERSHIP-->
+            <ImageView
+                android:id="@+id/ownership_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_person"
+                android:alpha="0.54"
+                android:contentDescription="@string/ownership"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ownership_icon"
+                android:layout_toEndOf="@id/ownership_icon"
+                android:layout_alignTop="@id/ownership_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/ownership" />
+            <TextView
+                android:id="@+id/ownership"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ownership_icon"
+                android:layout_toRightOf="@id/ownership_icon"
+                android:layout_alignBottom="@id/ownership_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/section_2"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical">
+
+        <!--MARKETING-->
+        <TextView
+            android:id="@+id/marketing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="@string/marketing" />
+
+        <!--ORIGINATING LEAD-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/originating_lead_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_person"
+                android:alpha="0.54"
+                android:contentDescription="@string/originating_lead" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/originating_lead_icon"
+                android:layout_toEndOf="@id/originating_lead_icon"
+                android:layout_alignTop="@id/originating_lead_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/originating_lead" />
+            <TextView
+                android:id="@+id/originating_lead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/originating_lead_icon"
+                android:layout_toRightOf="@id/originating_lead_icon"
+                android:layout_alignBottom="@id/originating_lead_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--LAST CAMPAIGN-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/last_campaign_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_event"
+                android:alpha="0.54"
+                android:contentDescription="@string/last_campaign_date" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/last_campaign_icon"
+                android:layout_toEndOf="@id/last_campaign_icon"
+                android:layout_alignTop="@id/last_campaign_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/last_campaign_date" />
+            <TextView
+                android:id="@+id/last_campaign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/last_campaign_icon"
+                android:layout_toRightOf="@id/last_campaign_icon"
+                android:layout_alignBottom="@id/last_campaign_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--MARKETING MATERIAL-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/marketing_material_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_label"
+                android:alpha="0.54"
+                android:contentDescription="@string/marketing_material"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/marketing_material_icon"
+                android:layout_toEndOf="@id/marketing_material_icon"
+                android:layout_alignTop="@id/marketing_material_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/marketing_material" />
+            <TextView
+                android:id="@+id/marketing_material"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/marketing_material_icon"
+                android:layout_toRightOf="@id/marketing_material_icon"
+                android:layout_alignBottom="@id/marketing_material_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/section_3"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical">
+
+        <!--BILLING-->
+        <TextView
+            android:id="@+id/billing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="@string/billing" />
+
+        <!--CURRENCY-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/currency_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_work"
+                android:alpha="0.54"
+                android:contentDescription="@string/currency" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/currency_icon"
+                android:layout_toEndOf="@id/currency_icon"
+                android:layout_alignTop="@id/currency_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/currency" />
+
+            <TextView
+                android:id="@+id/currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/currency_icon"
+                android:layout_toRightOf="@id/currency_icon"
+                android:layout_alignBottom="@id/currency_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--CREDIT LIMIT-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/credit_limit_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_work"
+                android:alpha="0.54"
+                android:contentDescription="@string/credit_limit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/credit_limit_icon"
+                android:layout_toEndOf="@id/credit_limit_icon"
+                android:layout_alignTop="@id/credit_limit_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/credit_limit" />
+
+            <TextView
+                android:id="@+id/credit_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/credit_limit_icon"
+                android:layout_toRightOf="@id/credit_limit_icon"
+                android:layout_alignBottom="@id/credit_limit_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--CREDIT HOLD-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/credit_hold_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_work"
+                android:visibility="invisible"
+                android:alpha="0.54"
+                android:contentDescription="@string/credit_hold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/credit_hold_icon"
+                android:layout_toEndOf="@id/credit_hold_icon"
+                android:layout_alignTop="@id/credit_hold_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/credit_hold" />
+
+            <TextView
+                android:id="@+id/credit_hold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/credit_hold_icon"
+                android:layout_toRightOf="@id/credit_hold_icon"
+                android:layout_alignBottom="@id/credit_hold_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--PAYMENT TERMS-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/payment_terms_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_work"
+                android:alpha="0.54"
+                android:contentDescription="@string/payment_terms" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/payment_terms_icon"
+                android:layout_toEndOf="@id/payment_terms_icon"
+                android:layout_alignTop="@id/payment_terms_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/payment_terms" />
+            <TextView
+                android:id="@+id/payment_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/payment_terms_icon"
+                android:layout_toRightOf="@id/payment_terms_icon"
+                android:layout_alignBottom="@id/payment_terms_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

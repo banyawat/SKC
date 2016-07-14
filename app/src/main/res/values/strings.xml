@@ -64,11 +64,21 @@ limitations under the License.
     <string name="account_ticker">Ticker Symbol</string>
     <string name="account_phone">Phone Number</string>
     <string name="account_fax">Fax</string>
-    <string name="account_website">Wensite</string>
+    <string name="account_website">Website</string>
     <string name="account_part1">Part 1</string>
     <string name="account_part2">Part 2</string>
 
+    <string name="account_street1">Street 1</string>
+    <string name="account_street2">Street 2</string>
+    <string name="account_street3">Street 3</string>
+    <string name="account_city">City</string>
+    <string name="account_state">State</string>
+    <string name="account_postal_code">Postal Code</string>
+    <string name="account_country">Country</string>
+
     <string name="company_profile">Company Profile</string>
+    <string name="industry">Industry</string>
+    <string name="ownership">Ownership</string>
     <string name="sic_code">SIC Code</string>
     <string name="marketing">Marketing</string>
     <string name="originating_lead">Originating Lead</string>
@@ -80,6 +90,7 @@ limitations under the License.
     <string name="currency">Currency</string>
     <string name="credit_limit">Credit Limit</string>
     <string name="credit_hold">Credit Hold</string>
+    <string name="payment_terms">Payment Terms</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
@@ -88,6 +99,7 @@ limitations under the License.
     <string name="bulk_email">Bulk Email</string>
     <string name="phone">Phone</string>
     <string name="mail">Mail</string>
+    <string name="shipping_method">Shipping Method</string>
 
 
     <string name="chassis_no">หมายเลขรถ</string>
@@ -503,6 +515,12 @@ limitations under the License.
         <item>Postal Mail</item>
         <item>Full Load</item>
         <item>Will Call</item>
+    </string-array>
+
+    <string-array name="account_freight_terms">
+        <item>Freight Terms</item>
+        <item>FOB</item>
+        <item>No Charge</item>
     </string-array>
 
     <string-array name="chassis_type">

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="36dp"
-    tools:context=".AccountModule.AccountDetailAddress"
+    android:padding="24dp"
+    tools:context=".AccountModule.AccountDetailDetailsPart2"
     android:baselineAligned="false">
 
     <LinearLayout
@@ -16,39 +16,80 @@
         android:layout_marginEnd="12dp"
         android:orientation="vertical">
 
-        <!--STREET 1-->
+        <!--DESCRIPTION-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="@string/description" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:maxLines="10"
+            android:lines="10"
+            android:alpha="0.87" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/section_2"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical">
+
+        <!--CONTACT PREFERENCE-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="@string/contact_pref" />
+
+        <!--EMAIL CONTACT PREFERENCE-->
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginTop="24dp">
 
             <ImageView
-                android:id="@+id/street_1_icon"
+                android:id="@+id/email_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_48dp_black_domain"
+                android:src="@drawable/ic_48dp_black_email"
                 android:alpha="0.54"
-                android:contentDescription="@string/account_street1"/>
+                android:contentDescription="@string/email"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/street_1_icon"
-                android:layout_toEndOf="@id/street_1_icon"
-                android:layout_alignTop="@id/street_1_icon"
+                android:layout_toRightOf="@id/email_icon"
+                android:layout_toEndOf="@id/email_icon"
+                android:layout_alignTop="@id/email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
-                android:text="@string/account_street1" />
+                android:text="@string/email" />
             <TextView
-                android:id="@+id/street_1"
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/street_1_icon"
-                android:layout_toRightOf="@id/street_1_icon"
-                android:layout_alignBottom="@id/street_1_icon"
+                android:layout_toEndOf="@id/email_icon"
+                android:layout_toRightOf="@id/email_icon"
+                android:layout_alignBottom="@id/email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="16sp"
@@ -59,39 +100,38 @@
 
         </RelativeLayout>
 
-        <!--STREET 2-->
+        <!--BULK EMAIL CONTACT PREFERENCE-->
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginTop="16dp">
+
             <ImageView
-                android:id="@+id/street_2_icon"
+                android:id="@+id/bulk_email_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_48dp_black_domain"
+                android:src="@drawable/ic_48dp_black_email"
                 android:alpha="0.54"
-                android:visibility="invisible"
-                android:contentDescription="@string/account_street2" />
+                android:contentDescription="@string/bulk_email"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/street_2_icon"
-                android:layout_toEndOf="@id/street_2_icon"
-                android:layout_alignTop="@id/street_2_icon"
+                android:layout_toRightOf="@id/bulk_email_icon"
+                android:layout_toEndOf="@id/bulk_email_icon"
+                android:layout_alignTop="@id/bulk_email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
-                android:text="@string/account_street2" />
+                android:text="@string/bulk_email" />
             <TextView
-                android:id="@+id/street_2"
+                android:id="@+id/bulk_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/street_2_icon"
-                android:layout_toRightOf="@id/street_2_icon"
-                android:layout_alignBottom="@id/street_2_icon"
+                android:layout_toEndOf="@id/bulk_email_icon"
+                android:layout_toRightOf="@id/bulk_email_icon"
+                android:layout_alignBottom="@id/bulk_email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="16sp"
@@ -99,42 +139,125 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
         </RelativeLayout>
 
-        <!--STREET 3-->
+        <!--PHONE CONTACT PREFERENCE-->
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp">
+            android:layout_marginTop="16dp">
 
             <ImageView
-                android:id="@+id/street_3_icon"
+                android:id="@+id/phone_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:visibility="invisible"
-                android:src="@drawable/ic_48dp_black_domain"
+                android:src="@drawable/ic_48dp_black_phone"
                 android:alpha="0.54"
-                android:contentDescription="@string/account_street3"/>
+                android:contentDescription="@string/phone"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/street_3_icon"
-                android:layout_toEndOf="@id/street_3_icon"
-                android:layout_alignTop="@id/street_3_icon"
+                android:layout_toRightOf="@id/phone_icon"
+                android:layout_toEndOf="@id/phone_icon"
+                android:layout_alignTop="@id/phone_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
-                android:text="@string/account_street3" />
+                android:text="@string/phone" />
             <TextView
-                android:id="@+id/street_3"
+                android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/street_3_icon"
-                android:layout_toRightOf="@id/street_3_icon"
-                android:layout_alignBottom="@id/street_3_icon"
+                android:layout_toEndOf="@id/phone_icon"
+                android:layout_toRightOf="@id/phone_icon"
+                android:layout_alignBottom="@id/phone_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--FAX CONTACT PREFERENCE-->
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/fax_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_local_printshop"
+                android:alpha="0.54"
+                android:contentDescription="@string/account_fax"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/fax_icon"
+                android:layout_toEndOf="@id/fax_icon"
+                android:layout_alignTop="@id/fax_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/account_fax" />
+            <TextView
+                android:id="@+id/fax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/fax_icon"
+                android:layout_toRightOf="@id/fax_icon"
+                android:layout_alignBottom="@id/fax_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
+
+        </RelativeLayout>
+
+        <!--MAIL PREFERENCE-->
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/mail_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_48dp_black_email"
+                android:alpha="0.54"
+                android:contentDescription="@string/mail"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/mail_icon"
+                android:layout_toEndOf="@id/mail_icon"
+                android:layout_alignTop="@id/mail_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:alpha="0.54"
+                android:text="@string/mail" />
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/mail_icon"
+                android:layout_toRightOf="@id/mail_icon"
+                android:layout_alignBottom="@id/mail_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="16sp"
@@ -148,15 +271,24 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/section_2"
+        android:id="@+id/section_3"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_marginRight="12dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:orientation="vertical">
 
-        <!--CITY-->
+        <!--SHIPPING-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.54"
+            android:text="@string/shipping" />
+
+        <!--SHIPPING METHOD-->
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -164,31 +296,31 @@
             android:layout_marginBottom="12dp">
 
             <ImageView
-                android:id="@+id/city_icon"
+                android:id="@+id/shipping_method_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_location_city"
+                android:src="@drawable/ic_48dp_black_local_shipping"
                 android:alpha="0.54"
-                android:contentDescription="@string/account_city"/>
+                android:contentDescription="@string/shipping_method"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/city_icon"
-                android:layout_toEndOf="@id/city_icon"
-                android:layout_alignTop="@id/city_icon"
+                android:layout_toRightOf="@id/shipping_method_icon"
+                android:layout_toEndOf="@id/shipping_method_icon"
+                android:layout_alignTop="@id/shipping_method_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
-                android:text="@string/account_city" />
+                android:text="@string/shipping_method" />
             <TextView
-                android:id="@+id/city"
+                android:id="@+id/shipping_method"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/city_icon"
-                android:layout_toRightOf="@id/city_icon"
-                android:layout_alignBottom="@id/city_icon"
+                android:layout_toEndOf="@id/shipping_method_icon"
+                android:layout_toRightOf="@id/shipping_method_icon"
+                android:layout_alignBottom="@id/shipping_method_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="16sp"
@@ -199,7 +331,7 @@
 
         </RelativeLayout>
 
-        <!--STATE-->
+        <!--FREIGHT TERMS-->
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -207,124 +339,35 @@
             android:layout_marginBottom="12dp">
 
             <ImageView
-                android:id="@+id/state_icon"
+                android:id="@+id/freight_terms_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:visibility="invisible"
-                android:src="@drawable/ic_location_city"
+                android:src="@drawable/ic_48dp_black_local_shipping"
                 android:alpha="0.54"
-                android:contentDescription="@string/account_state"/>
+                android:contentDescription="@string/freight"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/state_icon"
-                android:layout_toEndOf="@id/state_icon"
-                android:layout_alignTop="@id/state_icon"
+                android:layout_toRightOf="@id/freight_terms_icon"
+                android:layout_toEndOf="@id/freight_terms_icon"
+                android:layout_alignTop="@id/freight_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
-                android:text="@string/account_state" />
+                android:text="@string/freight" />
             <TextView
-                android:id="@+id/state"
+                android:id="@+id/freight_terms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/state_icon"
-                android:layout_toRightOf="@id/state_icon"
-                android:layout_alignBottom="@id/state_icon"
+                android:layout_toEndOf="@id/freight_terms_icon"
+                android:layout_toRightOf="@id/freight_terms_icon"
+                android:layout_alignBottom="@id/freight_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
-                android:lines="1"
-                android:maxLines="1"
-                android:alpha="0.87" />
-
-        </RelativeLayout>
-
-        <!--POSTAL CODE-->
-        <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp">
-
-            <ImageView
-                android:id="@+id/postal_code_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_48dp_black_location_on"
-                android:alpha="0.54"
-                android:contentDescription="@string/account_postal_code"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/postal_code_icon"
-                android:layout_toEndOf="@id/postal_code_icon"
-                android:layout_alignTop="@id/postal_code_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="12sp"
-                android:textColor="@android:color/black"
-                android:alpha="0.54"
-                android:text="@string/account_postal_code" />
-            <TextView
-                android:id="@+id/postal_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/postal_code_icon"
-                android:layout_toRightOf="@id/postal_code_icon"
-                android:layout_alignBottom="@id/postal_code_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:lines="1"
-                android:maxLines="1"
-                android:alpha="0.87" />
-
-        </RelativeLayout>
-
-        <!--COUNTRY-->
-        <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp">
-
-            <ImageView
-                android:id="@+id/country_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:visibility="invisible"
-                android:src="@drawable/ic_48dp_black_location_on"
-                android:alpha="0.54"
-                android:contentDescription="@string/account_country"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/country_icon"
-                android:layout_toEndOf="@id/country_icon"
-                android:layout_alignTop="@id/country_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="12sp"
-                android:textColor="@android:color/black"
-                android:alpha="0.54"
-                android:text="@string/account_country" />
-            <TextView
-                android:id="@+id/country"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/country_icon"
-                android:layout_toRightOf="@id/country_icon"
-                android:layout_alignBottom="@id/country_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:textStyle="italic"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />

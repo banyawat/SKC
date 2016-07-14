@@ -1,10 +1,12 @@
 package com.theteus.kubota.AccountModule;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -21,12 +23,15 @@ import android.widget.ViewSwitcher;
 import com.theteus.kubota.Home;
 import com.theteus.kubota.NtlmConnection;
 import com.theteus.kubota.R;
+import com.theteus.kubota.Reference;
+import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,13 +72,13 @@ public class AccountDetailMain extends Fragment{
         }
 
         connection = new NtlmConnection(
-                "https",
-                "muses.hms-cloud.com",
-                444,
-                "hms-cloud",
-                "administrator",
-                "pass@word1",
-                "/Training/XRMServices/2011/OrganizationData.svc"
+                Reference.PROTOCOL,
+                Reference.HOSTNAME,
+                Reference.PORT,
+                Reference.DOMAIN,
+                Reference.USERNAME,
+                Reference.PASSWORD,
+                Reference.ORGRANIZATION_PATH
         );
 
         try {
@@ -110,7 +115,8 @@ public class AccountDetailMain extends Fragment{
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
         setUpCardTitle();
-        setUpSearchList();
+        setUpSearchMechanism();
+        setUpDeleteButton();
         setUpFab();
         setUpContentFragment();
 
@@ -183,7 +189,7 @@ public class AccountDetailMain extends Fragment{
         }
     }
 
-    private void setUpSearchList() {
+    private void setUpSearchMechanism() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, mAccountNameList);
         searchButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -213,61 +219,71 @@ public class AccountDetailMain extends Fragment{
         searchField.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(mAccount == null) {
-                    status.setVisibility(View.VISIBLE);
-                    searchButton.setVisibility(View.VISIBLE);
-                    acceptButton.setVisibility(View.VISIBLE);
-                    rejectButton.setVisibility(View.VISIBLE);
-                    deleteButton.setVisibility(View.VISIBLE);
-                    separator.setVisibility(View.VISIBLE);
-                }
+                String accountName = (String) parent.getItemAtPosition(position);
 
-                String accountId = (String) parent.getItemAtPosition(position);
-
-                try {
-                    connection.connect();
-                    connection.authenticate();
-                    if(connection.getAuthenticationState())
-                        getContent(connection, mAccountIdMap.get(accountId));
-                    connection.disconnect();
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-
-                setUpCardTitle();
-                setUpContentFragment();
-
-                searchField.clearFocus();
-                switcher.showNext();
                 keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
-                searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+
+                redirect(mAccountIdMap.get(accountName), 0);
+            }
+        });
+    }
+
+    private void setUpDeleteButton() {
+        deleteButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                new AlertDialog.Builder(getContext())
+                        .setIcon(R.drawable.ic_48dp_black_delete)
+                        .setTitle("Delete Account")
+                        .setMessage("Deleting the Account will delete all records under the Account as well. Beware, Deleting cannot be undone.")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                try {
+                                    connection.connect();
+                                    connection.authenticate();
+                                    connection.delete(AccountSchema.ENTITY_NAME, mAccount.getString(AccountSchema.IDENTIFIER));
+                                    connection.disconnect();
+                                } catch (IOException | JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                redirect(null, 0);
+                            }
+
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
+                return false;
             }
         });
     }
 
     private void setUpCardTitle() {
+        status.setVisibility(View.GONE);
+        acceptButton.setVisibility(View.GONE);
+        rejectButton.setVisibility(View.GONE);
         if(mAccount == null) {
-            status.setVisibility(View.GONE);
             searchButton.setVisibility(View.GONE);
-            acceptButton.setVisibility(View.GONE);
-            rejectButton.setVisibility(View.GONE);
             deleteButton.setVisibility(View.GONE);
             separator.setVisibility(View.GONE);
 
             switcher.showNext();
+            searchField.setText("");
             searchField.requestFocus();
             keyboard.showSoftInput(searchField, 0);
         } else {
             try {
                 String titleText = mAccount.getString(AccountSchema.ACCOUNT_NAME);
+                String subtitleText = "Account";
 
                 title.setText(titleText);
-                subtitle.setText("Account");
+                subtitle.setText(subtitleText);
+                searchField.setText(mAccount.getString(AccountSchema.ACCOUNT_NAME));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            status.setVisibility(View.GONE);
         }
     }
 
@@ -291,6 +307,23 @@ public class AccountDetailMain extends Fragment{
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();
+    }
+
+    public void redirect(String accountId, int pageNumber) {
+        Home home = (Home) getActivity();
+        ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
+
+        mPagerAdapter.clearPage();
+        AccountDetailMain fragment = new AccountDetailMain();
+        Bundle args = new Bundle();
+        if(accountId != null) args.putString(AccountDetailMain.ARG_PARAM1, accountId);
+        if(pageNumber >= 0 && pageNumber <= 3) args.putInt(AccountDetailMain.ARG_PARAM3, 0);
+        fragment.setArguments(args);
+        mPagerAdapter.addPage(fragment);
+        mPagerAdapter.addPage(new Account());
+        mPagerAdapter.notifyDataSetChanged();
+
+        home.changeMenu(5);
     }
 }
 
