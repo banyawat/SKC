@@ -1,0 +1,264 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".AccountModule.AccountDetailAddress">
+
+    <!--STREET 1-->
+    <ImageView
+        android:id="@+id/street_1_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/ic_48dp_black_domain"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_street1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/street_1_icon"
+        android:layout_toEndOf="@id/street_1_icon"
+        android:layout_alignTop="@id/street_1_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_street1" />
+    <TextView
+        android:id="@+id/street_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/street_1_icon"
+        android:layout_toRightOf="@id/street_1_icon"
+        android:layout_alignBottom="@id/street_1_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--STREET 2-->
+    <ImageView
+        android:id="@+id/street_2_icon"
+        android:layout_below="@id/street_1_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_domain"
+        android:alpha="0.54"
+        android:visibility="invisible"
+        android:contentDescription="@string/account_street2" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/street_2_icon"
+        android:layout_toEndOf="@id/street_2_icon"
+        android:layout_alignTop="@id/street_2_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_street2" />
+    <TextView
+        android:id="@+id/street_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/street_2_icon"
+        android:layout_toRightOf="@id/street_2_icon"
+        android:layout_alignBottom="@id/street_2_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--STREET 3-->
+    <ImageView
+        android:id="@+id/street_3_icon"
+        android:layout_below="@id/street_2_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_48dp_black_domain"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_street3"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/street_3_icon"
+        android:layout_toEndOf="@id/street_3_icon"
+        android:layout_alignTop="@id/street_3_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_street3" />
+    <TextView
+        android:id="@+id/street_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/street_3_icon"
+        android:layout_toRightOf="@id/street_3_icon"
+        android:layout_alignBottom="@id/street_3_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--CITY-->
+    <ImageView
+        android:id="@+id/city_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_location_city"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_city"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/city_icon"
+        android:layout_toEndOf="@id/city_icon"
+        android:layout_alignTop="@id/city_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_city" />
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/city_icon"
+        android:layout_toRightOf="@id/city_icon"
+        android:layout_alignBottom="@id/city_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--STATE-->
+    <ImageView
+        android:id="@+id/state_icon"
+        android:layout_below="@id/city_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_location_city"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_state"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/state_icon"
+        android:layout_toEndOf="@id/state_icon"
+        android:layout_alignTop="@id/state_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_state" />
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/state_icon"
+        android:layout_toRightOf="@id/state_icon"
+        android:layout_alignBottom="@id/state_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--POSTAL CODE-->
+    <ImageView
+        android:id="@+id/postal_code_icon"
+        android:layout_below="@id/state_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_location_on"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_postal_code"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/postal_code_icon"
+        android:layout_toEndOf="@id/postal_code_icon"
+        android:layout_alignTop="@id/postal_code_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_postal_code" />
+    <TextView
+        android:id="@+id/postal_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/postal_code_icon"
+        android:layout_toRightOf="@id/postal_code_icon"
+        android:layout_alignBottom="@id/postal_code_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--COUNTRY-->
+    <ImageView
+        android:id="@+id/country_icon"
+        android:layout_below="@id/postal_code_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_48dp_black_location_on"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_country"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/country_icon"
+        android:layout_toEndOf="@id/country_icon"
+        android:layout_alignTop="@id/country_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_country" />
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/country_icon"
+        android:layout_toRightOf="@id/country_icon"
+        android:layout_alignBottom="@id/country_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textStyle="italic"
+        android:alpha="0.87" />
+
+</RelativeLayout>

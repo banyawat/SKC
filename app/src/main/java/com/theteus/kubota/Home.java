@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.theteus.kubota.AccountModule.Account;
+import com.theteus.kubota.AccountModule.AccountDetailMain;
 import com.theteus.kubota.ActivitiesModule.Activities;
 import com.theteus.kubota.ActivitiesModule.ActivitiesDetailMain;
 import com.theteus.kubota.ChassisModule.Chassis;
@@ -228,6 +229,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                         mPagerAdapter.addPage(new Activities());
                         break;
                     case 5:
+	           mPagerAdapter.addPage(new AccountDetailMain());
                         mPagerAdapter.addPage(new Account());
                         break;
                     case 6:
