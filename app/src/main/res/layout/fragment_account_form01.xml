@@ -34,14 +34,13 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <EditText
+                <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/account_form1_parent"
                     android:drawableLeft="@drawable/ic_supervisor_account_black"
-                    android:ems="15"
-                    android:layout_gravity="center_horizontal"
-                    android:hint="@string/account_parent" />
+                    android:hint="@string/account_parent"
+                    android:id="@+id/account_form1_parent"
+                    android:layout_gravity="right" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout

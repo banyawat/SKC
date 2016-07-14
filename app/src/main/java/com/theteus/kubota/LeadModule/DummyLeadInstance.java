@@ -1,14 +1,10 @@
 package com.theteus.kubota.LeadModule;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by whorangester on 6/22/16.
- */
 public class DummyLeadInstance {
     public static final List<LeadInstance> LEADS = new ArrayList<>();
     public static final List<String> KEYS = new ArrayList<>();

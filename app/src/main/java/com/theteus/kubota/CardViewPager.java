@@ -1,11 +1,14 @@
 package com.theteus.kubota;
 
+import android.app.Activity;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 
@@ -15,7 +18,6 @@ public class CardViewPager implements TabHost.OnTabChangeListener {
     private FragmentTabHost mTabHost;
     private ScreenSlidePagerAdapter mPagerAdapter;
     public ViewPager mPager;
-    private boolean isLastPage;
 
     FloatingActionButton nextButton;
 
@@ -69,6 +71,13 @@ public class CardViewPager implements TabHost.OnTabChangeListener {
     }
 
     private void initViewPager(View pagerView){
+        pagerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                hideSoftKeyboard(mainFragment.getActivity());
+                return false;
+            }
+        });
         mPager = (ViewPager) pagerView;
         mPagerAdapter = new ScreenSlidePagerAdapter(mainFragment.getChildFragmentManager());
         for(Fragment frag: viewList)
@@ -137,5 +146,10 @@ public class CardViewPager implements TabHost.OnTabChangeListener {
 
     public boolean isLastPage(){
         return mPager.getCurrentItem() + 1 == mPager.getChildCount();
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }

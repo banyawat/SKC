@@ -1,8 +1,11 @@
 package com.theteus.kubota;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.theteus.kubota.AccountModule.Account;
@@ -51,6 +55,8 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
     private List<MenuObject> menuList;
+    private ProgressBar bar;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +66,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
             StrictMode.setThreadPolicy(policy);
         }
         setContentView(R.layout.activity_home);
-
+        bar = (ProgressBar) findViewById(R.id.waiting_bar);
         initToolbar();
         menuList = getMenuObjects();
         initMenuFragment();
@@ -74,19 +80,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         mPagerAdapter.clearPage();
         mPagerAdapter.addPage(new Feed());
         mPager.setAdapter(mPagerAdapter);
-        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-            @Override
-            public void onPageSelected(int position) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
     private void initToolbar() {
         fragmentManager = getSupportFragmentManager();
@@ -171,67 +164,87 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     }
 
     @Override
-    public void onMenuItemClick(View clickedView, int position) {
+    public void onMenuItemClick(View clickedView, final int position) {
         if(position == lastPage)
             return;
         pageID = position;
-        switch (pageID) {
-            case 0:
-                goHome();
-                break;
-            case 1:
-                mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new SKCDetailMain());
-                mPagerAdapter.addPage(new SKC());
+        new ProgressTask().execute();
+        //mPagerAdapter.clearPage();
+        //bar.setVisibility(ProgressBar.VISIBLE);
+        handler = new Handler(){    //After thread process has completed
+            @Override
+            public void handleMessage(Message msg){
+                bar.setVisibility(ProgressBar.GONE);
                 mPager.setCurrentItem(0);
-                if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
-                break;
-            case 2:
+                mPagerAdapter.notifyDataSetChanged();
+                if(getSupportActionBar() != null) {
+                    switch(position) {
+                        case 1:
+                            getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
+                            break;
+                        case 2:
+                            getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
+                            break;
+                        case 3:
+                            getSupportActionBar().setTitle(LEAD_ACTIVITY_TITLE);
+                            break;
+                        case 4:
+                            getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);
+                            break;
+                        case 5:
+                            getSupportActionBar().setTitle(ACCOUNT_ACTIVITY_TITLE);
+                            break;
+                        case 6:
+                            getSupportActionBar().setTitle(CHASSIS_ACTIVITY_TITLE);
+                            break;
+                        default:
+                            break;
+                    }
+            }
+        }};
+
+        Thread swapPage = new Thread(new Runnable() {
+            @Override
+            public void run() {
                 mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new ContactDetailMain());
-                mPagerAdapter.addPage(new Contact());
-                mPager.setCurrentItem(0);
-                if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
-                break;
-            case 3:
-                mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new LeadDetailMain());
-                mPagerAdapter.addPage(new Lead());
-                mPager.setCurrentItem(0);
-                if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(LEAD_ACTIVITY_TITLE);
-                break;
-            case 4:
-                mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new ActivitiesDetailMain());
-                mPagerAdapter.addPage(new Activities());
-                mPager.setCurrentItem(0);
-                if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);
-                break;
-            case 5:
-                mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new Account());
-                if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(ACCOUNT_ACTIVITY_TITLE);
-                break;
-            case 6:
-                mPagerAdapter.clearPage();
-                mPagerAdapter.addPage(new ChassisDetailMain());
-                mPagerAdapter.addPage(new Chassis());
-                if(getSupportActionBar()!=null)
-                    getSupportActionBar().setTitle(CHASSIS_ACTIVITY_TITLE);
-                break;
-            case 7:
-                Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
-                finish();
-                break;
-            default:
-                break;
-        }
-        mPagerAdapter.notifyDataSetChanged();
+                switch (pageID) {
+                    case 0:
+                        mPagerAdapter.addPage(new Feed());
+                        break;
+                    case 1:
+                        mPagerAdapter.addPage(new SKCDetailMain());
+                        mPagerAdapter.addPage(new SKC());
+                        break;
+                    case 2:
+                        mPagerAdapter.addPage(new ContactDetailMain());
+                        mPagerAdapter.addPage(new Contact());
+                        break;
+                    case 3:
+                        mPagerAdapter.addPage(new LeadDetailMain());
+                        mPagerAdapter.addPage(new Lead());
+                        break;
+                    case 4:
+                        mPagerAdapter.addPage(new ActivitiesDetailMain());
+                        mPagerAdapter.addPage(new Activities());
+                        break;
+                    case 5:
+                        mPagerAdapter.addPage(new Account());
+                        break;
+                    case 6:
+                        mPagerAdapter.addPage(new ChassisDetailMain());
+                        mPagerAdapter.addPage(new Chassis());
+                        break;
+                    case 7:
+                        Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
+                handler.sendEmptyMessage(0);
+            }
+        });
+        swapPage.start();
         menuList.get(lastPage).setBgColor(0);
         menuList.get(position).setBgColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         initMenuFragment();
@@ -273,6 +286,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         return mPagerAdapter;
     }
     public ViewPager getmPager() { return mPager; }
+
     public void changeMenu(int position) {
         pageID = position;
         menuList.get(lastPage).setBgColor(0);
@@ -303,6 +317,28 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
                 default:
                     break;
             }
+        }
+    }
+
+    private class ProgressTask extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            bar.setVisibility(View.VISIBLE);
+            bar.setIndeterminate(true);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            mPagerAdapter.addPage(new Account());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            bar.setVisibility(View.INVISIBLE);
+            mPagerAdapter.notifyDataSetChanged();
         }
     }
 }

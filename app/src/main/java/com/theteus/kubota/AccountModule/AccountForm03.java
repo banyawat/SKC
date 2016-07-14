@@ -1,14 +1,17 @@
 package com.theteus.kubota.AccountModule;
 
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -18,13 +21,19 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.theteus.kubota.NtlmConnection;
 import com.theteus.kubota.R;
+import com.theteus.kubota.Reference;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class AccountForm03 extends Fragment {
@@ -36,13 +45,13 @@ public class AccountForm03 extends Fragment {
     private Spinner mAccount_form3_1_industry;
     private EditText mAccount_form3_1_sic;
     private Spinner mAccount_form3_1_ownership;
-    private EditText mAccount_form3_1_originate_lead;
+    //private EditText mAccount_form3_1_originate_lead;
     private EditText mAccount_form3_1_last_date;
     private RadioGroup mAccount_form3_1_marketmaterial;
-    private EditText mAccount_form3_1_currency;
     private EditText mAccount_form3_1_creditlimit;
     private RadioGroup mAccount_form3_1_credithold;
     private Spinner mAccount_form3_1_paymentterm;
+    private AutoCompleteTextView currencyIdSearch;
 
     private CheckBox mAccount_form3_2_checkemail;
     private CheckBox mAccount_form3_2_checkbulkemail;
@@ -56,6 +65,9 @@ public class AccountForm03 extends Fragment {
     private DatePickerDialog lastDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
+    List<String> currencySearchList;
+    List<String> currecySearctListId;
+
     public AccountForm03() {
         // Required empty public constructor
     }
@@ -67,13 +79,14 @@ public class AccountForm03 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account_form03, container, false);
 
         findViewsById(view);
-        initButton(view);
+        initButton();
         initPage1(viewPart1);
         initPage2(viewPart2);
 
         return view;
     }
 
+    @SuppressLint("InflateParams")
     private void findViewsById(View view){
         menu1 = (Button) view.findViewById(R.id.account_form3_menu1);
         menu2 = (Button) view.findViewById(R.id.account_form3_menu2);
@@ -86,14 +99,12 @@ public class AccountForm03 extends Fragment {
     }
 
     private void initPage1(View view){
-
         mAccount_form3_1_industry = (Spinner) viewPart1.findViewById(R.id.account_form3_1_industry);
         mAccount_form3_1_sic = (EditText) view.findViewById(R.id.account_form3_1_sic);
         mAccount_form3_1_ownership = (Spinner) view.findViewById(R.id.account_form3_1_ownership);
-        mAccount_form3_1_originate_lead = (EditText) view.findViewById(R.id.account_form3_1_originate_lead);
+        //mAccount_form3_1_originate_lead = (EditText) view.findViewById(R.id.account_form3_1_originate_lead);
         mAccount_form3_1_last_date = (EditText) view.findViewById(R.id.account_form3_1_last_date);
         mAccount_form3_1_marketmaterial = (RadioGroup) view.findViewById(R.id.account_form3_1_marketmaterial);
-        mAccount_form3_1_currency = (EditText) view.findViewById(R.id.account_form3_1_currency);
         mAccount_form3_1_creditlimit = (EditText) view.findViewById(R.id.account_form3_1_creditlimit);
         mAccount_form3_1_credithold = (RadioGroup) view.findViewById(R.id.account_form3_1_credithold);
         mAccount_form3_1_paymentterm = (Spinner) view.findViewById(R.id.account_form3_1_paymentterm);
@@ -115,6 +126,16 @@ public class AccountForm03 extends Fragment {
 
         mAccount_form3_1_last_date.setInputType(InputType.TYPE_NULL);
         initDatePick(view);
+
+        currencyIdSearch = (AutoCompleteTextView) viewPart1.findViewById(R.id.account_form3_1_currencysearch);
+        currencyIdSearch.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                currencyIdSearch.showDropDown();
+                return false;
+            }
+        });
+        getAutoCompleteData();
     }
 
     private void initPage2(View view){
@@ -154,7 +175,7 @@ public class AccountForm03 extends Fragment {
         });
     }
 
-    private void initButton(final View view){
+    private void initButton(){
         menu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,7 +186,6 @@ public class AccountForm03 extends Fragment {
                         layoutLoader.removeAllViews();
                         layoutLoader.addView(viewPart1);
                         pageID=0;
-
                         menu1.setBackgroundResource(R.drawable.vertical_tab_active);
                         menu2.setBackgroundResource(R.drawable.vertical_tab_inactive);
                         break;
@@ -197,16 +217,15 @@ public class AccountForm03 extends Fragment {
 
     public JSONObject getAllData(){
         JSONObject args = new JSONObject();
-        JSONObject metadata = new JSONObject();
-        int Account_form3_1_industry=51;
+        int Account_form3_1_industry;
         String Account_form3_1_sic;
         int Account_form3_1_ownership;
         //String Account_form3_1_originate_lead;
         //String Account_form3_1_last_date;
         boolean Account_form3_1_marketmaterial = true;
-        //String Account_form3_1_currency;
+        String Account_form3_1_currency;
         boolean Account_form3_1_credithold = false;
-        //String Account_form3_1_creditlimit;
+        String Account_form3_1_creditlimit;
         int Account_form3_1_paymentterm;
 
         boolean Account_form3_2_checkemail;
@@ -218,7 +237,7 @@ public class AccountForm03 extends Fragment {
         int Account_form3_2_freight;
         String Account_form3_2_description;
 
-        RadioButton tempButton = null;
+        RadioButton tempButton;
 
         Account_form3_1_industry = mAccount_form3_1_industry.getSelectedItemPosition();
         Account_form3_1_sic = mAccount_form3_1_sic.getText().toString();
@@ -226,20 +245,14 @@ public class AccountForm03 extends Fragment {
         //Account_form3_1_originate_lead = mAccount_form3_1_originate_lead.getText().toString();
         //Account_form3_1_last_date = mAccount_form3_1_last_date.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_marketmaterial.getCheckedRadioButtonId());
-        if(tempButton!=null) {
-            if(tempButton.getText().toString()=="Send")
-                Account_form3_1_marketmaterial = true;
-            else
-                Account_form3_1_marketmaterial = false;
-        }
-        //Account_form3_1_currency = mAccount_form3_1_currency.getText().toString();
-        //Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
+        if(tempButton!=null)
+            Account_form3_1_marketmaterial = tempButton.getText().toString() == "Send";
+        Account_form3_1_currency = currencyIdSearch.getText().toString();
+        Account_form3_1_currency = currecySearctListId.get(currencySearchList.indexOf(Account_form3_1_currency));
+        Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_credithold.getCheckedRadioButtonId());
         if(tempButton!=null) {
-            if (tempButton.getText().toString() == "Yes")
-                Account_form3_1_credithold = false;
-            else
-                Account_form3_1_credithold = true;
+            Account_form3_1_credithold = tempButton.getText().toString() != "Yes";
         }
 
         Account_form3_1_paymentterm = mAccount_form3_1_paymentterm.getSelectedItemPosition();
@@ -260,11 +273,12 @@ public class AccountForm03 extends Fragment {
         else
             Account_form3_2_freight = 0;
         Account_form3_2_description = mAccount_form3_2_description.getText().toString();
-
         try {
             args.put("IndustryCode", new JSONObject().put("Value", Account_form3_1_industry)); //"{\"Value\":\"50\"}"
             args.put("SIC", Account_form3_1_sic);
             args.put("OwnershipCode", new JSONObject().put("Value", Account_form3_1_ownership));
+            args.put("TransactionCurrencyId", new JSONObject().put("Id", Account_form3_1_currency));
+            args.put("CreditLimit", new JSONObject().put("Value", Account_form3_1_creditlimit));
             args.put("DoNotSendMM", Account_form3_1_marketmaterial); //true = do not send
             args.put("CreditOnHold", Account_form3_1_credithold); //true = yes
             args.put("PaymentTermsCode",new JSONObject().put("Value", Account_form3_1_paymentterm));
@@ -281,5 +295,40 @@ public class AccountForm03 extends Fragment {
             e.printStackTrace();
         }
         return args;
+    }
+
+    private void getAutoCompleteData(){
+        NtlmConnection conn = new NtlmConnection(Reference.PROTOCOL, Reference.HOSTNAME, Reference.PORT, Reference.DOMAIN,
+                Reference.USERNAME, Reference.PASSWORD, Reference.ORGRANIZATION_PATH);
+        try{
+            conn.connect();
+            conn.authenticate();
+            NtlmConnection.Response response = conn.retrieve("TransactionCurrency", null, "$select=TransactionCurrencyId,CurrencyName,CurrencySymbol");
+            JSONArray result = parseBody(response.getResponseBody());
+            currencySearchList = new ArrayList<>();
+            currecySearctListId = new ArrayList<>();
+            for(int i=0;i<result.length();i++){
+                JSONObject jsObj = result.getJSONObject(i);
+                currencySearchList.add(jsObj.get("CurrencyName").toString());
+                currecySearctListId.add(jsObj.get("TransactionCurrencyId").toString());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, currencySearchList);
+            currencyIdSearch.setAdapter(adapter);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private JSONArray parseBody(String body){
+        JSONObject json;
+        JSONArray jsonResult = null;
+        try {
+            json = new JSONObject(body);
+            json = new JSONObject(json.get("d").toString());
+            jsonResult = new JSONArray(json.get("results").toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonResult;
     }
 }

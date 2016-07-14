@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.theteus.kubota.CardViewPager;
 import com.theteus.kubota.NtlmConnection;
@@ -25,9 +26,7 @@ public class Account extends Fragment {
     private JSONObject form2JSON;
     private JSONObject form3JSON;
 
-    public Account() {
-        // Required empty public constructor
-    }
+    public Account() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,9 +112,10 @@ public class Account extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Toast.makeText(this.getContext(), "Submit Finished", Toast.LENGTH_SHORT).show();
     }
 
-    private JSONObject mergeJSON(JSONObject json1, JSONObject json2){
+    private static JSONObject mergeJSON(JSONObject json1, JSONObject json2){
         JSONObject merged = new JSONObject();
         JSONObject[] objs = new JSONObject[] { json1, json2 };
         for (JSONObject obj : objs) {
