@@ -1,0 +1,223 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="36dp"
+    tools:context=".AccountModule.AccountDetailGeneral">
+
+    <!--ACCOUNT NAME-->
+    <ImageView
+        android:id="@+id/account_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/ic_48dp_black_person"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/account_name_icon"
+        android:layout_toEndOf="@id/account_name_icon"
+        android:layout_alignTop="@id/account_name_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_name" />
+    <TextView
+        android:id="@+id/account_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/account_name_icon"
+        android:layout_toRightOf="@id/account_name_icon"
+        android:layout_alignBottom="@id/account_name_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--PARENT ACCOUNT-->
+    <ImageView
+        android:id="@+id/parent_account_icon"
+        android:layout_below="@id/account_name_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_supervisor_account"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/parent_account_icon"
+        android:layout_toEndOf="@id/parent_account_icon"
+        android:layout_alignTop="@id/parent_account_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_parent" />
+    <TextView
+        android:id="@+id/parent_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/parent_account_icon"
+        android:layout_toRightOf="@id/parent_account_icon"
+        android:layout_alignBottom="@id/parent_account_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87"
+        android:textStyle="italic" />
+
+    <!--TICKER-->
+    <ImageView
+        android:id="@+id/ticker_icon"
+        android:layout_below="@id/parent_account_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_48dp_black_confirmation_number"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_ticker"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ticker_icon"
+        android:layout_toEndOf="@id/ticker_icon"
+        android:layout_alignTop="@id/ticker_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_ticker" />
+    <TextView
+        android:id="@+id/ticker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/ticker_icon"
+        android:layout_toRightOf="@id/ticker_icon"
+        android:layout_alignBottom="@id/ticker_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--PHONE-->
+    <ImageView
+        android:id="@+id/phone_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_phone"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_phone"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/phone_icon"
+        android:layout_toEndOf="@id/phone_icon"
+        android:layout_alignTop="@id/phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_phone" />
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/phone_icon"
+        android:layout_toRightOf="@id/phone_icon"
+        android:layout_alignBottom="@id/phone_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--FAX-->
+    <ImageView
+        android:id="@+id/fax_icon"
+        android:layout_below="@id/phone_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_local_printshop"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_fax"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fax_icon"
+        android:layout_toEndOf="@id/fax_icon"
+        android:layout_alignTop="@id/fax_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_fax" />
+    <TextView
+        android:id="@+id/fax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/fax_icon"
+        android:layout_toRightOf="@id/fax_icon"
+        android:layout_alignBottom="@id/fax_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+    <!--WEBSITE-->
+    <ImageView
+        android:id="@+id/website_icon"
+        android:layout_below="@id/fax_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginStart="400dp"
+        android:src="@drawable/ic_48dp_black_public"
+        android:alpha="0.54"
+        android:contentDescription="@string/account_website"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/website_icon"
+        android:layout_toEndOf="@id/website_icon"
+        android:layout_alignTop="@id/website_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.54"
+        android:text="@string/account_website" />
+    <TextView
+        android:id="@+id/website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/website_icon"
+        android:layout_toRightOf="@id/website_icon"
+        android:layout_alignBottom="@id/website_icon"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:alpha="0.87" />
+
+</RelativeLayout>
