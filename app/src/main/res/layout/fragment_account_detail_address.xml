@@ -167,7 +167,7 @@
                 android:id="@+id/city_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_location_city"
+                android:src="@drawable/ic_48dp_black_location_city"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_city"/>
             <TextView

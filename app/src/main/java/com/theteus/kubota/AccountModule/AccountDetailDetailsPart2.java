@@ -40,34 +40,43 @@ public class AccountDetailDetailsPart2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account_detail_details_part_2, container, false);
 
-        try {
-            if (mAccount != null) {
-                if (mAccount.isNull(AccountSchema.DESCRIPTION)) ((TextView) view.findViewById(R.id.description)).setText(REPLACEMENT_STRING);
-                else ((TextView) view.findViewById(R.id.description)).setText(mAccount.getString(AccountSchema.DESCRIPTION));
+        TextView descriptionText = (TextView) view.findViewById(R.id.description);
+        TextView emailText = (TextView) view.findViewById(R.id.email);
+        TextView bulkEmailText = (TextView) view.findViewById(R.id.bulk_email);
+        TextView phoneText = (TextView) view.findViewById(R.id.phone);
+        TextView faxText = (TextView) view.findViewById(R.id.fax);
+        TextView mailText = (TextView) view.findViewById(R.id.mail);
+        TextView shippingText = (TextView) view.findViewById(R.id.shipping_method);
+        TextView freightText = (TextView) view.findViewById(R.id.freight_terms);
+
+        if (mAccount != null) {
+            try {
+                if (mAccount.isNull(AccountSchema.DESCRIPTION)) descriptionText.setText(REPLACEMENT_STRING);
+                else descriptionText.setText(mAccount.getString(AccountSchema.DESCRIPTION));
 
                 String doNotEmail = mAccount.getBoolean(AccountSchema.CONTACT_PREFERENCE_EMAIL) ? "Do Not Allow" : "Allow";
-                ((TextView) view.findViewById(R.id.email)).setText(doNotEmail);
+                emailText.setText(doNotEmail);
 
                 String doNotBulkEmail = mAccount.getBoolean(AccountSchema.CONTACT_PREFERENCE_BULK_EMAIL) ? "Do Not Allow" : "Allow";
-                ((TextView) view.findViewById(R.id.bulk_email)).setText(doNotBulkEmail);
+                bulkEmailText.setText(doNotBulkEmail);
 
                 String doNotPhone = mAccount.getBoolean(AccountSchema.CONTACT_PREFERENCE_PHONE) ? "Do Not Allow" : "Allow";
-                ((TextView) view.findViewById(R.id.phone)).setText(doNotPhone);
+                phoneText.setText(doNotPhone);
 
                 String doNotFax = mAccount.getBoolean(AccountSchema.CONTACT_PREFERENCE_FAX) ? "Do Not Allow" : "Allow";
-                ((TextView) view.findViewById(R.id.fax)).setText(doNotFax);
+                faxText.setText(doNotFax);
 
                 String doNotMail = mAccount.getBoolean(AccountSchema.CONTACT_PREFERENCE_MAIL) ? "Do Not Allow" : "Allow";
-                ((TextView) view.findViewById(R.id.mail)).setText(doNotMail);
+                mailText.setText(doNotMail);
 
-                if(mAccount.getJSONObject(AccountSchema.SHIPPING_METHOD).isNull("Value")) ((TextView) view.findViewById(R.id.shipping_method)).setText(REPLACEMENT_STRING);
-                else ((TextView) view.findViewById(R.id.shipping_method)).setText(getResources().getStringArray(R.array.account_shipping_method)[mAccount.getJSONObject(AccountSchema.SHIPPING_METHOD).getInt("Value")]);
+                if(mAccount.getJSONObject(AccountSchema.SHIPPING_METHOD).isNull("Value")) shippingText.setText(REPLACEMENT_STRING);
+                else shippingText.setText(getResources().getStringArray(R.array.account_shipping_method)[mAccount.getJSONObject(AccountSchema.SHIPPING_METHOD).getInt("Value")]);
 
-                if(mAccount.getJSONObject(AccountSchema.FREIGHT_TERMS).isNull("Value")) ((TextView) view.findViewById(R.id.freight_terms)).setText(REPLACEMENT_STRING);
-                else ((TextView) view.findViewById(R.id.freight_terms)).setText(getResources().getStringArray(R.array.account_freight_terms)[mAccount.getJSONObject(AccountSchema.FREIGHT_TERMS).getInt("Value")]);
+                if(mAccount.getJSONObject(AccountSchema.FREIGHT_TERMS).isNull("Value")) freightText.setText(REPLACEMENT_STRING);
+                else freightText.setText(getResources().getStringArray(R.array.account_freight_terms)[mAccount.getJSONObject(AccountSchema.FREIGHT_TERMS).getInt("Value")]);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
 
         return view;

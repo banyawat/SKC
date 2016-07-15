@@ -37,4 +37,6 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     public int getItemPosition(Object object) {
         return POSITION_NONE;
     }
+
+    public void setPage(int position, Fragment fragment) { fragmentList.set(position, fragment); }
 }

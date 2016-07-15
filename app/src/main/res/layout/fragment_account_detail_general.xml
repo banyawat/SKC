@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     tools:context=".AccountModule.AccountDetailGeneral"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:id="@+id/layout">
 
     <LinearLayout
         android:id="@+id/section_1"
@@ -18,7 +19,7 @@
 
         <!--ACCOUNT NAME-->
         <RelativeLayout
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
@@ -58,6 +59,22 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/account_name_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/account_name_icon"
+                android:layout_toRightOf="@id/account_name_icon"
+                android:layout_alignBottom="@id/account_name_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent" />
 
         </RelativeLayout>
 
@@ -149,6 +166,22 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/ticker_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ticker_icon"
+                android:layout_toRightOf="@id/ticker_icon"
+                android:layout_alignBottom="@id/ticker_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent" />
 
         </RelativeLayout>
 

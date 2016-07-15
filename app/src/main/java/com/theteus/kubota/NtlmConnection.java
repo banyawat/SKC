@@ -79,8 +79,8 @@ public class NtlmConnection {
         request.writeMessageTo(writer);
         response.readMessageFrom(reader);
 
-        request.log();
-        response.log();
+        //request.log();
+        //response.log();
 
         this.disconnect();
 
@@ -106,8 +106,8 @@ public class NtlmConnection {
         request.writeMessageTo(writer);
         response.readMessageFrom(reader);
 
-        request.log();
-        response.log();
+        //request.log();
+        //response.log();
 
         if(response.hasProperty("WWW-Authenticate")) {
             type2Message = new Type2Message(Base64.decode(response.getResponseProperty("WWW-Authenticate").substring(5)));
@@ -122,8 +122,8 @@ public class NtlmConnection {
         request.writeMessageTo(writer);
         response.readMessageFrom(reader);
 
-        request.log();
-        response.log();
+        //request.log();
+        //response.log();
 
         if(response.getStatusCode().equals("302")) {
             this.setAuthenticationState(true);
@@ -152,8 +152,8 @@ public class NtlmConnection {
         request.writeMessageTo(writer);
         response.readMessageFrom(reader);
 
-        request.log();
-        response.log();
+        //request.log();
+        //response.log();
 
         return response;
     }
@@ -180,8 +180,8 @@ public class NtlmConnection {
         request.writeMessageTo(writer);
         response.readMessageFrom(reader);
 
-        request.log();
-        response.log();
+        //request.log();
+        //response.log();
 
         return response;
     }
@@ -209,8 +209,8 @@ public class NtlmConnection {
         request.writeMessageTo(writer);
         response.readMessageFrom(reader);
 
-        request.log();
-        response.log();
+        //request.log();
+        //response.log();
 
         return response;
     }
@@ -238,8 +238,8 @@ public class NtlmConnection {
         request.writeMessageTo(writer);
         response.readMessageFrom(reader);
 
-        request.log();
-        response.log();
+        //request.log();
+        //response.log();
 
         return response;
     }

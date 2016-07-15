@@ -309,21 +309,17 @@ public class AccountDetailMain extends Fragment{
                 .commit();
     }
 
-    public void redirect(String accountId, int pageNumber) {
+    protected void redirect(String accountId, int pageNumber) {
         Home home = (Home) getActivity();
         ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
 
-        mPagerAdapter.clearPage();
         AccountDetailMain fragment = new AccountDetailMain();
         Bundle args = new Bundle();
         if(accountId != null) args.putString(AccountDetailMain.ARG_PARAM1, accountId);
         if(pageNumber >= 0 && pageNumber <= 3) args.putInt(AccountDetailMain.ARG_PARAM3, 0);
         fragment.setArguments(args);
-        mPagerAdapter.addPage(fragment);
-        mPagerAdapter.addPage(new Account());
+        mPagerAdapter.setPage(0, fragment);
         mPagerAdapter.notifyDataSetChanged();
-
-        home.changeMenu(5);
     }
 }
 

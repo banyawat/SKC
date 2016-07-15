@@ -170,6 +170,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         if(position == lastPage)
             return;
         pageID = position;
+<<<<<<< Updated upstream
         bar.setVisibility(ProgressBar.VISIBLE);
         mPagerAdapter.clearPage();
         switch (pageID) {
@@ -211,6 +212,90 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         mPagerAdapter.notifyDataSetChanged();
         mPager.setCurrentItem(0);
         changeMenu(position);
+=======
+        new ProgressTask().execute();
+        //mPagerAdapter.clearPage();
+        //bar.setVisibility(ProgressBar.VISIBLE);
+        handler =  new Handler(){    //After thread process has completed
+            @Override
+            public void handleMessage(Message msg){
+                bar.setVisibility(ProgressBar.GONE);
+                mPager.setCurrentItem(0);
+                mPagerAdapter.notifyDataSetChanged();
+                if(getSupportActionBar() != null) {
+                    switch(position) {
+                        case 1:
+                            getSupportActionBar().setTitle(SKC_ACTIVITY_TITLE);
+                            break;
+                        case 2:
+                            getSupportActionBar().setTitle(CONTACT_ACTIVITY_TITLE);
+                            break;
+                        case 3:
+                            getSupportActionBar().setTitle(LEAD_ACTIVITY_TITLE);
+                            break;
+                        case 4:
+                            getSupportActionBar().setTitle(ACTIVITIES_ACTIVITY_TITLE);
+                            break;
+                        case 5:
+                            getSupportActionBar().setTitle(ACCOUNT_ACTIVITY_TITLE);
+                            break;
+                        case 6:
+                            getSupportActionBar().setTitle(CHASSIS_ACTIVITY_TITLE);
+                            break;
+                        default:
+                            break;
+                    }
+            }
+        }};
+
+        Thread swapPage = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mPagerAdapter.clearPage();
+                switch (pageID) {
+                    case 0:
+                        mPagerAdapter.addPage(new Feed());
+                        break;
+                    case 1:
+                        mPagerAdapter.addPage(new SKCDetailMain());
+                        mPagerAdapter.addPage(new SKC());
+                        break;
+                    case 2:
+                        mPagerAdapter.addPage(new ContactDetailMain());
+                        mPagerAdapter.addPage(new Contact());
+                        break;
+                    case 3:
+                        mPagerAdapter.addPage(new LeadDetailMain());
+                        mPagerAdapter.addPage(new Lead());
+                        break;
+                    case 4:
+                        mPagerAdapter.addPage(new ActivitiesDetailMain());
+                        mPagerAdapter.addPage(new Activities());
+                        break;
+                    case 5:
+	                    mPagerAdapter.addPage(new AccountDetailMain());
+                        mPagerAdapter.addPage(new Account());
+                        break;
+                    case 6:
+                        mPagerAdapter.addPage(new ChassisDetailMain());
+                        mPagerAdapter.addPage(new Chassis());
+                        break;
+                    case 7:
+                        Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
+                handler.sendEmptyMessage(0);
+            }
+        });
+        swapPage.start();
+        menuList.get(lastPage).setBgColor(0);
+        menuList.get(position).setBgColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
+        initMenuFragment();
+        lastPage=position;
+>>>>>>> Stashed changes
     }
 
     @Override

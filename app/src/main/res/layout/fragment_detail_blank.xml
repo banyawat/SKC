@@ -15,8 +15,8 @@
 
     <ImageView
         android:id="@+id/warning_icon"
-        android:layout_height="100dp"
-        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_width="48dp"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:src="@drawable/ic_48dp_black_search"
@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/warning_icon"
         android:text="Search To Display"
-        android:textSize="36sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:alpha="0.25"/>
