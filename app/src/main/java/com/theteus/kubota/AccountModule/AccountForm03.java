@@ -5,7 +5,9 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,7 +25,6 @@ import android.widget.Spinner;
 
 import com.theteus.kubota.NtlmConnection;
 import com.theteus.kubota.R;
-import com.theteus.kubota.Reference;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,8 +69,15 @@ public class AccountForm03 extends Fragment {
     List<String> currencySearchList;
     List<String> currecySearctListId;
 
+    private TextWatcher autoCompleteWatcher;
+    private TextWatcher creditLimitWatcher;
+
     public AccountForm03() {
         // Required empty public constructor
+    }
+
+    public AccountForm03(NtlmConnection conn) {
+        getCurrencyAutoComplete(conn);
     }
 
 
@@ -128,6 +136,8 @@ public class AccountForm03 extends Fragment {
         initDatePick(view);
 
         currencyIdSearch = (AutoCompleteTextView) viewPart1.findViewById(R.id.account_form3_1_currencysearch);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, currencySearchList);
+        currencyIdSearch.setAdapter(adapter);
         currencyIdSearch.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -135,7 +145,59 @@ public class AccountForm03 extends Fragment {
                 return false;
             }
         });
-        getAutoCompleteData();
+
+        setTextChangedValidate();
+    }
+
+    private void setTextChangedValidate(){
+        autoCompleteWatcher = new TextWatcher() { //validate after search field hs changed
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(currencyIdSearch!=null&&currencySearchList!=null) {
+                    if (currencySearchList.contains(s.toString()) || s.length() == 0) {
+                        currencyIdSearch.setError(null);
+                        mAccount_form3_1_creditlimit.setError(null);
+                    } else
+                        currencyIdSearch.setError("No such a specified currency");
+                }
+            }
+        };
+
+        creditLimitWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(mAccount_form3_1_creditlimit!=null) {
+                    if (s.length() != 0) {
+                        if (currencyIdSearch.getText().toString().length() == 0 || currencyIdSearch.getError() != null) {
+                            mAccount_form3_1_creditlimit.setError("Need to enter currency first");
+                        }
+                    } else
+                        mAccount_form3_1_creditlimit.setError(null);
+                }
+            }
+        };
+
+        currencyIdSearch.addTextChangedListener(autoCompleteWatcher);
+        mAccount_form3_1_creditlimit.addTextChangedListener(creditLimitWatcher);
     }
 
     private void initPage2(View view){
@@ -248,7 +310,8 @@ public class AccountForm03 extends Fragment {
         if(tempButton!=null)
             Account_form3_1_marketmaterial = tempButton.getText().toString() == "Send";
         Account_form3_1_currency = currencyIdSearch.getText().toString();
-        Account_form3_1_currency = currecySearctListId.get(currencySearchList.indexOf(Account_form3_1_currency));
+        if(Account_form3_1_currency.length()!=0)
+            Account_form3_1_currency = currecySearctListId.get(currencySearchList.indexOf(Account_form3_1_currency));
         Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_credithold.getCheckedRadioButtonId());
         if(tempButton!=null) {
@@ -297,38 +360,24 @@ public class AccountForm03 extends Fragment {
         return args;
     }
 
-    private void getAutoCompleteData(){
-        NtlmConnection conn = new NtlmConnection(Reference.PROTOCOL, Reference.HOSTNAME, Reference.PORT, Reference.DOMAIN,
-                Reference.USERNAME, Reference.PASSWORD, Reference.ORGRANIZATION_PATH);
+    private void getCurrencyAutoComplete(NtlmConnection conn){
+        currencySearchList = new ArrayList<>();
+        currecySearctListId = new ArrayList<>();
         try{
-            conn.connect();
-            conn.authenticate();
             NtlmConnection.Response response = conn.retrieve("TransactionCurrency", null, "$select=TransactionCurrencyId,CurrencyName,CurrencySymbol");
-            JSONArray result = parseBody(response.getResponseBody());
-            currencySearchList = new ArrayList<>();
-            currecySearctListId = new ArrayList<>();
+            JSONArray result = new JSONObject(response.getResponseBody()).getJSONObject("d").optJSONArray("results");
             for(int i=0;i<result.length();i++){
                 JSONObject jsObj = result.getJSONObject(i);
                 currencySearchList.add(jsObj.get("CurrencyName").toString());
                 currecySearctListId.add(jsObj.get("TransactionCurrencyId").toString());
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, currencySearchList);
-            currencyIdSearch.setAdapter(adapter);
-        } catch (IOException | JSONException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    private JSONArray parseBody(String body){
-        JSONObject json;
-        JSONArray jsonResult = null;
-        try {
-            json = new JSONObject(body);
-            json = new JSONObject(json.get("d").toString());
-            jsonResult = new JSONArray(json.get("results").toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jsonResult;
+    public void unregisterTextWatcher(){
+        currencyIdSearch.removeTextChangedListener(autoCompleteWatcher);
+        mAccount_form3_1_creditlimit.removeTextChangedListener(creditLimitWatcher);
     }
 }

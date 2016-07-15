@@ -1,6 +1,7 @@
 package com.theteus.kubota.AccountModule;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -20,32 +21,55 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class Account extends Fragment {
+    View view;
     private CardViewPager accountView;
     private int previousPosition;
     private JSONObject form1JSON;
     private JSONObject form2JSON;
     private JSONObject form3JSON;
+    NtlmConnection conn;
 
     public Account() {}
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        connectTo();
+        super.onCreate(savedInstanceState);
+    }
+
+    private void connectTo(){
+        conn = new NtlmConnection(Reference.PROTOCOL, Reference.HOSTNAME, Reference.PORT, Reference.DOMAIN,
+                Reference.USERNAME, Reference.PASSWORD, Reference.ORGRANIZATION_PATH);
+        try {
+            conn.connect();
+            conn.authenticate();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        view = inflater.inflate(R.layout.fragment_account, container, false);
         form1JSON = new JSONObject();
         form2JSON = new JSONObject();
         form3JSON = new JSONObject();
-
         accountView = new CardViewPager(this, view);
-        accountView.addFragmentView(new AccountForm01(), "ข้อมูลทั่วไป");
+        initView();
+        return view;
+    }
+
+    private void initView(){
+        accountView.addFragmentView(new AccountForm01(conn), "ข้อมูลทั่วไป");
         accountView.addFragmentView(new AccountForm02(), "ที่อยู่");
-        accountView.addFragmentView(new AccountForm03(), "รายละเอียด");
+        accountView.addFragmentView(new AccountForm03(conn), "รายละเอียด");
         accountView.init(R.id.account_form_pager, R.id.account_nextButton);
 
         accountView.initFloatingButtonMethod(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(accountView.isLastPage()) {
+                if (accountView.isLastPage()) {
                     retrieveData(2);
                     postInformation();
                 }
@@ -61,7 +85,7 @@ public class Account extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 retrieveData(previousPosition);
-                previousPosition=position;
+                previousPosition = position;
             }
 
             @Override
@@ -69,8 +93,6 @@ public class Account extends Fragment {
 
             }
         });
-
-        return view;
     }
 
     private void retrieveData(int position){

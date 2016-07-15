@@ -31,6 +31,7 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     public void clearPage(){
         fragmentList.clear();
     }
+    
 
     @Override
     public int getItemPosition(Object object) {

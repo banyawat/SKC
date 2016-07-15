@@ -5,7 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -43,7 +42,6 @@ public class CardViewPager implements TabHost.OnTabChangeListener {
         initTabHost(mainFragment, mainView);
         initViewPager(mainView.findViewById(pagerViewId));
         initFloatingButton(mainView.findViewById(nextButtonViewId));
-        Log.i("TAG", "Current: "+mTabHost.getCurrentTab()+", Size: "+mTabHost.getTabWidget().getTabCount());
         if(mTabHost.getCurrentTab()+1==mTabHost.getTabWidget().getTabCount())
             nextButton.setImageResource(R.drawable.ic_check);
         else
