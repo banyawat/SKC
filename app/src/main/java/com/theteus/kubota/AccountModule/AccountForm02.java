@@ -91,13 +91,20 @@ public class AccountForm02 extends Fragment {
             addrLine3 += " "+Repeat_district;
 
         try {
-            args.put("Address1_Line1", addrLine1);
-            args.put("Address1_Line2", addrLine2);
-            args.put("Address1_Line3", addrLine3);
-            args.put("Address1_City", Repeat_district);
-            args.put("Address1_StateOrProvince", Repeat_province);
-            args.put("Address1_PostalCode", Repeat_postalcode);
-            args.put("Address1_Country", Repeat_province);
+            if(addrLine1.length()!=0)
+                args.put("Address1_Line1", addrLine1);
+            if(addrLine2.length()!=0)
+                args.put("Address1_Line2", addrLine2);
+            if(addrLine3.length()!=0)
+                args.put("Address1_Line3", addrLine3);
+            if(Repeat_district.length()!=0)
+                args.put("Address1_City", Repeat_district);
+            if(Repeat_province.length()!=0)
+                args.put("Address1_StateOrProvince", Repeat_province);
+            if(Repeat_postalcode.length()!=0)
+                args.put("Address1_PostalCode", Repeat_postalcode);
+            if(Repeat_province.length()!=0)
+                args.put("Address1_Country", Repeat_province);
         } catch (JSONException e){
             e.printStackTrace();
         }

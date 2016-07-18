@@ -109,15 +109,12 @@ public class AccountDetailMain extends Fragment{
         deleteButton = (ImageView) view.findViewById(R.id.delete_button);
         separator = view.findViewById(R.id.button_separator);
         keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
-
         setUpCardTitle();
         setUpSearchMechanism();
         setUpDeleteButton();
         setUpFab();
         setUpContentFragment();
-
         return view;
     }
 
@@ -218,9 +215,7 @@ public class AccountDetailMain extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String accountName = (String) parent.getItemAtPosition(position);
-
                 keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
-
                 redirect(mAccountIdMap.get(accountName), 0);
             }
         });

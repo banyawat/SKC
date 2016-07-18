@@ -337,23 +337,34 @@ public class AccountForm03 extends Fragment {
             Account_form3_2_freight = 0;
         Account_form3_2_description = mAccount_form3_2_description.getText().toString();
         try {
-            args.put("IndustryCode", new JSONObject().put("Value", Account_form3_1_industry)); //"{\"Value\":\"50\"}"
-            args.put("SIC", Account_form3_1_sic);
-            args.put("OwnershipCode", new JSONObject().put("Value", Account_form3_1_ownership));
-            args.put("TransactionCurrencyId", new JSONObject().put("Id", Account_form3_1_currency));
-            args.put("CreditLimit", new JSONObject().put("Value", Account_form3_1_creditlimit));
+            if(Account_form3_1_industry!=0)
+                args.put("IndustryCode", new JSONObject().put("Value", Account_form3_1_industry)); //"{\"Value\":\"50\"}"
+            if(Account_form3_1_sic.length()!=0)
+                args.put("SIC", Account_form3_1_sic);
+            if(Account_form3_1_ownership!=0)
+                args.put("OwnershipCode", new JSONObject().put("Value", Account_form3_1_ownership));
+            if(Account_form3_1_currency.length()!=0) {
+                args.put("TransactionCurrencyId", new JSONObject().put("Id", Account_form3_1_currency));
+                if (Account_form3_1_creditlimit.length() != 0)
+                    args.put("CreditLimit", new JSONObject().put("Value", Account_form3_1_creditlimit));
+            }
             args.put("DoNotSendMM", Account_form3_1_marketmaterial); //true = do not send
             args.put("CreditOnHold", Account_form3_1_credithold); //true = yes
-            args.put("PaymentTermsCode",new JSONObject().put("Value", Account_form3_1_paymentterm));
+            if(Account_form3_1_paymentterm!=0)
+                args.put("PaymentTermsCode",new JSONObject().put("Value", Account_form3_1_paymentterm));
 
             args.put("DoNotEMail", Account_form3_2_checkemail); //false = allow
             args.put("DoNotBulkEMail", Account_form3_2_checkbulkemail); //true = do not allow
             args.put("DoNotPhone", Account_form3_2_checkphone);
             args.put("DoNotFax", Account_form3_2_checkfax);
             args.put("DoNotPostalMail", Checkmail);
-            args.put("Address1_ShippingMethodCode", new JSONObject().put("Value", Account_form3_2_shippingmethod));
-            args.put("Address1_FreightTermsCode", new JSONObject().put("Value", Account_form3_2_freight));
-            args.put("Description", Account_form3_2_description);
+
+            if(Account_form3_2_shippingmethod!=0)
+                args.put("Address1_ShippingMethodCode", new JSONObject().put("Value", Account_form3_2_shippingmethod));
+            if(Account_form3_2_freight!=0)
+                args.put("Address1_FreightTermsCode", new JSONObject().put("Value", Account_form3_2_freight));
+            if(Account_form3_2_description.length()!=0)
+                args.put("Description", Account_form3_2_description);
         } catch (JSONException e){
             e.printStackTrace();
         }

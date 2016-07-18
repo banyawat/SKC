@@ -1,6 +1,9 @@
 package com.theteus.kubota;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.theteus.kubota.AccountModule.Account;
 import com.theteus.kubota.AccountModule.AccountDetailMain;
@@ -51,6 +53,8 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
     private List<MenuObject> menuList;
+    ProgressDialog progress;
+    Context context;
     //private ProgressBar bar;
 
     @Override
@@ -193,46 +197,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
 
     public void goTo(int position){
         pageID = position;
-        //bar.setVisibility(ProgressBar.VISIBLE);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        switch (pageID) {
-            case 0:
-                initViewPager();
-                break;
-            case 1:
-                mPagerAdapter.addPage(new SKCDetailMain());
-                mPagerAdapter.addPage(new SKC());
-                break;
-            case 2:
-                mPagerAdapter.addPage(new ContactDetailMain());
-                mPagerAdapter.addPage(new Contact());
-                break;
-            case 3:
-                mPagerAdapter.addPage(new LeadDetailMain());
-                mPagerAdapter.addPage(new Lead());
-                break;
-            case 4:
-                mPagerAdapter.addPage(new ActivitiesDetailMain());
-                mPagerAdapter.addPage(new Activities());
-                break;
-            case 5:
-                mPagerAdapter.addPage(new AccountDetailMain());
-                mPagerAdapter.addPage(new Account());
-                break;
-            case 6:
-                mPagerAdapter.addPage(new ChassisDetailMain());
-                mPagerAdapter.addPage(new Chassis());
-                break;
-            case 7:
-                Toast.makeText(getApplicationContext(), "Logging Out", Toast.LENGTH_LONG).show();
-                finish();
-                break;
-            default:
-                break;
-        }
-        //bar.setVisibility(ProgressBar.GONE);
-        mPager.setAdapter(mPagerAdapter);
-        mPager.setCurrentItem(0);
+        new ProgressTask().execute();
         changeMenu(position);
     }
 
@@ -268,6 +233,62 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
                 default:
                     break;
             }
+        }
+    }
+
+    private class ProgressTask extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected void onPreExecute() {
+            progress = ProgressDialog.show(Home.this, "On duty", "Loading Page...", true);
+            super.onPreExecute();
+            mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            switch (pageID) {
+                case 0:
+                    mPagerAdapter.addPage(new Feed());
+                    break;
+                case 1:
+                    mPagerAdapter.addPage(new SKCDetailMain());
+                    mPagerAdapter.addPage(new SKC());
+                    break;
+                case 2:
+                    mPagerAdapter.addPage(new ContactDetailMain());
+                    mPagerAdapter.addPage(new Contact());
+                    break;
+                case 3:
+                    mPagerAdapter.addPage(new LeadDetailMain());
+                    mPagerAdapter.addPage(new Lead());
+                    break;
+                case 4:
+                    mPagerAdapter.addPage(new ActivitiesDetailMain());
+                    mPagerAdapter.addPage(new Activities());
+                    break;
+                case 5:
+                    mPagerAdapter.addPage(new AccountDetailMain());
+                    mPagerAdapter.addPage(new Account());
+                    break;
+                case 6:
+                    mPagerAdapter.addPage(new ChassisDetailMain());
+                    mPagerAdapter.addPage(new Chassis());
+                    break;
+                case 7:
+                    finish();
+                    break;
+                default:
+                    break;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            mPager.setAdapter(mPagerAdapter);
+            mPager.setCurrentItem(0);
+            progress.dismiss();
         }
     }
 }

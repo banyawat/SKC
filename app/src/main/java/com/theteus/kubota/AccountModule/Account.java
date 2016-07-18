@@ -1,5 +1,7 @@
 package com.theteus.kubota.AccountModule;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.theteus.kubota.CardViewPager;
 import com.theteus.kubota.Home;
@@ -29,6 +30,7 @@ public class Account extends Fragment {
     private JSONObject form2JSON;
     private JSONObject form3JSON;
     NtlmConnection conn;
+    ProgressDialog progress;
 
     public Account() {}
 
@@ -71,10 +73,7 @@ public class Account extends Fragment {
             @Override
             public void onClick(View v) {
                 if (accountView.isLastPage()) {
-                    //retrieveData(2);
-                    //postInformation();
-                    Home home = (Home) getActivity();
-                    home.goTo(5);
+                    new ProgressTask().execute();
                 }
                 accountView.goToNextPage();
             }
@@ -137,7 +136,6 @@ public class Account extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Toast.makeText(this.getContext(), "Submit Finished", Toast.LENGTH_SHORT).show();
     }
 
     private static JSONObject mergeJSON(JSONObject json1, JSONObject json2){
@@ -155,5 +153,28 @@ public class Account extends Fragment {
             }
         }
         return merged;
+    }
+
+    private class ProgressTask extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected void onPreExecute() {
+            progress = ProgressDialog.show(getContext(), "Submit", "Sending...", true);
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            retrieveData(2);
+            postInformation();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Home home = (Home) getActivity();
+            home.goTo(5);
+            progress.dismiss();
+        }
     }
 }

@@ -118,7 +118,7 @@ public class AccountForm01 extends Fragment {
 
     public JSONObject getAllData(){
         JSONObject args = new JSONObject();
-        String Account_form1_name = "";
+        String Account_form1_name;
         String Account_form1_parent;
         String Account_form1_ticker;
         String Account_form1_phone;
@@ -136,11 +136,15 @@ public class AccountForm01 extends Fragment {
 
         try {
             args.put("Name", Account_form1_name);
-            args.put("TickerSymbol", Account_form1_ticker);
+            if(Account_form1_ticker.length()!=0)
+                args.put("TickerSymbol", Account_form1_ticker);
             args.put("ParentAccountId", new JSONObject().put("Id", Account_form1_parent));
-            args.put("Telephone1", Account_form1_phone);
-            args.put("Fax", Account_form1_fax);
-            args.put("WebSiteURL", Account_form1_web);
+            if(Account_form1_phone.length()!=0)
+                args.put("Telephone1", Account_form1_phone);
+            if(Account_form1_fax.length()!=0)
+                args.put("Fax", Account_form1_fax);
+            if(Account_form1_web.length()!=0)
+                args.put("WebSiteURL", Account_form1_web);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -163,6 +167,4 @@ public class AccountForm01 extends Fragment {
             e.printStackTrace();
         }
     }
-
-
 }
