@@ -7,7 +7,6 @@ import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,7 +30,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -312,7 +310,6 @@ public class AccountDetailMain extends Fragment{
     protected void redirect(String accountId, int pageNumber) {
         Home home = (Home) getActivity();
         ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
-
         AccountDetailMain fragment = new AccountDetailMain();
         Bundle args = new Bundle();
         if(accountId != null) args.putString(AccountDetailMain.ARG_PARAM1, accountId);

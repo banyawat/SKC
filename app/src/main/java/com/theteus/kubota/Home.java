@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.theteus.kubota.AccountModule.Account;
@@ -32,12 +31,11 @@ import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
-import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends AppCompatActivity implements OnMenuItemClickListener, OnMenuItemLongClickListener {
+public class Home extends AppCompatActivity implements OnMenuItemClickListener {
     private final static String FEED_ACTIVITY_TITLE = "Siam Kubota Corp. CRM";
     private final static String SKC_ACTIVITY_TITLE = "SKC Contact";
     private final static String CONTACT_ACTIVITY_TITLE = "Contact";
@@ -53,7 +51,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
     private List<MenuObject> menuList;
-    private ProgressBar bar;
+    //private ProgressBar bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +61,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
             StrictMode.setThreadPolicy(policy);
         }
         setContentView(R.layout.activity_home);
-        bar = (ProgressBar) findViewById(R.id.waiting_bar);
+        //bar = (ProgressBar) findViewById(R.id.waiting_bar);
         initToolbar();
         menuList = getMenuObjects();
         initMenuFragment();
@@ -104,7 +102,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
         menuParams.setClosableOutside(true);
         mMenuDialogFragment = ContextMenuDialogFragment.newInstance(menuParams);
         mMenuDialogFragment.setItemClickListener(this);
-        mMenuDialogFragment.setItemLongClickListener(this);
     }
     private List<MenuObject> getMenuObjects() {
         List<MenuObject> menuObjects = new ArrayList<>();
@@ -169,9 +166,35 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
     public void onMenuItemClick(View clickedView, final int position) {
         if(position == lastPage)
             return;
+        goTo(position);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportActionBar() != null) {
+            if(getSupportActionBar().getTitle()!=FEED_ACTIVITY_TITLE){
+                if(mPager.getCurrentItem()==0)
+                    goTo(0);
+                else
+                    mPager.setCurrentItem(mPager.getCurrentItem()-1);
+            }
+            else {
+                super.onBackPressed();
+            }
+        }
+    }
+
+    //For Fragment to use
+    public ScreenSlidePagerAdapter getmPagerAdapter() {
+        return mPagerAdapter;
+    }
+    public ViewPager getmPager() { return mPager; }
+
+    public void goTo(int position){
         pageID = position;
-        bar.setVisibility(ProgressBar.VISIBLE);
-        mPagerAdapter.clearPage();
+        //bar.setVisibility(ProgressBar.VISIBLE);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         switch (pageID) {
             case 0:
                 initViewPager();
@@ -207,46 +230,11 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener, 
             default:
                 break;
         }
-        bar.setVisibility(ProgressBar.GONE);
-        mPagerAdapter.notifyDataSetChanged();
+        //bar.setVisibility(ProgressBar.GONE);
+        mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(0);
         changeMenu(position);
     }
-
-    @Override
-    public void onMenuItemLongClick(View clickedView, int position) {
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (getSupportActionBar() != null) {
-            if(getSupportActionBar().getTitle()!=FEED_ACTIVITY_TITLE){
-                if(mPager.getCurrentItem()==0)
-                    goHome();
-                else
-                    mPager.setCurrentItem(mPager.getCurrentItem()-1);
-            }
-            else {
-                super.onBackPressed();
-            }
-        }
-    }
-
-    public void goHome() {
-        initViewPager();
-        initMenuFragment();
-        menuList.get(lastPage).setBgColor(0);
-        menuList.get(0).setBgColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-        if(getSupportActionBar()!=null)
-            getSupportActionBar().setTitle(FEED_ACTIVITY_TITLE);
-        lastPage=0;
-    }
-
-    //For Fragment to use
-    public ScreenSlidePagerAdapter getmPagerAdapter() {
-        return mPagerAdapter;
-    }
-    public ViewPager getmPager() { return mPager; }
 
     public void changeMenu(int position) {
         menuList.get(lastPage).setBgColor(0);

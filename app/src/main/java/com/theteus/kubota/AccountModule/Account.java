@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.theteus.kubota.CardViewPager;
+import com.theteus.kubota.Home;
 import com.theteus.kubota.NtlmConnection;
 import com.theteus.kubota.R;
 import com.theteus.kubota.Reference;
@@ -70,8 +71,10 @@ public class Account extends Fragment {
             @Override
             public void onClick(View v) {
                 if (accountView.isLastPage()) {
-                    retrieveData(2);
-                    postInformation();
+                    //retrieveData(2);
+                    //postInformation();
+                    Home home = (Home) getActivity();
+                    home.goTo(5);
                 }
                 accountView.goToNextPage();
             }
