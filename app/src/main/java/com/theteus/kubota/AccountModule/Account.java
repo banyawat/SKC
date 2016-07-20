@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.theteus.kubota.CardViewPager;
 import com.theteus.kubota.Home;
@@ -73,11 +75,17 @@ public class Account extends Fragment {
             @Override
             public void onClick(View v) {
                 if (accountView.isLastPage()) {
-                    new ProgressTask().execute();
+                    retrieveData(2);
+                    if(form3JSON == null)
+                        warning();
+                    else
+                        new ProgressTask().execute();
+
                 }
                 accountView.goToNextPage();
             }
         });
+
         accountView.mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -86,8 +94,9 @@ public class Account extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                retrieveData(previousPosition);
+                int temp = previousPosition;
                 previousPosition = position;
+                retrieveData(temp);
             }
 
             @Override
@@ -103,6 +112,11 @@ public class Account extends Fragment {
                 AccountForm01 accountForm01 = (com.theteus.kubota.AccountModule.AccountForm01) accountView.getFragment(0);
                 if(accountForm01!=null){
                     form1JSON = accountForm01.getAllData();
+                    if(form1JSON == null){
+                        accountView.mPager.setCurrentItem(0);
+                        previousPosition=0;
+                        warning();
+                    }
                 }
                 break;
             case 1:
@@ -115,6 +129,11 @@ public class Account extends Fragment {
                 AccountForm03 accountForm03 = (com.theteus.kubota.AccountModule.AccountForm03) accountView.getFragment(2);
                 if(accountForm03!=null){
                     form3JSON = accountForm03.getAllData();
+                    if(form3JSON == null){
+                        accountView.mPager.setCurrentItem(2);
+                        previousPosition=2;
+                        warning();
+                    }
                 }
                 break;
             default:
@@ -125,6 +144,8 @@ public class Account extends Fragment {
     private void postInformation() {
         JSONObject request = mergeJSON(form1JSON, form2JSON);
         request = mergeJSON(request, form3JSON);
+
+        Log.i("JSON", request.toString());
 
         NtlmConnection conn = new NtlmConnection(Reference.PROTOCOL, Reference.HOSTNAME, Reference.PORT, Reference.DOMAIN,
                 Reference.USERNAME, Reference.PASSWORD, Reference.ORGRANIZATION_PATH);
@@ -164,7 +185,6 @@ public class Account extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            retrieveData(2);
             postInformation();
             return null;
         }
@@ -176,5 +196,9 @@ public class Account extends Fragment {
             home.goTo(5);
             progress.dismiss();
         }
+    }
+
+    private void warning(){
+        Toast.makeText(getContext(), "Get some error(s)!", Toast.LENGTH_SHORT).show();
     }
 }

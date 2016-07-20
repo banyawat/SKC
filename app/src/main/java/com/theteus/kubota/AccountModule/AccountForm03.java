@@ -310,8 +310,12 @@ public class AccountForm03 extends Fragment {
         if(tempButton!=null)
             Account_form3_1_marketmaterial = tempButton.getText().toString() == "Send";
         Account_form3_1_currency = currencyIdSearch.getText().toString();
-        if(Account_form3_1_currency.length()!=0)
-            Account_form3_1_currency = currecySearctListId.get(currencySearchList.indexOf(Account_form3_1_currency));
+        if(Account_form3_1_currency.length()!=0) {
+            if (currencyIdSearch.getError() == null)
+                Account_form3_1_currency = currecySearctListId.get(currencySearchList.indexOf(Account_form3_1_currency));
+            else
+                return null;
+        }
         Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_credithold.getCheckedRadioButtonId());
         if(tempButton!=null) {

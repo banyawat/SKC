@@ -126,19 +126,29 @@ public class AccountForm01 extends Fragment {
         String Account_form1_web;
 
         Account_form1_name = mAccount_form1_name.getText().toString();
+        if(mAccount_form1_name.length()==0){
+            mAccount_form1_name.setError("You muse provide a name value");
+            return null;
+        }
         Account_form1_parent = mAccount_form1_parent.getText().toString();
-        if(Account_form1_parent.length()!=0)
-            Account_form1_parent = parentSearchId.get(parentSearchName.indexOf(Account_form1_parent));
+        if (Account_form1_parent.length() != 0) {
+            if (mAccount_form1_parent.getError() == null)
+                Account_form1_parent = parentSearchId.get(parentSearchName.indexOf(Account_form1_parent));
+            else
+                return null;
+        }
         Account_form1_ticker = mAccount_form1_ticker.getText().toString();
         Account_form1_phone = mAccount_form1_phone.getText().toString();
         Account_form1_fax = mAccount_form1_fax.getText().toString();
         Account_form1_web = mAccount_form1_web.getText().toString();
 
         try {
-            args.put("Name", Account_form1_name);
+            if(Account_form1_name.length()!=0)
+                args.put("Name", Account_form1_name);
             if(Account_form1_ticker.length()!=0)
                 args.put("TickerSymbol", Account_form1_ticker);
-            args.put("ParentAccountId", new JSONObject().put("Id", Account_form1_parent));
+            if (Account_form1_parent.length() != 0)
+                args.put("ParentAccountId", new JSONObject().put("Id", Account_form1_parent));
             if(Account_form1_phone.length()!=0)
                 args.put("Telephone1", Account_form1_phone);
             if(Account_form1_fax.length()!=0)
@@ -148,7 +158,6 @@ public class AccountForm01 extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return args;
     }
 

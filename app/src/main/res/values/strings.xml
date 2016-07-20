@@ -59,7 +59,7 @@ limitations under the License.
     <string name="activity_due_date">Due Date</string>
     <string name="description">Description</string>
 
-    <string name="account_name">Account Name</string>
+    <string name="account_name">Account Name*</string>
     <string name="account_parent">Parent Account</string>
     <string name="account_ticker">Ticker Symbol</string>
     <string name="account_phone">Phone Number</string>

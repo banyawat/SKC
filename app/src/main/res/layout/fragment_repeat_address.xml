@@ -21,10 +21,10 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
                 android:id="@+id/repeat_addrnum"
                 android:hint="บ้านเลขที่"
-                android:drawableLeft="@drawable/ic_domain"/>
+                android:drawableLeft="@drawable/ic_domain"
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -74,7 +74,8 @@
                 android:id="@+id/repeat_group"
                 android:ems="2"
                 android:hint="หมู่"
-                android:layout_weight="0.2" />
+                android:layout_weight="0.2"
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -162,7 +163,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_postalcode"
-                android:hint="รหัสไปรษณีย์" />
+                android:hint="รหัสไปรษณีย์"
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 </LinearLayout>
