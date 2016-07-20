@@ -1,6 +1,7 @@
 package com.theteus.kubota.OrganizationDataService;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -13,8 +14,8 @@ public class RetrieveService extends Service {
     private String guid;
     private String queryString;
 
-    public RetrieveService(Activity activity, AsyncResponse delegate) {
-        super(activity, delegate);
+    public RetrieveService(Context context, AsyncResponse delegate) {
+        super(context, delegate);
     }
 
     @Override

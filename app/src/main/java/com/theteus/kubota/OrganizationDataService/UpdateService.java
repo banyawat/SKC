@@ -1,6 +1,7 @@
 package com.theteus.kubota.OrganizationDataService;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -16,8 +17,8 @@ public class UpdateService extends Service {
     private String guid;
     private JSONObject JSONEntry;
 
-    public UpdateService(Activity activity, AsyncResponse delegate) {
-        super(activity, delegate);
+    public UpdateService(Context context, AsyncResponse delegate) {
+        super(context, delegate);
     }
 
     @Override

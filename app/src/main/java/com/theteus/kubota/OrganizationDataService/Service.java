@@ -2,6 +2,7 @@ package com.theteus.kubota.OrganizationDataService;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -57,7 +58,7 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
     private AsyncResponse delegate;
     private String progressMessage;
 
-    public Service(Activity activity, AsyncResponse delegate) {
+    public Service(Context context, AsyncResponse delegate) {
         this.protocol = DEFAULT_PROTOCOL;
         this.hostname = DEFAULT_HOSTNAME;
         this.port = DEFAULT_PORT;
@@ -67,7 +68,7 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
         this.organizationDataPath = DEFAULT_ORGANIZATION_DATA_PATH;
         this.progressMessage = DEFAULT_PROGRESS_MESSAGE;
 
-        this.dialog = new ProgressDialog(activity);
+        this.dialog = new ProgressDialog(context);
         this.delegate = delegate;
     }
 
@@ -187,6 +188,7 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
     public static void setDefaultUsername(String username) { DEFAULT_USERNAME = username; }
     public static void setDefaultPassword(String password) { DEFAULT_PASSWORD = password; }
     public static void setDefaultOrganizationDataPath(String path) { DEFAULT_ORGANIZATION_DATA_PATH = path; }
+    public void setProgressMessage(String message) { this.progressMessage = message; }
 
     protected class Request {
         private String requestMethod;
@@ -242,7 +244,6 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
             if(requestBody != null) writer.println(requestBody);
             writer.println("");
             writer.flush();
-            this.log();
         }
         protected void log() {
             Log.i("HTTP REQUEST >>>", "");
@@ -301,7 +302,6 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
                 }
                 this.responseBody = new String(buffer).substring(0, j);
             }
-            this.log();
         }
 
         public void log() {

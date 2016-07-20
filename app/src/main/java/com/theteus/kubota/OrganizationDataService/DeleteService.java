@@ -1,6 +1,7 @@
 package com.theteus.kubota.OrganizationDataService;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -15,8 +16,8 @@ public class DeleteService extends Service {
     private String entityName;
     private String guid;
 
-    public DeleteService(Activity activity, AsyncResponse delegate) {
-        super(activity, delegate);
+    public DeleteService(Context context, AsyncResponse delegate) {
+        super(context, delegate);
     }
 
     @Override

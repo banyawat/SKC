@@ -2,11 +2,12 @@ package com.theteus.kubota.AccountModule;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,16 +21,16 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.theteus.kubota.Home;
-import com.theteus.kubota.NtlmConnection;
+import com.theteus.kubota.OrganizationDataService.AsyncResponse;
+import com.theteus.kubota.OrganizationDataService.DeleteService;
+import com.theteus.kubota.OrganizationDataService.RetrieveService;
 import com.theteus.kubota.R;
-import com.theteus.kubota.Reference;
 import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +42,6 @@ public class AccountDetailMain extends Fragment{
     public static final String ARG_PARAM2 = "accountInstance";
     public static final String ARG_PARAM3 = "currentTab";
     // Contents
-    NtlmConnection connection;
     public String mAccountString;
     private JSONObject mAccount;
     private List<String> mAccountNameList;
@@ -64,34 +64,11 @@ public class AccountDetailMain extends Fragment{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
-
-        connection = new NtlmConnection(
-                Reference.PROTOCOL,
-                Reference.HOSTNAME,
-                Reference.PORT,
-                Reference.DOMAIN,
-                Reference.USERNAME,
-                Reference.PASSWORD,
-                Reference.ORGRANIZATION_PATH
-        );
-
-        try {
-            connection.connect();
-            connection.authenticate();
-            if(connection.getAuthenticationState()) {
-                if(getArguments() != null && getArguments().containsKey(ARG_PARAM1))
-                    getContent(connection, getArguments().getString(ARG_PARAM1));
-                getSearchList(connection);
-            }
-            connection.disconnect();
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
+        Log.i(">>>", "ONCREATE()");
         super.onCreate(savedInstanceState);
+        if(getArguments() != null && getArguments().containsKey(ARG_PARAM1))
+            getContent();
+        getSearchList();
     }
 
     @Override
@@ -110,19 +87,35 @@ public class AccountDetailMain extends Fragment{
         separator = view.findViewById(R.id.button_separator);
         keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        setUpCardTitle();
-        setUpSearchMechanism();
+
+        if(getArguments() == null || !getArguments().containsKey(ARG_PARAM1)) {
+            setUpCardTitle();
+            setUpContentFragment();
+        }
         setUpDeleteButton();
         setUpFab();
-        setUpContentFragment();
+
         return view;
     }
 
-    private void getContent(NtlmConnection connection, String guid) throws IOException, JSONException {
-        NtlmConnection.Response response = connection.retrieve(
-                AccountSchema.ENTITY_NAME,
-                guid,
-                "$select="
+    private void getContent() {
+        new RetrieveService(getContext(), new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+                if(result.has("d")) {
+                    mAccount = result.optJSONObject("d");
+                    mAccountString = mAccount.toString();
+                } else {
+                    mAccount = null;
+                    mAccountString = null;
+                }
+                setUpCardTitle();
+                setUpContentFragment();
+            }
+        })
+                .setEntity(AccountSchema.ENTITY_NAME)
+                .setGuid(getArguments().getString(ARG_PARAM1))
+                .setQueryString("$select="
                         + AccountSchema.IDENTIFIER + ","
                         + AccountSchema.ACCOUNT_NAME + ","
                         + AccountSchema.MAIN_PHONE + ","
@@ -156,32 +149,32 @@ public class AccountDetailMain extends Fragment{
                         + AccountSchema.PAYMENT_TERMS + ","
                         + AccountSchema.SHIPPING_METHOD + ","
                         + AccountSchema.FREIGHT_TERMS
-        );
-        if(response.getStatusCode().equals("200")) {
-            mAccount = new JSONObject(response.getResponseBody()).optJSONObject("d");
-            mAccountString = mAccount.toString();
-        }
-        else {
-            mAccount = null;
-            mAccountString = null;
-        }
+                )
+                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-    private void getSearchList(NtlmConnection connection) throws IOException, JSONException {
-        NtlmConnection.Response response = connection.retrieve(
-                AccountSchema.ENTITY_NAME,
-                null,
-                "$select=" + AccountSchema.ACCOUNT_NAME + "," + AccountSchema.IDENTIFIER);
-        if(response.getStatusCode().equals("200")) {
-            mAccountNameList = new ArrayList<>();
-            mAccountIdMap = new HashMap<>();
-            JSONArray arr = new JSONObject(response.getResponseBody()).getJSONObject("d").optJSONArray("results");
-            for(int i = 0; i < arr.length(); i++) {
-                JSONObject obj = arr.getJSONObject(i);
-                mAccountNameList.add(obj.getString(AccountSchema.ACCOUNT_NAME));
-                mAccountIdMap.put(obj.getString(AccountSchema.ACCOUNT_NAME), obj.getString(AccountSchema.IDENTIFIER));
+    private void getSearchList() {
+        new RetrieveService(getContext(), new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+                mAccountNameList = new ArrayList<>();
+                mAccountIdMap = new HashMap<>();
+                try {
+                    JSONArray arr = result.getJSONObject("d").optJSONArray("results");
+                    for(int i = 0; i < arr.length(); i++) {
+                        JSONObject obj = arr.getJSONObject(i);
+                        mAccountNameList.add(obj.getString(AccountSchema.ACCOUNT_NAME));
+                        mAccountIdMap.put(obj.getString(AccountSchema.ACCOUNT_NAME), obj.getString(AccountSchema.IDENTIFIER));
+                        setUpSearchMechanism();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        })
+                .setEntity(AccountSchema.ENTITY_NAME)
+                .setQueryString("$select=" + AccountSchema.ACCOUNT_NAME + "," + AccountSchema.IDENTIFIER)
+                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private void setUpSearchMechanism() {
@@ -192,11 +185,12 @@ public class AccountDetailMain extends Fragment{
                 switcher.showNext();
 
                 if(!switcher.getNextView().isFocusable()) {
-                    if(mAccount != null) try {
-                        searchField.setText(mAccount.getString(AccountSchema.ACCOUNT_NAME));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    if(mAccount != null)
+                        try {
+                            searchField.setText(mAccount.getString(AccountSchema.ACCOUNT_NAME));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     searchField.requestFocus();
                     keyboard.showSoftInput(searchField, 0);
                     searchButton.setImageResource(R.drawable.ic_48dp_black_highlight_off);
@@ -234,15 +228,18 @@ public class AccountDetailMain extends Fragment{
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 try {
-                                    connection.connect();
-                                    connection.authenticate();
-                                    connection.delete(AccountSchema.ENTITY_NAME, mAccount.getString(AccountSchema.IDENTIFIER));
-                                    connection.disconnect();
-                                } catch (IOException | JSONException e) {
+                                    new DeleteService(getActivity(), new AsyncResponse() {
+                                        @Override
+                                        public void onFinishTask(JSONObject result) {
+                                            redirect(null, 0);
+                                        }
+                                    })
+                                            .setEntity(AccountSchema.ENTITY_NAME)
+                                            .setGuid(mAccount.getString(AccountSchema.IDENTIFIER))
+                                            .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
-                                redirect(null, 0);
                             }
 
                         })

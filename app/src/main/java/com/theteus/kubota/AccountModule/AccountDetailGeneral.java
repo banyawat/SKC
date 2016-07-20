@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -180,19 +181,23 @@ public class AccountDetailGeneral extends Fragment implements View.OnTouchListen
                 case R.id.ticker:
                     tickerText.setVisibility(View.GONE);
                     tickerEdit.setVisibility(View.VISIBLE);
-                    tickerEdit.setText(mAccount.getString(AccountSchema.TICKER_SYMBOL));
+                    if(mAccount.isNull(AccountSchema.TICKER_SYMBOL)) tickerEdit.setText("");
+                    else tickerEdit.setText(mAccount.getString(AccountSchema.TICKER_SYMBOL));
                     tickerEdit.requestFocus();
                     tickerEdit.selectAll();
                     keyboard.showSoftInput(tickerEdit, 0);
             }
-        } catch (JSONException ignored) {}
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void tap(View v) {
         switch (v.getId()) {
             case R.id.parent_account:
                 try {
-                    if(mAccount.getJSONObject(AccountSchema.PARENT_ACCOUNT).isNull("Name"))
+                    Log.i("TOUCH", "DOWN");
+                    if(!mAccount.getJSONObject(AccountSchema.PARENT_ACCOUNT).isNull("Name"))
                         redirect(mAccount.optJSONObject(AccountSchema.PARENT_ACCOUNT).getString("Id"), 0);
                 } catch (JSONException e) {
                     e.printStackTrace();
