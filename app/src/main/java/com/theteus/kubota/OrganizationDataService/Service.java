@@ -1,6 +1,8 @@
-package com.theteus.kubota;
+package com.theteus.kubota.OrganizationDataService;
 
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -23,77 +25,108 @@ import jcifs.ntlmssp.Type2Message;
 import jcifs.ntlmssp.Type3Message;
 import jcifs.util.Base64;
 
-@Deprecated
-public class NtlmConnection {
+public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
+    public static String DEFAULT_PROTOCOL = "https";
+    public static String DEFAULT_HOSTNAME = "muses.hms-cloud.com";
+    public static int DEFAULT_PORT = 444;
+    public static String DEFAULT_DOMAIN = "hms-cloud";
+    public static String DEFAULT_USERNAME = "administrator";
+    public static String DEFAULT_PASSWORD = "pass@word1";
+    public static String DEFAULT_ORGANIZATION_DATA_PATH = "/Training/XRMServices/2011/OrganizationData.svc";
+
     private static final int SOCKET_TIMEOUT = 60000;
 
-    private String protocol;
-    private String hostname;
-    private int port;
-    private String domain;
-    private String username;
-    private String password;
-    private String organizationDataPath;
+    private static final String DEFAULT_PROGRESS_MESSAGE = "Processing";
 
-    private boolean connectionState;
-    private boolean authenticationState;
+    protected String protocol;
+    protected String hostname;
+    protected int port;
+    protected String domain;
+    protected String username;
+    protected String password;
+    protected String organizationDataPath;
 
-    private Socket socket;
-    private PrintWriter writer;
-    private BufferedReader reader;
+    protected boolean connectionState;
+    protected boolean authenticationState;
 
-    public NtlmConnection(String protocol, String hostname, int port, String domain, String username, String password, String organizationDataPath) {
-        setProtocol(protocol);
-        setHostname(hostname);
-        setPort(port);
-        setDomain(domain);
-        setUsername(username);
-        setPassword(password);
-        setOrganizationDataPath(organizationDataPath);
+    protected Socket socket;
+    protected PrintWriter writer;
+    protected BufferedReader reader;
+
+    private ProgressDialog dialog;
+    private AsyncResponse delegate;
+    private String progressMessage;
+
+    public Service(Activity activity, AsyncResponse delegate) {
+        this.protocol = DEFAULT_PROTOCOL;
+        this.hostname = DEFAULT_HOSTNAME;
+        this.port = DEFAULT_PORT;
+        this.domain = DEFAULT_DOMAIN;
+        this.username = DEFAULT_USERNAME;
+        this.password = DEFAULT_PASSWORD;
+        this.organizationDataPath = DEFAULT_ORGANIZATION_DATA_PATH;
+        this.progressMessage = DEFAULT_PROGRESS_MESSAGE;
+
+        this.dialog = new ProgressDialog(activity);
+        this.delegate = delegate;
     }
 
-    public void connect() throws IOException {
-        if(protocol.toLowerCase().equals("https")) {
-            SSLSocketFactory socketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            this.socket = socketFactory.createSocket(this.hostname, this.port);
-        } else /* assume http */ {
-            this.socket = new Socket();
-            this.socket.connect(new InetSocketAddress(hostname, port), SOCKET_TIMEOUT);
+    protected void onPreExecute() {
+        super.onPreExecute();
+        this.dialog.setMessage(progressMessage);
+        this.dialog.show();
+    }
+    @Override
+    protected JSONObject doInBackground(Void... args) {
+        if(!connect()) return null;
+        if(!authenticate()) return null;
+        JSONObject result = serviceOperation();
+        disconnect();
+        return result;
+    }
+    protected void onPostExecute(JSONObject result) {
+        super.onPostExecute(result);
+        if (dialog.isShowing()) {
+            dialog.dismiss();
         }
-        this.writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-        this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.setConnectionState(true);
+        if(delegate != null) delegate.onFinishTask(result);
     }
-
-    public void disconnect() throws IOException {
-        if(this.socket != null) this.socket.close();
-        if(this.writer != null) this.writer.close();
-        if(this.reader != null) this.reader.close();
-        this.setConnectionState(false);
+    private boolean connect() {
+        try {
+            if (protocol.toLowerCase().equals("https")) {
+                SSLSocketFactory socketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+                this.socket = socketFactory.createSocket(this.hostname, this.port);
+            } else if (protocol.toLowerCase().equals("http")) {
+                this.socket = new Socket();
+                this.socket.connect(new InetSocketAddress(hostname, port), SOCKET_TIMEOUT);
+            } else {
+                this.connectionState = false;
+                return false;
+            }
+            this.writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.connectionState = true;
+        return true;
     }
-
-    public Response anonymousRequest() throws IOException {
-        if(!connectionState) this.connect();
-
-        Request request = new Request("GET", "/", this.hostname, this.port);
-        Response response = new Response();
-        request.writeMessageTo(writer);
-        response.readMessageFrom(reader);
-
-        //request.log();
-        //response.log();
-
-        this.disconnect();
-
-        return response;
+    private void disconnect(){
+        try {
+            if (this.socket != null) this.socket.close();
+            if (this.writer != null) this.writer.close();
+            if (this.reader != null) this.reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.connectionState = false;
     }
-
-    public boolean authenticate() throws IOException {
+    private boolean authenticate() {
         Type1Message type1Message;
         Type2Message type2Message;
         Type3Message type3Message;
 
-        this.setAuthenticationState(false);
+        this.authenticationState = false;
 
         if(!connectionState) return false;
 
@@ -104,14 +137,23 @@ public class NtlmConnection {
         request.setRequestProperty("Connection", "keep-alive");
         request.setRequestProperty("Accept", "application/json");
         request.setRequestProperty("Authorization", "NTLM " + Base64.encode(type1Message.toByteArray()));
-        request.writeMessageTo(writer);
-        response.readMessageFrom(reader);
+        try {
+            request.writeMessageTo(writer);
+            response.readMessageFrom(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //request.log();
         //response.log();
 
         if(response.hasProperty("WWW-Authenticate")) {
-            type2Message = new Type2Message(Base64.decode(response.getResponseProperty("WWW-Authenticate").substring(5)));
+            type2Message = null;
+            try {
+                type2Message = new Type2Message(Base64.decode(response.getResponseProperty("WWW-Authenticate").substring(5)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else return false;
 
         type3Message = new Type3Message(type2Message, password, domain, username, null, 0x00088205);
@@ -120,145 +162,33 @@ public class NtlmConnection {
         response = new Response();
         request.setRequestProperty("Connection", "keep-alive");
         request.setRequestProperty("Authorization", "NTLM " + Base64.encode(type3Message.toByteArray()));
-        request.writeMessageTo(writer);
-        response.readMessageFrom(reader);
+        try {
+            request.writeMessageTo(writer);
+            response.readMessageFrom(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //request.log();
         //response.log();
 
         if(response.getStatusCode().equals("302")) {
-            this.setAuthenticationState(true);
+            this.authenticationState = true;
             return true;
         }
         else return false;
     }
+    protected abstract JSONObject serviceOperation();
 
-    public Response create(@NonNull String entityName, @NonNull JSONObject jsonObject) throws IOException {
-        if(!connectionState || !authenticationState) return null;
+    public static void setDefaultProtocol(String protocol) { DEFAULT_PROTOCOL = protocol; }
+    public static void setDefaultHostname(String hostname) { DEFAULT_HOSTNAME = hostname; }
+    public static void setDefaultPort(int port) { DEFAULT_PORT = port; }
+    public static void setDefaultDomain(String domain) { DEFAULT_DOMAIN = domain; }
+    public static void setDefaultUsername(String username) { DEFAULT_USERNAME = username; }
+    public static void setDefaultPassword(String password) { DEFAULT_PASSWORD = password; }
+    public static void setDefaultOrganizationDataPath(String path) { DEFAULT_ORGANIZATION_DATA_PATH = path; }
 
-        Request request = new Request(
-                "POST",
-                organizationDataPath
-                        + "/"
-                        + entityName
-                        + "Set"
-                , this.hostname, port
-        );
-        Response response = new Response();
-        request.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-        request.setRequestProperty("Accept-Language", "en-us");
-        request.setRequestProperty("Accept", "application/json");
-        request.setRequestProperty("Connection", "keep-alive");
-        request.setRequestBody(jsonObject.toString());
-        request.writeMessageTo(writer);
-        response.readMessageFrom(reader);
-
-        //request.log();
-        //response.log();
-
-        return response;
-    }
-
-    public Response retrieve(@NonNull String entityName, String guid, String queryOption) throws IOException {
-        if(!connectionState || !authenticationState) return null;
-
-        Request request = new Request(
-                "GET",
-                organizationDataPath
-                        + "/"
-                        + entityName
-                        + "Set"
-                        + ((guid == null || guid.isEmpty()) ? "" : "(guid'" + guid + "')")
-                        + "?"
-                        + ((queryOption == null || queryOption.isEmpty()) ? "" : queryOption),
-                this.hostname, port
-        );
-        Response response = new Response();
-        request.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-        request.setRequestProperty("Accept-Language", "en-us");
-        request.setRequestProperty("Accept", "application/json");
-        request.setRequestProperty("Connection", "keep-alive");
-        request.writeMessageTo(writer);
-        response.readMessageFrom(reader);
-
-        //request.log();
-        //response.log();
-
-        return response;
-    }
-
-    public Response update(@NonNull String entityName, @NonNull String guid, @NonNull JSONObject jsonObject) throws IOException {
-        if(!connectionState || !authenticationState) return null;
-
-        Request request = new Request(
-                "POST",
-                organizationDataPath
-                        + "/"
-                        + entityName
-                        + "Set(guid'"
-                        + guid
-                        + "')"
-                , this.hostname, port
-        );
-        Response response = new Response();
-        request.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-        request.setRequestProperty("Accept-Language", "en-us");
-        request.setRequestProperty("Accept", "application/json");
-        request.setRequestProperty("Connection", "keep-alive");
-        request.setRequestProperty("x-http-method", "MERGE");
-        request.setRequestBody(jsonObject.toString());
-        request.writeMessageTo(writer);
-        response.readMessageFrom(reader);
-
-        //request.log();
-        //response.log();
-
-        return response;
-    }
-
-    public Response delete(@NonNull String entityName, @NonNull String guid) throws IOException {
-        if(!connectionState || !authenticationState) return null;
-
-        Request request = new Request(
-                "POST",
-                organizationDataPath
-                        + "/"
-                        + entityName
-                        + "Set(guid'"
-                        + guid
-                        + "')"
-                , this.hostname, port
-        );
-        Response response = new Response();
-        request.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-        request.setRequestProperty("Accept-Language", "en-us");
-        request.setRequestProperty("Accept", "application/json");
-        request.setRequestProperty("Connection", "keep-alive");
-        request.setRequestProperty("x-http-method", "DELETE");
-        request.setRequestProperty("Content-Length", "0");
-        request.writeMessageTo(writer);
-        response.readMessageFrom(reader);
-
-        //request.log();
-        //response.log();
-
-        return response;
-    }
-
-    public void setProtocol(String protocol) { this.protocol = protocol; }
-    public void setHostname(String hostname) { this.hostname = hostname; }
-    public void setPort(int port) { this.port = port; }
-    public void setDomain(String domain) { this.domain = domain; }
-    public void setUsername(String username) { this.username = username; }
-    public void setPassword(String password) { this.password = password; }
-    public void setOrganizationDataPath(String path) { this.organizationDataPath = path; }
-    public void setConnectionState(boolean state) { this.connectionState = state; }
-    public void setAuthenticationState(boolean state) { this.authenticationState = state; }
-
-    public boolean getConnectionState() { return this.connectionState; }
-    public boolean getAuthenticationState() { return this.authenticationState; }
-
-    public class Request {
+    protected class Request {
         private String requestMethod;
         private String requestUri;
         private String protocolVersion;
@@ -312,8 +242,9 @@ public class NtlmConnection {
             if(requestBody != null) writer.println(requestBody);
             writer.println("");
             writer.flush();
+            this.log();
         }
-        private void log() {
+        protected void log() {
             Log.i("HTTP REQUEST >>>", "");
             Log.i("HTTP REQUEST >>>", "===== REQUEST ===== REQUEST ===== REQUEST ===== REQUEST ===== REQUEST =====");
             Log.i("HTTP REQUEST >>>", this.requestMethod + " " + this.requestUri + " " + this.protocolVersion);
@@ -327,7 +258,6 @@ public class NtlmConnection {
             Log.i("HTTP REQUEST >>>", "");
         }
     }
-
     public class Response {
         private String protocolVersion;
         private String statusCode;
@@ -371,6 +301,7 @@ public class NtlmConnection {
                 }
                 this.responseBody = new String(buffer).substring(0, j);
             }
+            this.log();
         }
 
         public void log() {
