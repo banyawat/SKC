@@ -67,27 +67,27 @@ public class AccountForm02 extends Fragment {
         String Repeat_postalcode = mRepeat_postalcode.getText().toString();
 
         String addrLine1 = "";
-        if(Repeat_addrnum!=null&&Repeat_addrnum.length()>0)
+        if(Repeat_addrnum.length()>0)
             addrLine1 += " " + Repeat_addrnum;
-        if(Repeat_addrvillage!=null&&Repeat_addrvillage.length()>0)
+        if(Repeat_addrvillage.length()>0)
             addrLine1 += " " + Repeat_addrvillage;
-        if(Repeat_floor!=null&&Repeat_floor.length()>0)
+        if(Repeat_floor.length()>0)
             addrLine1 += " " + Repeat_floor;
-        if(Repeat_room!=null&&Repeat_room.length()>0)
+        if(Repeat_room.length()>0)
             addrLine1 += " "+Repeat_room;
 
         String addrLine2 = "";
-        if(Repeat_group!=null&&Repeat_group.length()>0)
+        if(Repeat_group.length()>0)
             addrLine2 += " "+Repeat_group;
-        if(Repeat_alley!=null&&Repeat_alley.length()>0)
+        if(Repeat_alley.length()>0)
             addrLine2 += " "+Repeat_alley;
-        if(Repeat_street!=null&&Repeat_street.length()>0)
+        if(Repeat_street.length()>0)
             addrLine2 += " "+Repeat_street;
 
         String addrLine3 = "";
-        if(Repeat_subdistrict!=null&&Repeat_subdistrict.length()>0)
+        if(Repeat_subdistrict.length()>0)
             addrLine3 += " "+Repeat_subdistrict;
-        if(Repeat_district!=null&&Repeat_district.length()>0)
+        if(Repeat_district.length()>0)
             addrLine3 += " "+Repeat_district;
 
         try {

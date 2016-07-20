@@ -3,6 +3,7 @@ package com.theteus.kubota.AccountModule;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -23,14 +24,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import com.theteus.kubota.NtlmConnection;
+import com.theteus.kubota.OrganizationDataService.AsyncResponse;
+import com.theteus.kubota.OrganizationDataService.RetrieveService;
 import com.theteus.kubota.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -46,7 +47,6 @@ public class AccountForm03 extends Fragment {
     private Spinner mAccount_form3_1_industry;
     private EditText mAccount_form3_1_sic;
     private Spinner mAccount_form3_1_ownership;
-    //private EditText mAccount_form3_1_originate_lead;
     private EditText mAccount_form3_1_last_date;
     private RadioGroup mAccount_form3_1_marketmaterial;
     private EditText mAccount_form3_1_creditlimit;
@@ -66,31 +66,21 @@ public class AccountForm03 extends Fragment {
     private DatePickerDialog lastDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
-    List<String> currencySearchList;
-    List<String> currecySearctListId;
+    private List<String> currencySearchList;
+    private List<String> currecySearctListId;
 
-    private TextWatcher autoCompleteWatcher;
-    private TextWatcher creditLimitWatcher;
-
-    public AccountForm03() {
-        // Required empty public constructor
-    }
-
-    public AccountForm03(NtlmConnection conn) {
-        getCurrencyAutoComplete(conn);
-    }
+    public AccountForm03() {}
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account_form03, container, false);
-
+        getCurrencyAutoComplete();
         findViewsById(view);
         initButton();
         initPage1(viewPart1);
         initPage2(viewPart2);
-
         return view;
     }
 
@@ -150,7 +140,7 @@ public class AccountForm03 extends Fragment {
     }
 
     private void setTextChangedValidate(){
-        autoCompleteWatcher = new TextWatcher() { //validate after search field hs changed
+        currencyIdSearch.addTextChangedListener(new TextWatcher() { //validate after search field hs changed
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -162,7 +152,7 @@ public class AccountForm03 extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(currencyIdSearch!=null&&currencySearchList!=null) {
+                if (currencyIdSearch != null && currencySearchList != null) {
                     if (currencySearchList.contains(s.toString()) || s.length() == 0) {
                         currencyIdSearch.setError(null);
                         mAccount_form3_1_creditlimit.setError(null);
@@ -170,9 +160,8 @@ public class AccountForm03 extends Fragment {
                         currencyIdSearch.setError("No such a specified currency");
                 }
             }
-        };
-
-        creditLimitWatcher = new TextWatcher() {
+        });
+        mAccount_form3_1_creditlimit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -185,7 +174,7 @@ public class AccountForm03 extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(mAccount_form3_1_creditlimit!=null) {
+                if (mAccount_form3_1_creditlimit != null) {
                     if (s.length() != 0) {
                         if (currencyIdSearch.getText().toString().length() == 0 || currencyIdSearch.getError() != null) {
                             mAccount_form3_1_creditlimit.setError("Need to enter currency first");
@@ -194,10 +183,7 @@ public class AccountForm03 extends Fragment {
                         mAccount_form3_1_creditlimit.setError(null);
                 }
             }
-        };
-
-        currencyIdSearch.addTextChangedListener(autoCompleteWatcher);
-        mAccount_form3_1_creditlimit.addTextChangedListener(creditLimitWatcher);
+        });
     }
 
     private void initPage2(View view){
@@ -308,7 +294,7 @@ public class AccountForm03 extends Fragment {
         //Account_form3_1_last_date = mAccount_form3_1_last_date.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_marketmaterial.getCheckedRadioButtonId());
         if(tempButton!=null)
-            Account_form3_1_marketmaterial = tempButton.getText().toString() == "Send";
+            Account_form3_1_marketmaterial = !(tempButton.getText().toString().equals("Send"));
         Account_form3_1_currency = currencyIdSearch.getText().toString();
         if(Account_form3_1_currency.length()!=0) {
             if (currencyIdSearch.getError() == null)
@@ -319,16 +305,16 @@ public class AccountForm03 extends Fragment {
         Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_credithold.getCheckedRadioButtonId());
         if(tempButton!=null) {
-            Account_form3_1_credithold = tempButton.getText().toString() != "Yes";
+            Account_form3_1_credithold = tempButton.getText().toString().equals("Yes");
         }
 
         Account_form3_1_paymentterm = mAccount_form3_1_paymentterm.getSelectedItemPosition();
 
-        Account_form3_2_checkemail = mAccount_form3_2_checkemail.isChecked();
-        Account_form3_2_checkbulkemail = mAccount_form3_2_checkbulkemail.isChecked();
-        Account_form3_2_checkphone = mAccount_form3_2_checkphone.isChecked();
-        Account_form3_2_checkfax = mAccount_form3_2_checkfax.isChecked();
-        Checkmail = mCheckmail.isChecked();
+        Account_form3_2_checkemail = !mAccount_form3_2_checkemail.isChecked();
+        Account_form3_2_checkbulkemail = !mAccount_form3_2_checkbulkemail.isChecked();
+        Account_form3_2_checkphone = !mAccount_form3_2_checkphone.isChecked();
+        Account_form3_2_checkfax = !mAccount_form3_2_checkfax.isChecked();
+        Checkmail = !mCheckmail.isChecked();
         Account_form3_2_shippingmethod = mAccount_form3_2_shippingmethod.getSelectedItemPosition();
         tempButton = (RadioButton) viewPart2.findViewById(mAccount_form3_2_freight.getCheckedRadioButtonId());
         if(tempButton!=null) {
@@ -375,24 +361,26 @@ public class AccountForm03 extends Fragment {
         return args;
     }
 
-    private void getCurrencyAutoComplete(NtlmConnection conn){
+    private void getCurrencyAutoComplete(){
         currencySearchList = new ArrayList<>();
         currecySearctListId = new ArrayList<>();
-        try{
-            NtlmConnection.Response response = conn.retrieve("TransactionCurrency", null, "$select=TransactionCurrencyId,CurrencyName,CurrencySymbol");
-            JSONArray result = new JSONObject(response.getResponseBody()).getJSONObject("d").optJSONArray("results");
-            for(int i=0;i<result.length();i++){
-                JSONObject jsObj = result.getJSONObject(i);
-                currencySearchList.add(jsObj.get("CurrencyName").toString());
-                currecySearctListId.add(jsObj.get("TransactionCurrencyId").toString());
+        new RetrieveService(getActivity(), new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+            try {
+                JSONArray result1 = result.getJSONObject("d").optJSONArray("results");
+                for(int i=0;i<result1.length();i++){
+                    JSONObject jsObj = result1.getJSONObject(i);
+                    currencySearchList.add(jsObj.get("CurrencyName").toString());
+                    currecySearctListId.add(jsObj.get("TransactionCurrencyId").toString());
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void unregisterTextWatcher(){
-        currencyIdSearch.removeTextChangedListener(autoCompleteWatcher);
-        mAccount_form3_1_creditlimit.removeTextChangedListener(creditLimitWatcher);
+                }
+        })
+                .setEntity("TransactionCurrency")
+                .setQueryString("$select=TransactionCurrencyId,CurrencyName,CurrencySymbol")
+                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }

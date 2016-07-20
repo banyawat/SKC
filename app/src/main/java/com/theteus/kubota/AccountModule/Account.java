@@ -1,12 +1,10 @@
 package com.theteus.kubota.AccountModule;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +12,13 @@ import android.widget.Toast;
 
 import com.theteus.kubota.CardViewPager;
 import com.theteus.kubota.Home;
-import com.theteus.kubota.NtlmConnection;
+import com.theteus.kubota.OrganizationDataService.AsyncResponse;
+import com.theteus.kubota.OrganizationDataService.CreateService;
 import com.theteus.kubota.R;
-import com.theteus.kubota.Reference;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.Iterator;
 
 public class Account extends Fragment {
@@ -31,26 +28,12 @@ public class Account extends Fragment {
     private JSONObject form1JSON;
     private JSONObject form2JSON;
     private JSONObject form3JSON;
-    NtlmConnection conn;
-    ProgressDialog progress;
 
     public Account() {}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        connectTo();
         super.onCreate(savedInstanceState);
-    }
-
-    private void connectTo(){
-        conn = new NtlmConnection(Reference.PROTOCOL, Reference.HOSTNAME, Reference.PORT, Reference.DOMAIN,
-                Reference.USERNAME, Reference.PASSWORD, Reference.ORGRANIZATION_PATH);
-        try {
-            conn.connect();
-            conn.authenticate();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -66,9 +49,9 @@ public class Account extends Fragment {
     }
 
     private void initView(){
-        accountView.addFragmentView(new AccountForm01(conn), "ข้อมูลทั่วไป");
+        accountView.addFragmentView(new AccountForm01(), "ข้อมูลทั่วไป");
         accountView.addFragmentView(new AccountForm02(), "ที่อยู่");
-        accountView.addFragmentView(new AccountForm03(conn), "รายละเอียด");
+        accountView.addFragmentView(new AccountForm03(), "รายละเอียด");
         accountView.init(R.id.account_form_pager, R.id.account_nextButton);
 
         accountView.initFloatingButtonMethod(new View.OnClickListener() {
@@ -79,8 +62,7 @@ public class Account extends Fragment {
                     if(form3JSON == null)
                         warning();
                     else
-                        new ProgressTask().execute();
-
+                        postInformation();
                 }
                 accountView.goToNextPage();
             }
@@ -145,18 +127,16 @@ public class Account extends Fragment {
         JSONObject request = mergeJSON(form1JSON, form2JSON);
         request = mergeJSON(request, form3JSON);
 
-        Log.i("JSON", request.toString());
-
-        NtlmConnection conn = new NtlmConnection(Reference.PROTOCOL, Reference.HOSTNAME, Reference.PORT, Reference.DOMAIN,
-                Reference.USERNAME, Reference.PASSWORD, Reference.ORGRANIZATION_PATH);
-        try {
-            conn.connect();
-            conn.authenticate();
-            conn.create("Account", request);
-            conn.disconnect();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new CreateService(getActivity(), new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+                Home home = (Home) getActivity();
+                home.goTo(5);
+            }
+        })
+                .setEntity("Account")
+                .setJSONEntry(request)
+                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private static JSONObject mergeJSON(JSONObject json1, JSONObject json2){
@@ -174,28 +154,6 @@ public class Account extends Fragment {
             }
         }
         return merged;
-    }
-
-    private class ProgressTask extends AsyncTask<Void, Void, Void>{
-        @Override
-        protected void onPreExecute() {
-            progress = ProgressDialog.show(getContext(), "Submit", "Sending...", true);
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            postInformation();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Home home = (Home) getActivity();
-            home.goTo(5);
-            progress.dismiss();
-        }
     }
 
     private void warning(){

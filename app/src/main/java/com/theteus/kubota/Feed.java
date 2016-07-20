@@ -1,17 +1,23 @@
 package com.theteus.kubota;
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.theteus.kubota.OrganizationDataService.AsyncResponse;
+import com.theteus.kubota.OrganizationDataService.RetrieveService;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.charts.ValueLineChart;
 import org.eazegraph.lib.models.PieModel;
 import org.eazegraph.lib.models.ValueLinePoint;
 import org.eazegraph.lib.models.ValueLineSeries;
+import org.json.JSONObject;
 
 
 public class Feed extends Fragment {
@@ -23,6 +29,7 @@ public class Feed extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
+        retrieve();
         // Inflate the layout for this fragment
         PieChart mPieChart = (PieChart) view.findViewById(R.id.piechart);
 
@@ -54,5 +61,15 @@ public class Feed extends Fragment {
         mCubicValueLineChart.addSeries(series);
         mCubicValueLineChart.startAnimation();
         return view;
+    }
+
+    private void retrieve(){
+        new RetrieveService(getActivity(), new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+                Log.i("ON FEED LOAD", result.toString());
+            }
+        })
+                .setEntity("ServiceActivity").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }

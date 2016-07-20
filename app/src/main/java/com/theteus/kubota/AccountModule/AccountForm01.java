@@ -1,5 +1,6 @@
 package com.theteus.kubota.AccountModule;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -12,14 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
-import com.theteus.kubota.NtlmConnection;
+import com.theteus.kubota.OrganizationDataService.AsyncResponse;
+import com.theteus.kubota.OrganizationDataService.RetrieveService;
 import com.theteus.kubota.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,15 +37,11 @@ public class AccountForm01 extends Fragment {
 
     public AccountForm01() {}
 
-    public AccountForm01(NtlmConnection conn) {
-        getParentAutoComplete(conn);
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account_form01, container, false);
+        getParentAutoComplete();
         findViewsById(view);
         return view;
     }
@@ -161,19 +158,26 @@ public class AccountForm01 extends Fragment {
         return args;
     }
 
-    private void getParentAutoComplete(NtlmConnection conn){
+    private void getParentAutoComplete(){
         parentSearchId = new ArrayList<>();
         parentSearchName = new ArrayList<>();
-        try {
-            NtlmConnection.Response response = conn.retrieve("Account", null, "$select=AccountId,Name");
-            JSONArray result = new JSONObject(response.getResponseBody()).getJSONObject("d").optJSONArray("results");
-            for(int i=0;i<result.length();i++){
-                JSONObject jsObj = result.getJSONObject(i);
-                parentSearchName.add(jsObj.get("Name").toString());
-                parentSearchId.add(jsObj.get("AccountId").toString());
+        new RetrieveService(getActivity(), new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+                try {
+                    JSONArray result1 = result.getJSONObject("d").getJSONArray("results");
+                    for(int i=0;i<result1.length();i++){
+                        JSONObject jsObj = result1.getJSONObject(i);
+                        parentSearchName.add(jsObj.get("Name").toString());
+                        parentSearchId.add(jsObj.get("AccountId").toString());
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
-        } catch (JSONException | IOException e){
-            e.printStackTrace();
-        }
+        })
+                .setEntity("Account")
+                .setQueryString("$select=AccountId,Name")
+                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }
