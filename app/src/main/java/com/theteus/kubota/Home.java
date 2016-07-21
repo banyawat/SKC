@@ -29,6 +29,7 @@ import com.theteus.kubota.LeadModule.LeadDetailMain;
 import com.theteus.kubota.SKCModule.SKC;
 import com.theteus.kubota.SKCModule.SKCDetailMain;
 import com.theteus.kubota.SettingModule.SettingsActivity;
+import com.theteus.kubota.FeedModule.Feed;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;

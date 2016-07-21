@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/list_item_padding_sides"
-        android:paddingRight="@dimen/list_item_padding_sides"
-        android:background="@drawable/whiteframe">
+    android:background="@drawable/whiteframe"
+    android:padding="@dimen/list_item_padding_sides">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/feed_list_text"
-            android:layout_margin="@dimen/list_item_padding_sides" />
-    </LinearLayout>
-</FrameLayout>
+            android:textStyle="bold"
+            android:id="@+id/feed_list_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/feed_list_text2"
+            android:layout_below="@+id/feed_list_text"
+            android:layout_alignLeft="@+id/feed_list_text"
+            android:layout_alignStart="@+id/feed_list_text" />
+</RelativeLayout>

@@ -37,26 +37,23 @@
         <org.eazegraph.lib.charts.PieChart
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/piechart"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:padding="8dp"
             app:egLegendTextSize="18sp"
             app:egUsePieRotation="true"
             app:egValueTextSize="36sp"
-            android:layout_weight="0.7"
+            android:layout_weight="1"
             android:layout_margin="@dimen/list_item_padding_sides" />
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/scrollView"
-            android:layout_weight="0.2"
-            android:layout_margin="@dimen/list_item_padding_sides">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/large_text"/>
-        </ScrollView>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/feed_activitylog"
+            android:layout_weight="3"
+            android:layout_marginBottom="@dimen/list_item_padding_sides"
+            android:layout_marginRight="@dimen/list_item_padding_sides" />
+
     </LinearLayout>
 
 </LinearLayout>

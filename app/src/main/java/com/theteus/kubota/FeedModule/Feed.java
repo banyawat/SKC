@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,13 +87,7 @@ public class Feed extends Fragment {
                         JSONObject jsObj = result1.getJSONObject(i);
                         JSONObject regardingObject = jsObj.getJSONObject("RegardingObjectId");
                         JSONObject createdByObject = jsObj.getJSONObject("CreatedOnBehalfBy");
-                        //String date = String.valueOf(jsObj.get("ModifiedOn"));
-                        //date = date.replaceAll("[/Date()]","");
-                        //Calendar cal = Calendar.getInstance();
-                        //Log.i("Tag", date + " " + String.valueOf(regardingObject.get("Name")));
-                        String longText = String.valueOf(regardingObject.get("Name")) + " Created By " + String.valueOf(createdByObject.get("Name"));
-                        Log.i("Data Retrieved", longText);
-                        adapter.addData(longText);
+                        adapter.addData(String.valueOf(regardingObject.get("Name")), "Created By " + String.valueOf(createdByObject.get("Name")));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -107,8 +100,10 @@ public class Feed extends Fragment {
 
     private class pageActivityAdapter extends RecyclerView.Adapter<pageActivityAdapter.MyViewHolder>{
         ArrayList<String> post;
+        ArrayList<String> post2;
         public  pageActivityAdapter(){
             post = new ArrayList<>();
+            post2 = new ArrayList<>();
         }
 
         @Override
@@ -120,6 +115,7 @@ public class Feed extends Fragment {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             holder.longText.setText(post.get(position));
+            holder.longText2.setText(post2.get(position));
         }
 
         @Override
@@ -127,15 +123,19 @@ public class Feed extends Fragment {
             return post.size();
         }
 
-        public void addData(String data){
+        public void addData(String data, String data2){
             post.add(data);
+            post2.add(data2);
         }
 
+
+
         class MyViewHolder extends RecyclerView.ViewHolder {
-            TextView longText;
+            TextView longText,longText2;
             public MyViewHolder(View itemView) {
                 super(itemView);
                 longText = (TextView) itemView.findViewById(R.id.feed_list_text);
+                longText2 = (TextView) itemView.findViewById(R.id.feed_list_text2);
             }
         }
     }
