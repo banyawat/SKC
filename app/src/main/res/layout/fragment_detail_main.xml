@@ -123,6 +123,15 @@
                         android:layout_weight="0"/>
 
                     <ImageView
+                        android:id="@+id/save_button"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_48dp_black_save"
+                        android:alpha="0.38"
+                        android:layout_weight="0"/>
+
+                    <ImageView
                         android:id="@+id/delete_button"
                         android:layout_width="36dp"
                         android:layout_height="36dp"

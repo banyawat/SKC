@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,6 +23,7 @@ import com.theteus.kubota.Home;
 import com.theteus.kubota.OrganizationDataService.AsyncResponse;
 import com.theteus.kubota.OrganizationDataService.DeleteService;
 import com.theteus.kubota.OrganizationDataService.RetrieveService;
+import com.theteus.kubota.OrganizationDataService.UpdateService;
 import com.theteus.kubota.R;
 import com.theteus.kubota.ScreenSlidePagerAdapter;
 
@@ -39,13 +39,14 @@ import java.util.Map;
 public class AccountDetailMain extends Fragment{
     // Constant
     public static final String ARG_PARAM1 = "accountId";
-    public static final String ARG_PARAM2 = "accountInstance";
-    public static final String ARG_PARAM3 = "currentTab";
+    public static final String ARG_PARAM2 = "currentTab";
     // Contents
-    public String mAccountString;
     private JSONObject mAccount;
+    private JSONObject editBuffer;
     private List<String> mAccountNameList;
     private Map<String, String> mAccountIdMap;
+    private boolean loadingFlag1;
+    private boolean loadingFlag2;
     // Views
     private TextView title;
     private TextView subtitle;
@@ -55,6 +56,7 @@ public class AccountDetailMain extends Fragment{
     private ImageView searchButton;
     private ImageView acceptButton;
     private ImageView rejectButton;
+    private ImageView saveButton;
     private ImageView deleteButton;
     private View separator;
     private InputMethodManager keyboard;
@@ -64,11 +66,10 @@ public class AccountDetailMain extends Fragment{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.i(">>>", "ONCREATE()");
-        super.onCreate(savedInstanceState);
-        if(getArguments() != null && getArguments().containsKey(ARG_PARAM1))
-            getContent();
+        if(getArguments() != null && getArguments().containsKey(ARG_PARAM1)) getContent();
+        else loadingFlag1 = true;
         getSearchList();
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -84,14 +85,13 @@ public class AccountDetailMain extends Fragment{
         acceptButton = (ImageView) view.findViewById(R.id.accept_button);
         rejectButton = (ImageView) view.findViewById(R.id.reject_button);
         deleteButton = (ImageView) view.findViewById(R.id.delete_button);
+        saveButton = (ImageView) view.findViewById(R.id.save_button);
         separator = view.findViewById(R.id.button_separator);
         keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
-        if(getArguments() == null || !getArguments().containsKey(ARG_PARAM1)) {
-            setUpCardTitle();
-            setUpContentFragment();
-        }
+        toggleSaveButton();
+        setUpCardTitle();
         setUpDeleteButton();
         setUpFab();
 
@@ -104,13 +104,15 @@ public class AccountDetailMain extends Fragment{
             public void onFinishTask(JSONObject result) {
                 if(result.has("d")) {
                     mAccount = result.optJSONObject("d");
-                    mAccountString = mAccount.toString();
+                    editBuffer = new JSONObject();
                 } else {
                     mAccount = null;
-                    mAccountString = null;
+                    editBuffer = null;
                 }
-                setUpCardTitle();
-                setUpContentFragment();
+                setUpSaveButton();
+                setUpCardTitleData();
+                loadingFlag1 = true;
+                if(loadingFlag2) setUpContentFragment();
             }
         })
                 .setEntity(AccountSchema.ENTITY_NAME)
@@ -163,9 +165,13 @@ public class AccountDetailMain extends Fragment{
                     JSONArray arr = result.getJSONObject("d").optJSONArray("results");
                     for(int i = 0; i < arr.length(); i++) {
                         JSONObject obj = arr.getJSONObject(i);
-                        mAccountNameList.add(obj.getString(AccountSchema.ACCOUNT_NAME));
-                        mAccountIdMap.put(obj.getString(AccountSchema.ACCOUNT_NAME), obj.getString(AccountSchema.IDENTIFIER));
+                        if(getArguments() == null || !getArguments().containsKey(ARG_PARAM1) || !obj.getString(AccountSchema.IDENTIFIER).equals(getArguments().getString(ARG_PARAM1))) {
+                            mAccountNameList.add(obj.getString(AccountSchema.ACCOUNT_NAME));
+                            mAccountIdMap.put(obj.getString(AccountSchema.ACCOUNT_NAME), obj.getString(AccountSchema.IDENTIFIER));
+                        }
                         setUpSearchMechanism();
+                        loadingFlag2 = true;
+                        if(loadingFlag1) setUpContentFragment();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -250,11 +256,52 @@ public class AccountDetailMain extends Fragment{
         });
     }
 
+    protected void toggleSaveButton() {
+        if(editBuffer == null || editBuffer.length() == 0) saveButton.setVisibility(View.GONE);
+        else saveButton.setVisibility(View.VISIBLE);
+    }
+
+    private void setUpSaveButton() {
+        saveButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                new AlertDialog.Builder(getContext())
+                        .setIcon(R.drawable.ic_48dp_black_save)
+                        .setTitle("Apply Change to Account")
+                        .setMessage("Updating the Account will change this Account record. Beware, Updating cannot be undone.")
+                        .setPositiveButton("Update", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                try {
+                                    new UpdateService(getActivity(), new AsyncResponse() {
+                                        @Override
+                                        public void onFinishTask(JSONObject result) {
+                                            redirect(getArguments().getString(ARG_PARAM1), 0);
+                                        }
+                                    })
+                                            .setEntity(AccountSchema.ENTITY_NAME)
+                                            .setGuid(mAccount.getString(AccountSchema.IDENTIFIER))
+                                            .setJSONEntry(editBuffer)
+                                            .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
+                return false;
+            }
+        });
+    }
+
     private void setUpCardTitle() {
         status.setVisibility(View.GONE);
         acceptButton.setVisibility(View.GONE);
         rejectButton.setVisibility(View.GONE);
-        if(mAccount == null) {
+        if(getArguments() == null || !getArguments().containsKey(ARG_PARAM1)) {
             searchButton.setVisibility(View.GONE);
             deleteButton.setVisibility(View.GONE);
             separator.setVisibility(View.GONE);
@@ -263,17 +310,19 @@ public class AccountDetailMain extends Fragment{
             searchField.setText("");
             searchField.requestFocus();
             keyboard.showSoftInput(searchField, 0);
-        } else {
-            try {
-                String titleText = mAccount.getString(AccountSchema.ACCOUNT_NAME);
-                String subtitleText = "Account";
+        }
+    }
 
-                title.setText(titleText);
-                subtitle.setText(subtitleText);
-                searchField.setText(mAccount.getString(AccountSchema.ACCOUNT_NAME));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+    private void setUpCardTitleData() {
+        try {
+            String titleText = mAccount.getString(AccountSchema.ACCOUNT_NAME);
+            String subtitleText = "Account";
+
+            title.setText(titleText);
+            subtitle.setText(subtitleText);
+            searchField.setText(mAccount.getString(AccountSchema.ACCOUNT_NAME));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -288,12 +337,16 @@ public class AccountDetailMain extends Fragment{
 
     private void setUpContentFragment() {
         AccountDetailContent fragment = new AccountDetailContent();
-        Bundle args = new Bundle();
-        if(mAccountString != null)
-            args.putString(ARG_PARAM2, mAccountString);
-        if(getArguments() != null && getArguments().containsKey(ARG_PARAM3))
-            args.putInt(ARG_PARAM3, getArguments().getInt(ARG_PARAM3));
-        fragment.setArguments(args);
+        fragment.setmAccount(mAccount);
+        fragment.setEditBuffer(editBuffer);
+        fragment.setmAccountNameList(mAccountNameList);
+        fragment.setmAccountIdMap(mAccountIdMap);
+        fragment.setParent(this);
+        if(getArguments() != null && getArguments().getInt(ARG_PARAM2) >= 0 && getArguments().getInt(ARG_PARAM2) <= 3) {
+            Bundle args = new Bundle();
+            args.putInt(ARG_PARAM2, getArguments().getInt(ARG_PARAM2));
+            fragment.setArguments(args);
+        }
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();
@@ -305,7 +358,7 @@ public class AccountDetailMain extends Fragment{
         AccountDetailMain fragment = new AccountDetailMain();
         Bundle args = new Bundle();
         if(accountId != null) args.putString(AccountDetailMain.ARG_PARAM1, accountId);
-        if(pageNumber >= 0 && pageNumber <= 3) args.putInt(AccountDetailMain.ARG_PARAM3, 0);
+        if(pageNumber >= 0 && pageNumber <= 3) args.putInt(AccountDetailMain.ARG_PARAM2, 0);
         fragment.setArguments(args);
         mPagerAdapter.setPage(0, fragment);
         mPagerAdapter.notifyDataSetChanged();
