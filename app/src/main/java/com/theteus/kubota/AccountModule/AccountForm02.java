@@ -33,7 +33,6 @@ public class AccountForm02 extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account_form02, container, false);
         findViewsById(view);
-
         return view;
     }
 
@@ -53,7 +52,6 @@ public class AccountForm02 extends Fragment {
 
     public JSONObject getAllData(){
         JSONObject args = new JSONObject();
-
         String Repeat_addrnum = mRepeat_addrnum.getText().toString();
         String Repeat_addrvillage = mRepeat_addrvillage.getText().toString();
         String Repeat_floor = mRepeat_floor.getText().toString();
@@ -92,23 +90,22 @@ public class AccountForm02 extends Fragment {
 
         try {
             if(addrLine1.length()!=0)
-                args.put("Address1_Line1", addrLine1);
+                args.put(AccountSchema.ADDRESS_STREET1, addrLine1);
             if(addrLine2.length()!=0)
-                args.put("Address1_Line2", addrLine2);
+                args.put(AccountSchema.ADDRESS_STREET2, addrLine2);
             if(addrLine3.length()!=0)
-                args.put("Address1_Line3", addrLine3);
+                args.put(AccountSchema.ADDRESS_STREET3, addrLine3);
             if(Repeat_district.length()!=0)
-                args.put("Address1_City", Repeat_district);
+                args.put(AccountSchema.ADDRESS_CITY, Repeat_district);
             if(Repeat_province.length()!=0)
-                args.put("Address1_StateOrProvince", Repeat_province);
+                args.put(AccountSchema.ADDRESS_STATE, Repeat_province);
             if(Repeat_postalcode.length()!=0)
-                args.put("Address1_PostalCode", Repeat_postalcode);
+                args.put(AccountSchema.ADDRESS_POSTAL_CODE, Repeat_postalcode);
             if(Repeat_province.length()!=0)
-                args.put("Address1_Country", Repeat_province);
+                args.put(AccountSchema.ADDRESS_COUNTRY, Repeat_province);
         } catch (JSONException e){
             e.printStackTrace();
         }
-
         return args;
     }
 }

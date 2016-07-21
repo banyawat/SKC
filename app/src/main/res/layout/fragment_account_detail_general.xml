@@ -16,14 +16,12 @@
         android:layout_marginRight="12dp"
         android:layout_marginEnd="12dp"
         android:orientation="vertical">
-
         <!--ACCOUNT NAME-->
         <RelativeLayout
             android:layout_height="48dp"
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/account_name_icon"
                 android:layout_width="48dp"
@@ -31,7 +29,6 @@
                 android:src="@drawable/ic_48dp_black_person"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_name"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +41,6 @@
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_name" />
-
             <TextView
                 android:id="@+id/account_name"
                 android:layout_width="wrap_content"
@@ -59,7 +55,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
             <EditText
                 android:id="@+id/account_name_edit"
                 android:layout_width="match_parent"
@@ -75,7 +70,6 @@
                 android:alpha="0.87"
                 android:visibility="gone"
                 android:background="@android:color/transparent" />
-
         </RelativeLayout>
 
         <!--PARENT ACCOUNT-->
@@ -84,7 +78,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/parent_account_icon"
                 android:layout_width="48dp"
@@ -92,7 +85,6 @@
                 android:src="@drawable/ic_48dp_black_supervisor_account"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_parent"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,7 +97,6 @@
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_parent" />
-
             <TextView
                 android:id="@+id/parent_account"
                 android:layout_width="wrap_content"
@@ -121,7 +112,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:textStyle="italic" />
-
         </RelativeLayout>
 
         <!--TICKER-->
@@ -130,7 +120,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/ticker_icon"
                 android:layout_width="48dp"
@@ -138,7 +127,6 @@
                 android:src="@drawable/ic_48dp_black_confirmation_number"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_ticker"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -151,7 +139,6 @@
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_ticker" />
-
             <TextView
                 android:id="@+id/ticker"
                 android:layout_width="wrap_content"
@@ -166,7 +153,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
             <EditText
                 android:id="@+id/ticker_edit"
                 android:layout_width="match_parent"
@@ -182,9 +168,7 @@
                 android:alpha="0.87"
                 android:visibility="gone"
                 android:background="@android:color/transparent" />
-
         </RelativeLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -195,14 +179,12 @@
         android:layout_marginRight="12dp"
         android:layout_marginEnd="12dp"
         android:orientation="vertical">
-
         <!--PHONE-->
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/phone_icon"
                 android:layout_width="48dp"
@@ -210,7 +192,6 @@
                 android:src="@drawable/ic_48dp_black_phone"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_phone"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -223,22 +204,20 @@
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_phone" />
-
             <TextView
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/phone_icon"
-            android:layout_toRightOf="@id/phone_icon"
-            android:layout_alignBottom="@id/phone_icon"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:lines="1"
-            android:maxLines="1"
-            android:alpha="0.87" />
-
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/phone_icon"
+                android:layout_toRightOf="@id/phone_icon"
+                android:layout_alignBottom="@id/phone_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87" />
         </RelativeLayout>
 
         <!--FAX-->
@@ -247,7 +226,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/fax_icon"
                 android:layout_width="48dp"
@@ -255,7 +233,6 @@
                 android:src="@drawable/ic_48dp_black_local_printshop"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_fax"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -268,7 +245,6 @@
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_fax" />
-
             <TextView
                 android:id="@+id/fax"
                 android:layout_width="wrap_content"
@@ -283,7 +259,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
 
         <!--WEBSITE-->
@@ -292,7 +267,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/website_icon"
                 android:layout_width="48dp"
@@ -300,7 +274,6 @@
                 android:src="@drawable/ic_48dp_black_public"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_website"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -313,7 +286,6 @@
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_website" />
-
             <TextView
                 android:id="@+id/website"
                 android:layout_width="wrap_content"
@@ -328,9 +300,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
-
     </LinearLayout>
-
 </LinearLayout>

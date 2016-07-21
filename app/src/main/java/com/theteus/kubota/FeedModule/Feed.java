@@ -28,37 +28,33 @@ import java.util.ArrayList;
 
 
 public class Feed extends Fragment {
-    RecyclerView postActivity;
-    pageActivityAdapter adapter;
-    public Feed() {
-        // Required empty public constructor
-    }
+    public Feed() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
+        RecyclerView postActivity = (RecyclerView) view.findViewById(R.id.feed_activitylog);
+        postActivity.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        pageActivityAdapter adapter = new pageActivityAdapter();
+        retrieve(postActivity, adapter);
+        initPieChart(view);
+        initValueLine(view);
+        return view;
+    }
 
-        postActivity = (RecyclerView) view.findViewById(R.id.feed_activitylog);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
-        postActivity.setLayoutManager(mLayoutManager);
-        adapter = new pageActivityAdapter();
-        retrieve();
-
+    private void initPieChart(View view){
         PieChart mPieChart = (PieChart) view.findViewById(R.id.piechart);
-
         mPieChart.addPieSlice(new PieModel("SKC Customer", 15, Color.parseColor("#FE6DA8")));
         mPieChart.addPieSlice(new PieModel("Customer", 25, Color.parseColor("#56B7F1")));
         mPieChart.addPieSlice(new PieModel("Lead", 35, Color.parseColor("#CDA67F")));
         mPieChart.addPieSlice(new PieModel("Acitivity", 9, Color.parseColor("#FED70E")));
-
         mPieChart.startAnimation();
-
+    }
+    private void initValueLine(View view){
         ValueLineChart mCubicValueLineChart = (ValueLineChart) view.findViewById(R.id.cubiclinechart);
-
         ValueLineSeries series = new ValueLineSeries();
         series.setColor(0xFF56B7F1);
-
         series.addPoint(new ValueLinePoint("Jan", 2.4f));
         series.addPoint(new ValueLinePoint("Feb", 3.4f));
         series.addPoint(new ValueLinePoint("Mar", .4f));
@@ -71,13 +67,10 @@ public class Feed extends Fragment {
         series.addPoint(new ValueLinePoint("Oct", 3.4f));
         series.addPoint(new ValueLinePoint("Nov", .4f));
         series.addPoint(new ValueLinePoint("Dec", 1.3f));
-
         mCubicValueLineChart.addSeries(series);
         mCubicValueLineChart.startAnimation();
-        return view;
     }
-
-    private void retrieve(){
+    private void retrieve(final RecyclerView postActivity, final pageActivityAdapter adapter){
         new RetrieveService(getActivity(), new AsyncResponse() {
             @Override
             public void onFinishTask(JSONObject result) {
@@ -97,7 +90,6 @@ public class Feed extends Fragment {
         })
                 .setEntity("Post").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
-
     private class pageActivityAdapter extends RecyclerView.Adapter<pageActivityAdapter.MyViewHolder>{
         ArrayList<String> post;
         ArrayList<String> post2;
@@ -127,8 +119,6 @@ public class Feed extends Fragment {
             post.add(data);
             post2.add(data2);
         }
-
-
 
         class MyViewHolder extends RecyclerView.ViewHolder {
             TextView longText,longText2;

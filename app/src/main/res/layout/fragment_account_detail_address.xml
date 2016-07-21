@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/street_1_icon"
                 android:layout_width="48dp"
@@ -56,7 +55,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
 
         <!--STREET 2-->
@@ -107,7 +105,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/street_3_icon"
                 android:layout_width="48dp"
@@ -142,9 +139,7 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -162,7 +157,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/city_icon"
                 android:layout_width="48dp"
@@ -196,7 +190,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
 
         <!--STATE-->
@@ -240,7 +233,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
 
         <!--POSTAL CODE-->
@@ -249,7 +241,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/postal_code_icon"
                 android:layout_width="48dp"
@@ -283,7 +274,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
 
         <!--COUNTRY-->
@@ -292,7 +282,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
-
             <ImageView
                 android:id="@+id/country_icon"
                 android:layout_width="48dp"
@@ -328,9 +317,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
-
     </LinearLayout>
-
 </LinearLayout>

@@ -39,11 +39,20 @@ import java.util.List;
 import java.util.Locale;
 
 public class AccountForm03 extends Fragment {
+    private final static String CURRENCY_ERROR = "No such a specified currency";
+    private final static String CREDITLIMIT_ERROR = "Need to enter currency first";
+    private final static String FIELD_VALUE = "Value";
+    private final static String FIELD_ID = "Id";
+    private final static String FIELD_TRANSACTIONCURRENCY = "TransactionCurrency";
+    private final static String QUERY_AUTOCOMPLETE = "$select=TransactionCurrencyId,CurrencyName,CurrencySymbol";
+    private final static String FIELD_CURRENCYNAME = "CurrencyName";
+    private final static String FIELD_RESULTS = "results";
+    private final static String FIELD_D = "d";
+
     private Button menu1, menu2;
     private LinearLayout layoutLoader;
     private View viewPart1, viewPart2;
     private int pageID = 0;
-
     private Spinner mAccount_form3_1_industry;
     private EditText mAccount_form3_1_sic;
     private Spinner mAccount_form3_1_ownership;
@@ -52,25 +61,21 @@ public class AccountForm03 extends Fragment {
     private EditText mAccount_form3_1_creditlimit;
     private RadioGroup mAccount_form3_1_credithold;
     private Spinner mAccount_form3_1_paymentterm;
-    private AutoCompleteTextView currencyIdSearch;
-
+    private AutoCompleteTextView currencyIdSearchText;
     private CheckBox mAccount_form3_2_checkemail;
     private CheckBox mAccount_form3_2_checkbulkemail;
     private CheckBox mAccount_form3_2_checkphone;
     private CheckBox mAccount_form3_2_checkfax;
-    private CheckBox mCheckmail;
+    private CheckBox mAccount_form3_2_checkpostalmail;
     private Spinner mAccount_form3_2_shippingmethod;
     private RadioGroup mAccount_form3_2_freight;
     private EditText mAccount_form3_2_description;
-
     private DatePickerDialog lastDatePickerDialog;
     private SimpleDateFormat dateFormatter;
-
-    private List<String> currencySearchList;
-    private List<String> currecySearctListId;
+    private List<String> currencySearchListName;
+    private List<String> currencySearchListId;
 
     public AccountForm03() {}
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,8 +84,8 @@ public class AccountForm03 extends Fragment {
         getCurrencyAutoComplete();
         findViewsById(view);
         initButton();
-        initPage1(viewPart1);
-        initPage2(viewPart2);
+        initPage1();
+        initPage2();
         return view;
     }
 
@@ -96,89 +101,82 @@ public class AccountForm03 extends Fragment {
         layoutLoader.addView(viewPart1);
     }
 
-    private void initPage1(View view){
+    private void initPage1(){
         mAccount_form3_1_industry = (Spinner) viewPart1.findViewById(R.id.account_form3_1_industry);
-        mAccount_form3_1_sic = (EditText) view.findViewById(R.id.account_form3_1_sic);
-        mAccount_form3_1_ownership = (Spinner) view.findViewById(R.id.account_form3_1_ownership);
-        //mAccount_form3_1_originate_lead = (EditText) view.findViewById(R.id.account_form3_1_originate_lead);
-        mAccount_form3_1_last_date = (EditText) view.findViewById(R.id.account_form3_1_last_date);
-        mAccount_form3_1_marketmaterial = (RadioGroup) view.findViewById(R.id.account_form3_1_marketmaterial);
-        mAccount_form3_1_creditlimit = (EditText) view.findViewById(R.id.account_form3_1_creditlimit);
-        mAccount_form3_1_credithold = (RadioGroup) view.findViewById(R.id.account_form3_1_credithold);
-        mAccount_form3_1_paymentterm = (Spinner) view.findViewById(R.id.account_form3_1_paymentterm);
+        mAccount_form3_1_sic = (EditText) viewPart1.findViewById(R.id.account_form3_1_sic);
+        mAccount_form3_1_ownership = (Spinner) viewPart1.findViewById(R.id.account_form3_1_ownership);
+        mAccount_form3_1_last_date = (EditText) viewPart1.findViewById(R.id.account_form3_1_last_date);
+        mAccount_form3_1_marketmaterial = (RadioGroup) viewPart1.findViewById(R.id.account_form3_1_marketmaterial);
+        mAccount_form3_1_creditlimit = (EditText) viewPart1.findViewById(R.id.account_form3_1_creditlimit);
+        mAccount_form3_1_credithold = (RadioGroup) viewPart1.findViewById(R.id.account_form3_1_credithold);
+        mAccount_form3_1_paymentterm = (Spinner) viewPart1.findViewById(R.id.account_form3_1_paymentterm);
 
-        ArrayAdapter<CharSequence> industryAdapter = ArrayAdapter.createFromResource(view.getContext(),
+        ArrayAdapter<CharSequence> industryAdapter = ArrayAdapter.createFromResource(viewPart1.getContext(),
                 R.array.account_company_industry, android.R.layout.simple_spinner_item);
         industryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mAccount_form3_1_industry.setAdapter(industryAdapter);
 
-        ArrayAdapter<CharSequence> ownershipAdapter = ArrayAdapter.createFromResource(view.getContext(),
+        ArrayAdapter<CharSequence> ownershipAdapter = ArrayAdapter.createFromResource(viewPart1.getContext(),
                 R.array.account_company_ownership, android.R.layout.simple_spinner_item);
         ownershipAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mAccount_form3_1_ownership.setAdapter(ownershipAdapter);
 
-        ArrayAdapter<CharSequence> billingAdapter = ArrayAdapter.createFromResource(view.getContext(),
+        ArrayAdapter<CharSequence> billingAdapter = ArrayAdapter.createFromResource(viewPart1.getContext(),
                 R.array.account_billing_payment, android.R.layout.simple_spinner_item);
         billingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mAccount_form3_1_paymentterm.setAdapter(billingAdapter);
 
         mAccount_form3_1_last_date.setInputType(InputType.TYPE_NULL);
-        initDatePick(view);
+        initDatePick(viewPart1);
 
-        currencyIdSearch = (AutoCompleteTextView) viewPart1.findViewById(R.id.account_form3_1_currencysearch);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, currencySearchList);
-        currencyIdSearch.setAdapter(adapter);
-        currencyIdSearch.setOnTouchListener(new View.OnTouchListener() {
+        currencyIdSearchText = (AutoCompleteTextView) viewPart1.findViewById(R.id.account_form3_1_currencysearch);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, currencySearchListName);
+        currencyIdSearchText.setAdapter(adapter);
+        currencyIdSearchText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                currencyIdSearch.showDropDown();
+                currencyIdSearchText.showDropDown();
                 return false;
             }
         });
-
         setTextChangedValidate();
     }
 
     private void setTextChangedValidate(){
-        currencyIdSearch.addTextChangedListener(new TextWatcher() { //validate after search field hs changed
+        currencyIdSearchText.addTextChangedListener(new TextWatcher() { //validate after search field hs changed
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
-                if (currencyIdSearch != null && currencySearchList != null) {
-                    if (currencySearchList.contains(s.toString()) || s.length() == 0) {
-                        currencyIdSearch.setError(null);
+                if(currencySearchListName.contains(s.toString())){
+                    currencyIdSearchText.setError(null);
+                    mAccount_form3_1_creditlimit.setError(null);
+                }
+                else{
+                    if(s.length() == 0)
+                        currencyIdSearchText.setError(null);
+                    else
+                        currencyIdSearchText.setError(CURRENCY_ERROR);
+                    if(mAccount_form3_1_creditlimit.getText().length() != 0)
+                        mAccount_form3_1_creditlimit.setError(CREDITLIMIT_ERROR);
+                    else
                         mAccount_form3_1_creditlimit.setError(null);
-                    } else
-                        currencyIdSearch.setError("No such a specified currency");
                 }
             }
         });
         mAccount_form3_1_creditlimit.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
                 if (mAccount_form3_1_creditlimit != null) {
                     if (s.length() != 0) {
-                        if (currencyIdSearch.getText().toString().length() == 0 || currencyIdSearch.getError() != null) {
-                            mAccount_form3_1_creditlimit.setError("Need to enter currency first");
-                        }
+                        if (currencyIdSearchText.getText().toString().length() == 0 || currencyIdSearchText.getError() != null)
+                            mAccount_form3_1_creditlimit.setError(CREDITLIMIT_ERROR);
                     } else
                         mAccount_form3_1_creditlimit.setError(null);
                 }
@@ -186,17 +184,17 @@ public class AccountForm03 extends Fragment {
         });
     }
 
-    private void initPage2(View view){
-        mAccount_form3_2_checkemail = (CheckBox) view.findViewById(R.id.account_form3_2_checkemail);
-        mAccount_form3_2_checkbulkemail = (CheckBox) view.findViewById(R.id.account_form3_2_checkbulkemail);
-        mAccount_form3_2_checkphone = (CheckBox) view.findViewById(R.id.account_form3_2_checkphone);
-        mAccount_form3_2_checkfax = (CheckBox) view.findViewById(R.id.account_form3_2_checkfax);
-        mCheckmail = (CheckBox) view.findViewById(R.id.checkmail);
-        mAccount_form3_2_shippingmethod = (Spinner) view.findViewById(R.id.account_form3_2_shippingmethod);
-        mAccount_form3_2_freight = (RadioGroup) view.findViewById(R.id.account_form3_2_freight);
-        mAccount_form3_2_description = (EditText) view.findViewById(R.id.account_form3_2_description);
+    private void initPage2(){
+        mAccount_form3_2_checkemail = (CheckBox) viewPart2.findViewById(R.id.account_form3_2_checkemail);
+        mAccount_form3_2_checkbulkemail = (CheckBox) viewPart2.findViewById(R.id.account_form3_2_checkbulkemail);
+        mAccount_form3_2_checkphone = (CheckBox) viewPart2.findViewById(R.id.account_form3_2_checkphone);
+        mAccount_form3_2_checkfax = (CheckBox) viewPart2.findViewById(R.id.account_form3_2_checkfax);
+        mAccount_form3_2_checkpostalmail = (CheckBox) viewPart2.findViewById(R.id.checkmail);
+        mAccount_form3_2_shippingmethod = (Spinner) viewPart2.findViewById(R.id.account_form3_2_shippingmethod);
+        mAccount_form3_2_freight = (RadioGroup) viewPart2.findViewById(R.id.account_form3_2_freight);
+        mAccount_form3_2_description = (EditText) viewPart2.findViewById(R.id.account_form3_2_description);
 
-        ArrayAdapter<CharSequence> shipAdapter = ArrayAdapter.createFromResource(view.getContext(),
+        ArrayAdapter<CharSequence> shipAdapter = ArrayAdapter.createFromResource(viewPart2.getContext(),
                 R.array.account_shipping_method, android.R.layout.simple_spinner_item);
         shipAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mAccount_form3_2_shippingmethod.setAdapter(shipAdapter);
@@ -204,7 +202,6 @@ public class AccountForm03 extends Fragment {
 
     private void initDatePick(View view){
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-
         Calendar newCalendar = Calendar.getInstance();
         lastDatePickerDialog = new DatePickerDialog(view.getContext(), new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -266,55 +263,46 @@ public class AccountForm03 extends Fragment {
     public JSONObject getAllData(){
         JSONObject args = new JSONObject();
         int Account_form3_1_industry;
-        String Account_form3_1_sic;
         int Account_form3_1_ownership;
-        //String Account_form3_1_originate_lead;
-        //String Account_form3_1_last_date;
-        boolean Account_form3_1_marketmaterial = true;
-        String Account_form3_1_currency;
-        boolean Account_form3_1_credithold = false;
-        String Account_form3_1_creditlimit;
         int Account_form3_1_paymentterm;
-
+        int Account_form3_2_shippingmethod;
+        int Account_form3_2_freight;
+        boolean Account_form3_1_marketmaterial = true;
+        boolean Account_form3_1_credithold = false;
         boolean Account_form3_2_checkemail;
         boolean Account_form3_2_checkbulkemail;
         boolean Account_form3_2_checkphone;
         boolean Account_form3_2_checkfax;
-        boolean Checkmail;
-        int Account_form3_2_shippingmethod;
-        int Account_form3_2_freight;
+        boolean Account_form3_2_checkpostalmail;
+        String Account_form3_1_sic;
+        String Account_form3_1_currency;
+        String Account_form3_1_creditlimit;
         String Account_form3_2_description;
-
         RadioButton tempButton;
 
         Account_form3_1_industry = mAccount_form3_1_industry.getSelectedItemPosition();
         Account_form3_1_sic = mAccount_form3_1_sic.getText().toString();
         Account_form3_1_ownership = mAccount_form3_1_ownership.getSelectedItemPosition();
-        //Account_form3_1_originate_lead = mAccount_form3_1_originate_lead.getText().toString();
-        //Account_form3_1_last_date = mAccount_form3_1_last_date.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_marketmaterial.getCheckedRadioButtonId());
         if(tempButton!=null)
             Account_form3_1_marketmaterial = !(tempButton.getText().toString().equals("Send"));
-        Account_form3_1_currency = currencyIdSearch.getText().toString();
+        Account_form3_1_currency = currencyIdSearchText.getText().toString();
         if(Account_form3_1_currency.length()!=0) {
-            if (currencyIdSearch.getError() == null)
-                Account_form3_1_currency = currecySearctListId.get(currencySearchList.indexOf(Account_form3_1_currency));
+            if (currencyIdSearchText.getError() == null)
+                Account_form3_1_currency = currencySearchListId.get(currencySearchListName.indexOf(Account_form3_1_currency));
             else
                 return null;
         }
         Account_form3_1_creditlimit = mAccount_form3_1_creditlimit.getText().toString();
         tempButton = (RadioButton) viewPart1.findViewById(mAccount_form3_1_credithold.getCheckedRadioButtonId());
-        if(tempButton!=null) {
+        if(tempButton!=null)
             Account_form3_1_credithold = tempButton.getText().toString().equals("Yes");
-        }
-
         Account_form3_1_paymentterm = mAccount_form3_1_paymentterm.getSelectedItemPosition();
-
         Account_form3_2_checkemail = !mAccount_form3_2_checkemail.isChecked();
         Account_form3_2_checkbulkemail = !mAccount_form3_2_checkbulkemail.isChecked();
         Account_form3_2_checkphone = !mAccount_form3_2_checkphone.isChecked();
         Account_form3_2_checkfax = !mAccount_form3_2_checkfax.isChecked();
-        Checkmail = !mCheckmail.isChecked();
+        Account_form3_2_checkpostalmail = !mAccount_form3_2_checkpostalmail.isChecked();
         Account_form3_2_shippingmethod = mAccount_form3_2_shippingmethod.getSelectedItemPosition();
         tempButton = (RadioButton) viewPart2.findViewById(mAccount_form3_2_freight.getCheckedRadioButtonId());
         if(tempButton!=null) {
@@ -326,35 +314,34 @@ public class AccountForm03 extends Fragment {
         else
             Account_form3_2_freight = 0;
         Account_form3_2_description = mAccount_form3_2_description.getText().toString();
-        try {
+
+        try {   //put data field into JSONObject
             if(Account_form3_1_industry!=0)
-                args.put("IndustryCode", new JSONObject().put("Value", Account_form3_1_industry)); //"{\"Value\":\"50\"}"
+                args.put(AccountSchema.INDUSTRY, new JSONObject().put(FIELD_VALUE, Account_form3_1_industry)); //"{\"Value\":\"50\"}"
             if(Account_form3_1_sic.length()!=0)
-                args.put("SIC", Account_form3_1_sic);
+                args.put(AccountSchema.SIC_CODE, Account_form3_1_sic);
             if(Account_form3_1_ownership!=0)
-                args.put("OwnershipCode", new JSONObject().put("Value", Account_form3_1_ownership));
+                args.put(AccountSchema.OWNERSHIP, new JSONObject().put(FIELD_VALUE, Account_form3_1_ownership));
             if(Account_form3_1_currency.length()!=0) {
-                args.put("TransactionCurrencyId", new JSONObject().put("Id", Account_form3_1_currency));
+                args.put(AccountSchema.CURRENCY, new JSONObject().put(FIELD_ID, Account_form3_1_currency));
                 if (Account_form3_1_creditlimit.length() != 0)
-                    args.put("CreditLimit", new JSONObject().put("Value", Account_form3_1_creditlimit));
+                    args.put(AccountSchema.CREDIT_LIMIT, new JSONObject().put(FIELD_VALUE, Account_form3_1_creditlimit));
             }
-            args.put("DoNotSendMM", Account_form3_1_marketmaterial); //true = do not send
-            args.put("CreditOnHold", Account_form3_1_credithold); //true = yes
+            args.put(AccountSchema.MARKETING_MATERIAL, Account_form3_1_marketmaterial); //true = do not send
+            args.put(AccountSchema.CREDIT_HOLD, Account_form3_1_credithold); //true = yes
             if(Account_form3_1_paymentterm!=0)
-                args.put("PaymentTermsCode",new JSONObject().put("Value", Account_form3_1_paymentterm));
-
-            args.put("DoNotEMail", Account_form3_2_checkemail); //false = allow
-            args.put("DoNotBulkEMail", Account_form3_2_checkbulkemail); //true = do not allow
-            args.put("DoNotPhone", Account_form3_2_checkphone);
-            args.put("DoNotFax", Account_form3_2_checkfax);
-            args.put("DoNotPostalMail", Checkmail);
-
+                args.put(AccountSchema.PAYMENT_TERMS,new JSONObject().put(FIELD_VALUE, Account_form3_1_paymentterm));
+            args.put(AccountSchema.CONTACT_PREFERENCE_EMAIL, Account_form3_2_checkemail); //false = allow
+            args.put(AccountSchema.CONTACT_PREFERENCE_BULK_EMAIL, Account_form3_2_checkbulkemail); //true = do not allow
+            args.put(AccountSchema.CONTACT_PREFERENCE_PHONE, Account_form3_2_checkphone);
+            args.put(AccountSchema.CONTACT_PREFERENCE_FAX, Account_form3_2_checkfax);
+            args.put(AccountSchema.CONTACT_PREFERENCE_MAIL, Account_form3_2_checkpostalmail);
             if(Account_form3_2_shippingmethod!=0)
-                args.put("Address1_ShippingMethodCode", new JSONObject().put("Value", Account_form3_2_shippingmethod));
+                args.put(AccountSchema.SHIPPING_METHOD, new JSONObject().put(FIELD_VALUE, Account_form3_2_shippingmethod));
             if(Account_form3_2_freight!=0)
-                args.put("Address1_FreightTermsCode", new JSONObject().put("Value", Account_form3_2_freight));
+                args.put(AccountSchema.FREIGHT_TERMS, new JSONObject().put(FIELD_VALUE, Account_form3_2_freight));
             if(Account_form3_2_description.length()!=0)
-                args.put("Description", Account_form3_2_description);
+                args.put(AccountSchema.DESCRIPTION, Account_form3_2_description);
         } catch (JSONException e){
             e.printStackTrace();
         }
@@ -362,25 +349,25 @@ public class AccountForm03 extends Fragment {
     }
 
     private void getCurrencyAutoComplete(){
-        currencySearchList = new ArrayList<>();
-        currecySearctListId = new ArrayList<>();
+        currencySearchListName = new ArrayList<>();
+        currencySearchListId = new ArrayList<>();
         new RetrieveService(getActivity(), new AsyncResponse() {
             @Override
             public void onFinishTask(JSONObject result) {
             try {
-                JSONArray result1 = result.getJSONObject("d").optJSONArray("results");
+                JSONArray result1 = result.getJSONObject(FIELD_D).optJSONArray(FIELD_RESULTS);
                 for(int i=0;i<result1.length();i++){
                     JSONObject jsObj = result1.getJSONObject(i);
-                    currencySearchList.add(jsObj.get("CurrencyName").toString());
-                    currecySearctListId.add(jsObj.get("TransactionCurrencyId").toString());
+                    currencySearchListName.add(jsObj.get(FIELD_CURRENCYNAME).toString());
+                    currencySearchListId.add(jsObj.get(AccountSchema.CURRENCY).toString());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
                 }
         })
-                .setEntity("TransactionCurrency")
-                .setQueryString("$select=TransactionCurrencyId,CurrencyName,CurrencySymbol")
+                .setEntity(FIELD_TRANSACTIONCURRENCY)
+                .setQueryString(QUERY_AUTOCOMPLETE)
                 .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }

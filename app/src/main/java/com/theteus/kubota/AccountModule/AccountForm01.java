@@ -25,13 +25,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountForm01 extends Fragment {
+    private final static String NAME_ERROR = "You must provide a name value";
+    private final static String FIELD_ID = "Id";
+    private final static String QUERY_STRING = "$select=AccountId,Name";
+    private final static String FIELD_RESULTS = "results";
+    private final static String FIELD_D = "d";
     private EditText mAccount_form1_name;
     private AutoCompleteTextView mAccount_form1_parent;
     private EditText mAccount_form1_ticker;
     private EditText mAccount_form1_phone;
     private EditText mAccount_form1_fax;
     private EditText mAccount_form1_web;
-
     private List<String> parentSearchId;
     private List<String> parentSearchName;
 
@@ -55,7 +59,6 @@ public class AccountForm01 extends Fragment {
         mAccount_form1_web = (EditText) view.findViewById(R.id.account_form1_web);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, parentSearchName);
         mAccount_form1_parent.setAdapter(adapter);
-
         mAccount_form1_parent.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -63,19 +66,18 @@ public class AccountForm01 extends Fragment {
                 return false;
             }
         });
-
         setTextChangedValidate();
     }
 
     private void setTextChangedValidate() {
         mAccount_form1_name.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
                 if(mAccount_form1_name!=null) {
                     if (s.length() != 0)
                         mAccount_form1_name.setError(null);
@@ -83,29 +85,17 @@ public class AccountForm01 extends Fragment {
                         mAccount_form1_name.setError("You muse provide a name value");
                 }
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
         });
         mAccount_form1_parent.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
                 if(mAccount_form1_parent!=null&&parentSearchName!=null){
-                    if (parentSearchName.contains(s.toString()) || s.length() == 0) {
+                    if (parentSearchName.contains(s.toString()) || s.length() == 0)
                         mAccount_form1_parent.setError(null);
-                    }
                     else
                         mAccount_form1_parent.setError("No records found");
                 }
@@ -124,7 +114,7 @@ public class AccountForm01 extends Fragment {
 
         Account_form1_name = mAccount_form1_name.getText().toString();
         if(mAccount_form1_name.length()==0){
-            mAccount_form1_name.setError("You muse provide a name value");
+            mAccount_form1_name.setError(NAME_ERROR);
             return null;
         }
         Account_form1_parent = mAccount_form1_parent.getText().toString();
@@ -141,17 +131,17 @@ public class AccountForm01 extends Fragment {
 
         try {
             if(Account_form1_name.length()!=0)
-                args.put("Name", Account_form1_name);
+                args.put(AccountSchema.ACCOUNT_NAME, Account_form1_name);
             if(Account_form1_ticker.length()!=0)
-                args.put("TickerSymbol", Account_form1_ticker);
+                args.put(AccountSchema.TICKER_SYMBOL, Account_form1_ticker);
             if (Account_form1_parent.length() != 0)
-                args.put("ParentAccountId", new JSONObject().put("Id", Account_form1_parent));
+                args.put(AccountSchema.PARENT_ACCOUNT, new JSONObject().put(FIELD_ID, Account_form1_parent));
             if(Account_form1_phone.length()!=0)
-                args.put("Telephone1", Account_form1_phone);
+                args.put(AccountSchema.MAIN_PHONE, Account_form1_phone);
             if(Account_form1_fax.length()!=0)
-                args.put("Fax", Account_form1_fax);
+                args.put(AccountSchema.FAX, Account_form1_fax);
             if(Account_form1_web.length()!=0)
-                args.put("WebSiteURL", Account_form1_web);
+                args.put(AccountSchema.WEBSITE, Account_form1_web);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -165,19 +155,19 @@ public class AccountForm01 extends Fragment {
             @Override
             public void onFinishTask(JSONObject result) {
                 try {
-                    JSONArray result1 = result.getJSONObject("d").getJSONArray("results");
+                    JSONArray result1 = result.getJSONObject(FIELD_D).getJSONArray(FIELD_RESULTS);
                     for(int i=0;i<result1.length();i++){
                         JSONObject jsObj = result1.getJSONObject(i);
-                        parentSearchName.add(jsObj.get("Name").toString());
-                        parentSearchId.add(jsObj.get("AccountId").toString());
+                        parentSearchName.add(jsObj.get(AccountSchema.ACCOUNT_NAME).toString());
+                        parentSearchId.add(jsObj.get(AccountSchema.IDENTIFIER).toString());
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         })
-                .setEntity("Account")
-                .setQueryString("$select=AccountId,Name")
+                .setEntity(AccountSchema.ENTITY_NAME)
+                .setQueryString(QUERY_STRING)
                 .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }

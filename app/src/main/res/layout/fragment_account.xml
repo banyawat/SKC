@@ -61,7 +61,7 @@
                             <android.support.v4.view.ViewPager
                                 android:id="@+id/account_form_pager"
                                 android:layout_width="fill_parent"
-                                android:layout_height="fill_parent"
+                                android:layout_height="0dp"
                                 android:layout_weight="1"/>
 
                         </LinearLayout>
@@ -70,7 +70,6 @@
                 </android.support.v7.widget.Toolbar>
             </LinearLayout>
         </android.support.v7.widget.CardView>
-
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -79,9 +78,11 @@
         android:id="@+id/account_nextButton"
         android:src ="@drawable/ic_arrow_forward"
         android:paddingBottom="5dp"
+        android:paddingEnd="5dp"
         android:paddingRight="5dp"
         app:layout_anchor="@id/card_toolbar_account"
         app:layout_anchorGravity="right|end|bottom"
+        android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

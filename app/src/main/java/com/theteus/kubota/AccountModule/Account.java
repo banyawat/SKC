@@ -2,7 +2,6 @@ package com.theteus.kubota.AccountModule;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -22,7 +21,11 @@ import org.json.JSONObject;
 import java.util.Iterator;
 
 public class Account extends Fragment {
-    View view;
+    private final static String GENERAL_MENU = "ข้อมูลทั่วไป";
+    private final static String ADDRESS_MENU = "ที่อยู่";
+    private final static String DETAIL_MENU = "รายละเอียด";
+    private final static String ACCOUNT_ENTITY = "Account";
+    private final static String TEXT_ERROR = "Get some error(s)!";
     private CardViewPager accountView;
     private int previousPosition;
     private JSONObject form1JSON;
@@ -32,14 +35,9 @@ public class Account extends Fragment {
     public Account() {}
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_account, container, false);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
         form1JSON = new JSONObject();
         form2JSON = new JSONObject();
         form3JSON = new JSONObject();
@@ -49,11 +47,10 @@ public class Account extends Fragment {
     }
 
     private void initView(){
-        accountView.addFragmentView(new AccountForm01(), "ข้อมูลทั่วไป");
-        accountView.addFragmentView(new AccountForm02(), "ที่อยู่");
-        accountView.addFragmentView(new AccountForm03(), "รายละเอียด");
+        accountView.addFragmentView(new AccountForm01(), GENERAL_MENU);
+        accountView.addFragmentView(new AccountForm02(), ADDRESS_MENU);
+        accountView.addFragmentView(new AccountForm03(), DETAIL_MENU);
         accountView.init(R.id.account_form_pager, R.id.account_nextButton);
-
         accountView.initFloatingButtonMethod(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,21 +67,15 @@ public class Account extends Fragment {
 
         accountView.mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
             @Override
             public void onPageSelected(int position) {
                 int temp = previousPosition;
                 previousPosition = position;
                 retrieveData(temp);
             }
-
             @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
+            public void onPageScrollStateChanged(int state) {}
         });
     }
 
@@ -126,7 +117,6 @@ public class Account extends Fragment {
     private void postInformation() {
         JSONObject request = mergeJSON(form1JSON, form2JSON);
         request = mergeJSON(request, form3JSON);
-
         new CreateService(getActivity(), new AsyncResponse() {
             @Override
             public void onFinishTask(JSONObject result) {
@@ -134,7 +124,7 @@ public class Account extends Fragment {
                 home.goTo(5);
             }
         })
-                .setEntity("Account")
+                .setEntity(ACCOUNT_ENTITY)
                 .setJSONEntry(request)
                 .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
@@ -157,6 +147,6 @@ public class Account extends Fragment {
     }
 
     private void warning(){
-        Toast.makeText(getContext(), "Get some error(s)!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), TEXT_ERROR, Toast.LENGTH_SHORT).show();
     }
 }

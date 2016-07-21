@@ -1,29 +1,26 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RepeatAddressForm"
     android:padding="25dp"
     android:orientation="vertical">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="5">
-
+        android:weightSum="5"
+        android:baselineAligned="false">
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_addrnum"
-                android:hint="บ้านเลขที่"
+                android:hint="@string/form_housename"
                 android:drawableLeft="@drawable/ic_domain"
+                android:drawableStart="@drawable/ic_domain"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
@@ -31,23 +28,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.5">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_addrvillage"
-                android:hint="ชื่อหมู่บ้าน/อาคาร"/>
+                android:hint="@string/form_buildingname"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_floor"
                 android:ems="2"
-                android:hint="ชั้น"
+                android:hint="@string/form_floor"
                 android:layout_weight="0.2" />
         </android.support.design.widget.TextInputLayout>
 
@@ -55,12 +52,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_room"
                 android:ems="2"
-                android:hint="ห้อง"
+                android:hint="@string/form_room"
                 android:layout_weight="0.2" />
         </android.support.design.widget.TextInputLayout>
 
@@ -68,12 +65,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_group"
                 android:ems="2"
-                android:hint="หมู่"
+                android:hint="@string/form_villageno"
                 android:layout_weight="0.2"
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
@@ -83,58 +80,60 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="8">
+        android:weightSum="8"
+        android:baselineAligned="false">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_alley"
-                android:hint="ซอย" />
+                android:hint="@string/form_branch" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_street"
-                android:hint="ถนน"
+                android:hint="@string/form_road"
                 android:ems="3" />
-        </android.support.design.widget.TextInputLayout>>
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:baselineAligned="false">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_subdistrict"
-                android:hint="ตำบล" />
+                android:hint="@string/form_tambon" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_district"
-                android:hint="อำเภอ" />
+                android:hint="@string/form_amphoe" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -142,28 +141,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="5">
+        android:weightSum="5"
+        android:baselineAligned="false">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
-            <EditText android:id="@+id/repeat_province"
+            <android.support.design.widget.TextInputEditText android:id="@+id/repeat_province"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="จังหวัด"
-                android:drawableLeft="@drawable/ic_location_city"/>
+                android:hint="@string/form_province"
+                android:drawableLeft="@drawable/ic_location_city"
+                android:drawableStart="@drawable/ic_location_city"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/repeat_postalcode"
-                android:hint="รหัสไปรษณีย์"
+                android:hint="@string/form_postalcode"
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>

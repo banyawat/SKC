@@ -1,18 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-Copyright 2016 Google Inc. All rights reserved.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kubota Contact Centre</string>
     <string name="action_settings">Settings</string>
@@ -34,6 +20,18 @@ limitations under the License.
     <string name="form_mobile_phone1">เบอร์มือถือ1</string>
     <string name="form_mobile_phone2">เบอร์มือถือ2</string>
     <string name="form_owned_vehicle_number">จำนวนรถที่เป็นเจ้าของ</string>
+
+    <string name="form_housename">บ้านเลขที่</string>
+    <string name="form_buildingname">ชื่อหมู่บ้าน/อาคาร</string>
+    <string name="form_floor">ชั้น</string>
+    <string name="form_room">ห้อง</string>
+    <string name="form_villageno">หมู่</string>
+    <string name="form_branch">ซอย</string>
+    <string name="form_road">ถนน</string>
+    <string name="form_tambon">ตำบล</string>
+    <string name="form_amphoe">อำเภอ</string>
+    <string name="form_province">จังหวัด</string>
+    <string name="form_postalcode">รหัสไปรษณีย์</string>
 
     <string name="form_skc_address_insurance">ที่อยู่ตามบัตรรับประกัน/ส่งเอกสาร</string>
     <string name="form_skc_address_skl">ที่อยู่จาก SKL</string>
@@ -555,7 +553,6 @@ limitations under the License.
     </string-array>
 
     <string name="title_activity_settings">Settings</string>
-
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->

@@ -56,7 +56,7 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/account_form3_1_sic"
@@ -114,7 +114,7 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/account_form3_1_originate_lead"
@@ -137,7 +137,7 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/account_form3_1_last_date"
@@ -208,7 +208,7 @@
                     android:contentDescription="@string/icon_description"/>
 
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
                     <AutoCompleteTextView
@@ -237,12 +237,13 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/account_form3_1_creditlimit"
                         android:layout_gravity="center_horizontal"
-                        android:hint="@string/credit_limit" />
+                        android:hint="@string/credit_limit"
+                        android:inputType="numberDecimal" />
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>

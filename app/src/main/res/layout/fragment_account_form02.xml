@@ -3,9 +3,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.theteus.kubota.AccountModule.AccountForm02">
-
-    <include
-        layout="@layout/fragment_repeat_address"
-        />
-
+    <include layout="@layout/fragment_repeat_address" />
 </FrameLayout>

@@ -146,8 +146,8 @@ public class CardViewPager implements TabHost.OnTabChangeListener {
         return mPager.getCurrentItem() + 1 == mPager.getChildCount();
     }
 
-    public static void hideSoftKeyboard(Activity activity) {
+    public void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(mainView.getWindowToken(), 0);
     }
 }

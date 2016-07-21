@@ -371,7 +371,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
         </RelativeLayout>
 
     </LinearLayout>
