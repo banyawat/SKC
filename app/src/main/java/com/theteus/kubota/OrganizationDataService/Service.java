@@ -1,6 +1,5 @@
 package com.theteus.kubota.OrganizationDataService;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -31,8 +30,8 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
     public static String DEFAULT_HOSTNAME = "muses.hms-cloud.com";
     public static int DEFAULT_PORT = 444;
     public static String DEFAULT_DOMAIN = "hms-cloud";
-    public static String DEFAULT_USERNAME = "administrator";
-    public static String DEFAULT_PASSWORD = "pass@word1";
+    public static String DEFAULT_USERNAME = "";
+    public static String DEFAULT_PASSWORD = "";
     public static String DEFAULT_ORGANIZATION_DATA_PATH = "/Training/XRMServices/2011/OrganizationData.svc";
 
     private static final int SOCKET_TIMEOUT = 60000;

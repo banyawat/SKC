@@ -450,7 +450,7 @@
         <item>มีเงินไม่พอซื้อสินค้า</item>
         <item>อื่นๆ</item>
     </string-array>
-    
+
     <string-array name="account_company_industry">
         <item>Industry</item>
         <item>Accounting</item>
@@ -487,7 +487,7 @@
         <item>Vehicle Retail</item>
         <item>Wholesale</item>
     </string-array>
-    
+
     <string-array name="account_company_ownership">
         <item>Ownership</item>
         <item>Public</item>
@@ -495,7 +495,7 @@
         <item>Subsidiary</item>
         <item>Other</item>
     </string-array>
-    
+
     <string-array name="account_billing_payment">
         <item>Payment Terms</item>
         <item>Net 30</item>
@@ -503,7 +503,7 @@
         <item>Net 45</item>
         <item>Net 60</item>
     </string-array>
-    
+
     <string-array name="account_shipping_method">
         <item>Shipping Method</item>
         <item>Airborne</item>
@@ -539,7 +539,7 @@
         <item>รถ MAX</item>
         <item>ยกเลิก</item>
     </string-array>
-    
+
     <string-array name="chassis_sale_condition">
         <item>ช่องทางการขาย</item>
         <item>ขายสด</item>
@@ -611,5 +611,19 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
-    <string name="button_apply">Apply</string>String>
+    <string name="button_apply">Apply</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>String>
 </resources>
