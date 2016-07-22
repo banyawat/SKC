@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     tools:context=".AccountModule.AccountDetailDetailsPart1"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:id="@+id/layout">
 
     <LinearLayout
         android:id="@+id/section_1"
@@ -64,6 +65,18 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+            <Spinner
+                android:id="@+id/industry_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/industry_icon"
+                android:layout_toRightOf="@id/industry_icon"
+                android:layout_alignBottom="@id/industry_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:alpha="0.01"
+                android:background="@android:drawable/btn_default" />
         </RelativeLayout>
 
         <!--SIC CODE-->
@@ -105,6 +118,22 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+            <EditText
+                android:id="@+id/sic_code_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/sic_code_icon"
+                android:layout_toRightOf="@id/sic_code_icon"
+                android:layout_alignBottom="@id/sic_code_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/sic_code" />
 
         </RelativeLayout>
 
@@ -148,6 +177,18 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+            <Spinner
+                android:id="@+id/ownership_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ownership_icon"
+                android:layout_toRightOf="@id/ownership_icon"
+                android:layout_alignBottom="@id/ownership_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:alpha="0.01"
+                android:background="@android:drawable/btn_default" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -211,7 +252,7 @@
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
-                android:alpha="0.87" />
+                android:alpha="0.54" />
         </RelativeLayout>
 
         <!--LAST CAMPAIGN-->
@@ -253,7 +294,7 @@
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
-                android:alpha="0.87" />
+                android:alpha="0.54" />
         </RelativeLayout>
 
         <!--MARKETING MATERIAL-->
@@ -358,6 +399,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <AutoCompleteTextView
+                android:id="@+id/currency_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/currency_icon"
+                android:layout_toRightOf="@id/currency_icon"
+                android:layout_alignBottom="@id/currency_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/currency"/>
+
         </RelativeLayout>
 
         <!--CREDIT LIMIT-->
@@ -401,6 +460,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/credit_limit_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/credit_limit_icon"
+                android:layout_toRightOf="@id/credit_limit_icon"
+                android:layout_alignBottom="@id/credit_limit_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/credit_limit"
+                android:inputType="numberDecimal" />
         </RelativeLayout>
 
         <!--CREDIT HOLD-->
@@ -486,6 +563,18 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+            <Spinner
+                android:id="@+id/payment_terms_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/payment_terms_icon"
+                android:layout_toRightOf="@id/payment_terms_icon"
+                android:layout_alignBottom="@id/payment_terms_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:alpha="0.01"
+                android:background="@android:drawable/btn_default" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

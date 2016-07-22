@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,12 +42,15 @@ public class AccountDetailMain extends Fragment{
     public static final String ARG_PARAM1 = "accountId";
     public static final String ARG_PARAM2 = "currentTab";
     // Contents
-    private JSONObject mAccount;
-    private JSONObject editBuffer;
-    private List<String> mAccountNameList;
-    private Map<String, String> mAccountIdMap;
-    private boolean loadingFlag1;
-    private boolean loadingFlag2;
+    protected JSONObject mAccount;
+    protected JSONObject editBuffer;
+    protected List<String> mAccountNameList;
+    protected Map<String, String> mAccountIdMap;
+    protected List<String> currencyList;
+    protected Map<String, String> currencyMap;
+    protected boolean loadingFlag1;
+    protected boolean loadingFlag2;
+    protected boolean loadingFlag3;
     // Views
     private TextView title;
     private TextView subtitle;
@@ -69,6 +73,7 @@ public class AccountDetailMain extends Fragment{
         if(getArguments() != null && getArguments().containsKey(ARG_PARAM1)) getContent();
         else loadingFlag1 = true;
         getSearchList();
+        getCurrencyList();
         super.onCreate(savedInstanceState);
     }
 
@@ -112,7 +117,8 @@ public class AccountDetailMain extends Fragment{
                 setUpSaveButton();
                 setUpCardTitleData();
                 loadingFlag1 = true;
-                if(loadingFlag2) setUpContentFragment();
+                Log.i(">>>", "LOADING 1 FINISHED");
+                if(loadingFlag1 && loadingFlag2 && loadingFlag3) setUpContentFragment();
             }
         })
                 .setEntity(AccountSchema.ENTITY_NAME)
@@ -169,10 +175,11 @@ public class AccountDetailMain extends Fragment{
                             mAccountNameList.add(obj.getString(AccountSchema.ACCOUNT_NAME));
                             mAccountIdMap.put(obj.getString(AccountSchema.ACCOUNT_NAME), obj.getString(AccountSchema.IDENTIFIER));
                         }
-                        setUpSearchMechanism();
-                        loadingFlag2 = true;
-                        if(loadingFlag1) setUpContentFragment();
                     }
+                    setUpSearchMechanism();
+                    Log.i(">>>", "LOADING 2 FINISHED");
+                    loadingFlag2 = true;
+                    if(loadingFlag1 && loadingFlag2 && loadingFlag3) setUpContentFragment();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -180,6 +187,33 @@ public class AccountDetailMain extends Fragment{
         })
                 .setEntity(AccountSchema.ENTITY_NAME)
                 .setQueryString("$select=" + AccountSchema.ACCOUNT_NAME + "," + AccountSchema.IDENTIFIER)
+                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    private void getCurrencyList() {
+        new RetrieveService(getContext(), new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+                currencyList = new ArrayList<>();
+                currencyMap = new HashMap<>();
+                try {
+                    JSONArray arr = result.getJSONObject("d").optJSONArray("results");
+                    for(int i = 0; i < arr.length(); i++) {
+                        JSONObject obj = arr.getJSONObject(i);
+                        Log.i("JSON", obj.toString());
+                        currencyList.add(obj.getString("CurrencyName"));
+                        currencyMap.put(obj.getString("CurrencyName"), obj.getString("TransactionCurrencyId"));
+                    }
+                    Log.i(">>>", "LOADING 3 FINISHED");
+                    loadingFlag3 = true;
+                    if(loadingFlag1 && loadingFlag2 && loadingFlag3) setUpContentFragment();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        })
+                .setEntity("TransactionCurrency")
+                .setQueryString("$select=TransactionCurrencyId,CurrencyName,CurrencySymbol")
                 .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
@@ -338,9 +372,6 @@ public class AccountDetailMain extends Fragment{
     private void setUpContentFragment() {
         AccountDetailContent fragment = new AccountDetailContent();
         fragment.setmAccount(mAccount);
-        fragment.setEditBuffer(editBuffer);
-        fragment.setmAccountNameList(mAccountNameList);
-        fragment.setmAccountIdMap(mAccountIdMap);
         fragment.setParent(this);
         if(getArguments() != null && getArguments().getInt(ARG_PARAM2) >= 0 && getArguments().getInt(ARG_PARAM2) <= 3) {
             Bundle args = new Bundle();

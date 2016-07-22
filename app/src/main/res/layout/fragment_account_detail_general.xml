@@ -69,7 +69,8 @@
                 android:maxLines="1"
                 android:alpha="0.87"
                 android:visibility="gone"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:hint="@string/account_name"/>
         </RelativeLayout>
 
         <!--PARENT ACCOUNT-->
@@ -130,7 +131,6 @@
                 android:background="@android:color/transparent"
                 android:hint="@string/account_parent"/>
 
->>>>>>> origin/master
         </RelativeLayout>
 
         <!--TICKER-->
@@ -186,7 +186,6 @@
                 android:maxLines="1"
                 android:alpha="0.87"
                 android:visibility="gone"
-                android:background="@android:color/transparent" />
                 android:background="@android:color/transparent"
                 android:hint="@string/account_ticker" />
 
@@ -259,7 +258,6 @@
                 android:hint="@string/account_phone"
                 android:inputType="phone" />
 
->>>>>>> origin/master
         </RelativeLayout>
 
         <!--FAX-->
@@ -320,7 +318,6 @@
                 android:hint="@string/account_fax"
                 android:inputType="phone" />
 
->>>>>>> origin/master
         </RelativeLayout>
 
         <!--WEBSITE-->

@@ -344,11 +344,13 @@ public class AccountDetailGeneral extends Fragment implements View.OnTouchListen
         parent.toggleSaveButton();
     }
 
-    public void setmAccount(JSONObject mAccount) { this.mAccount = mAccount; }
-    public void setEditBuffer(JSONObject editBuffer) { this.editBuffer = editBuffer; }
-    public void setParent(AccountDetailMain parent) { this.parent = parent; }
-    public void setmAccountNameList(List<String> nameList) { this.mAccountNameList = nameList; }
-    public void setmAccountIdMap(Map<String, String> idMap) { this.mAccountIdMap = idMap; }
+    public void setParent(AccountDetailMain parent) {
+        this.parent = parent;
+        this.mAccount = parent.mAccount;
+        this.editBuffer = parent.editBuffer;
+        this.mAccountNameList = parent.mAccountNameList;
+        this.mAccountIdMap = parent.mAccountIdMap;
+    }
     public void redirect(String accountId) {
         Home home = (Home) getActivity();
         ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();

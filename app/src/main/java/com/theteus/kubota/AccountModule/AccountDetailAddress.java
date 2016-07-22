@@ -264,7 +264,9 @@ public class AccountDetailAddress extends Fragment implements View.OnTouchListen
         parent.toggleSaveButton();
     }
 
-    public void setmAccount(JSONObject mAccount) { this.mAccount = mAccount; }
-    public void setEditBuffer(JSONObject editBuffer) { this.editBuffer = editBuffer; }
-    public void setParent(AccountDetailMain parent) { this.parent = parent; }
+    public void setParent(AccountDetailMain parent) {
+        this.parent = parent;
+        this.mAccount = parent.mAccount;
+        this.editBuffer = parent.editBuffer;
+    }
 }
