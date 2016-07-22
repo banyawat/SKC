@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.theteus.kubota.Home;
 import com.theteus.kubota.OrganizationDataService.AsyncResponse;
 import com.theteus.kubota.OrganizationDataService.RetrieveService;
 import com.theteus.kubota.R;
@@ -80,7 +83,11 @@ public class Feed extends Fragment {
                         JSONObject jsObj = result1.getJSONObject(i);
                         JSONObject regardingObject = jsObj.getJSONObject("RegardingObjectId");
                         JSONObject createdByObject = jsObj.getJSONObject("CreatedOnBehalfBy");
-                        adapter.addData(String.valueOf(regardingObject.get("Name")), "Created By " + String.valueOf(createdByObject.get("Name")));
+                        Log.i("RETRIEVE", "."+regardingObject.get("LogicalName").toString());
+                        adapter.addData(String.valueOf(regardingObject.get("Name"))
+                                , "Created By " + String.valueOf(createdByObject.get("Name"))
+                                , regardingObject.get("Id").toString()
+                                , regardingObject.get("LogicalName").toString());
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -93,9 +100,13 @@ public class Feed extends Fragment {
     private class pageActivityAdapter extends RecyclerView.Adapter<pageActivityAdapter.MyViewHolder>{
         ArrayList<String> post;
         ArrayList<String> post2;
+        ArrayList<String> idList;
+        ArrayList<String> logicalNameList;
         public  pageActivityAdapter(){
             post = new ArrayList<>();
             post2 = new ArrayList<>();
+            idList = new ArrayList<>();
+            logicalNameList = new ArrayList<>();
         }
 
         @Override
@@ -105,9 +116,20 @@ public class Feed extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
+        public void onBindViewHolder(MyViewHolder holder, final int position) {
             holder.longText.setText(post.get(position));
             holder.longText2.setText(post2.get(position));
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(logicalNameList.get(position).equals("account")) {
+                        Home home = (Home) getActivity();
+                        home.goTo(5, idList.get(position));
+                    }
+                    else
+                        Toast.makeText(getContext(), "Service not yet available!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override
@@ -115,9 +137,11 @@ public class Feed extends Fragment {
             return post.size();
         }
 
-        public void addData(String data, String data2){
-            post.add(data);
-            post2.add(data2);
+        public void addData(String data, String data2,String id, String logicalName){
+            this.post.add(data);
+            this.post2.add(data2);
+            this.idList.add(id);
+            this.logicalNameList.add(logicalName);
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {

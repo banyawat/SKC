@@ -7,7 +7,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:id="@+id/login_layout"
     android:background="@drawable/kubota_background"
     android:backgroundTint="@color/gray_background"
     android:backgroundTintMode="screen"
@@ -19,6 +18,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/whiteframe"
+        android:backgroundTintMode="screen"
         android:padding="40dp"
         android:id="@+id/relativeLayout">
 

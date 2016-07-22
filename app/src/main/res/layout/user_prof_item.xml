@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,9 +11,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:src="@drawable/dog"
-        app:civ_border_width="1dp"
-        app:civ_border_color="#FFF" />
+        android:src="@drawable/default_user" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,11 +21,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SOME USER"/>
+            android:id="@+id/userprof_name"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="someuser@somemail.com"/>
+            android:id="@+id/userprof_email"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.theteus.kubota;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,6 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.theteus.kubota.AccountModule.Account;
 import com.theteus.kubota.AccountModule.AccountDetailMain;
 import com.theteus.kubota.ActivitiesModule.Activities;
@@ -23,6 +27,9 @@ import com.theteus.kubota.ContactModule.ContactDetailMain;
 import com.theteus.kubota.FeedModule.Feed;
 import com.theteus.kubota.LeadModule.Lead;
 import com.theteus.kubota.LeadModule.LeadDetailMain;
+import com.theteus.kubota.OrganizationDataService.AsyncResponse;
+import com.theteus.kubota.OrganizationDataService.RetrieveService;
+import com.theteus.kubota.OrganizationDataService.Service;
 import com.theteus.kubota.SKCModule.SKC;
 import com.theteus.kubota.SKCModule.SKCDetailMain;
 import com.theteus.kubota.SettingModule.SettingsActivity;
@@ -30,6 +37,11 @@ import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +60,9 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
     private List<MenuObject> menuList;
+
+    private TextView userName;
+    private TextView systemName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +104,24 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
         }
         else
             finish();
+        userName = (TextView) findViewById(R.id.userprof_name);
+        systemName = (TextView) findViewById(R.id.userprof_email);
+        retrieveProfileName();
+    }
+
+    private void retrieveProfileName(){
+        new RetrieveService(Home.this, new AsyncResponse() {
+            @Override
+            public void onFinishTask(JSONObject result) {
+                try {
+                    JSONArray result1 = result.getJSONObject("d").getJSONArray("results");
+                    userName.setText(result1.getJSONObject(0).get("FullName").toString());
+                    systemName.setText(result1.getJSONObject(0).getJSONObject("BusinessUnitId").get("Name").toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).setEntity("SystemUser").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private void initMenuFragment() {
@@ -165,7 +198,6 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
         goTo(position);
     }
 
-
     @Override
     public void onBackPressed() {
         if (getSupportActionBar() != null) {
@@ -218,6 +250,59 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
                 mPagerAdapter.addPage(new Chassis());
                 break;
             case 7:
+                Toast.makeText(getApplicationContext(), "Logging out...", Toast.LENGTH_LONG).show();
+                Service.setDefaultUsername("");
+                Service.setDefaultPassword("");
+                startActivity(new Intent(Home.this, LoginActivity.class));
+                finish();
+                break;
+            default:
+                break;
+        }
+        mPager.setAdapter(mPagerAdapter);
+        mPager.setCurrentItem(0);
+        changeMenu(position);
+    }
+
+    public void goTo(int position, String accountID){
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        switch (position) {
+            case 0:
+                mPagerAdapter.addPage(new Feed());
+                break;
+            case 1:
+                mPagerAdapter.addPage(new SKCDetailMain());
+                mPagerAdapter.addPage(new SKC());
+                break;
+            case 2:
+                mPagerAdapter.addPage(new ContactDetailMain());
+                mPagerAdapter.addPage(new Contact());
+                break;
+            case 3:
+                mPagerAdapter.addPage(new LeadDetailMain());
+                mPagerAdapter.addPage(new Lead());
+                break;
+            case 4:
+                mPagerAdapter.addPage(new ActivitiesDetailMain());
+                mPagerAdapter.addPage(new Activities());
+                break;
+            case 5:
+                Bundle bundle = new Bundle();
+                bundle.putString("accountId", accountID);
+                AccountDetailMain accountDetailMain = new AccountDetailMain();
+                accountDetailMain.setArguments(bundle);
+                mPagerAdapter.addPage(accountDetailMain);
+                mPagerAdapter.addPage(new Account());
+                break;
+            case 6:
+                mPagerAdapter.addPage(new ChassisDetailMain());
+                mPagerAdapter.addPage(new Chassis());
+                break;
+            case 7:
+                Toast.makeText(getApplicationContext(), "Logging out...", Toast.LENGTH_LONG).show();
+                Service.setDefaultUsername("");
+                Service.setDefaultPassword("");
+                startActivity(new Intent(Home.this, LoginActivity.class));
                 finish();
                 break;
             default:

@@ -43,6 +43,7 @@
     <string name="form_contact_skl_update">มีการอัพเดจาก SKL</string>
 
     <string name="icon_description">icon</string>
+    <string name="login_warning_text">"Username or password might be wrong, Please try again"</string>
 
     <string name="add_button">เพิ่ม</string>
 
@@ -625,5 +626,9 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
-    </string>String>
+    </string>
+    <string name="logo">Logo</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>String>
 </resources>

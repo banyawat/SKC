@@ -69,13 +69,7 @@
                 android:maxLines="1"
                 android:alpha="0.87"
                 android:visibility="gone"
-<<<<<<< HEAD
                 android:background="@android:color/transparent" />
-=======
-                android:background="@android:color/transparent"
-                android:hint="@string/account_name"/>
-
->>>>>>> origin/master
         </RelativeLayout>
 
         <!--PARENT ACCOUNT-->
@@ -118,8 +112,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:textStyle="italic" />
-<<<<<<< HEAD
-=======
 
             <AutoCompleteTextView
                 android:id="@+id/parent_account_edit"
@@ -194,13 +186,10 @@
                 android:maxLines="1"
                 android:alpha="0.87"
                 android:visibility="gone"
-<<<<<<< HEAD
                 android:background="@android:color/transparent" />
-=======
                 android:background="@android:color/transparent"
                 android:hint="@string/account_ticker" />
 
->>>>>>> origin/master
         </RelativeLayout>
     </LinearLayout>
 
@@ -251,8 +240,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-<<<<<<< HEAD
-=======
 
             <EditText
                 android:id="@+id/phone_edit"
@@ -314,8 +301,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-<<<<<<< HEAD
-=======
 
             <EditText
                 android:id="@+id/fax_edit"
@@ -377,9 +362,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-<<<<<<< HEAD
-=======
-
             <EditText
                 android:id="@+id/website_edit"
                 android:layout_width="match_parent"
@@ -396,8 +378,6 @@
                 android:visibility="gone"
                 android:background="@android:color/transparent"
                 android:hint="@string/account_website" />
-
->>>>>>> origin/master
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
