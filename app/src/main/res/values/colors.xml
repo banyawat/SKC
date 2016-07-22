@@ -29,4 +29,6 @@ limitations under the License.
     <color name="statusBlueFont">#1E88E5</color>
     <color name="statusUnknown">#F5F5F5</color>
     <color name="statusUnknownFont">#757575</color>
+
+    <color name="black">#000000</color>
 </resources>

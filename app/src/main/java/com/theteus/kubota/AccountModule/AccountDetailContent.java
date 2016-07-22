@@ -12,9 +12,18 @@ import android.widget.TabHost;
 import com.theteus.kubota.R;
 import com.theteus.kubota.ScreenSlidePagerAdapter;
 
+import org.json.JSONObject;
+
+import java.util.List;
+import java.util.Map;
+
 public class AccountDetailContent extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
     //Content
-    private String mAccountString;
+    private JSONObject mAccount;
+    private JSONObject editBuffer;
+    private List<String> mAccountNameList;
+    private Map<String, String> mAccountIdMap;
+    private AccountDetailMain parent;
     //View
     private View rootView;
     private FragmentTabHost mTabHost;
@@ -24,14 +33,12 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if(getArguments() != null && getArguments().containsKey(AccountDetailMain.ARG_PARAM2))
-            mAccountString = getArguments().getString(AccountDetailMain.ARG_PARAM2);
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (mAccountString != null) {
+        if (mAccount != null) {
             rootView = inflater.inflate(R.layout.fragment_detail_tab, container, false);
             setUpTabView();
         } else {
@@ -41,15 +48,12 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
     }
 
     private void setUpTabView() {
-        Bundle args = new Bundle();
-        args.putString(AccountDetailMain.ARG_PARAM2, mAccountString);
-
         mTabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.tab_content);
-        mTabHost.addTab(mTabHost.newTabSpec("GeneralTab").setIndicator("ข้อมูลทั่วไป"), AccountDetailGeneral.class, args);
-        mTabHost.addTab(mTabHost.newTabSpec("AddressTab").setIndicator("ที่อยู่"), AccountDetailAddress.class, args);
-        mTabHost.addTab(mTabHost.newTabSpec("DetailsTab1").setIndicator("รายละเอียด (I)"), AccountDetailDetailsPart1.class, args);
-        mTabHost.addTab(mTabHost.newTabSpec("DetailsTab2").setIndicator("รายละเอียด (II)"), AccountDetailDetailsPart2.class, args);
+        mTabHost.addTab(mTabHost.newTabSpec("GeneralTab").setIndicator("ข้อมูลทั่วไป"), AccountDetailGeneral.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("AddressTab").setIndicator("ที่อยู่"), AccountDetailAddress.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("DetailsTab1").setIndicator("รายละเอียด (I)"), AccountDetailDetailsPart1.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("DetailsTab2").setIndicator("รายละเอียด (II)"), AccountDetailDetailsPart2.class, null);
         mTabHost.setOnTabChangedListener(this);
 
         for (int i = 0; i < mTabHost.getTabWidget().getTabCount(); i++)
@@ -59,26 +63,35 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
         ScreenSlidePagerAdapter mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 
         AccountDetailGeneral generalSection = new AccountDetailGeneral();
-        generalSection.setArguments(args);
+        generalSection.setmAccount(mAccount);
+        generalSection.setEditBuffer(editBuffer);
+        generalSection.setmAccountNameList(mAccountNameList);
+        generalSection.setmAccountIdMap(mAccountIdMap);
+        generalSection.setParent(parent);
         mPagerAdapter.addPage(generalSection);
 
         AccountDetailAddress addressSection = new AccountDetailAddress();
-        addressSection.setArguments(args);
+        addressSection.setmAccount(mAccount);
+        addressSection.setEditBuffer(editBuffer);
+        addressSection.setParent(parent);
         mPagerAdapter.addPage(addressSection);
 
         AccountDetailDetailsPart1 detailSection1 = new AccountDetailDetailsPart1();
-        detailSection1.setArguments(args);
+        detailSection1.setmAccount(mAccount);
+        detailSection1.setEditBuffer(editBuffer);
         mPagerAdapter.addPage(detailSection1);
 
         AccountDetailDetailsPart2 detailSection2 = new AccountDetailDetailsPart2();
-        detailSection2.setArguments(args);
+        detailSection2.setmAccount(mAccount);
+        detailSection2.setEditBuffer(editBuffer);
+        detailSection2.setParent(parent);
         mPagerAdapter.addPage(detailSection2);
 
         mPager.setAdapter(mPagerAdapter);
         mPager.addOnPageChangeListener(this);
 
-        if(getArguments().containsKey(AccountDetailMain.ARG_PARAM3))
-            setCurrentTab(getArguments().getInt(AccountDetailMain.ARG_PARAM3));
+        if(getArguments().containsKey(AccountDetailMain.ARG_PARAM2))
+            setCurrentTab(getArguments().getInt(AccountDetailMain.ARG_PARAM2));
     }
 
     @Override
@@ -95,7 +108,11 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
     @Override
     public void onTabChanged(String tabId) { this.mPager.setCurrentItem(this.mTabHost.getCurrentTab()); }
 
-    public void setCurrentTab(int tabNumber) {
-        mPager.setCurrentItem(tabNumber);
-    }
+    public void setCurrentTab(int tabNumber) { mPager.setCurrentItem(tabNumber); }
+
+    public void setmAccount(JSONObject mAccount) { this.mAccount = mAccount; }
+    public void setEditBuffer(JSONObject editBuffer) { this.editBuffer = editBuffer; }
+    public void setmAccountNameList(List<String> nameList) { this.mAccountNameList = nameList; }
+    public void setmAccountIdMap(Map<String, String> idMap) { this.mAccountIdMap = idMap; }
+    public void setParent(AccountDetailMain parent) { this.parent = parent; }
 }

@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="36dp"
+    android:padding="24dp"
     tools:context=".AccountModule.AccountDetailAddress"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:id="@+id/layout">
 
     <LinearLayout
         android:id="@+id/section_1"
@@ -55,6 +56,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/street_1_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/street_1_icon"
+                android:layout_toRightOf="@id/street_1_icon"
+                android:layout_alignBottom="@id/street_1_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_street1"/>
+
         </RelativeLayout>
 
         <!--STREET 2-->
@@ -97,6 +116,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/street_2_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/street_2_icon"
+                android:layout_toRightOf="@id/street_2_icon"
+                android:layout_alignBottom="@id/street_2_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_street2"/>
+
         </RelativeLayout>
 
         <!--STREET 3-->
@@ -139,6 +176,25 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+
+            <EditText
+                android:id="@+id/street_3_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/street_3_icon"
+                android:layout_toRightOf="@id/street_3_icon"
+                android:layout_alignBottom="@id/street_3_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_street3"/>
+
         </RelativeLayout>
     </LinearLayout>
 
@@ -190,6 +246,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/city_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/city_icon"
+                android:layout_toRightOf="@id/city_icon"
+                android:layout_alignBottom="@id/city_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_city"/>
+
         </RelativeLayout>
 
         <!--STATE-->
@@ -233,6 +307,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/state_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/state_icon"
+                android:layout_toRightOf="@id/state_icon"
+                android:layout_alignBottom="@id/state_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_state"/>
+
         </RelativeLayout>
 
         <!--POSTAL CODE-->
@@ -274,6 +366,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/postal_code_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/postal_code_icon"
+                android:layout_toRightOf="@id/postal_code_icon"
+                android:layout_alignBottom="@id/postal_code_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_postal_code"/>
+
         </RelativeLayout>
 
         <!--COUNTRY-->
@@ -317,6 +427,24 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <EditText
+                android:id="@+id/country_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/country_icon"
+                android:layout_toRightOf="@id/country_icon"
+                android:layout_alignBottom="@id/country_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_country"/>
+
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

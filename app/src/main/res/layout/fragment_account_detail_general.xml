@@ -69,7 +69,13 @@
                 android:maxLines="1"
                 android:alpha="0.87"
                 android:visibility="gone"
+<<<<<<< HEAD
                 android:background="@android:color/transparent" />
+=======
+                android:background="@android:color/transparent"
+                android:hint="@string/account_name"/>
+
+>>>>>>> origin/master
         </RelativeLayout>
 
         <!--PARENT ACCOUNT-->
@@ -112,6 +118,27 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:textStyle="italic" />
+<<<<<<< HEAD
+=======
+
+            <AutoCompleteTextView
+                android:id="@+id/parent_account_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/parent_account_icon"
+                android:layout_toRightOf="@id/parent_account_icon"
+                android:layout_alignBottom="@id/parent_account_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_parent"/>
+
+>>>>>>> origin/master
         </RelativeLayout>
 
         <!--TICKER-->
@@ -167,7 +194,13 @@
                 android:maxLines="1"
                 android:alpha="0.87"
                 android:visibility="gone"
+<<<<<<< HEAD
                 android:background="@android:color/transparent" />
+=======
+                android:background="@android:color/transparent"
+                android:hint="@string/account_ticker" />
+
+>>>>>>> origin/master
         </RelativeLayout>
     </LinearLayout>
 
@@ -218,6 +251,28 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+<<<<<<< HEAD
+=======
+
+            <EditText
+                android:id="@+id/phone_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/phone_icon"
+                android:layout_toRightOf="@id/phone_icon"
+                android:layout_alignBottom="@id/phone_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_phone"
+                android:inputType="phone" />
+
+>>>>>>> origin/master
         </RelativeLayout>
 
         <!--FAX-->
@@ -259,6 +314,28 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+<<<<<<< HEAD
+=======
+
+            <EditText
+                android:id="@+id/fax_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/fax_icon"
+                android:layout_toRightOf="@id/fax_icon"
+                android:layout_alignBottom="@id/fax_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_fax"
+                android:inputType="phone" />
+
+>>>>>>> origin/master
         </RelativeLayout>
 
         <!--WEBSITE-->
@@ -300,6 +377,27 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+<<<<<<< HEAD
+=======
+
+            <EditText
+                android:id="@+id/website_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/website_icon"
+                android:layout_toRightOf="@id/website_icon"
+                android:layout_alignBottom="@id/website_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:alpha="0.87"
+                android:visibility="gone"
+                android:background="@android:color/transparent"
+                android:hint="@string/account_website" />
+
+>>>>>>> origin/master
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

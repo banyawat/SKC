@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     tools:context=".AccountModule.AccountDetailDetailsPart2"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:id="@+id/layout">
 
     <LinearLayout
         android:id="@+id/section_1"
@@ -28,13 +29,23 @@
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.87" />
+
+        <EditText
+            android:id="@+id/description_edit"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:textSize="16sp"
             android:textColor="@android:color/black"
-            android:maxLines="10"
-            android:lines="10"
-            android:alpha="0.87" />
+            android:alpha="0.87"
+            android:visibility="gone"
+            android:background="@android:color/transparent"
+            android:hint="@string/description" />
 
     </LinearLayout>
 
@@ -98,6 +109,18 @@
                 android:maxLines="1"
                 android:alpha="0.87" />
 
+            <Switch
+                android:id="@+id/email_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/email_icon"
+                android:layout_toRightOf="@id/email_icon"
+                android:layout_alignBottom="@id/email_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
         </RelativeLayout>
 
         <!--BULK EMAIL CONTACT PREFERENCE-->
@@ -139,6 +162,18 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <Switch
+                android:id="@+id/bulk_email_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/bulk_email_icon"
+                android:layout_toRightOf="@id/bulk_email_icon"
+                android:layout_alignBottom="@id/bulk_email_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -182,6 +217,18 @@
                 android:maxLines="1"
                 android:alpha="0.87" />
 
+            <Switch
+                android:id="@+id/phone_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/phone_icon"
+                android:layout_toRightOf="@id/phone_icon"
+                android:layout_alignBottom="@id/phone_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
         </RelativeLayout>
 
         <!--FAX CONTACT PREFERENCE-->
@@ -224,6 +271,18 @@
                 android:maxLines="1"
                 android:alpha="0.87" />
 
+            <Switch
+                android:id="@+id/fax_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/fax_icon"
+                android:layout_toRightOf="@id/fax_icon"
+                android:layout_alignBottom="@id/fax_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
         </RelativeLayout>
 
         <!--MAIL PREFERENCE-->
@@ -265,6 +324,18 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+
+            <Switch
+                android:id="@+id/mail_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/mail_icon"
+                android:layout_toRightOf="@id/mail_icon"
+                android:layout_alignBottom="@id/mail_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
         </RelativeLayout>
 

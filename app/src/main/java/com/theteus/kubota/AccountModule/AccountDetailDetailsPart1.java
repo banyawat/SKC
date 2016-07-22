@@ -17,6 +17,7 @@ public class AccountDetailDetailsPart1 extends Fragment{
     private static final String REPLACEMENT_STRING = "- - -";
     //Content
     private JSONObject mAccount;
+    private JSONObject editBuffer;
     //Views
 
     public AccountDetailDetailsPart1() {}
@@ -24,12 +25,12 @@ public class AccountDetailDetailsPart1 extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        if(getArguments() != null  && getArguments().containsKey(AccountDetailMain.ARG_PARAM2))
-            try {
-                mAccount = new JSONObject(getArguments().getString(AccountDetailMain.ARG_PARAM2));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        //if(getArguments() != null  && getArguments().containsKey(AccountDetailMain.ARG_PARAM2))
+        //    try {
+        //        mAccount = new JSONObject(getArguments().getString(AccountDetailMain.ARG_PARAM2));
+        //    } catch (JSONException e) {
+        //        e.printStackTrace();
+        //    }
         super.onCreate(savedInstanceState);
     }
 
@@ -89,4 +90,7 @@ public class AccountDetailDetailsPart1 extends Fragment{
 
         return view;
     }
+
+    public void setmAccount(JSONObject mAccount) { this.mAccount = mAccount; }
+    public void setEditBuffer(JSONObject editBuffer) { this.editBuffer = editBuffer; }
 }
