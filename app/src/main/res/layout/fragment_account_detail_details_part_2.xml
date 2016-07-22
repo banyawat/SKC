@@ -163,18 +163,6 @@
                 android:maxLines="1"
                 android:alpha="0.87" />
 
-            <Switch
-                android:id="@+id/bulk_email_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/bulk_email_icon"
-                android:layout_toRightOf="@id/bulk_email_icon"
-                android:layout_alignBottom="@id/bulk_email_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
         </RelativeLayout>
 
         <!--PHONE CONTACT PREFERENCE-->
@@ -216,18 +204,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
-            <Switch
-                android:id="@+id/phone_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/phone_icon"
-                android:layout_toRightOf="@id/phone_icon"
-                android:layout_alignBottom="@id/phone_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -271,18 +247,6 @@
                 android:maxLines="1"
                 android:alpha="0.87" />
 
-            <Switch
-                android:id="@+id/fax_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/fax_icon"
-                android:layout_toRightOf="@id/fax_icon"
-                android:layout_alignBottom="@id/fax_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
         </RelativeLayout>
 
         <!--MAIL PREFERENCE-->
@@ -324,18 +288,6 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
-
-            <Switch
-                android:id="@+id/mail_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/mail_icon"
-                android:layout_toRightOf="@id/mail_icon"
-                android:layout_alignBottom="@id/mail_icon"
-                android:layout_marginLeft="24dp"
-                android:layout_marginStart="24dp"
-                android:textSize="16sp"
-                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -400,6 +352,19 @@
                 android:maxLines="1"
                 android:alpha="0.87" />
 
+            <Spinner
+                android:id="@+id/shipping_method_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/shipping_method_icon"
+                android:layout_toRightOf="@id/shipping_method_icon"
+                android:layout_alignBottom="@id/shipping_method_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:alpha="0.01"
+                android:background="@android:drawable/btn_default" />
+
         </RelativeLayout>
 
         <!--FREIGHT TERMS-->
@@ -442,6 +407,18 @@
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87" />
+            <Spinner
+                android:id="@+id/freight_terms_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/freight_terms_icon"
+                android:layout_toRightOf="@id/freight_terms_icon"
+                android:layout_alignBottom="@id/freight_terms_icon"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:textSize="16sp"
+                android:alpha="0.01"
+                android:background="@android:drawable/btn_default" />
         </RelativeLayout>
 
     </LinearLayout>

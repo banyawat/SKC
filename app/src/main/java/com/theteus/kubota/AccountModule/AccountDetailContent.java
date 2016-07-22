@@ -20,9 +20,6 @@ import java.util.Map;
 public class AccountDetailContent extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
     //Content
     private JSONObject mAccount;
-    private JSONObject editBuffer;
-    private List<String> mAccountNameList;
-    private Map<String, String> mAccountIdMap;
     private AccountDetailMain parent;
     //View
     private View rootView;
@@ -63,27 +60,18 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
         ScreenSlidePagerAdapter mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 
         AccountDetailGeneral generalSection = new AccountDetailGeneral();
-        generalSection.setmAccount(mAccount);
-        generalSection.setEditBuffer(editBuffer);
-        generalSection.setmAccountNameList(mAccountNameList);
-        generalSection.setmAccountIdMap(mAccountIdMap);
         generalSection.setParent(parent);
         mPagerAdapter.addPage(generalSection);
 
         AccountDetailAddress addressSection = new AccountDetailAddress();
-        addressSection.setmAccount(mAccount);
-        addressSection.setEditBuffer(editBuffer);
         addressSection.setParent(parent);
         mPagerAdapter.addPage(addressSection);
 
         AccountDetailDetailsPart1 detailSection1 = new AccountDetailDetailsPart1();
-        detailSection1.setmAccount(mAccount);
-        detailSection1.setEditBuffer(editBuffer);
+        detailSection1.setParent(parent);
         mPagerAdapter.addPage(detailSection1);
 
         AccountDetailDetailsPart2 detailSection2 = new AccountDetailDetailsPart2();
-        detailSection2.setmAccount(mAccount);
-        detailSection2.setEditBuffer(editBuffer);
         detailSection2.setParent(parent);
         mPagerAdapter.addPage(detailSection2);
 
@@ -111,8 +99,5 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
     public void setCurrentTab(int tabNumber) { mPager.setCurrentItem(tabNumber); }
 
     public void setmAccount(JSONObject mAccount) { this.mAccount = mAccount; }
-    public void setEditBuffer(JSONObject editBuffer) { this.editBuffer = editBuffer; }
-    public void setmAccountNameList(List<String> nameList) { this.mAccountNameList = nameList; }
-    public void setmAccountIdMap(Map<String, String> idMap) { this.mAccountIdMap = idMap; }
     public void setParent(AccountDetailMain parent) { this.parent = parent; }
 }

@@ -6,16 +6,18 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CompoundButton;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Switch;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.theteus.kubota.R;
@@ -23,16 +25,22 @@ import com.theteus.kubota.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by whorangester on 7/14/16.
  */
-public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchListener, View.OnFocusChangeListener {
+public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchListener, View.OnFocusChangeListener, AdapterView.OnItemSelectedListener {
     //Constant
     private static final String REPLACEMENT_STRING = "- - -";
     //Content
     private JSONObject mAccount;
     private JSONObject editBuffer;
     private AccountDetailMain parent;
+    private List<String> shippingMethod;
+    private List<String> freightTerms;
     //View
     private TextView descriptionText;
     private TextView emailText;
@@ -43,12 +51,18 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
     private TextView shippingText;
     private TextView freightText;
     private EditText descriptionEdit;
+    private Spinner shippingEdit;
+    private Spinner freightEdit;
     private InputMethodManager keyboard;
 
     public AccountDetailDetailsPart2() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        shippingMethod = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.account_shipping_method)));
+        shippingMethod.set(0, "- - -");
+        freightTerms = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.account_freight_terms)));
+        freightTerms.set(0, "- - -");
         super.onCreate(savedInstanceState);
     }
 
@@ -62,7 +76,11 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
         phoneText = (TextView) view.findViewById(R.id.phone);
         faxText = (TextView) view.findViewById(R.id.fax);
         mailText = (TextView) view.findViewById(R.id.mail);
+        shippingText = (TextView) view.findViewById(R.id.shipping_method);
+        freightText = (TextView) view.findViewById(R.id.freight_terms);
         descriptionEdit = (EditText) view.findViewById(R.id.description_edit);
+        shippingEdit = (Spinner) view.findViewById(R.id.shipping_method_edit);
+        freightEdit = (Spinner) view.findViewById(R.id.freight_terms_edit);
         keyboard = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 
         final LinearLayout touchInterceptor = (LinearLayout) view.findViewById(R.id.layout);
@@ -90,6 +108,8 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
             switchLoad(AccountSchema.CONTACT_PREFERENCE_PHONE, phoneText, "Not Allow", "Allow");
             switchLoad(AccountSchema.CONTACT_PREFERENCE_FAX, faxText, "Not Allow", "Allow");
             switchLoad(AccountSchema.CONTACT_PREFERENCE_MAIL, mailText, "Not Allow", "Allow");
+            spinnerLoad(AccountSchema.SHIPPING_METHOD, shippingText, shippingEdit, shippingMethod);
+            spinnerLoad(AccountSchema.FREIGHT_TERMS, freightText, freightEdit, freightTerms);
         }
 
         return view;
@@ -97,7 +117,7 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
 
     // Value
     private long touchDownMs = 0;
-
+    // For TextView Tap/Press Interaction
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getAction()) {
@@ -137,7 +157,7 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
     public void tap(View v) {
         // Do Tap Action
     }
-
+    // For EditText Focus Change Interaction
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if(!hasFocus)
@@ -146,6 +166,22 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
                     basicFocusLoss(AccountSchema.DESCRIPTION, descriptionText, descriptionEdit);
                     break;
             }
+    }
+    // For Spinner Item Select Interaction
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (parent.getId()) {
+            case R.id.shipping_method_edit:
+                spinnerFocusLoss(AccountSchema.SHIPPING_METHOD, shippingText, shippingMethod, position);
+                break;
+            case R.id.freight_terms_edit:
+                spinnerFocusLoss(AccountSchema.FREIGHT_TERMS, freightText, freightTerms, position);
+                break;
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     // On Load Basic Field
@@ -176,6 +212,37 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
                 textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             } else {
                 textView.setText(mAccount.getBoolean(schemaName) ? labelTrue : labelFalse);
+                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            }
+            textView.setOnTouchListener(this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void spinnerLoad(final String schemaName, final TextView textView, final Spinner spinner, final List<String> valueLabel) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, valueLabel);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+        try {
+            if (editBuffer.has(schemaName)) {
+                if(editBuffer.getJSONObject(schemaName).isNull("Value")) {
+                    textView.setText(REPLACEMENT_STRING);
+                    spinner.setSelection(0);
+                } else {
+                    textView.setText(valueLabel.get(editBuffer.getJSONObject(schemaName).getInt("Value")));
+                    spinner.setSelection(editBuffer.getJSONObject(schemaName).getInt("Value"));
+                }
+                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            } else {
+                if(mAccount.getJSONObject(schemaName).isNull("Value")) {
+                    textView.setText(REPLACEMENT_STRING);
+                    spinner.setSelection(0);
+                } else {
+                    textView.setText(valueLabel.get(mAccount.getJSONObject(schemaName).getInt("Value")));
+                    spinner.setSelection(mAccount.getJSONObject(schemaName).getInt("Value"));
+                }
                 textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
                 textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
             }
@@ -237,6 +304,41 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
         keyboard.hideSoftInputFromWindow(editText.getWindowToken(), 0);
         parent.toggleSaveButton();
     }
+    public void spinnerFocusLoss(String schemaName, TextView textView, List<String> valueLabel, int position) {
+        try {
+            if (mAccount.getJSONObject(schemaName).isNull("Value")) {
+                if(position == 0) {
+                    editBuffer.remove(schemaName);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                } else {
+                    editBuffer.put(schemaName, new JSONObject().put("Value", position));
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                }
+            } else {
+                if(position == 0) {
+                    editBuffer.put(schemaName, new JSONObject().put("Value", JSONObject.NULL));
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                } else if(position != mAccount.getJSONObject(schemaName).getInt("Value")) {
+                    editBuffer.put(schemaName, new JSONObject().put("Value", position));
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                } else {
+                    editBuffer.remove(schemaName);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        textView.setText(valueLabel.get(position));
+        //textView.setVisibility(View.VISIBLE);
+        //spinner.setVisibility(View.GONE);
+        parent.toggleSaveButton();
+    }
     // Handle Text Switching
     public void switching(String schemaName, TextView textView, final String labelTrue, final String labelFalse) {
         try {
@@ -258,7 +360,9 @@ public class AccountDetailDetailsPart2 extends Fragment implements View.OnTouchL
         }
     }
 
-    public void setmAccount(JSONObject mAccount) { this.mAccount = mAccount; }
-    public void setEditBuffer(JSONObject editBuffer) { this.editBuffer = editBuffer; }
-    public void setParent(AccountDetailMain parent) { this.parent = parent; }
+    public void setParent(AccountDetailMain parent) {
+        this.parent = parent;
+        this.mAccount = parent.mAccount;
+        this.editBuffer = parent.editBuffer;
+    }
 }
