@@ -385,14 +385,15 @@ public class AccountDetailMain extends Fragment{
 
     protected void redirect(String accountId, int pageNumber) {
         Home home = (Home) getActivity();
-        ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
+        /*ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
         AccountDetailMain fragment = new AccountDetailMain();
         Bundle args = new Bundle();
         if(accountId != null) args.putString(AccountDetailMain.ARG_PARAM1, accountId);
         if(pageNumber >= 0 && pageNumber <= 3) args.putInt(AccountDetailMain.ARG_PARAM2, 0);
         fragment.setArguments(args);
         mPagerAdapter.setPage(0, fragment);
-        mPagerAdapter.notifyDataSetChanged();
+        mPagerAdapter.notifyDataSetChanged();*/
+        home.goTo(5, accountId);
     }
 }
 

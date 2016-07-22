@@ -353,13 +353,14 @@ public class AccountDetailGeneral extends Fragment implements View.OnTouchListen
     }
     public void redirect(String accountId) {
         Home home = (Home) getActivity();
-        ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
+        /*ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
 
         AccountDetailMain fragment = new AccountDetailMain();
         Bundle args = new Bundle();
         if(accountId != null) args.putString(AccountDetailMain.ARG_PARAM1, accountId);
         fragment.setArguments(args);
         mPagerAdapter.setPage(0, fragment);
-        mPagerAdapter.notifyDataSetChanged();
+        mPagerAdapter.notifyDataSetChanged();*/
+        home.goTo(5, accountId);
     }
 }
