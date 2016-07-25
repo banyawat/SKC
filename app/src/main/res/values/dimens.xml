@@ -4,7 +4,11 @@
 
     <!-- Default screen margins, per the Android Design guidelines. -->
 
+    <dimen name="header1_text">40sp</dimen>
+    <dimen name="header2_text">30sp</dimen>
+
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="fab_button_margin">65dp</dimen>
 
     <dimen name="list_item_padding_sides">16dp</dimen>
     <dimen name="list_item_height">40dp</dimen>

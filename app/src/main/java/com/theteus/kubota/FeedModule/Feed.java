@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 
 public class Feed extends Fragment {
@@ -40,40 +45,13 @@ public class Feed extends Fragment {
         RecyclerView postActivity = (RecyclerView) view.findViewById(R.id.feed_activitylog);
         postActivity.setLayoutManager(new LinearLayoutManager(view.getContext()));
         pageActivityAdapter adapter = new pageActivityAdapter();
-        retrieve(postActivity, adapter);
-        initPieChart(view);
-        initValueLine(view);
+        retrieve(postActivity, adapter, view);
         return view;
     }
 
-    private void initPieChart(View view){
-        PieChart mPieChart = (PieChart) view.findViewById(R.id.piechart);
-        mPieChart.addPieSlice(new PieModel("SKC Customer", 15, Color.parseColor("#FE6DA8")));
-        mPieChart.addPieSlice(new PieModel("Customer", 25, Color.parseColor("#56B7F1")));
-        mPieChart.addPieSlice(new PieModel("Lead", 35, Color.parseColor("#CDA67F")));
-        mPieChart.addPieSlice(new PieModel("Acitivity", 9, Color.parseColor("#FED70E")));
-        mPieChart.startAnimation();
-    }
-    private void initValueLine(View view){
-        ValueLineChart mCubicValueLineChart = (ValueLineChart) view.findViewById(R.id.cubiclinechart);
-        ValueLineSeries series = new ValueLineSeries();
-        series.setColor(0xFF56B7F1);
-        series.addPoint(new ValueLinePoint("Jan", 2.4f));
-        series.addPoint(new ValueLinePoint("Feb", 3.4f));
-        series.addPoint(new ValueLinePoint("Mar", .4f));
-        series.addPoint(new ValueLinePoint("Apr", 1.2f));
-        series.addPoint(new ValueLinePoint("Mai", 2.6f));
-        series.addPoint(new ValueLinePoint("Jun", 1.0f));
-        series.addPoint(new ValueLinePoint("Jul", 3.5f));
-        series.addPoint(new ValueLinePoint("Aug", 2.4f));
-        series.addPoint(new ValueLinePoint("Sep", 2.4f));
-        series.addPoint(new ValueLinePoint("Oct", 3.4f));
-        series.addPoint(new ValueLinePoint("Nov", .4f));
-        series.addPoint(new ValueLinePoint("Dec", 1.3f));
-        mCubicValueLineChart.addSeries(series);
-        mCubicValueLineChart.startAnimation();
-    }
-    private void retrieve(final RecyclerView postActivity, final pageActivityAdapter adapter){
+    private void retrieve(final RecyclerView postActivity, final pageActivityAdapter adapter, final View view){
+        final Map<String, Integer> dateMap = new HashMap<>();
+        final Map<String, Integer> typeMap = new HashMap<>();
         new RetrieveService(getActivity(), new AsyncResponse() {
             @Override
             public void onFinishTask(JSONObject result) {
@@ -81,22 +59,63 @@ public class Feed extends Fragment {
                     JSONArray result1 = result.getJSONObject("d").getJSONArray("results");
                     for(int i=0;i<result1.length();i++){
                         JSONObject jsObj = result1.getJSONObject(i);
+                        Timestamp stamp = new Timestamp(Long.valueOf(jsObj.get("CreatedOn").toString().replaceAll("[/Date()]","")));
+                        Date date = new Date(stamp.getTime());
                         JSONObject regardingObject = jsObj.getJSONObject("RegardingObjectId");
                         JSONObject createdByObject = jsObj.getJSONObject("CreatedOnBehalfBy");
-                        Log.i("RETRIEVE", "."+regardingObject.get("LogicalName").toString());
+
+                        String dateObj = date.toString();
+                        if(dateMap.containsKey(dateObj)) dateMap.put(dateObj, dateMap.get(dateObj) + 1);
+                        else dateMap.put(dateObj, 1);
+
+                        String typeName = regardingObject.get("LogicalName").toString();
+                        if(typeMap.containsKey(typeName)) typeMap.put(typeName, typeMap.get(typeName)+1);
+                        else typeMap.put(typeName, 1);
+
                         adapter.addData(String.valueOf(regardingObject.get("Name"))
                                 , "Created By " + String.valueOf(createdByObject.get("Name"))
                                 , regardingObject.get("Id").toString()
                                 , regardingObject.get("LogicalName").toString());
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                } catch (JSONException e) {e.printStackTrace();}
+                initPieChart(view, typeMap);
+                initValueLine(view, dateMap);
                 postActivity.setAdapter(adapter);
             }
         })
                 .setEntity("Post").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
+
+    private void initPieChart(View view, Map<String, Integer> typeMap){
+        int colorBias = 0;
+        PieChart mPieChart = (PieChart) view.findViewById(R.id.piechart);
+        for (Object o : typeMap.entrySet()) {
+            HashMap.Entry pair = (HashMap.Entry) o;
+            String output = pair.getKey().toString().substring(0, 1).toUpperCase() + pair.getKey().toString().substring(1);
+            mPieChart.addPieSlice(new PieModel(output
+                    , Integer.valueOf(pair.getValue().toString())
+                    , Color.parseColor("#56B7F1") + colorBias));
+            colorBias += 600;
+        }
+        mPieChart.startAnimation();
+    }
+
+    private void initValueLine(View view, Map<String, Integer> dateMap){
+        ValueLineChart mCubicValueLineChart = (ValueLineChart) view.findViewById(R.id.cubiclinechart);
+        ValueLineSeries series = new ValueLineSeries();
+        series.setColor(0xFFFFC107);
+        Map<String, Integer> map = new TreeMap<>(dateMap);
+        Iterator it = map.entrySet().iterator();
+        series.addPoint(new ValueLinePoint(" ", 0));
+        while(it.hasNext()){
+            HashMap.Entry pair = (HashMap.Entry)it.next();
+            series.addPoint(new ValueLinePoint(pair.getKey().toString(), Float.valueOf(pair.getValue().toString())));
+        }
+        series.addPoint(new ValueLinePoint(" ", 0));
+        mCubicValueLineChart.addSeries(series);
+        mCubicValueLineChart.startAnimation();
+    }
+
     private class pageActivityAdapter extends RecyclerView.Adapter<pageActivityAdapter.MyViewHolder>{
         ArrayList<String> post;
         ArrayList<String> post2;

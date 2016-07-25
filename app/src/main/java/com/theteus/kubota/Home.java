@@ -287,10 +287,10 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
                 mPagerAdapter.addPage(new Activities());
                 break;
             case 5:
-                Bundle bundle = new Bundle();
-                bundle.putString("accountId", accountID);
+                Bundle args = new Bundle();
+                args.putString("accountId", accountID);
                 AccountDetailMain accountDetailMain = new AccountDetailMain();
-                accountDetailMain.setArguments(bundle);
+                accountDetailMain.setArguments(args);
                 mPagerAdapter.addPage(accountDetailMain);
                 mPagerAdapter.addPage(new Account());
                 break;

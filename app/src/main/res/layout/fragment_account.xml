@@ -15,15 +15,15 @@
         android:id="@+id/card01"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="55dp"
-        android:layout_marginRight="55dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="35dp"
         android:orientation="vertical" >
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="35dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,12 +77,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/account_nextButton"
         android:src ="@drawable/ic_arrow_forward"
-        android:paddingBottom="5dp"
-        android:paddingEnd="5dp"
-        android:paddingRight="5dp"
         app:layout_anchor="@id/card_toolbar_account"
         app:layout_anchorGravity="right|end|bottom"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"/>
-
+        android:layout_marginEnd="@dimen/fab_button_margin"
+        android:layout_marginRight="@dimen/fab_button_margin" />
 </android.support.design.widget.CoordinatorLayout>
