@@ -1,13 +1,5 @@
 package com.theteus.kubota.AccountModule;
 
-import org.json.JSONArray;
-
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * Created by whorangester on 7/12/16.
- */
 public class AccountSchema {
     public static final String ENTITY_NAME = "Account";
     public static final String IDENTIFIER = "AccountId";

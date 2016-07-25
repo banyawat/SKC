@@ -631,4 +631,10 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>String>
+
+    <string name="search_button">ค้นหา</string>
+    <string name="accept_button">ตกลง</string>
+    <string name="reject_button">ยกเลิก</string>
+    <string name="save_button">บันทึกข้อมูล</string>
+    <string name="deleete_button">ลบข้อมูล</string>
 </resources>

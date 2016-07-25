@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -15,10 +13,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,12 +22,10 @@ import android.widget.Toast;
 
 import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
-import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -159,7 +153,7 @@ public class AccountDetailGeneral extends Fragment implements View.OnTouchListen
             case R.id.parent_account:
                 try {
                     Log.i("TOUCH", "DOWN");
-                    if(!mAccount.getJSONObject(AccountSchema.PARENT_ACCOUNT).isNull("Name"))
+                    if(!mAccount.getJSONObject(AccountSchema.PARENT_ACCOUNT).isNull("Name") && editBuffer.isNull(AccountSchema.PARENT_ACCOUNT))
                         redirect(mAccount.optJSONObject(AccountSchema.PARENT_ACCOUNT).getString("Id"));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -172,6 +166,14 @@ public class AccountDetailGeneral extends Fragment implements View.OnTouchListen
         if(!hasFocus)
             switch (v.getId()) {
                 case R.id.account_name_edit:
+                    if(((EditText) v).getText().toString().isEmpty()) {
+                        Toast.makeText(getContext(),"Account Name is Required",Toast.LENGTH_SHORT).show();
+                        try {
+                            ((EditText) v).setText(mAccount.getString(AccountSchema.ACCOUNT_NAME));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     basicFocusLoss(AccountSchema.ACCOUNT_NAME, accountNameText, accountNameEdit);
                     break;
                 case R.id.parent_account_edit:
@@ -310,30 +312,36 @@ public class AccountDetailGeneral extends Fragment implements View.OnTouchListen
     }
     public void autoCompleteFocusLoss(String schemaName, TextView textView, AutoCompleteTextView autoView, Map<String, String> valueMap, String keyBuffer) {
         String newData = autoView.getText().toString();
-        if(newData.equals("")) newData = null;
+        //if(newData.equals("")) newData = null;
         try {
-            if (newData != null && valueMap.get(newData).equals(mAccount.getJSONObject(schemaName).getString("Id"))) {
-                if(editBuffer.has(schemaName)) editBuffer.remove(schemaName);
-                textView.setText(newData);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
-            } else if (newData == null && mAccount.getJSONObject(schemaName).isNull("Id")) {
-                if(editBuffer.has(schemaName)) editBuffer.remove(schemaName);
-                textView.setText(REPLACEMENT_STRING);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
-            } else if (newData == null) {
-                parentAccountBuffer = null;
-                editBuffer.put(schemaName, new JSONObject().put("Id", JSONObject.NULL));
-                textView.setText(REPLACEMENT_STRING);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
-            } else if (valueMap.containsKey(newData)) {
-                parentAccountBuffer = newData;
-                editBuffer.put(schemaName, new JSONObject().put("Id", valueMap.get(newData)));
-                textView.setText(newData);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+            if(valueMap.containsKey(newData)) {
+                if (valueMap.get(newData).equals(mAccount.getJSONObject(schemaName).getString("Id"))) {
+                    if (editBuffer.has(schemaName)) editBuffer.remove(schemaName);
+                    textView.setText(newData);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+                } else {
+                    parentAccountBuffer = newData;
+                    editBuffer.put(schemaName, new JSONObject().put("Id", valueMap.get(newData)));
+                    textView.setText(newData);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+                }
+            } else if(newData.isEmpty()) {
+                if (mAccount.getJSONObject(schemaName).isNull("Id")) {
+                    if (editBuffer.has(schemaName)) editBuffer.remove(schemaName);
+                    textView.setText(REPLACEMENT_STRING);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+                } else {
+                    parentAccountBuffer = null;
+                    editBuffer.put(schemaName, new JSONObject().put("Id", JSONObject.NULL));
+                    textView.setText(REPLACEMENT_STRING);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+                }
+            } else {
+                Toast.makeText(getContext(),"Record do not exist",Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();

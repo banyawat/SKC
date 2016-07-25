@@ -1,6 +1,5 @@
 package com.theteus.kubota.OrganizationDataService;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -9,9 +8,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-/**
- * Created by whorangester on 7/20/16.
- */
 public class UpdateService extends Service {
     private String entityName;
     private String guid;
@@ -55,7 +51,7 @@ public class UpdateService extends Service {
         request.setRequestProperty("Accept", "application/json");
         request.setRequestProperty("Connection", "keep-alive");
         request.setRequestProperty("x-http-method", "MERGE");
-        request.setRequestBody(JSONEntry.toString());
+        request.setRequestBody(escapeUTF8(JSONEntry.toString()));
         try {
             request.writeMessageTo(writer);
             response.readMessageFrom(reader);
