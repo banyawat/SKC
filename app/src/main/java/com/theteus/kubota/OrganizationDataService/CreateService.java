@@ -1,6 +1,5 @@
 package com.theteus.kubota.OrganizationDataService;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -9,9 +8,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-/**
- * Created by whorangester on 7/20/16.
- */
 public class CreateService extends Service {
     private String entityName;
     private JSONObject JSONEntry;
@@ -48,7 +44,7 @@ public class CreateService extends Service {
         request.setRequestProperty("Accept-Language", "en-us");
         request.setRequestProperty("Accept", "application/json");
         request.setRequestProperty("Connection", "keep-alive");
-        request.setRequestBody(JSONEntry.toString());
+        request.setRequestBody(escapeUTF8(JSONEntry.toString()));
         try {
             request.writeMessageTo(writer);
             response.readMessageFrom(reader);

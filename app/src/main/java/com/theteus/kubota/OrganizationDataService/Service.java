@@ -144,9 +144,6 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
             e.printStackTrace();
         }
 
-        //request.log();
-        //response.log();
-
         if(response.hasProperty("WWW-Authenticate")) {
             type2Message = null;
             try {
@@ -169,9 +166,6 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
             e.printStackTrace();
         }
 
-        //request.log();
-        //response.log();
-
         if(response.getStatusCode().equals("302")) {
             this.authenticationState = true;
             return true;
@@ -188,6 +182,14 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
     public static void setDefaultPassword(String password) { DEFAULT_PASSWORD = password; }
     public static void setDefaultOrganizationDataPath(String path) { DEFAULT_ORGANIZATION_DATA_PATH = path; }
     public void setProgressMessage(String message) { this.progressMessage = message; }
+    protected static String escapeUTF8(String input) {
+        String output = "";
+        for(int i = 0; i < input.length(); i++) {
+            if(input.charAt(i) > 0x007f) output += "\\u" + Integer.toHexString(input.charAt(i) | 0x10000).substring(1);
+            else output += input.charAt(i);
+        }
+        return output;
+    }
 
     protected class Request {
         private String requestMethod;
@@ -258,7 +260,7 @@ public abstract class Service extends AsyncTask<Void, Void, JSONObject> {
             Log.i("HTTP REQUEST >>>", "");
         }
     }
-    public class Response {
+    protected class Response {
         private String protocolVersion;
         private String statusCode;
         private String statusDescription;

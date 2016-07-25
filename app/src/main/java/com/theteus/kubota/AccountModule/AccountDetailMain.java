@@ -9,14 +9,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
@@ -26,7 +25,6 @@ import com.theteus.kubota.OrganizationDataService.DeleteService;
 import com.theteus.kubota.OrganizationDataService.RetrieveService;
 import com.theteus.kubota.OrganizationDataService.UpdateService;
 import com.theteus.kubota.R;
-import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,11 +55,11 @@ public class AccountDetailMain extends Fragment{
     private ViewSwitcher switcher;
     private AutoCompleteTextView searchField;
     private TextView status;
-    private ImageView searchButton;
-    private ImageView acceptButton;
-    private ImageView rejectButton;
-    private ImageView saveButton;
-    private ImageView deleteButton;
+    private ImageButton searchButton;
+    private ImageButton acceptButton;
+    private ImageButton rejectButton;
+    private ImageButton saveButton;
+    private ImageButton deleteButton;
     private View separator;
     private InputMethodManager keyboard;
     private FloatingActionButton fab;
@@ -86,11 +84,11 @@ public class AccountDetailMain extends Fragment{
         switcher = (ViewSwitcher) view.findViewById(R.id.switcher);
         searchField = (AutoCompleteTextView) view.findViewById(R.id.search_field);
         status = (TextView) view.findViewById(R.id.status);
-        searchButton = (ImageView) view.findViewById(R.id.search_button);
-        acceptButton = (ImageView) view.findViewById(R.id.accept_button);
-        rejectButton = (ImageView) view.findViewById(R.id.reject_button);
-        deleteButton = (ImageView) view.findViewById(R.id.delete_button);
-        saveButton = (ImageView) view.findViewById(R.id.save_button);
+        searchButton = (ImageButton) view.findViewById(R.id.search_button);
+        acceptButton = (ImageButton) view.findViewById(R.id.accept_button);
+        rejectButton = (ImageButton) view.findViewById(R.id.reject_button);
+        deleteButton = (ImageButton) view.findViewById(R.id.delete_button);
+        saveButton = (ImageButton) view.findViewById(R.id.save_button);
         separator = view.findViewById(R.id.button_separator);
         keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
@@ -117,8 +115,7 @@ public class AccountDetailMain extends Fragment{
                 setUpSaveButton();
                 setUpCardTitleData();
                 loadingFlag1 = true;
-                Log.i(">>>", "LOADING 1 FINISHED");
-                if(loadingFlag1 && loadingFlag2 && loadingFlag3) setUpContentFragment();
+                if(loadingFlag2 && loadingFlag3) setUpContentFragment();
             }
         })
                 .setEntity(AccountSchema.ENTITY_NAME)
@@ -177,9 +174,8 @@ public class AccountDetailMain extends Fragment{
                         }
                     }
                     setUpSearchMechanism();
-                    Log.i(">>>", "LOADING 2 FINISHED");
                     loadingFlag2 = true;
-                    if(loadingFlag1 && loadingFlag2 && loadingFlag3) setUpContentFragment();
+                    if(loadingFlag1 && loadingFlag3) setUpContentFragment();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -201,27 +197,29 @@ public class AccountDetailMain extends Fragment{
                     for(int i = 0; i < arr.length(); i++) {
                         JSONObject obj = arr.getJSONObject(i);
                         Log.i("JSON", obj.toString());
-                        currencyList.add(obj.getString("CurrencyName"));
-                        currencyMap.put(obj.getString("CurrencyName"), obj.getString("TransactionCurrencyId"));
+                        currencyList.add(obj.getString(TransactionCurrencySchema.CURRENCY_NAME));
+                        currencyMap.put(obj.getString(TransactionCurrencySchema.CURRENCY_NAME), obj.getString(TransactionCurrencySchema.IDENTIFIER));
                     }
-                    Log.i(">>>", "LOADING 3 FINISHED");
                     loadingFlag3 = true;
-                    if(loadingFlag1 && loadingFlag2 && loadingFlag3) setUpContentFragment();
+                    if(loadingFlag1 && loadingFlag2) setUpContentFragment();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         })
-                .setEntity("TransactionCurrency")
-                .setQueryString("$select=TransactionCurrencyId,CurrencyName,CurrencySymbol")
+                .setEntity(TransactionCurrencySchema.ENTITY_NAME)
+                .setQueryString("$select="
+                        + TransactionCurrencySchema.IDENTIFIER + ","
+                        + TransactionCurrencySchema.CURRENCY_NAME + ","
+                        + TransactionCurrencySchema.CURRENCY_SYMBOL)
                 .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private void setUpSearchMechanism() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, mAccountNameList);
-        searchButton.setOnTouchListener(new View.OnTouchListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
                 switcher.showNext();
 
                 if(!switcher.getNextView().isFocusable()) {
@@ -233,13 +231,12 @@ public class AccountDetailMain extends Fragment{
                         }
                     searchField.requestFocus();
                     keyboard.showSoftInput(searchField, 0);
-                    searchButton.setImageResource(R.drawable.ic_48dp_black_highlight_off);
+                    searchButton.setImageResource(R.drawable.ic_36dp_black_highlight_off);
                 } else {
                     searchField.clearFocus();
                     keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+                    searchButton.setImageResource(R.drawable.ic_36dp_black_search);
                 }
-                return false;
             }
         });
 
@@ -250,15 +247,15 @@ public class AccountDetailMain extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String accountName = (String) parent.getItemAtPosition(position);
                 keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
-                redirect(mAccountIdMap.get(accountName), 0);
+                redirect(mAccountIdMap.get(accountName));
             }
         });
     }
 
     private void setUpDeleteButton() {
-        deleteButton.setOnTouchListener(new View.OnTouchListener() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
                 new AlertDialog.Builder(getContext())
                         .setIcon(R.drawable.ic_48dp_black_delete)
                         .setTitle("Delete Account")
@@ -271,7 +268,7 @@ public class AccountDetailMain extends Fragment{
                                     new DeleteService(getActivity(), new AsyncResponse() {
                                         @Override
                                         public void onFinishTask(JSONObject result) {
-                                            redirect(null, 0);
+                                            redirect(null);
                                         }
                                     })
                                             .setEntity(AccountSchema.ENTITY_NAME)
@@ -285,7 +282,6 @@ public class AccountDetailMain extends Fragment{
                         })
                         .setNegativeButton("Cancel", null)
                         .show();
-                return false;
             }
         });
     }
@@ -296,9 +292,9 @@ public class AccountDetailMain extends Fragment{
     }
 
     private void setUpSaveButton() {
-        saveButton.setOnTouchListener(new View.OnTouchListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
                 new AlertDialog.Builder(getContext())
                         .setIcon(R.drawable.ic_48dp_black_save)
                         .setTitle("Apply Change to Account")
@@ -311,7 +307,7 @@ public class AccountDetailMain extends Fragment{
                                     new UpdateService(getActivity(), new AsyncResponse() {
                                         @Override
                                         public void onFinishTask(JSONObject result) {
-                                            redirect(getArguments().getString(ARG_PARAM1), 0);
+                                            redirect(getArguments().getString(ARG_PARAM1));
                                         }
                                     })
                                             .setEntity(AccountSchema.ENTITY_NAME)
@@ -326,7 +322,6 @@ public class AccountDetailMain extends Fragment{
                         })
                         .setNegativeButton("Cancel", null)
                         .show();
-                return false;
             }
         });
     }
@@ -383,16 +378,8 @@ public class AccountDetailMain extends Fragment{
                 .commit();
     }
 
-    protected void redirect(String accountId, int pageNumber) {
+    protected void redirect(String accountId) {
         Home home = (Home) getActivity();
-        /*ScreenSlidePagerAdapter mPagerAdapter = home.getmPagerAdapter();
-        AccountDetailMain fragment = new AccountDetailMain();
-        Bundle args = new Bundle();
-        if(accountId != null) args.putString(AccountDetailMain.ARG_PARAM1, accountId);
-        if(pageNumber >= 0 && pageNumber <= 3) args.putInt(AccountDetailMain.ARG_PARAM2, 0);
-        fragment.setArguments(args);
-        mPagerAdapter.setPage(0, fragment);
-        mPagerAdapter.notifyDataSetChanged();*/
         home.goTo(5, accountId);
     }
 }

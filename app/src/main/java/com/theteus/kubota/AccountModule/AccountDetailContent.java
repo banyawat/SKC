@@ -14,9 +14,6 @@ import com.theteus.kubota.ScreenSlidePagerAdapter;
 
 import org.json.JSONObject;
 
-import java.util.List;
-import java.util.Map;
-
 public class AccountDetailContent extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
     //Content
     private JSONObject mAccount;

@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.theteus.kubota.R;
 
@@ -507,30 +508,36 @@ public class AccountDetailDetailsPart1 extends Fragment  implements View.OnTouch
     }
     public void autoCompleteFocusLoss(String schemaName, TextView textView, AutoCompleteTextView autoView, Map<String, String> valueMap) {
         String newData = autoView.getText().toString();
-        if(newData.equals("")) newData = null;
+        //if(newData.equals("")) newData = null;
         try {
-            if (newData != null && valueMap.get(newData).equals(mAccount.getJSONObject(schemaName).getString("Id"))) {
-                if(editBuffer.has(schemaName)) editBuffer.remove(schemaName);
-                textView.setText(newData);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
-            } else if (newData == null && mAccount.getJSONObject(schemaName).isNull("Id")) {
-                if(editBuffer.has(schemaName)) editBuffer.remove(schemaName);
-                textView.setText(REPLACEMENT_STRING);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
-            } else if (newData == null) {
-                currencyBuffer = null;
-                editBuffer.put(schemaName, new JSONObject().put("Id", JSONObject.NULL));
-                textView.setText(REPLACEMENT_STRING);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
-            } else if (valueMap.containsKey(newData)) {
-                currencyBuffer = newData;
-                editBuffer.put(schemaName, new JSONObject().put("Id", valueMap.get(newData)));
-                textView.setText(newData);
-                textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+            if(valueMap.containsKey(newData)) {
+                if (valueMap.get(newData).equals(mAccount.getJSONObject(schemaName).getString("Id"))) {
+                    if(editBuffer.has(schemaName)) editBuffer.remove(schemaName);
+                    textView.setText(newData);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+                } else {
+                    currencyBuffer = newData;
+                    editBuffer.put(schemaName, new JSONObject().put("Id", valueMap.get(newData)));
+                    textView.setText(newData);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+                }
+            } else if(newData.isEmpty()) {
+                if (mAccount.getJSONObject(schemaName).isNull("Id")) {
+                    if(editBuffer.has(schemaName)) editBuffer.remove(schemaName);
+                    textView.setText(REPLACEMENT_STRING);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+                } else {
+                    currencyBuffer = null;
+                    editBuffer.put(schemaName, new JSONObject().put("Id", JSONObject.NULL));
+                    textView.setText(REPLACEMENT_STRING);
+                    textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                    textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+                }
+            } else {
+                Toast.makeText(getContext(),"Record do not exist",Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();

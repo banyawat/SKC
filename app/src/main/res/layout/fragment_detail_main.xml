@@ -34,7 +34,8 @@
                     android:layout_width="match_parent"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:gravity="center_vertical">
 
                     <ViewSwitcher
                         android:id="@+id/switcher"
@@ -44,7 +45,7 @@
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent">
 
                             <TextView
                                 android:id="@+id/title"
@@ -52,10 +53,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_marginStart="16dp"
                                 android:layout_marginLeft="16dp"
-                                android:layout_marginTop="12dp"
                                 android:textSize="24sp"
                                 android:textColor="#000000"
-                                android:alpha="0.87" />
+                                android:alpha="0.87"
+                                android:layout_centerVertical="true"/>
 
                             <TextView
                                 android:id="@+id/subtitle"
@@ -66,7 +67,8 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginLeft="12dp"
                                 android:layout_marginTop="22dp"
-                                android:textSize="14sp"
+                                android:layout_alignBottom="@id/title"
+                                android:textSize="16sp"
                                 android:textColor="#000000"
                                 android:alpha="0.54" />
 
@@ -78,7 +80,6 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="16dp"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginTop="-12dp"
                             android:background="@android:color/transparent"
                             android:textSize="24sp"
                             android:selectAllOnFocus="true"
@@ -86,14 +87,16 @@
 
                     </ViewSwitcher>
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/search_button"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_margin="8dp"
-                        android:src="@drawable/ic_48dp_black_search"
+                        android:src="@drawable/ic_36dp_black_search"
+                        android:background="?selectableItemBackgroundBorderless"
                         android:alpha="0.38"
-                        android:layout_weight="0"/>
+                        android:layout_weight="0"
+                        android:contentDescription="@string/search_button" />
 
                     <View
                         android:id="@+id/button_separator"
@@ -104,41 +107,49 @@
                         android:alpha="0.12"
                         android:layout_weight="0"/>
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/accept_button"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_margin="8dp"
-                        android:src="@drawable/ic_48dp_black_done"
+                        android:src="@drawable/ic_36dp_black_done"
+                        android:background="?selectableItemBackgroundBorderless"
                         android:alpha="0.38"
-                        android:layout_weight="0"/>
+                        android:layout_weight="0"
+                        android:contentDescription="@string/accept_button" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/reject_button"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_margin="8dp"
-                        android:src="@drawable/ic_48dp_black_clear"
+                        android:src="@drawable/ic_36dp_black_clear"
+                        android:background="?selectableItemBackgroundBorderless"
                         android:alpha="0.38"
-                        android:layout_weight="0"/>
+                        android:layout_weight="0"
+                        android:contentDescription="@string/reject_button" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/save_button"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_margin="8dp"
-                        android:src="@drawable/ic_48dp_black_save"
+                        android:src="@drawable/ic_36dp_black_save"
+                        android:background="?selectableItemBackgroundBorderless"
                         android:alpha="0.38"
-                        android:layout_weight="0"/>
+                        android:layout_weight="0"
+                        android:contentDescription="@string/save_button" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/delete_button"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_margin="8dp"
-                        android:src="@drawable/ic_48dp_black_delete"
+                        android:src="@drawable/ic_36dp_black_delete"
+                        android:background="?selectableItemBackgroundBorderless"
                         android:alpha="0.38"
-                        android:layout_weight="0"/>
+                        android:layout_weight="0"
+                        android:contentDescription="@string/deleete_button" />
 
                     <TextView
                         android:id="@+id/status"
@@ -146,9 +157,9 @@
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:layout_margin="8dp"
-                        android:textAlignment="center"
-                        android:background="#4CAF50"
-                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:textColor="@color/statusUnknownFont"
+                        android:background="@color/statusUnknown"
                         android:textSize="16sp"
                         android:layout_weight="0" />
 

@@ -1,6 +1,5 @@
 package com.theteus.kubota.OrganizationDataService;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -9,9 +8,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-/**
- * Created by whorangester on 7/20/16.
- */
 public class DeleteService extends Service {
     private String entityName;
     private String guid;
