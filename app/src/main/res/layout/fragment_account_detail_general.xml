@@ -18,14 +18,14 @@
         android:orientation="vertical">
         <!--ACCOUNT NAME-->
         <RelativeLayout
-            android:layout_height="48dp"
+            android:layout_height="@dimen/large_icon_size"
             android:layout_width="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/account_name_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_person"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_name"/>
@@ -37,7 +37,7 @@
                 android:layout_alignTop="@id/account_name_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_name" />
@@ -50,7 +50,7 @@
                 android:layout_alignBottom="@id/account_name_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -64,7 +64,7 @@
                 android:layout_alignBottom="@id/account_name_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -81,8 +81,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/parent_account_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_supervisor_account"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_parent"/>
@@ -94,7 +94,7 @@
                 android:layout_alignTop="@id/parent_account_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_parent" />
@@ -107,7 +107,7 @@
                 android:layout_alignBottom="@id/parent_account_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:alpha="0.87"
                 android:lines="1"
@@ -123,7 +123,7 @@
                 android:layout_alignBottom="@id/parent_account_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -141,8 +141,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/ticker_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_confirmation_number"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_ticker"/>
@@ -154,7 +154,7 @@
                 android:layout_alignTop="@id/ticker_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_ticker" />
@@ -167,7 +167,7 @@
                 android:layout_alignBottom="@id/ticker_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -181,7 +181,7 @@
                 android:layout_alignBottom="@id/ticker_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -208,8 +208,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/phone_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_phone"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_phone"/>
@@ -221,7 +221,7 @@
                 android:layout_alignTop="@id/phone_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_phone" />
@@ -234,7 +234,7 @@
                 android:layout_alignBottom="@id/phone_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -249,7 +249,7 @@
                 android:layout_alignBottom="@id/phone_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -268,8 +268,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/fax_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_local_printshop"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_fax"/>
@@ -281,7 +281,7 @@
                 android:layout_alignTop="@id/fax_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_fax" />
@@ -294,7 +294,7 @@
                 android:layout_alignBottom="@id/fax_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -309,7 +309,7 @@
                 android:layout_alignBottom="@id/fax_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -328,8 +328,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/website_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_public"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_website"/>
@@ -341,7 +341,7 @@
                 android:layout_alignTop="@id/website_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_website" />
@@ -354,7 +354,7 @@
                 android:layout_alignBottom="@id/website_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -368,7 +368,7 @@
                 android:layout_alignBottom="@id/website_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"

@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_title"
             android:textColor="@android:color/black"
             android:alpha="0.54"
             android:text="@string/company_profile" />
@@ -34,8 +34,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/industry_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_work"
                 android:alpha="0.54"
                 android:contentDescription="@string/industry"/>
@@ -47,7 +47,7 @@
                 android:layout_alignTop="@id/industry_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/industry" />
@@ -60,7 +60,7 @@
                 android:layout_alignBottom="@id/industry_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -74,7 +74,7 @@
                 android:layout_alignBottom="@id/industry_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:alpha="0.01"
                 android:background="@android:drawable/btn_default" />
         </RelativeLayout>
@@ -87,8 +87,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/sic_code_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_note"
                 android:alpha="0.54"
                 android:contentDescription="@string/sic_code" />
@@ -100,7 +100,7 @@
                 android:layout_alignTop="@id/sic_code_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/sic_code" />
@@ -113,7 +113,7 @@
                 android:layout_alignBottom="@id/sic_code_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -127,7 +127,7 @@
                 android:layout_alignBottom="@id/sic_code_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -146,8 +146,8 @@
             <!--OWNERSHIP-->
             <ImageView
                 android:id="@+id/ownership_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_person"
                 android:alpha="0.54"
                 android:contentDescription="@string/ownership"/>
@@ -159,7 +159,7 @@
                 android:layout_alignTop="@id/ownership_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/ownership" />
@@ -172,7 +172,7 @@
                 android:layout_alignBottom="@id/ownership_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -186,7 +186,7 @@
                 android:layout_alignBottom="@id/ownership_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:alpha="0.01"
                 android:background="@android:drawable/btn_default" />
         </RelativeLayout>
@@ -209,7 +209,7 @@
             android:id="@+id/marketing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_title"
             android:textColor="@android:color/black"
             android:alpha="0.54"
             android:text="@string/marketing" />
@@ -222,8 +222,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/originating_lead_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_person"
                 android:alpha="0.54"
                 android:contentDescription="@string/originating_lead" />
@@ -235,7 +235,7 @@
                 android:layout_alignTop="@id/originating_lead_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/originating_lead" />
@@ -248,7 +248,7 @@
                 android:layout_alignBottom="@id/originating_lead_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -264,8 +264,8 @@
 
             <ImageView
                 android:id="@+id/last_campaign_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_event"
                 android:alpha="0.54"
                 android:contentDescription="@string/last_campaign_date" />
@@ -277,7 +277,7 @@
                 android:layout_alignTop="@id/last_campaign_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/last_campaign_date" />
@@ -290,7 +290,7 @@
                 android:layout_alignBottom="@id/last_campaign_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -305,8 +305,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/marketing_material_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_label"
                 android:alpha="0.54"
                 android:contentDescription="@string/marketing_material"/>
@@ -318,7 +318,7 @@
                 android:layout_alignTop="@id/marketing_material_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/marketing_material" />
@@ -331,7 +331,7 @@
                 android:layout_alignBottom="@id/marketing_material_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -352,7 +352,7 @@
             android:id="@+id/billing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_title"
             android:textColor="@android:color/black"
             android:alpha="0.54"
             android:text="@string/billing" />
@@ -366,8 +366,8 @@
 
             <ImageView
                 android:id="@+id/currency_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_work"
                 android:alpha="0.54"
                 android:contentDescription="@string/currency" />
@@ -380,7 +380,7 @@
                 android:layout_alignTop="@id/currency_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/currency" />
@@ -394,7 +394,7 @@
                 android:layout_alignBottom="@id/currency_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -409,7 +409,7 @@
                 android:layout_alignBottom="@id/currency_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -427,8 +427,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/credit_limit_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_work"
                 android:alpha="0.54"
                 android:contentDescription="@string/credit_limit" />
@@ -441,7 +441,7 @@
                 android:layout_alignTop="@id/credit_limit_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/credit_limit" />
@@ -455,7 +455,7 @@
                 android:layout_alignBottom="@id/credit_limit_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -470,7 +470,7 @@
                 android:layout_alignBottom="@id/credit_limit_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:lines="1"
                 android:maxLines="1"
                 android:alpha="0.87"
@@ -488,8 +488,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/credit_hold_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_work"
                 android:visibility="invisible"
                 android:alpha="0.54"
@@ -503,7 +503,7 @@
                 android:layout_alignTop="@id/credit_hold_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/credit_hold" />
@@ -517,7 +517,7 @@
                 android:layout_alignBottom="@id/credit_hold_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -532,8 +532,8 @@
             android:layout_marginBottom="12dp">
             <ImageView
                 android:id="@+id/payment_terms_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_work"
                 android:alpha="0.54"
                 android:contentDescription="@string/payment_terms" />
@@ -545,7 +545,7 @@
                 android:layout_alignTop="@id/payment_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/payment_terms" />
@@ -558,7 +558,7 @@
                 android:layout_alignBottom="@id/payment_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -572,7 +572,7 @@
                 android:layout_alignBottom="@id/payment_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:alpha="0.01"
                 android:background="@android:drawable/btn_default" />
         </RelativeLayout>

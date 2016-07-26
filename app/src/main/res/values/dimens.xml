@@ -23,4 +23,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- For Detail Viewer Pages-->
+    <dimen name="text_size_headline">24sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_subheading">16sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+
+    <dimen name="medium_icon_margin">8dp</dimen>
+    <dimen name="medium_icon_size">36dp</dimen>
+    <dimen name="large_icon_size">48dp</dimen>
 </resources>

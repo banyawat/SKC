@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_title"
             android:textColor="@android:color/black"
             android:alpha="0.54"
             android:text="@string/description" />
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_subheading"
             android:textColor="@android:color/black"
             android:alpha="0.87" />
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_subheading"
             android:textColor="@android:color/black"
             android:alpha="0.87"
             android:visibility="gone"
@@ -64,7 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_title"
             android:textColor="@android:color/black"
             android:alpha="0.54"
             android:text="@string/contact_pref" />
@@ -77,8 +77,8 @@
 
             <ImageView
                 android:id="@+id/email_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_email"
                 android:alpha="0.54"
                 android:contentDescription="@string/email"/>
@@ -90,7 +90,7 @@
                 android:layout_alignTop="@id/email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/email" />
@@ -103,7 +103,7 @@
                 android:layout_alignBottom="@id/email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -118,7 +118,7 @@
                 android:layout_alignBottom="@id/email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:visibility="gone"/>
 
         </RelativeLayout>
@@ -131,8 +131,8 @@
 
             <ImageView
                 android:id="@+id/bulk_email_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_email"
                 android:alpha="0.54"
                 android:contentDescription="@string/bulk_email"/>
@@ -144,7 +144,7 @@
                 android:layout_alignTop="@id/bulk_email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/bulk_email" />
@@ -157,7 +157,7 @@
                 android:layout_alignBottom="@id/bulk_email_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -173,8 +173,8 @@
 
             <ImageView
                 android:id="@+id/phone_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_phone"
                 android:alpha="0.54"
                 android:contentDescription="@string/phone"/>
@@ -186,7 +186,7 @@
                 android:layout_alignTop="@id/phone_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/phone" />
@@ -199,7 +199,7 @@
                 android:layout_alignBottom="@id/phone_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -215,8 +215,8 @@
 
             <ImageView
                 android:id="@+id/fax_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_local_printshop"
                 android:alpha="0.54"
                 android:contentDescription="@string/account_fax"/>
@@ -228,7 +228,7 @@
                 android:layout_alignTop="@id/fax_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/account_fax" />
@@ -241,7 +241,7 @@
                 android:layout_alignBottom="@id/fax_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -257,8 +257,8 @@
 
             <ImageView
                 android:id="@+id/mail_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_email"
                 android:alpha="0.54"
                 android:contentDescription="@string/mail"/>
@@ -270,7 +270,7 @@
                 android:layout_alignTop="@id/mail_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/mail" />
@@ -283,7 +283,7 @@
                 android:layout_alignBottom="@id/mail_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -306,7 +306,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_title"
             android:textColor="@android:color/black"
             android:alpha="0.54"
             android:text="@string/shipping" />
@@ -320,8 +320,8 @@
 
             <ImageView
                 android:id="@+id/shipping_method_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_local_shipping"
                 android:alpha="0.54"
                 android:contentDescription="@string/shipping_method"/>
@@ -333,7 +333,7 @@
                 android:layout_alignTop="@id/shipping_method_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/shipping_method" />
@@ -346,7 +346,7 @@
                 android:layout_alignBottom="@id/shipping_method_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -361,7 +361,7 @@
                 android:layout_alignBottom="@id/shipping_method_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:alpha="0.01"
                 android:background="@android:drawable/btn_default" />
 
@@ -376,8 +376,8 @@
 
             <ImageView
                 android:id="@+id/freight_terms_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/large_icon_size"
+                android:layout_height="@dimen/large_icon_size"
                 android:src="@drawable/ic_48dp_black_local_shipping"
                 android:alpha="0.54"
                 android:contentDescription="@string/freight"/>
@@ -389,7 +389,7 @@
                 android:layout_alignTop="@id/freight_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_size_caption"
                 android:textColor="@android:color/black"
                 android:alpha="0.54"
                 android:text="@string/freight" />
@@ -402,7 +402,7 @@
                 android:layout_alignBottom="@id/freight_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:textColor="@android:color/black"
                 android:lines="1"
                 android:maxLines="1"
@@ -416,7 +416,7 @@
                 android:layout_alignBottom="@id/freight_terms_icon"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_subheading"
                 android:alpha="0.01"
                 android:background="@android:drawable/btn_default" />
         </RelativeLayout>
