@@ -18,4 +18,10 @@
             android:layout_below="@+id/feed_list_text"
             android:layout_alignLeft="@+id/feed_list_text"
             android:layout_alignStart="@+id/feed_list_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/feed_list_text3"
+            android:layout_below="@id/feed_list_text2"/>
 </RelativeLayout>

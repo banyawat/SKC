@@ -290,7 +290,7 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
                 Bundle bundle = new Bundle();
                 bundle.putString(AccountDetailMain.ARG_PARAM1, accountID);
                 AccountDetailMain accountDetailMain = new AccountDetailMain();
-                accountDetailMain.setArguments(args);
+                accountDetailMain.setArguments(bundle);
                 mPagerAdapter.addPage(accountDetailMain);
                 mPagerAdapter.addPage(new Account());
                 break;
