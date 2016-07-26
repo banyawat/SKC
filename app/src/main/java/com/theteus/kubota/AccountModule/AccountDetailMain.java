@@ -1,5 +1,7 @@
 package com.theteus.kubota.AccountModule;
 
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -50,6 +52,7 @@ public class AccountDetailMain extends Fragment{
     protected boolean loadingFlag2;
     protected boolean loadingFlag3;
     // Views
+    private ViewGroup cardPanel;
     private TextView title;
     private TextView subtitle;
     private ViewSwitcher switcher;
@@ -79,6 +82,7 @@ public class AccountDetailMain extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_main, container, false);
 
+        cardPanel = (ViewGroup) view.findViewById(R.id.card_panel);
         title = (TextView) view.findViewById(R.id.title);
         subtitle = (TextView) view.findViewById(R.id.subtitle);
         switcher = (ViewSwitcher) view.findViewById(R.id.switcher);
@@ -93,10 +97,10 @@ public class AccountDetailMain extends Fragment{
         keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
-        toggleSaveButton();
         setUpCardTitle();
         setUpDeleteButton();
         setUpFab();
+        toggleSaveButton();
 
         return view;
     }
@@ -327,6 +331,10 @@ public class AccountDetailMain extends Fragment{
     }
 
     private void setUpCardTitle() {
+        LayoutTransition lt = new LayoutTransition();
+        lt.setAnimator(LayoutTransition.APPEARING, ObjectAnimator.ofFloat(null, "alpha", 0.0f, 0.38f));
+        lt.setAnimator(LayoutTransition.DISAPPEARING, ObjectAnimator.ofFloat(null, "alpha", 0.38f, 0.0f));
+        cardPanel.setLayoutTransition(lt);
         status.setVisibility(View.GONE);
         acceptButton.setVisibility(View.GONE);
         rejectButton.setVisibility(View.GONE);
