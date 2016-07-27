@@ -16,10 +16,12 @@ import com.theteus.kubota.ScreenSlidePagerAdapter;
  * Created by whorangester on 6/28/16.
  */
 public class ContactDetailContent extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-    private FragmentTabHost mTabHost;
-    private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
     private ContactInstance mContact;
+    //View
+    private View rootView;
+    private FragmentTabHost mTabHost;
+    private ViewPager mPager;
 
     public ContactDetailContent() {}
 
@@ -34,22 +36,21 @@ public class ContactDetailContent extends Fragment implements TabHost.OnTabChang
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView;
         if (mContact != null) {
-            rootView = inflater.inflate(R.layout.fragment_contact_detail_content, container, false);
-            setUpTabView(rootView, mContact.id);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_tab, container, false);
+            setUpTabView();
         } else {
-            rootView = inflater.inflate(R.layout.fragment_detail_blank, container, false);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_blank, container, false);
         }
         return rootView;
     }
 
-    public void setUpTabView(View view, String contactId) {
+    public void setUpTabView() {
         Bundle args = new Bundle();
-        args.putString(ContactDetailMain.ARG_PARAM1, contactId);
+        args.putString(ContactDetailMain.ARG_PARAM1, getArguments().getString(ContactDetailMain.ARG_PARAM1));
 
-        mTabHost = (FragmentTabHost) view.findViewById(R.id.contact_detail_tabhost);
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.contact_detail_tab_content);
+        mTabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.tab_content);
         mTabHost.addTab(mTabHost.newTabSpec("GeneralTab").setIndicator("ข้อมูลทั่วไป"), ContactDetailGeneral.class, args);
         mTabHost.addTab(mTabHost.newTabSpec("AddressTab").setIndicator("ที่อยู่"), ContactDetailAddress.class, args);
         mTabHost.addTab(mTabHost.newTabSpec("QuestionnaireTab").setIndicator("แบบสอบถาม"), ContactDetailQuestionnaire.class, args);
@@ -60,7 +61,7 @@ public class ContactDetailContent extends Fragment implements TabHost.OnTabChang
         for (int i = 0; i < mTabHost.getTabWidget().getTabCount(); i++)
             mTabHost.getTabWidget().getChildAt(i).getLayoutParams().height = (int) (48 * this.getResources().getDisplayMetrics().density);
 
-        mPager = (ViewPager) view.findViewById(R.id.contact_detail_pager);
+        mPager = (ViewPager) rootView.findViewById(R.id.detail_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 
         ContactDetailGeneral generalSection = new ContactDetailGeneral();

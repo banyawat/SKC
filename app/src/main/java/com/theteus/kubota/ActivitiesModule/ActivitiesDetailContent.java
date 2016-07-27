@@ -104,7 +104,7 @@ public class ActivitiesDetailContent extends Fragment {
             else
                 description.setText("- - -");
         } else {
-            view = inflater.inflate(R.layout.fragment_detail_blank, container, false);
+            view = inflater.inflate(R.layout.fragment_general_detail_blank, container, false);
         }
 
         return view;

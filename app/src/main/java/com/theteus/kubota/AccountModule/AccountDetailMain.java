@@ -79,7 +79,7 @@ public class AccountDetailMain extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_general_detail_main, container, false);
 
         cardPanel = (ViewGroup) view.findViewById(R.id.card_panel);
         title = (TextView) view.findViewById(R.id.title);

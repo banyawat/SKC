@@ -16,10 +16,12 @@ import com.theteus.kubota.ScreenSlidePagerAdapter;
  * Created by whorangester on 6/23/16.
  */
 public class LeadDetailContent extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-    private FragmentTabHost mTabHost;
-    private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
     private LeadInstance mLead;
+    //View
+    private View rootView;
+    private FragmentTabHost mTabHost;
+    private ViewPager mPager;
 
     public LeadDetailContent() {}
 
@@ -33,28 +35,22 @@ public class LeadDetailContent extends Fragment implements TabHost.OnTabChangeLi
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        //LayoutTransition lt = new LayoutTransition();
-        //lt.setDuration(50);
-        //container.setLayoutTransition(lt);
-
-        View rootView;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mLead != null) {
-            rootView = inflater.inflate(R.layout.fragment_lead_detail_content, container, false);
-            setUpTabView(rootView, mLead.id);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_tab, container, false);
+            setUpTabView();
         } else {
-            rootView = inflater.inflate(R.layout.fragment_detail_blank, container, false);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_blank, container, false);
         }
         return rootView;
     }
 
-    public void setUpTabView(View view, String leadId) {
+    public void setUpTabView() {
         Bundle args = new Bundle();
-        args.putString(LeadDetailMain.ARG_PARAM1, leadId);
+        args.putString(LeadDetailMain.ARG_PARAM1, getArguments().getString(LeadDetailMain.ARG_PARAM1));
 
-        mTabHost = (FragmentTabHost) view.findViewById(R.id.lead_detail_tabhost);
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.lead_detail_tab_content);
+        mTabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.tab_content);
         mTabHost.addTab(mTabHost.newTabSpec("DealerTab").setIndicator("Dealer Section"), LeadDetailDealer.class, args);
         mTabHost.addTab(mTabHost.newTabSpec("GeneralTab").setIndicator("ข้อมูลทั่วไป"), LeadDetailGeneral.class, args);
         mTabHost.addTab(mTabHost.newTabSpec("AddressTab").setIndicator("ที่อยู่"), LeadDetailAddress.class, args);
@@ -65,7 +61,7 @@ public class LeadDetailContent extends Fragment implements TabHost.OnTabChangeLi
         for (int i = 0; i < mTabHost.getTabWidget().getTabCount(); i++)
             mTabHost.getTabWidget().getChildAt(i).getLayoutParams().height = (int) (48 * this.getResources().getDisplayMetrics().density);
 
-        mPager = (ViewPager) view.findViewById(R.id.lead_detail_pager);
+        mPager = (ViewPager) rootView.findViewById(R.id.detail_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 
         LeadDetailDealer dealerSection = new LeadDetailDealer();
