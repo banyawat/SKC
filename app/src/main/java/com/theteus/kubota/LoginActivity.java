@@ -31,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         findViewsById();
         layout = (RelativeLayout) findViewById(R.id.login_layout);
-        username_edittext.setText("administrator");
-        password_edittext.setText("pass@word1");
+        username_edittext.setText(Reference.USERNAME);
+        password_edittext.setText(Reference.PASSWORD);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +73,11 @@ public class LoginActivity extends AppCompatActivity {
                 }).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        finish();
     }
 
     @Override

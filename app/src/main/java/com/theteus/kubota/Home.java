@@ -208,7 +208,8 @@ public class Home extends AppCompatActivity implements OnMenuItemClickListener {
                     mPager.setCurrentItem(mPager.getCurrentItem()-1);
             }
             else {
-                super.onBackPressed();
+                startActivity(new Intent(Home.this, LoginActivity.class));
+                finish();
             }
         }
     }

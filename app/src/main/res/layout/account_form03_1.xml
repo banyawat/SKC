@@ -118,7 +118,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/account_form3_1_originate_lead"
-                        android:hint="@string/originating_lead" />
+                        android:hint="@string/originating_lead"
+                        android:enabled="false"
+                        android:focusable="false" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -284,18 +286,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="@dimen/icon_resol"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_work_black"
-                android:contentDescription="@string/icon_description"/>
+                android:gravity="center_vertical">
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/account_form3_1_paymentterm"
-                android:layout_gravity="center_horizontal" />
+                <ImageView
+                    android:layout_width="@dimen/icon_resol"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_work_black"
+                    android:contentDescription="@string/icon_description"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_form3_1_paymentterm"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

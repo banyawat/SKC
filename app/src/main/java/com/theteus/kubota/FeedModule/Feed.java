@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -150,8 +151,14 @@ public class Feed extends Fragment {
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
             holder.longText.setText(post.get(position));
-            holder.longText2.setText(post2.get(position));
+            String creator = logicalNameList.get(position).substring(0, 1).toUpperCase()
+                    + logicalNameList.get(position).substring(1) + ": " + post2.get(position);
+            holder.longText2.setText(creator);
             holder.longTex3.setText(dateList.get(position));
+            if(logicalNameList.get(position).equals("contact"))
+                holder.icon.setImageResource(R.drawable.ic_supervisor_account_black);
+            else
+                holder.icon.setImageResource(R.drawable.ic_48dp_black_note);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -180,11 +187,14 @@ public class Feed extends Fragment {
 
         class MyViewHolder extends RecyclerView.ViewHolder {
             TextView longText, longText2, longTex3;
+            ImageView icon;
             public MyViewHolder(View itemView) {
                 super(itemView);
                 longText = (TextView) itemView.findViewById(R.id.feed_list_text);
                 longText2 = (TextView) itemView.findViewById(R.id.feed_list_text2);
                 longTex3 = (TextView) itemView.findViewById(R.id.feed_list_text3);
+                icon = (ImageView) itemView.findViewById(R.id.feedlist_icon);
+
             }
         }
     }
