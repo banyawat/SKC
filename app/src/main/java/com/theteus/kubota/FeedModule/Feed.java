@@ -131,7 +131,8 @@ public class Feed extends Fragment {
             series.addPoint(new ValueLinePoint(" ", 0));
             while(it.hasNext()){
                 HashMap.Entry pair = (HashMap.Entry)it.next();
-                series.addPoint(new ValueLinePoint(dateOnlyFormat.format(sortingFormat.parse(pair.getKey().toString()))
+                String date = dateOnlyFormat.format(sortingFormat.parse(pair.getKey().toString()));
+                series.addPoint(new ValueLinePoint(date.equals(todayDate)?"Today": date
                         , Float.valueOf(pair.getValue().toString())));
             }
         } catch (ParseException e) {
