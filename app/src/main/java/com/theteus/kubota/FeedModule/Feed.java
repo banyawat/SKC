@@ -27,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,6 +40,8 @@ import java.util.TreeMap;
 
 
 public class Feed extends Fragment {
+    private final static SimpleDateFormat dateOnlyFormat = new SimpleDateFormat("dd/MMM/yy", Locale.ENGLISH);
+    private final static String todayDate = dateOnlyFormat.format(Calendar.getInstance().getTime()); //get current date
     public Feed() {}
 
     @Override
@@ -63,8 +66,7 @@ public class Feed extends Fragment {
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat fullDateTimeFormat = new SimpleDateFormat("dd/MMM/yyyy HH:mm a", Locale.ENGLISH);
                     fullDateTimeFormat.setTimeZone(TimeZone.getTimeZone("GMT+7"));
-                    SimpleDateFormat dateOnlyFormat = new SimpleDateFormat("dd-MMM-yy", Locale.ENGLISH);
-                    String todayDate = new SimpleDateFormat("dd-MMM-yy", Locale.ENGLISH).format(Calendar.getInstance().getTime()); //get current date
+
                     for(int i=0;i<result1.length();i++){
                         JSONObject jsObj = result1.getJSONObject(i);
                         JSONObject regardingObject = jsObj.getJSONObject("RegardingObjectId");
@@ -114,15 +116,26 @@ public class Feed extends Fragment {
         mPieChart.startAnimation();
     }
     private void initValueLine(View view, Map<String, Integer> dateMap){
+        SimpleDateFormat sortingFormat = new SimpleDateFormat("yy/MM/dd", Locale.ENGLISH);
+        Map<String, Integer> map = new TreeMap<>();
         ValueLineChart mCubicValueLineChart = (ValueLineChart) view.findViewById(R.id.cubiclinechart);
         ValueLineSeries series = new ValueLineSeries();
         series.setColor(0xFFFFC107);
-        //Map<String, Integer> map = new TreeMap<>(dateMap);
-        Iterator it = new TreeMap<>(dateMap).entrySet().iterator();
-        series.addPoint(new ValueLinePoint(" ", 0));
-        while(it.hasNext()){
-            HashMap.Entry pair = (HashMap.Entry)it.next();
-            series.addPoint(new ValueLinePoint(pair.getKey().toString(), Float.valueOf(pair.getValue().toString())));
+
+        try {
+            for (Object o : dateMap.entrySet()) {
+                HashMap.Entry pair = (HashMap.Entry) o;
+                map.put(sortingFormat.format(dateOnlyFormat.parse(pair.getKey().toString())), (Integer) pair.getValue());
+            }
+            Iterator it = map.entrySet().iterator();
+            series.addPoint(new ValueLinePoint(" ", 0));
+            while(it.hasNext()){
+                HashMap.Entry pair = (HashMap.Entry)it.next();
+                series.addPoint(new ValueLinePoint(dateOnlyFormat.format(sortingFormat.parse(pair.getKey().toString()))
+                        , Float.valueOf(pair.getValue().toString())));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         series.addPoint(new ValueLinePoint(" ", 0));
         mCubicValueLineChart.addSeries(series);
