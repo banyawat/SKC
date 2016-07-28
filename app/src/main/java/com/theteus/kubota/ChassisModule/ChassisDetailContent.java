@@ -16,10 +16,12 @@ import com.theteus.kubota.ScreenSlidePagerAdapter;
  * Created by whorangester on 6/29/16.
  */
 public class ChassisDetailContent extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-    private FragmentTabHost mTabHost;
-    private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
     private ChassisInstance mChassis;
+    //View
+    private View rootView;
+    private FragmentTabHost mTabHost;
+    private ViewPager mPager;
 
     public ChassisDetailContent() {}
 
@@ -33,28 +35,22 @@ public class ChassisDetailContent extends Fragment implements TabHost.OnTabChang
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        //LayoutTransition lt = new LayoutTransition();
-        //lt.setDuration(50);
-        //container.setLayoutTransition(lt);
-
-        View rootView;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mChassis != null) {
-            rootView = inflater.inflate(R.layout.fragment_chassis_detail_content, container, false);
-            setUpTabView(rootView, mChassis.chassisNumber);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_tab, container, false);
+            setUpTabView();
         } else {
-            rootView = inflater.inflate(R.layout.fragment_detail_blank, container, false);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_blank, container, false);
         }
         return rootView;
     }
 
-    public void setUpTabView(View view, String leadId) {
+    public void setUpTabView() {
         Bundle args = new Bundle();
-        args.putString(ChassisDetailMain.ARG_PARAM1, leadId);
+        args.putString(ChassisDetailMain.ARG_PARAM1, getArguments().getString(ChassisDetailMain.ARG_PARAM1));
 
-        mTabHost = (FragmentTabHost) view.findViewById(R.id.chassis_detail_tabhost);
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.chassis_detail_tab_content);
+        mTabHost = (FragmentTabHost) rootView.findViewById(R.id.tabhost);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.tab_content);
         mTabHost.addTab(mTabHost.newTabSpec("GeneralTab").setIndicator("ข้อมูลทั่วไป"), ChassisDetailGeneral.class, args);
         mTabHost.addTab(mTabHost.newTabSpec("ContractTab").setIndicator("สัญญา"), ChassisDetailContract.class, args);
         mTabHost.addTab(mTabHost.newTabSpec("VipTab").setIndicator("วีไอพีการ์ด"), ChassisDetailVip.class, args);
@@ -63,7 +59,7 @@ public class ChassisDetailContent extends Fragment implements TabHost.OnTabChang
         for (int i = 0; i < mTabHost.getTabWidget().getTabCount(); i++)
             mTabHost.getTabWidget().getChildAt(i).getLayoutParams().height = (int) (48 * this.getResources().getDisplayMetrics().density);
 
-        mPager = (ViewPager) view.findViewById(R.id.chassis_detail_pager);
+        mPager = (ViewPager) rootView.findViewById(R.id.detail_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
 
         ChassisDetailGeneral generalSection = new ChassisDetailGeneral();

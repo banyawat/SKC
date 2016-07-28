@@ -4,10 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="12dp">
+    android:layout_marginRight="16dp">
     <android.support.v4.app.FragmentTabHost
-        android:id="@+id/lead_detail_tabhost"
+        android:id="@+id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,25 +16,25 @@
             android:orientation="vertical" >
 
             <TabWidget
-                android:id="@+id/lead_detail_tabs"
+                android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <View
-                android:id="@+id/lead_detail_tab_divider"
+                android:id="@+id/tab_divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000000"
+                android:background="@android:color/black"
                 android:layout_marginTop="48dp"
                 android:alpha="0.12" />
 
             <FrameLayout
-                android:id="@+id/lead_detail_tab_content"
+                android:id="@+id/tab_content"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
             <android.support.v4.view.ViewPager
-                android:id="@+id/lead_detail_pager"
+                android:id="@+id/detail_pager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1" />

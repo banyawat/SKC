@@ -6,18 +6,16 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.theteus.kubota.ContactModule.DummyContactInstance;
 import com.theteus.kubota.Home;
 import com.theteus.kubota.R;
 import com.theteus.kubota.Reference;
@@ -29,6 +27,21 @@ public class ChassisDetailMain extends Fragment {
     ChassisInstance mChassis;
     public static final String ARG_PARAM1 = "chassisNo";
     public static final String ARG_PARAM2 = "currentTab";
+    // Views
+    private ViewGroup cardPanel;
+    private TextView title;
+    private TextView subtitle;
+    private ViewSwitcher switcher;
+    private AutoCompleteTextView searchField;
+    private TextView status;
+    private ImageButton searchButton;
+    private ImageButton acceptButton;
+    private ImageButton rejectButton;
+    private ImageButton saveButton;
+    private ImageButton deleteButton;
+    private View separator;
+    private InputMethodManager keyboard;
+    private FloatingActionButton fab;
 
     public ChassisDetailMain() {}
 
@@ -42,28 +55,31 @@ public class ChassisDetailMain extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chassis_detail_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_general_detail_main, container, false);
 
-        final TextView title = (TextView) view.findViewById(R.id.chassis_detail_title);
-        final TextView subtitle = (TextView) view.findViewById(R.id.chassis_detail_subtitle);
-        final ViewSwitcher switcher = (ViewSwitcher) view.findViewById(R.id.chassis_detail_switcher);
-        final TextView status = (TextView) view.findViewById(R.id.chassis_detail_status);
-        final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.chassis_detail_search_field);
-        final InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        cardPanel = (ViewGroup) view.findViewById(R.id.card_panel);
+        title = (TextView) view.findViewById(R.id.title);
+        subtitle = (TextView) view.findViewById(R.id.subtitle);
+        switcher = (ViewSwitcher) view.findViewById(R.id.switcher);
+        searchField = (AutoCompleteTextView) view.findViewById(R.id.search_field);
+        status = (TextView) view.findViewById(R.id.status);
+        searchButton = (ImageButton) view.findViewById(R.id.search_button);
+        acceptButton = (ImageButton) view.findViewById(R.id.accept_button);
+        rejectButton = (ImageButton) view.findViewById(R.id.reject_button);
+        deleteButton = (ImageButton) view.findViewById(R.id.delete_button);
+        saveButton = (ImageButton) view.findViewById(R.id.save_button);
+        separator = view.findViewById(R.id.button_separator);
+        keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
-        final ImageView searchButton = (ImageView) view.findViewById(R.id.search_button);
-        final ImageView qualifyButton = (ImageView) view.findViewById(R.id.approve_button);
-        final ImageView disqualifyButton = (ImageView) view.findViewById(R.id.deactivate_button);
-        final ImageView deleteButton = (ImageView) view.findViewById(R.id.delete_button);
-        final View separator = view.findViewById(R.id.chassis_detail_button_separator);
-
-        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.chassis_detail_fab);
+        searchField.setHint("Search Chassis...");
 
         if(mChassis == null) {
             status.setVisibility(View.GONE);
             searchButton.setVisibility(View.GONE);
-            qualifyButton.setVisibility(View.GONE);
-            disqualifyButton.setVisibility(View.GONE);
+            acceptButton.setVisibility(View.GONE);
+            rejectButton.setVisibility(View.GONE);
+            saveButton.setVisibility(View.GONE);
             deleteButton.setVisibility(View.GONE);
             separator.setVisibility(View.GONE);
 
@@ -71,25 +87,25 @@ public class ChassisDetailMain extends Fragment {
             searchField.requestFocus();
             keyboard.showSoftInput(searchField, 0);
         } else {
-            setUpCardTitle(title, subtitle, searchField, status);
+            saveButton.setVisibility(View.GONE);
+            setUpCardTitle();
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, DummyChassisInstance.KEYS);
-        searchButton.setOnTouchListener(new View.OnTouchListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
                 switcher.showNext();
 
                 if(!switcher.getNextView().isFocusable()) {
                     searchField.requestFocus();
                     keyboard.showSoftInput(searchField, 0);
-                    searchButton.setImageResource(R.drawable.ic_48dp_black_highlight_off);
+                    searchButton.setImageResource(R.drawable.ic_36dp_black_highlight_off);
                 } else {
                     searchField.clearFocus();
                     keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+                    searchButton.setImageResource(R.drawable.ic_36dp_black_search);
                 }
-                return false;
             }
         });
 
@@ -100,8 +116,8 @@ public class ChassisDetailMain extends Fragment {
                 if(mChassis == null) {
                     status.setVisibility(View.VISIBLE);
                     searchButton.setVisibility(View.VISIBLE);
-                    qualifyButton.setVisibility(View.VISIBLE);
-                    disqualifyButton.setVisibility(View.VISIBLE);
+                    acceptButton.setVisibility(View.VISIBLE);
+                    rejectButton.setVisibility(View.VISIBLE);
                     deleteButton.setVisibility(View.VISIBLE);
                     separator.setVisibility(View.VISIBLE);
                 }
@@ -109,13 +125,13 @@ public class ChassisDetailMain extends Fragment {
                 String chassisKey = (String) parent.getItemAtPosition(position);
                 mChassis = DummyChassisInstance.CHASSIS_MAP.get(DummyChassisInstance.ID_MAP.get(chassisKey));
 
-                setUpCardTitle(title, subtitle, searchField, status);
+                setUpCardTitle();
                 setUpContentFragment();
 
                 searchField.clearFocus();
                 switcher.showNext();
                 keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
-                searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+                searchButton.setImageResource(R.drawable.ic_36dp_black_search);
             }
         });
 
@@ -131,7 +147,7 @@ public class ChassisDetailMain extends Fragment {
         return view;
     }
 
-    public void setUpCardTitle(TextView title, TextView subtitle, AutoCompleteTextView searchField, TextView status) {
+    public void setUpCardTitle() {
         title.setText(mChassis.chassisNumber);
         subtitle.setText(Reference.MASTER_PRODUCTTYPE.get(mChassis.productType));
         searchField.setText(mChassis.chassisNumber + " : " + Reference.MASTER_PRODUCTTYPE.get(mChassis.productType));
@@ -163,7 +179,7 @@ public class ChassisDetailMain extends Fragment {
             args.putInt(ARG_PARAM2, getArguments().getInt(ARG_PARAM2));
         fragment.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.chassis_detail_content, fragment)
+                .replace(R.id.content, fragment)
                 .commit();
     }
 }

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +79,7 @@ public class AccountDetailMain extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_general_detail_main, container, false);
 
         cardPanel = (ViewGroup) view.findViewById(R.id.card_panel);
         title = (TextView) view.findViewById(R.id.title);
@@ -200,7 +199,6 @@ public class AccountDetailMain extends Fragment{
                     JSONArray arr = result.getJSONObject("d").optJSONArray("results");
                     for(int i = 0; i < arr.length(); i++) {
                         JSONObject obj = arr.getJSONObject(i);
-                        Log.i("JSON", obj.toString());
                         currencyList.add(obj.getString(TransactionCurrencySchema.CURRENCY_NAME));
                         currencyMap.put(obj.getString(TransactionCurrencySchema.CURRENCY_NAME), obj.getString(TransactionCurrencySchema.IDENTIFIER));
                     }

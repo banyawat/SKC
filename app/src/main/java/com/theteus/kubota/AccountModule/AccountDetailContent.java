@@ -33,10 +33,10 @@ public class AccountDetailContent extends Fragment implements TabHost.OnTabChang
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mAccount != null) {
-            rootView = inflater.inflate(R.layout.fragment_detail_tab, container, false);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_tab, container, false);
             setUpTabView();
         } else {
-            rootView = inflater.inflate(R.layout.fragment_detail_blank, container, false);
+            rootView = inflater.inflate(R.layout.fragment_general_detail_blank, container, false);
         }
         return rootView;
     }

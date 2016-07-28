@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -432,7 +431,6 @@ public class AccountDetailDetailsPart1 extends Fragment  implements View.OnTouch
         String newData = editText.getText().toString();
         if(newData.equals("")) newData = null;
         try {
-            Log.i("NEWDATA", newData);
             if(newData == null) {
                 if(mAccount.getJSONObject(schemaName).isNull("Value")) {
                     editBuffer.remove(schemaName);

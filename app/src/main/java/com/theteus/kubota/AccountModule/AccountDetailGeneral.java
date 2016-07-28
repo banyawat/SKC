@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -152,7 +151,6 @@ public class AccountDetailGeneral extends Fragment implements View.OnTouchListen
         switch (v.getId()) {
             case R.id.parent_account:
                 try {
-                    Log.i("TOUCH", "DOWN");
                     if(!mAccount.getJSONObject(AccountSchema.PARENT_ACCOUNT).isNull("Name") && editBuffer.isNull(AccountSchema.PARENT_ACCOUNT))
                         redirect(mAccount.optJSONObject(AccountSchema.PARENT_ACCOUNT).getString("Id"));
                 } catch (JSONException e) {

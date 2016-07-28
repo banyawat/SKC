@@ -6,15 +6,12 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,14 +20,7 @@ import com.theteus.kubota.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.util.List;
-import java.util.Map;
-
-/**
- * Created by whorangester on 7/13/16.
- */
 public class AccountDetailAddress extends Fragment implements View.OnTouchListener, View.OnFocusChangeListener {
     //Constant
     private static final String REPLACEMENT_STRING = "- - -";

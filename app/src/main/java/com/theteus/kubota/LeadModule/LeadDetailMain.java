@@ -6,14 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
@@ -28,6 +27,21 @@ public class LeadDetailMain extends Fragment {
     private LeadInstance mLead;
     public static final String ARG_PARAM1 = "leadId";
     public static final String ARG_PARAM2 = "currentTab";
+    // Views
+    private ViewGroup cardPanel;
+    private TextView title;
+    private TextView subtitle;
+    private ViewSwitcher switcher;
+    private AutoCompleteTextView searchField;
+    private TextView status;
+    private ImageButton searchButton;
+    private ImageButton acceptButton;
+    private ImageButton rejectButton;
+    private ImageButton saveButton;
+    private ImageButton deleteButton;
+    private View separator;
+    private InputMethodManager keyboard;
+    private FloatingActionButton fab;
 
     public LeadDetailMain() {}
 
@@ -41,28 +55,31 @@ public class LeadDetailMain extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_general_detail_main, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_lead_detail_main, container, false);
-        final TextView title = (TextView) view.findViewById(R.id.lead_detail_title);
-        final TextView owner = (TextView) view.findViewById(R.id.lead_detail_subtitle);
-        final ViewSwitcher switcher = (ViewSwitcher) view.findViewById(R.id.lead_detail_switcher);
-        final TextView status = (TextView) view.findViewById(R.id.lead_detail_status);
-        final AutoCompleteTextView searchField = (AutoCompleteTextView) view.findViewById(R.id.lead_detail_search_field);
-        final InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        cardPanel = (ViewGroup) view.findViewById(R.id.card_panel);
+        title = (TextView) view.findViewById(R.id.title);
+        subtitle = (TextView) view.findViewById(R.id.subtitle);
+        switcher = (ViewSwitcher) view.findViewById(R.id.switcher);
+        searchField = (AutoCompleteTextView) view.findViewById(R.id.search_field);
+        status = (TextView) view.findViewById(R.id.status);
+        searchButton = (ImageButton) view.findViewById(R.id.search_button);
+        acceptButton = (ImageButton) view.findViewById(R.id.accept_button);
+        rejectButton = (ImageButton) view.findViewById(R.id.reject_button);
+        deleteButton = (ImageButton) view.findViewById(R.id.delete_button);
+        saveButton = (ImageButton) view.findViewById(R.id.save_button);
+        separator = view.findViewById(R.id.button_separator);
+        keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
-        final ImageView searchButton = (ImageView) view.findViewById(R.id.search_button);
-        final ImageView qualifyButton = (ImageView) view.findViewById(R.id.qualify_button);
-        final ImageView disqualifyButton = (ImageView) view.findViewById(R.id.disqualify_button);
-        final ImageView deleteButton = (ImageView) view.findViewById(R.id.delete_button);
-        final View separator = view.findViewById(R.id.lead_detail_button_separator);
-
-        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.lead_detail_fab);
+        searchField.setHint("Search Lead...");
 
         if(mLead == null) {
             status.setVisibility(View.GONE);
             searchButton.setVisibility(View.GONE);
-            qualifyButton.setVisibility(View.GONE);
-            disqualifyButton.setVisibility(View.GONE);
+            acceptButton.setVisibility(View.GONE);
+            rejectButton.setVisibility(View.GONE);
+            saveButton.setVisibility(View.GONE);
             deleteButton.setVisibility(View.GONE);
             separator.setVisibility(View.GONE);
 
@@ -70,25 +87,25 @@ public class LeadDetailMain extends Fragment {
             searchField.requestFocus();
             keyboard.showSoftInput(searchField, 0);
         } else {
-            setUpCardTitle(title, owner, searchField, status);
+            saveButton.setVisibility(View.GONE);
+            setUpCardTitle();
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, DummyLeadInstance.KEYS);
-        searchButton.setOnTouchListener(new View.OnTouchListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
                 switcher.showNext();
 
                 if(!switcher.getNextView().isFocusable()) {
                     searchField.requestFocus();
                     keyboard.showSoftInput(searchField, 0);
-                    searchButton.setImageResource(R.drawable.ic_48dp_black_highlight_off);
+                    searchButton.setImageResource(R.drawable.ic_36dp_black_highlight_off);
                 } else {
                     searchField.clearFocus();
                     keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+                    searchButton.setImageResource(R.drawable.ic_36dp_black_search);
                 }
-                return false;
             }
         });
 
@@ -99,8 +116,8 @@ public class LeadDetailMain extends Fragment {
                 if(mLead == null) {
                     status.setVisibility(View.VISIBLE);
                     searchButton.setVisibility(View.VISIBLE);
-                    qualifyButton.setVisibility(View.VISIBLE);
-                    disqualifyButton.setVisibility(View.VISIBLE);
+                    acceptButton.setVisibility(View.VISIBLE);
+                    rejectButton.setVisibility(View.VISIBLE);
                     deleteButton.setVisibility(View.VISIBLE);
                     separator.setVisibility(View.VISIBLE);
                 }
@@ -108,13 +125,13 @@ public class LeadDetailMain extends Fragment {
                 String leadId = (String) parent.getItemAtPosition(position);
                 mLead = DummyLeadInstance.LEAD_MAP.get(DummyLeadInstance.ID_MAP.get(leadId));
 
-                setUpCardTitle(title, owner, searchField, status);
+                setUpCardTitle();
                 setUpContentFragment();
 
                 searchField.clearFocus();
                 switcher.showNext();
                 keyboard.hideSoftInputFromWindow(searchField.getWindowToken(), 0);
-                searchButton.setImageResource(R.drawable.ic_48dp_black_search);
+                searchButton.setImageResource(R.drawable.ic_36dp_black_search);
             }
         });
 
@@ -129,32 +146,32 @@ public class LeadDetailMain extends Fragment {
 
         return view;
     }
-    public void setUpCardTitle(TextView titleView, TextView ownerView, AutoCompleteTextView searchField, TextView statusView) {
+    public void setUpCardTitle() {
         String leadFullName = mLead.firstName + " " + mLead.lastName;
         String leadOwner = "Owner : " + mLead.owner;
         String leadKey = mLead.id + " : " + mLead.firstName + " " + mLead.lastName;
 
-        titleView.setText(leadFullName);
-        ownerView.setText(leadOwner);
+        title.setText(leadFullName);
+        subtitle.setText(leadOwner);
         searchField.setText(leadKey);
-        statusView.setText(Reference.MASTER_LEADSTATUS.get(mLead.status));
+        status.setText(Reference.MASTER_LEADSTATUS.get(mLead.status));
 
         switch(mLead.status) {
             case 117980000:
-                statusView.setBackgroundResource(R.color.statusBlue);
-                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusBlueFont));
+                status.setBackgroundResource(R.color.statusBlue);
+                status.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusBlueFont));
                 break;
             case 117980001:
-                statusView.setBackgroundResource(R.color.statusGreen);
-                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusGreenFont));
+                status.setBackgroundResource(R.color.statusGreen);
+                status.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusGreenFont));
                 break;
             case 117980002:
-                statusView.setBackgroundResource(R.color.statusRed);
-                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
+                status.setBackgroundResource(R.color.statusRed);
+                status.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusRedFont));
                 break;
             default:
-                statusView.setBackgroundResource(R.color.statusUnknown);
-                statusView.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusUnknownFont));
+                status.setBackgroundResource(R.color.statusUnknown);
+                status.setTextColor(ContextCompat.getColor(getActivity(), R.color.statusUnknownFont));
         }
     }
     public void setUpContentFragment() {
@@ -166,7 +183,7 @@ public class LeadDetailMain extends Fragment {
             args.putInt(ARG_PARAM2, getArguments().getInt(ARG_PARAM2));
         fragment.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.lead_detail_content, fragment)
+                .replace(R.id.content, fragment)
                 .commit();
     }
 }
